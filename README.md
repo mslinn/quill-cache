@@ -11,7 +11,7 @@ This library depends on [has-id](https://github.com/mslinn/has-id), and case cla
 even if they do not require database caching.
 
 ## DAOs
-The [data access object pattern](https://en.wikipedia.org/wiki/Data_access_object) (DAO) is very common across all computer languages.
+The [data access object pattern](https://en.wikipedia.org/wiki/Data_access_object) (DAO) is common across all computer languages.
 DAOs for case classes that require database caching must extend the
 [CachedPersistence](http://github.com/mslinn/cached-persistence/latest/api/#model.persistence.CachedPersistence) 
 abstract class.
@@ -33,7 +33,7 @@ Because `preload()` always flushes the cache before loading it you probably won'
 ## Cache Types
 Two types of caches are supported by `CachedPersistence`: 
   * [StrongCache](http://github.com/mslinn/scalacourses-utils/latest/api/com/micronautics/cache/StrongCache.html),
-    which are locked into memory until the cache is explicitly flushed.
+    which is locked into memory until the cache is explicitly flushed.
     Mix the [StrongCacheLike](http://github.com/mslinn/cached-persistence/latest/api/#model.persistence.StrongCacheLike) 
     trait into the DAO to provide this behavior.
     This type of cache is useful when there is enough memory to hold all instances of the case class.
@@ -41,6 +41,9 @@ Two types of caches are supported by `CachedPersistence`:
      which contains soft values that might expire or get bumped if memory fills up.
      Mix the [SoftCacheLike](http://github.com/mslinn/cached-persistence/latest/api/#model.persistence.SoftCacheLike) 
      trait into the DAO to provide this behavior.
+     DAOs that use `SoftCache` do not assume that all instances of the case class can fit into memory.
+     `SoftCache` finders query the database after every cache miss.
+     Because of this, `SoftCache` finders run more slowly than `StrongCache` finders when the cache does not contain the desired value.
      This trait is experimental, do not use in production.
 
 ## Consistent APIs for Cached and Uncached DAOs
