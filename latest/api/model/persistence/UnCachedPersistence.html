@@ -1,0 +1,1177 @@
+<!DOCTYPE html >
+<html>
+        <head>
+          <title>UnCachedPersistence - model.persistence.UnCachedPersistence</title>
+          <meta name="description" content="UnCachedPersistence - model.persistence.UnCachedPersistence" />
+          <meta name="keywords" content="UnCachedPersistence model.persistence.UnCachedPersistence" />
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+          
+      <link href="../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../lib/template.js"></script>
+      <script type="text/javascript" src="../../lib/tools.tooltip.js"></script>
+      
+      <script type="text/javascript">
+         if(top === self) {
+            var url = '../../index.html';
+            var hash = 'model.persistence.UnCachedPersistence';
+            var anchor = window.location.hash;
+            var anchor_opt = '';
+            if (anchor.length >= 1)
+              anchor_opt = '@' + anchor.substring(1);
+            window.location.href = url + '#' + hash + anchor_opt;
+         }
+   	  </script>
+    
+        </head>
+        <body class="type">
+      <div id="definition">
+        <img alt="Class" src="../../lib/class_big.png" />
+        <p id="owner"><a href="../package.html" class="extype" name="model">model</a>.<a href="package.html" class="extype" name="model.persistence">persistence</a></p>
+        <h1>UnCachedPersistence</h1><h3><span class="morelinks"><div>Related Doc:
+            <a href="package.html" class="extype" name="model.persistence">package persistence</a>
+          </div></span></h3><span class="permalink">
+      <a href="../../index.html#model.persistence.UnCachedPersistence" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      </div>
+
+      <h4 id="signature" class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <span class="name">UnCachedPersistence</span><span class="tparams">[<span name="Key">Key &lt;: <span class="extype" name="scala.AnyRef">AnyRef</span></span>, <span name="_IdType">_IdType &lt;: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="model.persistence.UnCachedPersistence.Key">Key</span>]</span>, <span name="CaseClass">CaseClass &lt;: <span class="extype" name="model.persistence.HasId">HasId</span>[<span class="extype" name="model.persistence.UnCachedPersistence.CaseClass">CaseClass</span>, <span class="extype" name="model.persistence.UnCachedPersistence._IdType">_IdType</span>]</span>]</span><span class="result"> extends <a href="Quill.html" class="extype" name="model.persistence.Quill">Quill</a> with <a href="QuillImplicits.html" class="extype" name="model.persistence.QuillImplicits">QuillImplicits</a></span>
+      </span>
+      </h4>
+      
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Accesses the table for each query</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://bitbucket.com/mslinn/cadenza-cached-persistence/tree/master/src/main/scala/model/persistence/UnCachedPersistence.scala" target="_blank">UnCachedPersistence.scala</a></dd></dl><div class="toggleContainer block">
+          <span class="toggle">Linear Supertypes</span>
+          <div class="superTypes hiddenContent"><a href="QuillImplicits.html" class="extype" name="model.persistence.QuillImplicits">QuillImplicits</a>, <a href="Quill.html" class="extype" name="model.persistence.Quill">Quill</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+        </div><div class="toggleContainer block">
+            <span class="toggle">Known Subclasses</span>
+            <div class="subClasses hiddenContent"><a href="CachedPersistence.html" class="extype" name="model.persistence.CachedPersistence">CachedPersistence</a></div>
+          </div></div>
+        
+
+      <div id="mbrsel">
+        <div id="textfilter"><span class="pre"></span><span class="input"><input id="mbrsel-input" type="text" accesskey="/" /></span><span class="post"></span></div>
+        <div id="order">
+              <span class="filtertype">Ordering</span>
+              <ol>
+                
+                <li class="alpha in"><span>Alphabetic</span></li>
+                <li class="inherit out"><span>By Inheritance</span></li>
+              </ol>
+            </div>
+        <div id="ancestors">
+                <span class="filtertype">Inherited<br />
+                </span>
+                <ol id="linearization">
+                  <li class="in" name="model.persistence.UnCachedPersistence"><span>UnCachedPersistence</span></li><li class="in" name="model.persistence.QuillImplicits"><span>QuillImplicits</span></li><li class="in" name="model.persistence.Quill"><span>Quill</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                </ol>
+              </div><div id="ancestors">
+            <span class="filtertype"></span>
+            <ol>
+              <li class="hideall out"><span>Hide All</span></li>
+              <li class="showall in"><span>Show All</span></li>
+            </ol>
+          </div>
+        <div id="visbl">
+            <span class="filtertype">Visibility</span>
+            <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+          </div>
+      </div>
+
+      <div id="template">
+        <div id="allMembers">
+        <div id="constructors" class="members">
+              <h3>Instance Constructors</h3>
+              <ol><li name="model.persistence.UnCachedPersistence#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="&lt;init&gt;():model.persistence.UnCachedPersistence[Key,_IdType,CaseClass]"></a>
+      <a id="&lt;init&gt;:UnCachedPersistence[Key,_IdType,CaseClass]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">new</span>
+      </span>
+      <span class="symbol">
+        <span class="name">UnCachedPersistence</span><span class="params">()</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@&lt;init&gt;():model.persistence.UnCachedPersistence[Key,_IdType,CaseClass]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li></ol>
+            </div>
+
+        <div id="types" class="types members">
+              <h3>Type Members</h3>
+              <ol><li name="model.persistence.Quill.AllDialects" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="AllDialects=io.getquill.H2Dialectwithio.getquill.MySQLDialectwithio.getquill.PostgresDialectwithio.getquill.SqliteDialect"></a>
+      <a id="AllDialects:AllDialects"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">type</span>
+      </span>
+      <span class="symbol">
+        <span class="name">AllDialects</span><span class="result"> = <span class="extype" name="io.getquill.H2Dialect">H2Dialect</span> with <span class="extype" name="io.getquill.MySQLDialect">MySQLDialect</span> with <span class="extype" name="io.getquill.PostgresDialect">PostgresDialect</span> with <span class="extype" name="io.getquill.SqliteDialect">SqliteDialect</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@AllDialects=io.getquill.H2Dialectwithio.getquill.MySQLDialectwithio.getquill.PostgresDialectwithio.getquill.SqliteDialect" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Quill.html" class="extype" name="model.persistence.Quill">Quill</a></dd></dl></div>
+    </li><li name="model.persistence.Quill.Ctx" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="Ctx=io.getquill.context.jdbc.JdbcContext[_&gt;:Quill.this.AllDialects&lt;:io.getquill.context.sql.idiom.SqlIdiom,model.persistence.TableNameSnakeCase]"></a>
+      <a id="Ctx:Ctx"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">type</span>
+      </span>
+      <span class="symbol">
+        <span class="name">Ctx</span><span class="result"> = <span class="extype" name="io.getquill.context.jdbc.JdbcContext">JdbcContext</span>[_ &gt;: <a href="#AllDialects=io.getquill.H2Dialectwithio.getquill.MySQLDialectwithio.getquill.PostgresDialectwithio.getquill.SqliteDialect" class="extmbr" name="model.persistence.UnCachedPersistence.AllDialects">AllDialects</a> &lt;: <span class="extype" name="io.getquill.context.sql.idiom.SqlIdiom">SqlIdiom</span>, <a href="TableNameSnakeCase.html" class="extype" name="model.persistence.TableNameSnakeCase">TableNameSnakeCase</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@Ctx=io.getquill.context.jdbc.JdbcContext[_&gt;:Quill.this.AllDialects&lt;:io.getquill.context.sql.idiom.SqlIdiom,model.persistence.TableNameSnakeCase]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Quill.html" class="extype" name="model.persistence.Quill">Quill</a></dd></dl></div>
+    </li></ol>
+            </div>
+
+        <div id="values" class="values members">
+              <h3>Abstract Value Members</h3>
+              <ol><li name="model.persistence.UnCachedPersistence#_deleteById" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="_deleteById:model.persistence.Id[_IdType]=&gt;Unit"></a>
+      <a id="_deleteById:(Id[_IdType])⇒Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">_deleteById</span><span class="result">: (<span class="extype" name="model.persistence.Id">Id</span>[<span class="extype" name="model.persistence.UnCachedPersistence._IdType">_IdType</span>]) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@_deleteById:model.persistence.Id[_IdType]=&gt;Unit" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="model.persistence.UnCachedPersistence#_findAll" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="_findAll:()=&gt;List[CaseClass]"></a>
+      <a id="_findAll:()⇒List[CaseClass]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">_findAll</span><span class="result">: () ⇒ <span class="extype" name="scala.List">List</span>[<span class="extype" name="model.persistence.UnCachedPersistence.CaseClass">CaseClass</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@_findAll:()=&gt;List[CaseClass]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="model.persistence.UnCachedPersistence#_findById" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="_findById:model.persistence.Id[_IdType]=&gt;Option[CaseClass]"></a>
+      <a id="_findById:(Id[_IdType])⇒Option[CaseClass]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">_findById</span><span class="result">: (<span class="extype" name="model.persistence.Id">Id</span>[<span class="extype" name="model.persistence.UnCachedPersistence._IdType">_IdType</span>]) ⇒ <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="model.persistence.UnCachedPersistence.CaseClass">CaseClass</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@_findById:model.persistence.Id[_IdType]=&gt;Option[CaseClass]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="model.persistence.UnCachedPersistence#_insert" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="_insert:CaseClass=&gt;CaseClass"></a>
+      <a id="_insert:(CaseClass)⇒CaseClass"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">_insert</span><span class="result">: (<span class="extype" name="model.persistence.UnCachedPersistence.CaseClass">CaseClass</span>) ⇒ <span class="extype" name="model.persistence.UnCachedPersistence.CaseClass">CaseClass</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@_insert:CaseClass=&gt;CaseClass" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="model.persistence.UnCachedPersistence#_update" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="_update:CaseClass=&gt;CaseClass"></a>
+      <a id="_update:(CaseClass)⇒CaseClass"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">_update</span><span class="result">: (<span class="extype" name="model.persistence.UnCachedPersistence.CaseClass">CaseClass</span>) ⇒ <span class="extype" name="model.persistence.UnCachedPersistence.CaseClass">CaseClass</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@_update:CaseClass=&gt;CaseClass" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="model.persistence.UnCachedPersistence#className" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="className:String"></a>
+      <a id="className:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">className</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@className:String" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Human-readable name of persisted class</p>
+    </li></ol>
+            </div>
+
+        <div id="values" class="values members">
+              <h3>Concrete Value Members</h3>
+              <ol><li name="scala.AnyRef#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="!=(x$1:Any):Boolean"></a>
+      <a id="!=(Any):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@!=(x$1:Any):Boolean" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.AnyRef###" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="##():Int"></a>
+      <a id="##():Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $hash$hash" class="name">##</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@##():Int" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.AnyRef#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="==(x$1:Any):Boolean"></a>
+      <a id="==(Any):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@==(x$1:Any):Boolean" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="model.persistence.UnCachedPersistence#Logger" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="Logger:org.slf4j.Logger"></a>
+      <a id="Logger:Logger"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">Logger</span><span class="result">: <span class="extype" name="org.slf4j.Logger">Logger</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@Logger:org.slf4j.Logger" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
+    </li><li name="model.persistence.UnCachedPersistence#add" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="add(caseClass:CaseClass):CaseClass"></a>
+      <a id="add(CaseClass):CaseClass"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">add</span><span class="params">(<span name="caseClass">caseClass: <span class="extype" name="model.persistence.UnCachedPersistence.CaseClass">CaseClass</span></span>)</span><span class="result">: <span class="extype" name="model.persistence.UnCachedPersistence.CaseClass">CaseClass</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@add(caseClass:CaseClass):CaseClass" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="asInstanceOf[T0]:T0"></a>
+      <a id="asInstanceOf[T0]:T0"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">asInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Any.asInstanceOf.T0">T0</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@asInstanceOf[T0]:T0" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="clone():Object"></a>
+      <a id="clone():AnyRef"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@clone():Object" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.CloneNotSupportedException]">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="model.persistence.Quill#config" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="config:com.typesafe.config.Config"></a>
+      <a id="config:Config"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">lazy val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">config</span><span class="result">: <span class="extype" name="com.typesafe.config.Config">Config</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@config:com.typesafe.config.Config" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="Quill.html" class="extype" name="model.persistence.Quill">Quill</a></dd></dl></div>
+    </li><li name="model.persistence.UnCachedPersistence#copyUpdate" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="copyUpdate:(CaseClass,model.persistence.Id[_IdType])=&gt;CaseClass"></a>
+      <a id="copyUpdate:(CaseClass,Id[_IdType])⇒CaseClass"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">copyUpdate</span><span class="result">: (<span class="extype" name="model.persistence.UnCachedPersistence.CaseClass">CaseClass</span>, <span class="extype" name="model.persistence.Id">Id</span>[<span class="extype" name="model.persistence.UnCachedPersistence._IdType">_IdType</span>]) ⇒ <span class="extype" name="model.persistence.UnCachedPersistence.CaseClass">CaseClass</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@copyUpdate:(CaseClass,model.persistence.Id[_IdType])=&gt;CaseClass" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
+    </li><li name="model.persistence.Quill#ctx" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ctx:io.getquill.context.jdbc.JdbcContext[_&gt;:Quill.this.AllDialects&lt;:io.getquill.context.sql.idiom.SqlIdiom,model.persistence.TableNameSnakeCase]"></a>
+      <a id="ctx:JdbcContext[_&gt;:AllDialects&lt;:SqlIdiom,TableNameSnakeCase]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">lazy val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ctx</span><span class="result">: <span class="extype" name="io.getquill.context.jdbc.JdbcContext">JdbcContext</span>[_ &gt;: <a href="#AllDialects=io.getquill.H2Dialectwithio.getquill.MySQLDialectwithio.getquill.PostgresDialectwithio.getquill.SqliteDialect" class="extmbr" name="model.persistence.UnCachedPersistence.AllDialects">AllDialects</a> &lt;: <span class="extype" name="io.getquill.context.sql.idiom.SqlIdiom">SqlIdiom</span>, <a href="TableNameSnakeCase.html" class="extype" name="model.persistence.TableNameSnakeCase">TableNameSnakeCase</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@ctx:io.getquill.context.jdbc.JdbcContext[_&gt;:Quill.this.AllDialects&lt;:io.getquill.context.sql.idiom.SqlIdiom,model.persistence.TableNameSnakeCase]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Quill.html" class="extype" name="model.persistence.Quill">Quill</a></dd></dl></div>
+    </li><li name="model.persistence.QuillImplicits#dateTimeDecoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="dateTimeDecoder:model.persistence.Quill.ctx.Decoder[com.github.nscala_time.time.Imports.DateTime]"></a>
+      <a id="dateTimeDecoder:io.getquill.context.jdbc.JdbcContext.Decoder[com.github.nscala_time.time.Imports.DateTime]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">dateTimeDecoder</span><span class="result">: <span class="extype" name="io.getquill.context.jdbc.Decoders.Decoder">io.getquill.context.jdbc.JdbcContext.Decoder</span>[<span class="extype" name="com.github.nscala_time.time.TypeImports.DateTime">com.github.nscala_time.time.Imports.DateTime</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@dateTimeDecoder:model.persistence.Quill.ctx.Decoder[com.github.nscala_time.time.Imports.DateTime]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="QuillImplicits.html" class="extype" name="model.persistence.QuillImplicits">QuillImplicits</a></dd></dl></div>
+    </li><li name="model.persistence.QuillImplicits#dateTimeEncoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="dateTimeEncoder:model.persistence.Quill.ctx.Encoder[com.github.nscala_time.time.Imports.DateTime]"></a>
+      <a id="dateTimeEncoder:io.getquill.context.jdbc.JdbcContext.Encoder[com.github.nscala_time.time.Imports.DateTime]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">dateTimeEncoder</span><span class="result">: <span class="extype" name="io.getquill.context.jdbc.Encoders.Encoder">io.getquill.context.jdbc.JdbcContext.Encoder</span>[<span class="extype" name="com.github.nscala_time.time.TypeImports.DateTime">com.github.nscala_time.time.Imports.DateTime</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@dateTimeEncoder:model.persistence.Quill.ctx.Encoder[com.github.nscala_time.time.Imports.DateTime]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="QuillImplicits.html" class="extype" name="model.persistence.QuillImplicits">QuillImplicits</a></dd></dl></div>
+    </li><li name="model.persistence.Quill#dbTimeout" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="dbTimeout:scala.concurrent.duration.Duration"></a>
+      <a id="dbTimeout:Duration"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">lazy val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">dbTimeout</span><span class="result">: <span class="extype" name="scala.concurrent.duration.Duration">Duration</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@dbTimeout:scala.concurrent.duration.Duration" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="Quill.html" class="extype" name="model.persistence.Quill">Quill</a></dd></dl></div>
+    </li><li name="model.persistence.Quill#dbType" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="dbType:String"></a>
+      <a id="dbType:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">lazy val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">dbType</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@dbType:String" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="Quill.html" class="extype" name="model.persistence.Quill">Quill</a></dd></dl></div>
+    </li><li name="model.persistence.QuillImplicits#decodeIdOptionUUID" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="decodeIdOptionUUID:io.getquill.MappedEncoding[model.persistence.Id[Option[java.util.UUID]],java.util.UUID]"></a>
+      <a id="decodeIdOptionUUID:MappedEncoding[Id[Option[UUID]],UUID]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">decodeIdOptionUUID</span><span class="result">: <span class="extype" name="io.getquill.MappedEncoding">MappedEncoding</span>[<span class="extype" name="model.persistence.Id">Id</span>[<span class="extype" name="scala.Option">Option</span>[<span class="extype" name="java.util.UUID">UUID</span>]], <span class="extype" name="java.util.UUID">UUID</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@decodeIdOptionUUID:io.getquill.MappedEncoding[model.persistence.Id[Option[java.util.UUID]],java.util.UUID]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="QuillImplicits.html" class="extype" name="model.persistence.QuillImplicits">QuillImplicits</a></dd></dl></div>
+    </li><li name="model.persistence.QuillImplicits#decodeIdUUID" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="decodeIdUUID:io.getquill.MappedEncoding[model.persistence.Id[java.util.UUID],java.util.UUID]"></a>
+      <a id="decodeIdUUID:MappedEncoding[Id[UUID],UUID]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">decodeIdUUID</span><span class="result">: <span class="extype" name="io.getquill.MappedEncoding">MappedEncoding</span>[<span class="extype" name="model.persistence.Id">Id</span>[<span class="extype" name="java.util.UUID">UUID</span>], <span class="extype" name="java.util.UUID">UUID</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@decodeIdUUID:io.getquill.MappedEncoding[model.persistence.Id[java.util.UUID],java.util.UUID]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="QuillImplicits.html" class="extype" name="model.persistence.QuillImplicits">QuillImplicits</a></dd></dl></div>
+    </li><li name="model.persistence.UnCachedPersistence#delete" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="delete(caseClass:CaseClass):Unit"></a>
+      <a id="delete(CaseClass):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">delete</span><span class="params">(<span name="caseClass">caseClass: <span class="extype" name="model.persistence.UnCachedPersistence.CaseClass">CaseClass</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@delete(caseClass:CaseClass):Unit" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="model.persistence.UnCachedPersistence#deleteById" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="deleteById(id:model.persistence.Id[_IdType]):Unit"></a>
+      <a id="deleteById(Id[_IdType]):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">deleteById</span><span class="params">(<span name="id">id: <span class="extype" name="model.persistence.Id">Id</span>[<span class="extype" name="model.persistence.UnCachedPersistence._IdType">_IdType</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@deleteById(id:model.persistence.Id[_IdType]):Unit" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="model.persistence.QuillImplicits#encodeIdOptionUUID" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="encodeIdOptionUUID:io.getquill.MappedEncoding[java.util.UUID,model.persistence.Id[Option[java.util.UUID]]]"></a>
+      <a id="encodeIdOptionUUID:MappedEncoding[UUID,Id[Option[UUID]]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">encodeIdOptionUUID</span><span class="result">: <span class="extype" name="io.getquill.MappedEncoding">MappedEncoding</span>[<span class="extype" name="java.util.UUID">UUID</span>, <span class="extype" name="model.persistence.Id">Id</span>[<span class="extype" name="scala.Option">Option</span>[<span class="extype" name="java.util.UUID">UUID</span>]]]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@encodeIdOptionUUID:io.getquill.MappedEncoding[java.util.UUID,model.persistence.Id[Option[java.util.UUID]]]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="QuillImplicits.html" class="extype" name="model.persistence.QuillImplicits">QuillImplicits</a></dd></dl></div>
+    </li><li name="model.persistence.QuillImplicits#encodeIdUUID" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="encodeIdUUID:io.getquill.MappedEncoding[java.util.UUID,model.persistence.Id[java.util.UUID]]"></a>
+      <a id="encodeIdUUID:MappedEncoding[UUID,Id[UUID]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">encodeIdUUID</span><span class="result">: <span class="extype" name="io.getquill.MappedEncoding">MappedEncoding</span>[<span class="extype" name="java.util.UUID">UUID</span>, <span class="extype" name="model.persistence.Id">Id</span>[<span class="extype" name="java.util.UUID">UUID</span>]]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@encodeIdUUID:io.getquill.MappedEncoding[java.util.UUID,model.persistence.Id[java.util.UUID]]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="QuillImplicits.html" class="extype" name="model.persistence.QuillImplicits">QuillImplicits</a></dd></dl></div>
+    </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="eq(x$1:AnyRef):Boolean"></a>
+      <a id="eq(AnyRef):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@eq(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#equals" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="equals(x$1:Any):Boolean"></a>
+      <a id="equals(Any):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">equals</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@equals(x$1:Any):Boolean" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="finalize():Unit"></a>
+      <a id="finalize():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@finalize():Unit" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="symbol">classOf[java.lang.Throwable]</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="model.persistence.UnCachedPersistence#findAll" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="findAll:List[CaseClass]"></a>
+      <a id="findAll:List[CaseClass]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">findAll</span><span class="result">: <span class="extype" name="scala.List">List</span>[<span class="extype" name="model.persistence.UnCachedPersistence.CaseClass">CaseClass</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@findAll:List[CaseClass]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="model.persistence.UnCachedPersistence#findAllFromDB" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="findAllFromDB:List[CaseClass]"></a>
+      <a id="findAllFromDB:List[CaseClass]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">findAllFromDB</span><span class="result">: <span class="extype" name="scala.List">List</span>[<span class="extype" name="model.persistence.UnCachedPersistence.CaseClass">CaseClass</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@findAllFromDB:List[CaseClass]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Always fetches from the database; bypass cache, useful for startup code..</p><div class="fullcomment"><div class="comment cmt"><p>Always fetches from the database; bypass cache, useful for startup code.. See also <a href="CachedPersistence.html#findAll:List[CaseClass]" class="extmbr" name="model.persistence.CachedPersistence#findAll">CachedPersistence.findAll</a></p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="model.persistence.UnCachedPersistence#findById" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="findById(id:model.persistence.Id[_IdType]):Option[CaseClass]"></a>
+      <a id="findById(Id[_IdType]):Option[CaseClass]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">findById</span><span class="params">(<span name="id">id: <span class="extype" name="model.persistence.Id">Id</span>[<span class="extype" name="model.persistence.UnCachedPersistence._IdType">_IdType</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="model.persistence.UnCachedPersistence.CaseClass">CaseClass</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@findById(id:model.persistence.Id[_IdType]):Option[CaseClass]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="model.persistence.UnCachedPersistence#findByIdFromDB" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="findByIdFromDB(id:model.persistence.Id[_IdType]):Option[CaseClass]"></a>
+      <a id="findByIdFromDB(Id[_IdType]):Option[CaseClass]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">findByIdFromDB</span><span class="params">(<span name="id">id: <span class="extype" name="model.persistence.Id">Id</span>[<span class="extype" name="model.persistence.UnCachedPersistence._IdType">_IdType</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="model.persistence.UnCachedPersistence.CaseClass">CaseClass</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@findByIdFromDB(id:model.persistence.Id[_IdType]):Option[CaseClass]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Always fetches from the database; bypass cache, useful for startup code.</p><div class="fullcomment"><div class="comment cmt"><p>Always fetches from the database; bypass cache, useful for startup code. See also <code>findById</code></p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getClass():Class[_]"></a>
+      <a id="getClass():Class[_]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getClass</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.Class">Class</span>[_]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@getClass():Class[_]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="hashCode():Int"></a>
+      <a id="hashCode():Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">hashCode</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@hashCode():Int" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="model.persistence.QuillImplicits#idLongDecoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="idLongDecoder:model.persistence.Quill.ctx.Decoder[model.persistence.Id[Long]]"></a>
+      <a id="idLongDecoder:io.getquill.context.jdbc.JdbcContext.Decoder[Id[Long]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">idLongDecoder</span><span class="result">: <span class="extype" name="io.getquill.context.jdbc.Decoders.Decoder">io.getquill.context.jdbc.JdbcContext.Decoder</span>[<span class="extype" name="model.persistence.Id">Id</span>[<span class="extype" name="scala.Long">Long</span>]]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@idLongDecoder:model.persistence.Quill.ctx.Decoder[model.persistence.Id[Long]]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="QuillImplicits.html" class="extype" name="model.persistence.QuillImplicits">QuillImplicits</a></dd></dl></div>
+    </li><li name="model.persistence.QuillImplicits#idLongEncoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="idLongEncoder:model.persistence.Quill.ctx.Encoder[model.persistence.Id[Long]]"></a>
+      <a id="idLongEncoder:io.getquill.context.jdbc.JdbcContext.Encoder[Id[Long]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">idLongEncoder</span><span class="result">: <span class="extype" name="io.getquill.context.jdbc.Encoders.Encoder">io.getquill.context.jdbc.JdbcContext.Encoder</span>[<span class="extype" name="model.persistence.Id">Id</span>[<span class="extype" name="scala.Long">Long</span>]]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@idLongEncoder:model.persistence.Quill.ctx.Encoder[model.persistence.Id[Long]]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="QuillImplicits.html" class="extype" name="model.persistence.QuillImplicits">QuillImplicits</a></dd></dl></div>
+    </li><li name="model.persistence.QuillImplicits#idOptionLongDecoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="idOptionLongDecoder:model.persistence.Quill.ctx.Decoder[model.persistence.Id[Option[Long]]]"></a>
+      <a id="idOptionLongDecoder:io.getquill.context.jdbc.JdbcContext.Decoder[Id[Option[Long]]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">idOptionLongDecoder</span><span class="result">: <span class="extype" name="io.getquill.context.jdbc.Decoders.Decoder">io.getquill.context.jdbc.JdbcContext.Decoder</span>[<span class="extype" name="model.persistence.Id">Id</span>[<span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Long">Long</span>]]]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@idOptionLongDecoder:model.persistence.Quill.ctx.Decoder[model.persistence.Id[Option[Long]]]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="QuillImplicits.html" class="extype" name="model.persistence.QuillImplicits">QuillImplicits</a></dd></dl></div>
+    </li><li name="model.persistence.QuillImplicits#idOptionLongEncoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="idOptionLongEncoder:model.persistence.Quill.ctx.Encoder[model.persistence.Id[Option[Long]]]"></a>
+      <a id="idOptionLongEncoder:io.getquill.context.jdbc.JdbcContext.Encoder[Id[Option[Long]]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">idOptionLongEncoder</span><span class="result">: <span class="extype" name="io.getquill.context.jdbc.Encoders.Encoder">io.getquill.context.jdbc.JdbcContext.Encoder</span>[<span class="extype" name="model.persistence.Id">Id</span>[<span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Long">Long</span>]]]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@idOptionLongEncoder:model.persistence.Quill.ctx.Encoder[model.persistence.Id[Option[Long]]]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="QuillImplicits.html" class="extype" name="model.persistence.QuillImplicits">QuillImplicits</a></dd></dl></div>
+    </li><li name="model.persistence.UnCachedPersistence#insert" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="insert(caseClass:CaseClass):CaseClass"></a>
+      <a id="insert(CaseClass):CaseClass"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">insert</span><span class="params">(<span name="caseClass">caseClass: <span class="extype" name="model.persistence.UnCachedPersistence.CaseClass">CaseClass</span></span>)</span><span class="result">: <span class="extype" name="model.persistence.UnCachedPersistence.CaseClass">CaseClass</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@insert(caseClass:CaseClass):CaseClass" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="isInstanceOf[T0]:Boolean"></a>
+      <a id="isInstanceOf[T0]:Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@isInstanceOf[T0]:Boolean" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ne(x$1:AnyRef):Boolean"></a>
+      <a id="ne(AnyRef):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@ne(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#notify" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="notify():Unit"></a>
+      <a id="notify():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">notify</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@notify():Unit" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#notifyAll" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="notifyAll():Unit"></a>
+      <a id="notifyAll():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">notifyAll</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@notifyAll():Unit" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="model.persistence.UnCachedPersistence#remove" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="remove(t:CaseClass):Unit"></a>
+      <a id="remove(CaseClass):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">remove</span><span class="params">(<span name="t">t: <span class="extype" name="model.persistence.UnCachedPersistence.CaseClass">CaseClass</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@remove(t:CaseClass):Unit" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Searches by <code>CaseClass.id</code></p><div class="fullcomment"><div class="comment cmt"><p>Searches by <code>CaseClass.id</code></p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>true if <code>CaseClass</code> was removed (false if the <code>CaseClass</code> was not defined prior)</p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="model.persistence.UnCachedPersistence#sanitize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="sanitize:CaseClass=&gt;CaseClass"></a>
+      <a id="sanitize:(CaseClass)⇒CaseClass"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">sanitize</span><span class="result">: (<span class="extype" name="model.persistence.UnCachedPersistence.CaseClass">CaseClass</span>) ⇒ <span class="extype" name="model.persistence.UnCachedPersistence.CaseClass">CaseClass</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@sanitize:CaseClass=&gt;CaseClass" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
+    </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
+      <a id="synchronized[T0](⇒T0):T0"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">synchronized</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="params">(<span name="arg0">arg0: ⇒ <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>)</span><span class="result">: <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@synchronized[T0](x$1:=&gt;T0):T0" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="toString():String"></a>
+      <a id="toString():String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@toString():String" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="model.persistence.UnCachedPersistence#update" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="update(caseClass:CaseClass):CaseClass"></a>
+      <a id="update(CaseClass):CaseClass"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">update</span><span class="params">(<span name="caseClass">caseClass: <span class="extype" name="model.persistence.UnCachedPersistence.CaseClass">CaseClass</span></span>)</span><span class="result">: <span class="extype" name="model.persistence.UnCachedPersistence.CaseClass">CaseClass</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@update(caseClass:CaseClass):CaseClass" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="model.persistence.UnCachedPersistence#upsert" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="upsert(caseClass:CaseClass):CaseClass"></a>
+      <a id="upsert(CaseClass):CaseClass"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">upsert</span><span class="params">(<span name="caseClass">caseClass: <span class="extype" name="model.persistence.UnCachedPersistence.CaseClass">CaseClass</span></span>)</span><span class="result">: <span class="extype" name="model.persistence.UnCachedPersistence.CaseClass">CaseClass</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@upsert(caseClass:CaseClass):CaseClass" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wait():Unit"></a>
+      <a id="wait():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@wait():Unit" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wait(x$1:Long,x$2:Int):Unit"></a>
+      <a id="wait(Long,Int):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>, <span name="arg1">arg1: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@wait(x$1:Long,x$2:Int):Unit" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wait(x$1:Long):Unit"></a>
+      <a id="wait(Long):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@wait(x$1:Long):Unit" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="model.persistence.UnCachedPersistence#zap" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="zap():Unit"></a>
+      <a id="zap():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">zap</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@zap():Unit" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li></ol>
+            </div>
+
+        
+
+        
+        </div>
+
+        <div id="inheritedMembers">
+        <div class="parent" name="model.persistence.QuillImplicits">
+              <h3>Inherited from <a href="QuillImplicits.html" class="extype" name="model.persistence.QuillImplicits">QuillImplicits</a></h3>
+            </div><div class="parent" name="model.persistence.Quill">
+              <h3>Inherited from <a href="Quill.html" class="extype" name="model.persistence.Quill">Quill</a></h3>
+            </div><div class="parent" name="scala.AnyRef">
+              <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
+            </div><div class="parent" name="scala.Any">
+              <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
+            </div>
+        
+        </div>
+
+        <div id="groupedMembers">
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
+              
+            </div>
+        </div>
+
+      </div>
+
+      <div id="tooltip"></div>
+
+      <div id="footer">  </div>
+
+
+    </body>
+      </html>
