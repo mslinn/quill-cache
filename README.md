@@ -1,4 +1,6 @@
 # Cached Persistence
+[![Build Status](https://travis-ci.org/mslinn/cached-persistence.svg?branch=master)](https://travis-ci.org/mslinn/cached-persistence)
+[![GitHub version](https://badge.fury.io/gh/mslinn%2Fcached-persistence.svg)](https://badge.fury.io/gh/mslinn%2Fcached-persistence)
 
 Based on [Quill](https://github.com/getquill/quill).
 
