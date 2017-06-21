@@ -74,7 +74,7 @@ abstract class UnCachedPersistence[Key <: Object, _IdType <: Option[Key], CaseCl
     }
   }
 
-  /** Always fetches from the database; bypass cache, useful for startup code. See also [[CachedPersistence.findAll()]] */
+  /** Always fetches from the database; bypass cache, useful for startup code. See also [[CachedPersistence.findAll]] */
   @inline def findAllFromDB: List[CaseClass] = {
     try {
       val caseClasses: List[CaseClass] = _findAll()
