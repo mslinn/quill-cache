@@ -5,7 +5,7 @@ import java.util.UUID
 import io.getquill._
 
 trait QuillImplicits {
-  import Quill.ctx._
+  import QuillConfiguration.ctx._
 
   implicit val dateTimeDecoder: Decoder[DateTime] =
     decoder(java.sql.Types.TIMESTAMP, (index, row) => new DateTime(row.getTimestamp(index).getTime))
@@ -42,6 +42,13 @@ trait QuillImplicits {
   implicit val encodeIdOptionUUID: MappedEncoding[UUID, Id[Option[UUID]]] = MappedEncoding(x => Id(Some(x)))
   implicit val decodeIdOptionUUID: MappedEncoding[Id[Option[UUID]], UUID] =
     MappedEncoding(_.value.getOrElse(Id.empty[UUID].value))
+
+  implicit val encodeIdLong: MappedEncoding[Long, Id[Long]] = MappedEncoding(Id.apply(_))
+  implicit val decodeIdLong: MappedEncoding[Id[Long], Long] = MappedEncoding(_.value)
+
+  implicit val encodeIdOptionLong: MappedEncoding[Long, Id[Option[Long]]] = MappedEncoding(x => Id(Some(x)))
+  implicit val decodeIdOptionLong: MappedEncoding[Id[Option[Long]], Long] =
+    MappedEncoding(_.value.getOrElse(Id.empty[Long].value))
 }
 
 object QuillImplicits extends QuillImplicits

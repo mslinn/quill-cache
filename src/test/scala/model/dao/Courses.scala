@@ -5,9 +5,10 @@ import model.persistence._
 
 object Courses extends CachedPersistence[Long, Option[Long], Course]
     with StrongCacheLike[Long, Option[Long], Course]
-    with IdImplicitLike {
+    with IdImplicitLike
+    with QuillImplicits {
 
-  import Quill.ctx._
+  import ctx._
 
   val _findAll: () => List[Course] =
     () =>
@@ -29,7 +30,7 @@ object Courses extends CachedPersistence[Long, Option[Long], Course]
 
   val _insert: Course => Course =
     (course: Course) =>
-      run { quote { query[Course].insert(lift(course)) }.returning(x => x) }
+      run { quote { query[Course].insert(course) }.returning(x => x) }
 
   val _update: Course => Course =
     (course: Course) => {

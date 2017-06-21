@@ -1,10 +1,10 @@
 package model.dao
 
 import model.Course
-import model.persistence.{Id, Quill}
+import model.persistence.{Id, QuillConfiguration}
 import org.scalatest._
 
-class PersistenceTests extends WordSpec with Matchers with Quill {
+class PersistenceTests extends WordSpec with Matchers with QuillConfiguration {
   val course: Course = Courses.upsert(Course(groupId=Id(Some(99)), sku=s"course_Blah"))
 
   // Ensure connection pool works

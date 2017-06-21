@@ -6,7 +6,7 @@ import scala.language.{postfixOps, reflectiveCalls}
 
 /** Accesses the table for each query */
 abstract class UnCachedPersistence[Key <: Object, _IdType <: Option[Key], CaseClass <: HasId[CaseClass, _IdType]]
-  extends Quill with QuillImplicits {
+  extends QuillConfiguration with QuillImplicits {
 
   protected val Logger: Logger = org.slf4j.LoggerFactory.getLogger("persistence")
 
