@@ -224,25 +224,27 @@
       </a>
     </span>
       
-    </li><li name="model.persistence.Quill" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="QuillextendsAnyRef"></a>
-      <a id="Quill:Quill"></a>
+    </li><li name="model.persistence.QuillConfiguration" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="QuillConfigurationextendsAnyRef"></a>
+      <a id="QuillConfiguration:QuillConfiguration"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="Quill.html"><span class="name">Quill</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <a href="QuillConfiguration.html"><span class="name">QuillConfiguration</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.package@QuillextendsAnyRef" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.package@QuillConfigurationextendsAnyRef" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Quill-specific caching database interface.</p><div class="fullcomment"><div class="comment cmt"><p>Quill-specific caching database interface.</p></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p><a href="http://getquill.io/#contexts-sql-contexts" target="_blank">Quill SQL Contexts</a></p></span></dd></dl></div>
+      <p class="shortcomment cmt">Selects the appropriate Quill JdbcContext at runtime according to the database configuration in <code>reference.conf</code>,
+or <code>application.conf</code>, if provided.</p><div class="fullcomment"><div class="comment cmt"><p>Selects the appropriate Quill JdbcContext at runtime according to the database configuration in <code>reference.conf</code>,
+or <code>application.conf</code>, if provided.</p></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p><a href="http://getquill.io/#contexts-sql-contexts" target="_blank">Quill SQL Contexts</a></p></span></dd></dl></div>
     </li><li name="model.persistence.QuillImplicits" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="QuillImplicitsextendsAnyRef"></a>
+      <a id="QuillImplicitsextendsIdImplicitLike"></a>
       <a id="QuillImplicits:QuillImplicits"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -250,15 +252,15 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="QuillImplicits.html"><span class="name">QuillImplicits</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <a href="QuillImplicits.html"><span class="name">QuillImplicits</span></a><span class="result"> extends <span class="extype" name="model.persistence.IdImplicitLike">IdImplicitLike</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.package@QuillImplicitsextendsAnyRef" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.package@QuillImplicitsextendsIdImplicitLike" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       
-    </li><li name="model.persistence.SoftCacheLike" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+    </li><li name="model.persistence.SoftCacheLike" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="SoftCacheLike[Key&lt;:Object,_IdType&lt;:Option[Key],CaseClass&lt;:model.persistence.HasId[CaseClass,_IdType]]extendsCacheLike[Key,_IdType,CaseClass]"></a>
       <a id="SoftCacheLike[Key&lt;:AnyRef,_IdType&lt;:Option[Key],CaseClass&lt;:HasId[CaseClass,_IdType]]:SoftCacheLike[Key,_IdType,CaseClass]"></a>
       <h4 class="signature">
@@ -274,7 +276,9 @@
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">This trait is experimental, do not use in production.</p><div class="fullcomment"><div class="comment cmt"><p>This trait is experimental, do not use in production.
+The <code>CachedPersistence</code> trait implements the default caching strategy.
+This trait overrides the default finder implementations.</p></div></div>
     </li><li name="model.persistence.StrongCacheLike" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="StrongCacheLike[Key&lt;:Object,_IdType&lt;:Option[Key],CaseClass&lt;:model.persistence.HasId[CaseClass,_IdType]]extendsCacheLike[Key,_IdType,CaseClass]"></a>
       <a id="StrongCacheLike[Key&lt;:AnyRef,_IdType&lt;:Option[Key],CaseClass&lt;:HasId[CaseClass,_IdType]]:StrongCacheLike[Key,_IdType,CaseClass]"></a>
@@ -309,8 +313,8 @@
       </a>
     </span>
       <p class="shortcomment cmt">Ensures that table names are quoted and snake_case but never start with a leading _.</p>
-    </li><li name="model.persistence.UnCachedPersistence" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="UnCachedPersistence[Key&lt;:Object,_IdType&lt;:Option[Key],CaseClass&lt;:model.persistence.HasId[CaseClass,_IdType]]extendsQuillwithQuillImplicits"></a>
+    </li><li name="model.persistence.UnCachedPersistence" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="UnCachedPersistence[Key&lt;:Object,_IdType&lt;:Option[Key],CaseClass&lt;:model.persistence.HasId[CaseClass,_IdType]]extendsQuillConfigurationwithQuillImplicitswithIdImplicitLike"></a>
       <a id="UnCachedPersistence[Key&lt;:AnyRef,_IdType&lt;:Option[Key],CaseClass&lt;:HasId[CaseClass,_IdType]]:UnCachedPersistence[Key,_IdType,CaseClass]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -318,14 +322,17 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="UnCachedPersistence.html"><span class="name">UnCachedPersistence</span></a><span class="tparams">[<span name="Key">Key &lt;: <span class="extype" name="scala.AnyRef">AnyRef</span></span>, <span name="_IdType">_IdType &lt;: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="model.persistence.UnCachedPersistence.Key">Key</span>]</span>, <span name="CaseClass">CaseClass &lt;: <span class="extype" name="model.persistence.HasId">HasId</span>[<span class="extype" name="model.persistence.UnCachedPersistence.CaseClass">CaseClass</span>, <span class="extype" name="model.persistence.UnCachedPersistence._IdType">_IdType</span>]</span>]</span><span class="result"> extends <a href="Quill.html" class="extype" name="model.persistence.Quill">Quill</a> with <a href="QuillImplicits.html" class="extype" name="model.persistence.QuillImplicits">QuillImplicits</a></span>
+        <a href="UnCachedPersistence.html"><span class="name">UnCachedPersistence</span></a><span class="tparams">[<span name="Key">Key &lt;: <span class="extype" name="scala.AnyRef">AnyRef</span></span>, <span name="_IdType">_IdType &lt;: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="model.persistence.UnCachedPersistence.Key">Key</span>]</span>, <span name="CaseClass">CaseClass &lt;: <span class="extype" name="model.persistence.HasId">HasId</span>[<span class="extype" name="model.persistence.UnCachedPersistence.CaseClass">CaseClass</span>, <span class="extype" name="model.persistence.UnCachedPersistence._IdType">_IdType</span>]</span>]</span><span class="result"> extends <a href="QuillConfiguration.html" class="extype" name="model.persistence.QuillConfiguration">QuillConfiguration</a> with <a href="QuillImplicits.html" class="extype" name="model.persistence.QuillImplicits">QuillImplicits</a> with <span class="extype" name="model.persistence.IdImplicitLike">IdImplicitLike</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.package@UnCachedPersistence[Key&lt;:Object,_IdType&lt;:Option[Key],CaseClass&lt;:model.persistence.HasId[CaseClass,_IdType]]extendsQuillwithQuillImplicits" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.package@UnCachedPersistence[Key&lt;:Object,_IdType&lt;:Option[Key],CaseClass&lt;:model.persistence.HasId[CaseClass,_IdType]]extendsQuillConfigurationwithQuillImplicitswithIdImplicitLike" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Accesses the table for each query</p>
+      <p class="shortcomment cmt">Accesses the table for each query.</p><div class="fullcomment"><div class="comment cmt"><p>Accesses the table for each query.
+You can use this abstract class to derive DAOs for case classes that must have direct access to the database so the
+case classes are not cached. You don't have to subclass <code>UnCachedPersistence</code>, but if you do then the DAOs for your
+cached domain objects will have the same interface as the DAOs for your uncached domain objects.</p></div></div>
     </li></ol>
             </div>
 
@@ -349,7 +356,7 @@
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">From [StackOverflow](http://stackoverflow.com/questions/17312254/scala-case-class-copy-with-dynamic-named-parameter)</p>
+      <p class="shortcomment cmt">From <a href="http://stackoverflow.com/questions/17312254/scala-case-class-copy-with-dynamic-named-parameter" target="_blank">StackOverflow</a></p>
     </li><li name="model.persistence.CopierTest" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="CopierTest"></a>
       <a id="CopierTest:CopierTest"></a>
@@ -384,19 +391,19 @@
       </a>
     </span>
       
-    </li><li name="model.persistence.Quill" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="Quill"></a>
-      <a id="Quill:Quill"></a>
+    </li><li name="model.persistence.QuillConfiguration" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="QuillConfiguration"></a>
+      <a id="QuillConfiguration:QuillConfiguration"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="Quill$.html"><span class="name">Quill</span></a><span class="result"> extends <a href="Quill.html" class="extype" name="model.persistence.Quill">Quill</a></span>
+        <a href="QuillConfiguration$.html"><span class="name">QuillConfiguration</span></a><span class="result"> extends <a href="QuillConfiguration.html" class="extype" name="model.persistence.QuillConfiguration">QuillConfiguration</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.package@Quill" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.package@QuillConfiguration" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>

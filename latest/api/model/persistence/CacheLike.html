@@ -95,19 +95,90 @@
 
         <div id="values" class="values members">
               <h3>Abstract Value Members</h3>
-              <ol><li name="model.persistence.CacheLike#findAll" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="findAll:List[CaseClass]"></a>
-      <a id="findAll:List[CaseClass]"></a>
+              <ol><li name="model.persistence.CacheLike#Logger" visbl="prt" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="Logger:org.slf4j.Logger"></a>
+      <a id="Logger:Logger"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">Logger</span><span class="result">: <span class="extype" name="org.slf4j.Logger">Logger</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.CacheLike@Logger:org.slf4j.Logger" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
+    </li><li name="model.persistence.CacheLike#className" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="className:String"></a>
+      <a id="className:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">abstract </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">findAll</span><span class="result">: <span class="extype" name="scala.List">List</span>[<span class="extype" name="model.persistence.CacheLike.CaseClass">CaseClass</span>]</span>
+        <span class="name">className</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.CacheLike@findAll:List[CaseClass]" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.CacheLike@className:String" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Human-readable name of persisted class</p>
+    </li><li name="model.persistence.CacheLike#ec" visbl="prt" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="ec:scala.concurrent.ExecutionContext"></a>
+      <a id="ec:ExecutionContext"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit abstract </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ec</span><span class="result">: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.CacheLike@ec:scala.concurrent.ExecutionContext" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
+    </li><li name="model.persistence.CacheLike#findAll" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="findAll():List[CaseClass]"></a>
+      <a id="findAll():List[CaseClass]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">findAll</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.List">List</span>[<span class="extype" name="model.persistence.CacheLike.CaseClass">CaseClass</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.CacheLike@findAll():List[CaseClass]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="model.persistence.CacheLike#findById" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="findById(id:model.persistence.Id[_IdType]):Option[CaseClass]"></a>
+      <a id="findById(Id[_IdType]):Option[CaseClass]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">findById</span><span class="params">(<span name="id">id: <span class="extype" name="model.persistence.Id">Id</span>[<span class="extype" name="model.persistence.CacheLike._IdType">_IdType</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="model.persistence.CacheLike.CaseClass">CaseClass</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.CacheLike@findById(id:model.persistence.Id[_IdType]):Option[CaseClass]" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -205,6 +276,66 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="model.persistence.CacheLike#cacheClear" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="cacheClear():Unit"></a>
+      <a id="cacheClear():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">cacheClear</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.CacheLike@cacheClear():Unit" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="model.persistence.CacheLike#cacheRemoveId" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="cacheRemoveId(id:model.persistence.Id[_IdType]):Unit"></a>
+      <a id="cacheRemoveId(Id[_IdType]):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">cacheRemoveId</span><span class="params">(<span name="id">id: <span class="extype" name="model.persistence.Id">Id</span>[<span class="extype" name="model.persistence.CacheLike._IdType">_IdType</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.CacheLike@cacheRemoveId(id:model.persistence.Id[_IdType]):Unit" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="model.persistence.CacheLike#cacheSet" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="cacheSet(i:model.persistence.Id[_IdType],value:CaseClass):Unit"></a>
+      <a id="cacheSet(Id[_IdType],CaseClass):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">cacheSet</span><span class="params">(<span name="i">i: <span class="extype" name="model.persistence.Id">Id</span>[<span class="extype" name="model.persistence.CacheLike._IdType">_IdType</span>]</span>, <span name="value">value: <span class="extype" name="model.persistence.CacheLike.CaseClass">CaseClass</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.CacheLike@cacheSet(i:model.persistence.Id[_IdType],value:CaseClass):Unit" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
     </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a>
       <a id="clone():AnyRef"></a>
@@ -407,6 +538,26 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="model.persistence.CacheLike#preload" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="preload:List[CaseClass]"></a>
+      <a id="preload:List[CaseClass]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">preload</span><span class="result">: <span class="extype" name="scala.List">List</span>[<span class="extype" name="model.persistence.CacheLike.CaseClass">CaseClass</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.CacheLike@preload:List[CaseClass]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Loads all instances of <code>CaseClass</code> into the cache.</p><div class="fullcomment"><div class="comment cmt"><p>Loads all instances of <code>CaseClass</code> into the cache.</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
