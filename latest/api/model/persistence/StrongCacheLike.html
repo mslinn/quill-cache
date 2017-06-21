@@ -49,7 +49,9 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Assumes all values have been prefetched</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://bitbucket.com/mslinn/cadenza-cached-persistence/tree/master/src/main/scala/model/persistence/CacheLike.scala" target="_blank">CacheLike.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p><code>CachePersistence.prefetch</code> must be called before any finders.
+The <code>CachedPersistence</code> trait implements the default caching strategy.
+This trait overrides the default finder implementations.</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="model.persistence.StrongCacheLike">StrongCacheLike</a>[<span class="extype" name="model.persistence.StrongCacheLike.Key">Key</span>, <span class="extype" name="model.persistence.StrongCacheLike._IdType">_IdType</span>, <span class="extype" name="model.persistence.StrongCacheLike.CaseClass">CaseClass</span>] with <a href="CachedPersistence.html" class="extype" name="model.persistence.CachedPersistence">CachedPersistence</a>[<span class="extype" name="model.persistence.StrongCacheLike.Key">Key</span>, <span class="extype" name="model.persistence.StrongCacheLike._IdType">_IdType</span>, <span class="extype" name="model.persistence.StrongCacheLike.CaseClass">CaseClass</span>]</dd><dt>Source</dt><dd><a href="https://bitbucket.com/mslinn/cadenza-cached-persistence/tree/master/src/main/scala/model/persistence/CacheLike.scala" target="_blank">CacheLike.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="CacheLike.html" class="extype" name="model.persistence.CacheLike">CacheLike</a>[<span class="extype" name="model.persistence.StrongCacheLike.Key">Key</span>, <span class="extype" name="model.persistence.StrongCacheLike._IdType">_IdType</span>, <span class="extype" name="model.persistence.StrongCacheLike.CaseClass">CaseClass</span>], <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -219,6 +221,26 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="model.persistence.StrongCacheLike#_findAll" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="_findAll():List[CaseClass]"></a>
+      <a id="_findAll():List[CaseClass]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">_findAll</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.List">List</span>[<span class="extype" name="model.persistence.StrongCacheLike.CaseClass">CaseClass</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.StrongCacheLike@_findAll():List[CaseClass]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <a id="asInstanceOf[T0]:T0"></a>
@@ -514,7 +536,7 @@
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Loads all instances of <code>CaseClass</code> into the cache.</p><div class="fullcomment"><div class="comment cmt"><p>Loads all instances of <code>CaseClass</code> into the cache.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="CacheLike.html" class="extype" name="model.persistence.CacheLike">CacheLike</a></dd><dt>Annotations</dt><dd>
+      <p class="shortcomment cmt">Flushes the cache and then loads all instances of <code>CaseClass</code> into the cache from the database.</p><div class="fullcomment"><div class="comment cmt"><p>Flushes the cache and then loads all instances of <code>CaseClass</code> into the cache from the database.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="CacheLike.html" class="extype" name="model.persistence.CacheLike">CacheLike</a></dd><dt>Annotations</dt><dd>
                 <span class="name">@inline</span><span class="args">()</span>
               
         </dd></dl></div>

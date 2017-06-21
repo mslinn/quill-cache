@@ -49,7 +49,8 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>This trait is experimental, do not use in production.
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p><code>CachePersistence.prefetch</code> must be called before any finders.
+This trait is experimental, do not use in production.
 The <code>CachedPersistence</code> trait implements the default caching strategy.
 This trait overrides the default finder implementations.</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="model.persistence.SoftCacheLike">SoftCacheLike</a>[<span class="extype" name="model.persistence.SoftCacheLike.Key">Key</span>, <span class="extype" name="model.persistence.SoftCacheLike._IdType">_IdType</span>, <span class="extype" name="model.persistence.SoftCacheLike.CaseClass">CaseClass</span>] with <a href="CachedPersistence.html" class="extype" name="model.persistence.CachedPersistence">CachedPersistence</a>[<span class="extype" name="model.persistence.SoftCacheLike.Key">Key</span>, <span class="extype" name="model.persistence.SoftCacheLike._IdType">_IdType</span>, <span class="extype" name="model.persistence.SoftCacheLike.CaseClass">CaseClass</span>]</dd><dt>Source</dt><dd><a href="https://bitbucket.com/mslinn/cadenza-cached-persistence/tree/master/src/main/scala/model/persistence/CacheLike.scala" target="_blank">CacheLike.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
@@ -516,7 +517,7 @@ This trait overrides the default finder implementations.</p></div><dl class="att
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Loads all instances of <code>CaseClass</code> into the cache.</p><div class="fullcomment"><div class="comment cmt"><p>Loads all instances of <code>CaseClass</code> into the cache.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="CacheLike.html" class="extype" name="model.persistence.CacheLike">CacheLike</a></dd><dt>Annotations</dt><dd>
+      <p class="shortcomment cmt">Flushes the cache and then loads all instances of <code>CaseClass</code> into the cache from the database.</p><div class="fullcomment"><div class="comment cmt"><p>Flushes the cache and then loads all instances of <code>CaseClass</code> into the cache from the database.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="CacheLike.html" class="extype" name="model.persistence.CacheLike">CacheLike</a></dd><dt>Annotations</dt><dd>
                 <span class="name">@inline</span><span class="args">()</span>
               
         </dd></dl></div>

@@ -763,18 +763,18 @@ Throws an Exception if the case class was not previously persisted.</p></div></d
               
         </dd></dl></div>
     </li><li name="model.persistence.UnCachedPersistence#findAll" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="findAll:List[CaseClass]"></a>
-      <a id="findAll:List[CaseClass]"></a>
+      <a id="findAll():List[CaseClass]"></a>
+      <a id="findAll():List[CaseClass]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">findAll</span><span class="result">: <span class="extype" name="scala.List">List</span>[<span class="extype" name="model.persistence.UnCachedPersistence.CaseClass">CaseClass</span>]</span>
+        <span class="name">findAll</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.List">List</span>[<span class="extype" name="model.persistence.UnCachedPersistence.CaseClass">CaseClass</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.UnCachedPersistence@findAll:List[CaseClass]" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@findAll():List[CaseClass]" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -798,7 +798,7 @@ Throws an Exception if the case class was not previously persisted.</p></div></d
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Always fetches from the database; bypass cache, useful for startup code..</p><div class="fullcomment"><div class="comment cmt"><p>Always fetches from the database; bypass cache, useful for startup code.. See also <a href="CachedPersistence.html#findAll:List[CaseClass]" class="extmbr" name="model.persistence.CachedPersistence#findAll">CachedPersistence.findAll</a></p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+      <p class="shortcomment cmt">Always fetches from the database; bypass cache, useful for startup code.</p><div class="fullcomment"><div class="comment cmt"><p>Always fetches from the database; bypass cache, useful for startup code. See also <span class="extype" name="CachedPersistence.findAll()">CachedPersistence.findAll()</span></p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@inline</span><span class="args">()</span>
               
         </dd></dl></div>
@@ -859,6 +859,26 @@ Throws an Exception if the case class was not previously persisted.</p></div></d
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="model.persistence.UnCachedPersistence#getId" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getId(t:CaseClass):model.persistence.Id[Key]"></a>
+      <a id="getId(CaseClass):Id[Key]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getId</span><span class="params">(<span name="t">t: <span class="extype" name="model.persistence.UnCachedPersistence.CaseClass">CaseClass</span></span>)</span><span class="result">: <span class="extype" name="model.persistence.Id">Id</span>[<span class="extype" name="model.persistence.UnCachedPersistence.Key">Key</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@getId(t:CaseClass):model.persistence.Id[Key]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
     </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
       <a id="hashCode():Int"></a>

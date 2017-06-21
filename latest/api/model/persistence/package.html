@@ -276,10 +276,11 @@ or <code>application.conf</code>, if provided.</p></div><dl class="attributes bl
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">This trait is experimental, do not use in production.</p><div class="fullcomment"><div class="comment cmt"><p>This trait is experimental, do not use in production.
+      <p class="shortcomment cmt"><code>CachePersistence.prefetch</code> must be called before any finders.</p><div class="fullcomment"><div class="comment cmt"><p><code>CachePersistence.prefetch</code> must be called before any finders.
+This trait is experimental, do not use in production.
 The <code>CachedPersistence</code> trait implements the default caching strategy.
 This trait overrides the default finder implementations.</p></div></div>
-    </li><li name="model.persistence.StrongCacheLike" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+    </li><li name="model.persistence.StrongCacheLike" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="StrongCacheLike[Key&lt;:Object,_IdType&lt;:Option[Key],CaseClass&lt;:model.persistence.HasId[CaseClass,_IdType]]extendsCacheLike[Key,_IdType,CaseClass]"></a>
       <a id="StrongCacheLike[Key&lt;:AnyRef,_IdType&lt;:Option[Key],CaseClass&lt;:HasId[CaseClass,_IdType]]:StrongCacheLike[Key,_IdType,CaseClass]"></a>
       <h4 class="signature">
@@ -295,7 +296,9 @@ This trait overrides the default finder implementations.</p></div></div>
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Assumes all values have been prefetched</p>
+      <p class="shortcomment cmt"><code>CachePersistence.prefetch</code> must be called before any finders.</p><div class="fullcomment"><div class="comment cmt"><p><code>CachePersistence.prefetch</code> must be called before any finders.
+The <code>CachedPersistence</code> trait implements the default caching strategy.
+This trait overrides the default finder implementations.</p></div></div>
     </li><li name="model.persistence.TableNameSnakeCase" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="TableNameSnakeCaseextendsNamingStrategywithEscapewithSnakeCase"></a>
       <a id="TableNameSnakeCase:TableNameSnakeCase"></a>
