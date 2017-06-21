@@ -44,19 +44,21 @@ trait CacheLike[Key <: Object, _IdType <: Option[Key], CaseClass <: HasId[CaseCl
   * Mix this trait into the DAO to provide this behavior.
   * DAOs that mix in `SoftCache` do not assume that all instances of the case class can fit into memory.
   *
-  * `SoftCache` finders query the database after every cache miss.
-  * Because of this, `SoftCache` finders run more slowly than `StrongCache` finders when the cache does not contain the desired value.
+  * `SoftCache` finders that return at most one item from querying the cache will access the database, looking for that item after every cache miss.
+  * Because of this, those `SoftCache` finders run more slowly than `StrongCache` finders when the cache does not contain the desired value.
+  *
+  * `SoftCache` finders that return a list of items must always query the database and never look in the cache.
   *
   * The `CachedPersistence` trait implements the default caching strategy.
   * This trait overrides the default finder implementations.
   * This trait is experimental, do not use in production. */
-// TODO implement callback to detect when a cache has been partially flushed due to timeout or memory pressure.
+  // TODO implement the [[https://google.github.io/guava/releases/16.0/api/docs/com/google/common/cache/CacheBuilder.html#removalListener(com.google.common.cache.RemovalListener) com.google.common.cache.CacheBuilder.removalListener]] callback to detect when a cache has been partially flushed due to timeout or memory pressure.
 trait SoftCacheLike[Key <: Object, _IdType <: Option[Key], CaseClass <: HasId[CaseClass, _IdType]]
   extends CacheLike[Key, _IdType, CaseClass] { cp: CachedPersistence[Key, _IdType, CaseClass] =>
 
   protected val theCache: SoftCache[Key, CaseClass] = SoftCache[Key, CaseClass]()
 
-  /** Cannot assume all values are cached, so get them from DB */
+  /** Cannot assume all values are cached, so always get them from the database */
   @inline override def findAll(): List[CaseClass] = cp._findAll()
 
   /** First try to fetch from cache, then if not found try to fetch from the database */

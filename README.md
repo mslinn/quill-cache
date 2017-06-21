@@ -42,8 +42,9 @@ Two types of caches are supported by `CachedPersistence`:
      Mix the [SoftCacheLike](http://github.com/mslinn/quill-cache/latest/api/#model.persistence.SoftCacheLike) 
      trait into the DAO to provide this behavior.
      DAOs that mix in `SoftCacheLike` do not assume that all instances of the case class can fit into memory.
-     `SoftCacheLike` finders query the database after every cache miss.
-     Because of this, `SoftCacheLike` finders run more slowly than `StrongCacheLike` finders when the cache does not contain the desired value.
+     `SoftCacheLike` finders that return at most one item from a query the database after every cache miss.
+     These `SoftCacheLike` finders run more slowly than `StrongCacheLike` finders when the cache does not contain the desired value.
+     `SoftCacheLike` finders that return a list of items must always query the database.
      This trait is experimental, do not use in production.
 
 ## Consistent APIs for Cached and Uncached DAOs
