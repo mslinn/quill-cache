@@ -7,7 +7,7 @@ object CopierTest extends App {
   println(result)
 }
 
-/** From [StackOverflow](http://stackoverflow.com/questions/17312254/scala-case-class-copy-with-dynamic-named-parameter) */
+/** From [[http://stackoverflow.com/questions/17312254/scala-case-class-copy-with-dynamic-named-parameter StackOverflow]] */
 object Copier {
   def apply[T](o: T, vals: (String, Any)*): T = {
     val copier = new Copier(o.getClass)
