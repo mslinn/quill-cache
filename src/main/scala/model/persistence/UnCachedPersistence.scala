@@ -65,7 +65,7 @@ abstract class UnCachedPersistence[Key <: Object, _IdType <: Option[Key], CaseCl
     ()
   }
 
-  @inline def findAll: List[CaseClass] = {
+  @inline def findAll(): List[CaseClass] = {
     Logger.debug(s"Fetching all ${ className }s from database")
     try { _findAll() } catch {
       case ex: Exception =>
@@ -74,7 +74,7 @@ abstract class UnCachedPersistence[Key <: Object, _IdType <: Option[Key], CaseCl
     }
   }
 
-  /** Always fetches from the database; bypass cache, useful for startup code.. See also [[CachedPersistence.findAll]] */
+  /** Always fetches from the database; bypass cache, useful for startup code. See also [[CachedPersistence.findAll()]] */
   @inline def findAllFromDB: List[CaseClass] = {
     try {
       val caseClasses: List[CaseClass] = _findAll()
@@ -91,6 +91,12 @@ abstract class UnCachedPersistence[Key <: Object, _IdType <: Option[Key], CaseCl
   @inline def findByIdFromDB(id: Id[_IdType]): Option[CaseClass] = _findById(id)
 
   @inline def findById(id: Id[_IdType]): Option[CaseClass] = _findById(id)
+
+  @inline def getId(t: CaseClass): Id[Key] = t.getClass.getDeclaredMethods
+    .find(_.getName=="id")
+    .get
+    .invoke(t)
+    .asInstanceOf[Id[Key]]
 
   @inline def insert(caseClass: CaseClass): CaseClass = _insert(caseClass)
 

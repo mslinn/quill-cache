@@ -30,7 +30,7 @@ abstract class CachedPersistence[Key <: Object, _IdType <: Option[Key], CaseClas
     cacheRemoveId(id)
   }
 
-  @inline override def findAll: List[CaseClass] = theCache.getAll
+  @inline override def findAll(): List[CaseClass] = theCache.getAll
 
   override def findById(id: Id[_IdType]): Option[CaseClass] = {
     if (Logger.isDebugEnabled) for {
@@ -72,11 +72,6 @@ abstract class CachedPersistence[Key <: Object, _IdType <: Option[Key], CaseClas
     cacheSet(t.id, copiedT)
     super.update(copiedT)
   }
-
-//  def getId(t: CaseClass): Id[Option[Long]] = t.getClass.getDeclaredMethods
-//    .find( _.getName=="id").get
-//    .invoke(t)
-//    .asInstanceOf[Id[Option[Long]]]
 
   /** Searches by CaseClass.id, removes from cache
    * @return true if CaseClass was removed (false if the CaseClass was not defined prior) */

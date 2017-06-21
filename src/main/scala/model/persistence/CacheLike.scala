@@ -2,7 +2,6 @@ package model.persistence
 
 import com.micronautics.cache.{AbstractCache, SoftCache, StrongCache}
 import org.slf4j.Logger
-//import scala.concurrent.ExecutionContext.Implicits.global // TODO inject this
 
 trait CacheLike[Key <: Object, _IdType <: Option[Key], CaseClass <: HasId[CaseClass, _IdType]] {
   protected val theCache: AbstractCache[Key, CaseClass]
@@ -32,8 +31,8 @@ trait CacheLike[Key <: Object, _IdType <: Option[Key], CaseClass <: HasId[CaseCl
     Logger.debug(s"Cleared $className cache")
   }
 
-  /** Loads all instances of `CaseClass` into the cache. */
-  @inline def preload: List[CaseClass] = {
+  /** Flushes the cache and then loads all instances of `CaseClass` into the cache from the database. */
+  @inline def preload: List[CaseClass] = theCache.synchronized {
     flushCache()
     val all = findAll()
     all.foreach(x => cacheSet(x.id, x))
@@ -41,28 +40,33 @@ trait CacheLike[Key <: Object, _IdType <: Option[Key], CaseClass <: HasId[CaseCl
   }
 }
 
-/** This trait is experimental, do not use in production.
+/** `CachePersistence.prefetch` must be called before any finders.
+  * This trait is experimental, do not use in production.
   * The `CachedPersistence` trait implements the default caching strategy.
   * This trait overrides the default finder implementations. */
 // TODO implement callback to detect when a cache has been partially flushed due to timeout or memory pressure.
 trait SoftCacheLike[Key <: Object, _IdType <: Option[Key], CaseClass <: HasId[CaseClass, _IdType]]
-  extends CacheLike[Key, _IdType, CaseClass] { this: CachedPersistence[Key, _IdType, CaseClass] =>
+  extends CacheLike[Key, _IdType, CaseClass] { cp: CachedPersistence[Key, _IdType, CaseClass] =>
 
   protected val theCache: SoftCache[Key, CaseClass] = SoftCache[Key, CaseClass]()
 
   /** Cannot assume all values are cached, so get them from DB */
-  @inline override def findAll(): List[CaseClass] = _findAll()
+  @inline override def findAll(): List[CaseClass] = cp._findAll()
 
   /** First try to fetch from cache, then if not found try to fetch from the database */
   @inline abstract override def findById(id: Id[_IdType]): Option[CaseClass] = super.findById(id).orElse(_findById(id))
 }
 
-/** Assumes all values have been prefetched */
+/** `CachePersistence.prefetch` must be called before any finders.
+  * The `CachedPersistence` trait implements the default caching strategy.
+  * This trait overrides the default finder implementations. */
 trait StrongCacheLike[Key <: Object, _IdType <: Option[Key], CaseClass <: HasId[CaseClass, _IdType]]
-    extends CacheLike[Key, _IdType, CaseClass] {
+    extends CacheLike[Key, _IdType, CaseClass] { cp: CachedPersistence[Key, _IdType, CaseClass] =>
 
   protected val theCache: StrongCache[Key, CaseClass] = StrongCache[Key, CaseClass]()
 
   @inline override def findAll(): List[CaseClass] =
     theCache.underlying.asMap.values.toArray.toList.asInstanceOf[List[CaseClass]]
+
+  @inline def _findAll(): List[CaseClass] = cp._findAll()
 }

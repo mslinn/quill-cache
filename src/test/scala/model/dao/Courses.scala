@@ -11,7 +11,7 @@ object Courses extends CachedPersistence[Long, Option[Long], Course] with Strong
   /** A real application would provide a dedicated `ExecutionContext` for DAOs */
   implicit val ec: ExecutionContext = global
 
-  val _findAll: () => List[Course] =
+  override val _findAll: () => List[Course] =
     () =>
       run { quote { query[Course] } }
 
