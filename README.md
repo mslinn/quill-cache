@@ -14,9 +14,9 @@ even if they do not require database caching.
 The [data access object pattern](https://en.wikipedia.org/wiki/Data_access_object) (DAO) is very common across all computer languages.
 DAOs for case classes that require database caching must extend the
 [CachedPersistence](http://github.com/mslinn/cached-persistence/latest/api/#model.persistence.CachedPersistence) 
-abstract class, provided by the [scalacourses-utils](https://github.com/mslinn/scalacourses-utils) dependency.
+abstract class.
 
-You are free to name the DAO anything you like; this library does not mandate any naming convention.
+You are free to name DAOs anything you like; this library does not mandate any naming convention.
 Scala DAOs are often given the same name as the class that they persist, but with a suffix indicating plurality.
 For example, if a case class named `Point` needs to be persisted, the DAO is usually called `Points`.
 Unlike some other persistence libraries for Scala, Quill allows you to define your DAO in the case class's companion object,
