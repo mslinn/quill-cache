@@ -38,12 +38,12 @@ Two types of caches are supported by `CachedPersistence`:
     trait into the DAO to provide this behavior.
     This type of cache is useful when there is enough memory to hold all instances of the case class.
   * [SoftCache](http://github.com/mslinn/scalacourses-utils/latest/api/com/micronautics/cache/SoftCache.html),
-     which contains soft values that might expire or get bumped if memory fills up.
+     which contains "soft" values that might expire or get bumped if memory fills up.
      Mix the [SoftCacheLike](http://github.com/mslinn/cached-persistence/latest/api/#model.persistence.SoftCacheLike) 
      trait into the DAO to provide this behavior.
-     DAOs that use `SoftCache` do not assume that all instances of the case class can fit into memory.
-     `SoftCache` finders query the database after every cache miss.
-     Because of this, `SoftCache` finders run more slowly than `StrongCache` finders when the cache does not contain the desired value.
+     DAOs that mix in `SoftCacheLike` do not assume that all instances of the case class can fit into memory.
+     `SoftCacheLike` finders query the database after every cache miss.
+     Because of this, `SoftCacheLike` finders run more slowly than `StrongCacheLike` finders when the cache does not contain the desired value.
      This trait is experimental, do not use in production.
 
 ## Consistent APIs for Cached and Uncached DAOs
