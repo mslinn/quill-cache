@@ -1,0 +1,62 @@
+<configuration>
+  <statusListener class="ch.qos.logback.core.status.NopStatusListener" />
+
+  <appender name="CONFIG" class="ch.qos.logback.core.FileAppender">
+    <file>${application.home:-.}/logs/config.log</file>
+    <append>false</append>
+    <encoder>
+      <pattern>%date - [%level] - %logger{36} - %n%message%n%xException%n</pattern>
+    </encoder>
+  </appender>
+
+  <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+    <file>application.log</file>
+    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+      <pattern>%-5level %logger{36} - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%-5level %logger{36} - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <!-- # level of
+       # request         effective level q
+       #         TRACE  DEBUG INFO  WARN  ERROR OFF
+       # TRACE    YES   NO    NO    NO    NO    NO
+       # DEBUG    YES   YES   NO    NO    NO    NO
+       # INFO     YES   YES   YES   NO    NO    NO
+       # WARN     YES   YES   YES   YES   NO    NO
+       # ERROR    YES   YES   YES   YES   YES   NO
+       # See http://logback.qos.ch/manual/architecture.html
+
+       For example, if a logger is set to DEBUG, then the following produces output:
+       Logger.info, Logger.debug, Logger.warn
+
+       CAUTION: If you specify WARNING instead of WARN then the value DEBUG is used!!!! -->
+  <logger name="akka.actor" level="{LOGGER_AKKA_ACTOR:-INFO}" additivity="false">
+    <appender-ref ref="CONFIG" />
+  </logger>
+  <logger name="CachedPersistence"                     level="${LOGGER_PERSIST:-WARN}" />
+  <logger name="com.zaxxer.hikari"                     level="${LOGGER_HIKARI:-WARN}"/>
+  <logger name="com.zaxxer.hikari.pool"                level="${LOGGER_HIKARI_POOL:-WARN}"/>
+  <logger name="persistence"                           level="${LOGGER_PERSISTENCE:-WARN}"/>
+
+  <!-- See https://github.com/slick/slick/blob/master/common-test-resources/logback.xml -->
+  <logger name="slick"                                 level="${LOGGER_SLICK:-WARN}" />
+  <logger name="slickUtils"                            level="${LOGGER_SLICK:-WARN}" />
+  <logger name="slick.session"                         level="${LOGGER_SLICK_SESSION:-WARN}" />
+  <logger name="slick.jdbc.JdbcBackend.statement"      level="${LOGGER_SLICK_STATEMENT:-WARN}" />
+  <logger name="slick.jdbc.StatementInvoker.result"    level="${LOGGER_SLICK_RESULT:-WARN}" />
+  <logger name="slick.jdbc.JdbcBackend.benchmark"      level="${LOGGER_SLICK_BENCHMARK:-WARN}" />
+  <logger name="slick.compiler.QueryCompilerBenchmark" level="${LOGGER_SLICK_QUERY_BENCHMARK:-WARN}" />
+
+  <logger name="testDbFixture"                         level="${LOGGER_TEST_DB:-WARN}" />
+
+  <root level="WARN">
+    <appender-ref ref="STDOUT" />
+    <appender-ref ref="FILE" />
+  </root>
+</configuration>
