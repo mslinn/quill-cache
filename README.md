@@ -32,14 +32,14 @@ Because `preload()` always flushes the cache before loading it you probably won'
 
 ## Cache Types
 Two types of caches are supported by `CachedPersistence`: 
-  * [StrongCache](http://github.com/mslinn/scalacourses-utils/latest/api/com/micronautics/cache/StrongCache.html),
+  * [StrongCache](http://mslinn.github.io/scalacourses-utils/latest/api/com/micronautics/cache/StrongCache.html),
     which is locked into memory until the cache is explicitly flushed.
-    Mix the [StrongCacheLike](http://github.com/mslinn/quill-cache/latest/api/#model.persistence.StrongCacheLike) 
+    Mix the [StrongCacheLike](http://mslinn.github.io/quill-cache/latest/api/#model.persistence.StrongCacheLike) 
     trait into the DAO to provide this behavior.
     This type of cache is useful when there is enough memory to hold all instances of the case class.
-  * [SoftCache](http://github.com/mslinn/scalacourses-utils/latest/api/com/micronautics/cache/SoftCache.html),
+  * [SoftCache](http://mslinn.github.io/scalacourses-utils/latest/api/com/micronautics/cache/SoftCache.html),
      which contains "soft" values that might expire by timing out or might get bumped if memory fills up.
-     Mix the [SoftCacheLike](http://github.com/mslinn/quill-cache/latest/api/#model.persistence.SoftCacheLike) 
+     Mix the [SoftCacheLike](http://mslinn.github.io/quill-cache/latest/api/#model.persistence.SoftCacheLike) 
      trait into the DAO to provide this behavior.
      DAOs that mix in `SoftCacheLike` do not assume that all instances of the case class can fit into memory.
      `SoftCacheLike` finders that return at most one item from a query the database after every cache miss.
