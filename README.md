@@ -10,6 +10,9 @@ This library depends on [has-id](https://github.com/mslinn/has-id), and case cla
 `HasId` is generic and quite flexible, so you are encouraged to subclass all your domain objects from `HasId`, 
 even if they do not require database caching.
 
+The current version of this library has no provision for distributed caches.
+This could be retrofitted, however the author did not have the need, so the work was not done.
+
 ## DAOs
 The [data access object pattern](https://en.wikipedia.org/wiki/Data_access_object) (DAO) is common across all computer languages.
 DAOs for case classes that require database caching must extend the
