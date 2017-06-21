@@ -29,6 +29,19 @@ object Courses extends CachedPersistence[Long, Option[Long], Course] with Strong
     (name: Id[Option[Long]]) =>
       run { quote { queryById(name) } }.headOption
 
+  /* Information:(16, 11) SELECT x.group_id, x.sku, x.short_description, x.title, x.price, x.video, x.project_home, x.repository, x.image, x.sections, x.active, x.paypal_button_id, x.id FROM "course" x
+        run { quote { query[Course] } }
+  Information:(24, 11) Dynamic query
+        run { quote { queryById(id).delete } }
+  Information:(30, 11) Dynamic query
+        run { quote { queryById(name) } }.headOption
+  Information:(34, 11) INSERT INTO "course" (group_id,sku,short_description,title,price,video,project_home,repository,image,sections,active,paypal_button_id,id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        run { quote { query[Course].insert(lift(course)) }.returning(x => x) }
+  Error:(34, 11) could not find implicit value for parameter e: model.dao.Courses.ctx.Decoder[model.Course]
+        run { quote { query[Course].insert(lift(course)) }.returning(x => x) }
+  Error:(34, 11) not enough arguments for method implicitly: (implicit e: model.dao.Courses.ctx.Decoder[model.Course])model.dao.Courses.ctx.Decoder[model.Course].
+  Unspecified value parameter e.
+        run { quote { query[Course].insert(lift(course)) }.returning(x => x) } */
   val _insert: Course => Course =
     (course: Course) =>
       run { quote { query[Course].insert(lift(course)) }.returning(x => x) }
