@@ -62,13 +62,13 @@ so you also have that option when using this library.</p><p>This library provide
 DAOs that extend <code>CachedPersistence</code> have a method called <code>preload()</code>
 which your application's initialization must invoke in order to fill that DAO's cache.
 A cache can be flushed by calling the DAO's <code>flushCache()</code> method.
-Because <code>preload()</code> always flushes the cache before loading it you probably won't ever need to explicitly call <code>flushCache()</code>.</p><h4> Cache Types </h4><p>Two types of caches are supported by <code>CachedPersistence</code>:</p><ul><li><a href="http://github.com/mslinn/scalacourses-utils/latest/api/com/micronautics/cache/StrongCache.html" target="_blank">StrongCache</a>,
+Because <code>preload()</code> always flushes the cache before loading it you probably won't ever need to explicitly call <code>flushCache()</code>.</p><h4> Cache Types </h4><p>Two types of caches are supported by <code>CachedPersistence</code>:</p><ul><li><a href="http://mslinn.github.io/scalacourses-utils/latest/api/com/micronautics/cache/StrongCache.html" target="_blank">StrongCache</a>,
     which is locked into memory until the cache is explicitly flushed.
-    Mix the <a href="http://github.com/mslinn/quill-cache/latest/api/#model.persistence.StrongCacheLike" target="_blank">StrongCacheLike</a>
+    Mix the <a href="http://mslinn.github.io/quill-cache/latest/api/#model.persistence.StrongCacheLikee" target="_blank">StrongCacheLike</a>
     trait into the DAO to provide this behavior.
-    This type of cache is useful when there is enough memory to hold all instances of the case class.</li><li><a href="http://github.com/mslinn/scalacourses-utils/latest/api/com/micronautics/cache/SoftCache.html" target="_blank">SoftCache</a>,
+    This type of cache is useful when there is enough memory to hold all instances of the case class.</li><li><a href="http://mslinn.github.io/scalacourses-utils/latest/api/com/micronautics/cache/SoftCache.html" target="_blank">SoftCache</a>,
      which contains &quot;soft&quot; values that might expire by timing out or might get bumped if memory fills up.
-     Mix the <a href="http://github.com/mslinn/quill-cache/latest/api/#model.persistence.SoftCacheLike" target="_blank">SoftCacheLike</a>
+     Mix the <a href="http://mslinn.github.io/quill-cache/latest/api/#model.persistence.SoftCacheLike" target="_blank">SoftCacheLike</a>
      trait into the DAO to provide this behavior.
      DAOs that mix in <code>SoftCacheLike</code> do not assume that all instances of the case class can fit into memory.
      <code>SoftCacheLike</code> finders query the database after every cache miss.
