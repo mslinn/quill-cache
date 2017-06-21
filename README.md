@@ -16,15 +16,19 @@ DAOs for case classes that require database caching must extend the
 [CachedPersistence](http://github.com/mslinn/cached-persistence/latest/api/#model.persistence.CachedPersistence) 
 abstract class, provided by the [scalacourses-utils](https://github.com/mslinn/scalacourses-utils) dependency.
 
+You are free to name the DAO anything you like; this library does not mandate any naming convention.
 Scala DAOs are often given the same name as the class that they persist, but with a suffix indicating plurality.
 For example, if a case class named `Point` needs to be persisted, the DAO is usually called `Points`.
-You are free to name the DAO anything you like; this library does not mandate any naming convention.
 Unlike some other persistence libraries for Scala, Quill allows you to define your DAO in the case class's companion object,
 so you also have that option when using this library.
 
-DAOs that extend `CachedPersistence` must call 
-[preload](http://mslinn.github.io/cached-persistence/latest/api/index.html#model.persistence.CachedPersistence@preload:List[CaseClass])
-in order to fill the cache.
+This library provides each DAO with its own cache.
+DAOs that extend `CachedPersistence` have a method called
+[preload()](http://mslinn.github.io/cached-persistence/latest/api/index.html#model.persistence.CacheLike@preload:List[CaseClass])
+which your application's initialization must invoke in order to fill that DAO's cache.
+A cache can be flushed by calling the DAO's 
+[flushCache()](http://blog.mslinn.com/cached-persistence/latest/api/index.html#model.persistence.CacheLike@flushCache():Unit) method.
+Because `preload()` always flushes the cache before loading it you probably won't ever need to explicitly call `flushCache()`.
 
 ## Cache Types
 Two types of caches are supported by `CachedPersistence`: 
