@@ -32,7 +32,7 @@ trait CacheLike[Key <: Object, _IdType <: Option[Key], CaseClass <: HasId[CaseCl
   }
 
   /** Flushes the cache and then loads all instances of `CaseClass` into the cache from the database. */
-  @inline def preload: List[CaseClass] = theCache.synchronized {
+  @inline def preload(): List[CaseClass] = theCache.synchronized {
     flushCache()
     val all = findAll()
     all.foreach(x => cacheSet(x.id, x))
