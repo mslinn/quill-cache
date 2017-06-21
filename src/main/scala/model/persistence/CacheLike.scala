@@ -9,11 +9,6 @@ trait CacheLike[Key <: Object, _IdType <: Option[Key], CaseClass <: HasId[CaseCl
   protected val Logger: Logger
   protected implicit val ec: scala.concurrent.ExecutionContext
 
-  @inline def cacheClear(): Unit = {
-    flushCache()
-    Logger.debug(s"Cleared $className cache")
-  }
-
   @inline def cacheRemoveId(id: Id[_IdType]): Unit = {
     Logger.debug(s"Removing $id from $className cache")
     id.value.foreach(key => theCache.remove(key))
@@ -32,10 +27,14 @@ trait CacheLike[Key <: Object, _IdType <: Option[Key], CaseClass <: HasId[CaseCl
 
   @inline def findById(id: Id[_IdType]): Option[CaseClass]
 
-  @inline def flushCache(): Unit = theCache.underlying.invalidateAll()
+  @inline def flushCache(): Unit = {
+    theCache.underlying.invalidateAll()
+    Logger.debug(s"Cleared $className cache")
+  }
 
   /** Loads all instances of `CaseClass` into the cache. */
   @inline def preload: List[CaseClass] = {
+    flushCache()
     val all = findAll()
     all.foreach(x => cacheSet(x.id, x))
     all
@@ -55,7 +54,7 @@ trait SoftCacheLike[Key <: Object, _IdType <: Option[Key], CaseClass <: HasId[Ca
   @inline override def findAll(): List[CaseClass] = _findAll()
 
   /** First try to fetch from cache, then if not found try to fetch from the database */
-  @inline def findById(id: Id[_IdType]): Option[CaseClass] = super.findById(id).orElse(_findById(id))
+  @inline abstract override def findById(id: Id[_IdType]): Option[CaseClass] = super.findById(id).orElse(_findById(id))
 }
 
 /** Assumes all values have been prefetched */

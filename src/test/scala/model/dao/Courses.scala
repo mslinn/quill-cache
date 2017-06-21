@@ -2,9 +2,14 @@ package model.dao
 
 import model.Course
 import model.persistence._
+import scala.concurrent.ExecutionContext
+import scala.concurrent.ExecutionContext.Implicits.global
 
 object Courses extends CachedPersistence[Long, Option[Long], Course] with StrongCacheLike[Long, Option[Long], Course] {
   import ctx._
+
+  /** A real application would provide a dedicated `ExecutionContext` for DAOs */
+  implicit val ec: ExecutionContext = global
 
   val _findAll: () => List[Course] =
     () =>
@@ -26,7 +31,7 @@ object Courses extends CachedPersistence[Long, Option[Long], Course] with Strong
 
   val _insert: Course => Course =
     (course: Course) =>
-      run { quote { query[Course].insert(course) }.returning(x => x) }
+      run { quote { query[Course].insert(lift(course)) }.returning(x => x) }
 
   val _update: Course => Course =
     (course: Course) => {
@@ -64,10 +69,10 @@ object Courses extends CachedPersistence[Long, Option[Long], Course] with Strong
     }
 
   /** @return Option[Course] with specified SKU */
-  @inline def findBySku(sku: String): Option[Course] = findAll.find(_.sku == longSku(sku))
+  @inline def findBySku(sku: String): Option[Course] = findAll().find(_.sku == longSku(sku))
 
   /** Returns all courses in the specified group */
-  @inline def findByGroupId(groupId: Id[Option[Long]]): List[Course] = findAll.filter(_.groupId == groupId)
+  @inline def findByGroupId(groupId: Id[Option[Long]]): List[Course] = findAll().filter(_.groupId == groupId)
 
 
   @inline def longSku(sku: String): String = sku match {

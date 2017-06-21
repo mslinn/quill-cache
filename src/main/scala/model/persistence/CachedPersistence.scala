@@ -94,6 +94,6 @@ abstract class CachedPersistence[Key <: Object, _IdType <: Option[Key], CaseClas
   // Empty out the backing table; normally just used for testing
   @inline override def zap(): Unit = {
     super.zap()
-    cacheClear()
+    flushCache()
   }
 }
