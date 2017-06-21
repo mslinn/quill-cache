@@ -40,13 +40,13 @@ trait CacheLike[Key <: Object, _IdType <: Option[Key], CaseClass <: HasId[CaseCl
   }
 }
 
-/** `SoftCache` contains "soft" values that might expire or get bumped if memory fills up.
-  * Mix this trait into the DAO to provide `SoftCache` behavior.
+/** `SoftCache` contains "soft" values that might expire by timing out or might get bumped if memory fills up.
+  * Mix this trait into the DAO to provide this behavior.
   * DAOs that mix in `SoftCache` do not assume that all instances of the case class can fit into memory.
   *
   * `SoftCache` finders query the database after every cache miss.
   * Because of this, `SoftCache` finders run more slowly than `StrongCache` finders when the cache does not contain the desired value.
-  * 
+  *
   * The `CachedPersistence` trait implements the default caching strategy.
   * This trait overrides the default finder implementations.
   * This trait is experimental, do not use in production. */
