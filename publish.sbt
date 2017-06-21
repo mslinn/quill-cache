@@ -1,10 +1,10 @@
-val vcs = "bitbucket"
+val vcs = "github.com"
 
 // bintray settings
 bintrayOrganization := Some("micronautics")
 bintrayRepository := "scala"
 bintrayPackageLabels := Seq("aws", "scala")
-bintrayVcsUrl := Some(s"git@$vcs.org:mslinn/${ name.value }.git")
+bintrayVcsUrl := Some(s"git@$vcs:mslinn/${ name.value }.git")
 
 // sbt-site settings
 enablePlugins(SiteScaladocPlugin)
@@ -13,4 +13,4 @@ publishSite
 
 // sbt-ghpages settings
 enablePlugins(GhpagesPlugin)
-git.remoteRepo := s"git@$vcs.com:mslinn/${ name.value }.git"
+git.remoteRepo := "git@github.com:mslinn/cached-persistence.git"
