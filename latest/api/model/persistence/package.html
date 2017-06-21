@@ -48,7 +48,7 @@
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Scala uses case classes for modeling domain objects.
-<code>Cached-persistence</code> optimizes database access for read-mostly domain objects by providing a caching layer overtop
+<code>quill-cache</code> optimizes database access for read-mostly domain objects by providing a caching layer overtop
 <a href="https://github.com/getquill/quill" target="_blank">Quill</a>.
 This library depends on <a href="https://github.com/mslinn/has-id" target="_blank">has-id</a>, and case classes that need to be cached must extend
 <a href="http://mslinn.github.io/has-id/latest/api/#model.persistence.HasId" target="_blank">HasId</a>.
@@ -64,11 +64,11 @@ which your application's initialization must invoke in order to fill that DAO's 
 A cache can be flushed by calling the DAO's <code>flushCache()</code> method.
 Because <code>preload()</code> always flushes the cache before loading it you probably won't ever need to explicitly call <code>flushCache()</code>.</p><h4> Cache Types </h4><p>Two types of caches are supported by <code>CachedPersistence</code>:</p><ul><li><a href="http://github.com/mslinn/scalacourses-utils/latest/api/com/micronautics/cache/StrongCache.html" target="_blank">StrongCache</a>,
     which is locked into memory until the cache is explicitly flushed.
-    Mix the <a href="http://github.com/mslinn/cached-persistence/latest/api/#model.persistence.StrongCacheLike" target="_blank">StrongCacheLike</a>
+    Mix the <a href="http://github.com/mslinn/quill-cache/latest/api/#model.persistence.StrongCacheLike" target="_blank">StrongCacheLike</a>
     trait into the DAO to provide this behavior.
     This type of cache is useful when there is enough memory to hold all instances of the case class.</li><li><a href="http://github.com/mslinn/scalacourses-utils/latest/api/com/micronautics/cache/SoftCache.html" target="_blank">SoftCache</a>,
      which contains &quot;soft&quot; values that might expire by timing out or might get bumped if memory fills up.
-     Mix the <a href="http://github.com/mslinn/cached-persistence/latest/api/#model.persistence.SoftCacheLike" target="_blank">SoftCacheLike</a>
+     Mix the <a href="http://github.com/mslinn/quill-cache/latest/api/#model.persistence.SoftCacheLike" target="_blank">SoftCacheLike</a>
      trait into the DAO to provide this behavior.
      DAOs that mix in <code>SoftCacheLike</code> do not assume that all instances of the case class can fit into memory.
      <code>SoftCacheLike</code> finders query the database after every cache miss.
@@ -77,7 +77,7 @@ Because <code>preload()</code> always flushes the cache before loading it you pr
 which you can use to derive DAOs for case classes that must have direct access to the database so the case classes are not cached.
 You don't have to subclass <code>UnCachedPersistence</code> to get this behavior, but if you do then the DAOs for your cached
 domain objects will have the same interface as the DAOs for your uncached domain objects,
-and your code's structure will be more consistent.</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://bitbucket.com/mslinn/cadenza-cached-persistence/tree/master/src/main/scala/model/persistence/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
+and your code's structure will be more consistent.</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://bitbucket.com/mslinn/cadenza-quill-cache/tree/master/src/main/scala/model/persistence/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -308,8 +308,8 @@ or <code>application.conf</code>, if provided.</p></div><dl class="attributes bl
     </span>
       <p class="shortcomment cmt"><code>SoftCache</code> contains &quot;soft&quot; values that might expire by timing out or might get bumped if memory fills up.</p><div class="fullcomment"><div class="comment cmt"><p><code>SoftCache</code> contains &quot;soft&quot; values that might expire by timing out or might get bumped if memory fills up.
 Mix this trait into the DAO to provide this behavior.
-DAOs that mix in <code>SoftCache</code> do not assume that all instances of the case class can fit into memory.</p><p><code>SoftCache</code> finders query the database after every cache miss.
-Because of this, <code>SoftCache</code> finders run more slowly than <code>StrongCache</code> finders when the cache does not contain the desired value.</p><p>The <code>CachedPersistence</code> trait implements the default caching strategy.
+DAOs that mix in <code>SoftCache</code> do not assume that all instances of the case class can fit into memory.</p><p><code>SoftCache</code> finders that return at most one item from querying the cache will access the database, looking for that item after every cache miss.
+Because of this, those <code>SoftCache</code> finders run more slowly than <code>StrongCache</code> finders when the cache does not contain the desired value.</p><p><code>SoftCache</code> finders that return a list of items must always query the database and never look in the cache.</p><p>The <code>CachedPersistence</code> trait implements the default caching strategy.
 This trait overrides the default finder implementations.
 This trait is experimental, do not use in production.</p></div></div>
     </li><li name="model.persistence.StrongCacheLike" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
