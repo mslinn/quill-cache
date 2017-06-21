@@ -13,7 +13,7 @@ Add this to your project's `build.sbt`:
 See the unit tests for examples of how to use this library.
 
 ## Scaladoc
-[Here](http://mslinn.github.io/cached-persistence/latest/api/)
+[Here](http://mslinn.github.io/cached-persistence/latest/api/#model.persistence.package)
 
 ## Sponsor
 This project is sponsored by [Micronautics Research Corporation](http://www.micronauticsresearch.com/),
