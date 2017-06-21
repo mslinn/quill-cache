@@ -47,7 +47,42 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Scala uses case classes for modeling domain objects.
+<code>Cached-persistence</code> optimizes database access for read-mostly domain objects by providing a caching layer overtop
+<a href="https://github.com/getquill/quill" target="_blank">Quill</a>.
+This library depends on <a href="https://github.com/mslinn/has-id" target="_blank">has-id</a>, and case classes that need to be cached must extend
+<a href="http://mslinn.github.io/has-id/latest/api/#model.persistence.HasId" target="_blank">HasId</a>.
+<code>HasId</code> is generic and quite flexible, so you are encouraged to subclass all your domain objects from <code>HasId</code>,
+even if they do not require database caching.</p><p>## DAOs
+The <a href="https://en.wikipedia.org/wiki/Data_access_object" target="_blank">data access object pattern</a> (DAO) is common across all computer languages.
+DAOs for case classes that require database caching must extend the <a href="CachedPersistence.html" class="extype" name="model.persistence.CachedPersistence">CachedPersistence</a> abstract class.</p><p>You are free to name DAOs anything you like; this library does not mandate any naming convention.
+Scala DAOs are often given the same name as the class that they persist, but with a suffix indicating plurality.
+For example, if a case class named <code>Point</code> needs to be persisted, the DAO is usually called <code>Points</code>.
+Unlike some other persistence libraries for Scala, Quill allows you to define your DAO in the case class's companion object,
+so you also have that option when using this library.</p><p>This library provides each DAO with its own cache.
+DAOs that extend <code>CachedPersistence</code> have a method called <code>preload()</code>
+which your application's initialization must invoke in order to fill that DAO's cache.
+A cache can be flushed by calling the DAO's <code>flushCache()</code> method.
+Because <code>preload()</code> always flushes the cache before loading it you probably won't ever need to explicitly call <code>flushCache()</code>.</p><p>## Cache Types
+Two types of caches are supported by <code>CachedPersistence</code>:
+<a href="http://github.com/mslinn/scalacourses-utils/latest/api/com/micronautics/cache/StrongCache.html" target="_blank">StrongCache</a>,
+    which is locked into memory until the cache is explicitly flushed.
+    Mix the <a href="http://github.com/mslinn/cached-persistence/latest/api/#model.persistence.StrongCacheLike" target="_blank">StrongCacheLike</a>
+    trait into the DAO to provide this behavior.
+    This type of cache is useful when there is enough memory to hold all instances of the case class.
+<a href="http://github.com/mslinn/scalacourses-utils/latest/api/com/micronautics/cache/SoftCache.html" target="_blank">SoftCache</a>,
+     which contains &quot;soft&quot; values that might expire by timing out or might get bumped if memory fills up.
+     Mix the <a href="http://github.com/mslinn/cached-persistence/latest/api/#model.persistence.SoftCacheLike" target="_blank">SoftCacheLike</a>
+     trait into the DAO to provide this behavior.
+     DAOs that mix in <code>SoftCacheLike</code> do not assume that all instances of the case class can fit into memory.
+     <code>SoftCacheLike</code> finders query the database after every cache miss.
+     Because of this, <code>SoftCacheLike</code> finders run more slowly than <code>StrongCacheLike</code> finders when the cache does not contain the desired value.
+     This trait is experimental, do not use in production.</p><p>## Consistent APIs for Cached and Uncached DAOs
+<code>CachedPersistence</code> subclasses <a href="UnCachedPersistence.html" class="extype" name="model.persistence.UnCachedPersistence">UnCachedPersistence</a>,
+which you can use to derive DAOs for case classes that must have direct access to the database so the case classes are not cached.
+You don't have to subclass <code>UnCachedPersistence</code> to get this behavior, but if you do then the DAOs for your cached
+domain objects will have the same interface as the DAOs for your uncached domain objects,
+and your code's structure will be more consistent.</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://bitbucket.com/mslinn/cadenza-cached-persistence/tree/master/src/main/scala/model/persistence/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
