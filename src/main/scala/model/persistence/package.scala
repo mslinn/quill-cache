@@ -28,14 +28,14 @@ import persistence._
   *
   * <h2>Cache Types</h2>
   * Two types of caches are supported by `CachedPersistence`:
-  *   - [[http://github.com/mslinn/scalacourses-utils/latest/api/com/micronautics/cache/StrongCache.html StrongCache]],
+  *   - [[http://mslinn.github.io/scalacourses-utils/latest/api/com/micronautics/cache/StrongCache.html StrongCache]],
   *     which is locked into memory until the cache is explicitly flushed.
-  *     Mix the [[http://github.com/mslinn/quill-cache/latest/api/#model.persistence.StrongCacheLike StrongCacheLike]]
+  *     Mix the [[http://mslinn.github.io/quill-cache/latest/api/#model.persistence.StrongCacheLike StrongCacheLike]]
   *     trait into the DAO to provide this behavior.
   *     This type of cache is useful when there is enough memory to hold all instances of the case class.
-  *   - [[http://github.com/mslinn/scalacourses-utils/latest/api/com/micronautics/cache/SoftCache.html SoftCache]],
+  *   - [[http://mslinn.github.io/scalacourses-utils/latest/api/com/micronautics/cache/SoftCache.html SoftCache]],
   *      which contains "soft" values that might expire by timing out or might get bumped if memory fills up.
-  *      Mix the [[http://github.com/mslinn/quill-cache/latest/api/#model.persistence.SoftCacheLike SoftCacheLike]]
+  *      Mix the [[http://mslinn.github.io/quill-cache/latest/api/#model.persistence.SoftCacheLike SoftCacheLike]]
   *      trait into the DAO to provide this behavior.
   *      DAOs that mix in `SoftCacheLike` do not assume that all instances of the case class can fit into memory.
   *      `SoftCacheLike` finders query the database after every cache miss.

@@ -33,7 +33,7 @@ scalacOptions ++=
 scalacOptions in (Compile, doc) ++= baseDirectory.map {
   (bd: File) => Seq[String](
      "-sourcepath", bd.getAbsolutePath,
-     "-doc-source-url", "https://bitbucket.com/mslinn/cadenza-quill-cache/tree/master€{FILE_PATH}.scala"
+     "-doc-source-url", "https://github.com/mslinn/quill-cache/tree/master€{FILE_PATH}.scala"
   )
 }.value
 
@@ -55,7 +55,6 @@ javacOptions ++=
   )
 
 resolvers ++= Seq(
-  "micronautics/play  on bintray" at "http://dl.bintray.com/micronautics/play",
   "micronautics/scala on bintray" at "http://dl.bintray.com/micronautics/scala"
 )
 
