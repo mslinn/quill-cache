@@ -1,9 +1,9 @@
 # Cached Persistence
-[![Build Status](https://travis-ci.org/mslinn/cached-persistence.svg?branch=master)](https://travis-ci.org/mslinn/cached-persistence)
-[![GitHub version](https://badge.fury.io/gh/mslinn%2Fcached-persistence.svg)](https://badge.fury.io/gh/mslinn%2Fcached-persistence)
+[![Build Status](https://travis-ci.org/mslinn/quill-cache.svg?branch=master)](https://travis-ci.org/mslinn/quill-cache)
+[![GitHub version](https://badge.fury.io/gh/mslinn%2Fquill-cache.svg)](https://badge.fury.io/gh/mslinn%2Fquill-cache)
 
 Scala uses case classes for modeling domain objects.
-`Cached-persistence` optimizes database access for read-mostly domain objects by providing a caching layer overtop 
+`quill-cache` optimizes database access for read-mostly domain objects by providing a caching layer overtop 
 [Quill](https://github.com/getquill/quill).
 This library depends on [has-id](https://github.com/mslinn/has-id), and case classes that need to be cached must extend 
 [HasId](http://mslinn.github.io/has-id/latest/api/#model.persistence.HasId).
@@ -13,7 +13,7 @@ even if they do not require database caching.
 ## DAOs
 The [data access object pattern](https://en.wikipedia.org/wiki/Data_access_object) (DAO) is common across all computer languages.
 DAOs for case classes that require database caching must extend the
-[CachedPersistence](http://github.com/mslinn/cached-persistence/latest/api/#model.persistence.CachedPersistence) 
+[CachedPersistence](http://github.com/mslinn/quill-cache/latest/api/#model.persistence.CachedPersistence) 
 abstract class.
 
 You are free to name DAOs anything you like; this library does not mandate any naming convention.
@@ -24,22 +24,22 @@ so you also have that option when using this library.
 
 This library provides each DAO with its own cache.
 DAOs that extend `CachedPersistence` have a method called
-[preload()](http://mslinn.github.io/cached-persistence/latest/api/index.html#model.persistence.CacheLike@preload:List[CaseClass])
+[preload()](http://mslinn.github.io/quill-cache/latest/api/index.html#model.persistence.CacheLike@preload:List[CaseClass])
 which your application's initialization must invoke in order to fill that DAO's cache.
 A cache can be flushed by calling the DAO's 
-[flushCache()](http://blog.mslinn.com/cached-persistence/latest/api/index.html#model.persistence.CacheLike@flushCache():Unit) method.
+[flushCache()](http://blog.mslinn.com/quill-cache/latest/api/index.html#model.persistence.CacheLike@flushCache():Unit) method.
 Because `preload()` always flushes the cache before loading it you probably won't ever need to explicitly call `flushCache()`.
 
 ## Cache Types
 Two types of caches are supported by `CachedPersistence`: 
   * [StrongCache](http://github.com/mslinn/scalacourses-utils/latest/api/com/micronautics/cache/StrongCache.html),
     which is locked into memory until the cache is explicitly flushed.
-    Mix the [StrongCacheLike](http://github.com/mslinn/cached-persistence/latest/api/#model.persistence.StrongCacheLike) 
+    Mix the [StrongCacheLike](http://github.com/mslinn/quill-cache/latest/api/#model.persistence.StrongCacheLike) 
     trait into the DAO to provide this behavior.
     This type of cache is useful when there is enough memory to hold all instances of the case class.
   * [SoftCache](http://github.com/mslinn/scalacourses-utils/latest/api/com/micronautics/cache/SoftCache.html),
      which contains "soft" values that might expire by timing out or might get bumped if memory fills up.
-     Mix the [SoftCacheLike](http://github.com/mslinn/cached-persistence/latest/api/#model.persistence.SoftCacheLike) 
+     Mix the [SoftCacheLike](http://github.com/mslinn/quill-cache/latest/api/#model.persistence.SoftCacheLike) 
      trait into the DAO to provide this behavior.
      DAOs that mix in `SoftCacheLike` do not assume that all instances of the case class can fit into memory.
      `SoftCacheLike` finders query the database after every cache miss.
@@ -48,7 +48,7 @@ Two types of caches are supported by `CachedPersistence`:
 
 ## Consistent APIs for Cached and Uncached DAOs
 `CachedPersistence` subclasses 
-[UnCachedPersistence](http://mslinn.github.io/cached-persistence/latest/api/#model.persistence.UnCachedPersistence),
+[UnCachedPersistence](http://mslinn.github.io/quill-cache/latest/api/#model.persistence.UnCachedPersistence),
 which you can use to derive DAOs for case classes that must have direct access to the database so the case classes are not cached.
 You don't have to subclass `UnCachedPersistence` to get this behavior, but if you do then the DAOs for your cached 
 domain objects will have the same interface as the DAOs for your uncached domain objects, 
@@ -59,13 +59,13 @@ Add this to your project's `build.sbt`:
 
     resolvers += "micronautics/scala on bintray" at "http://dl.bintray.com/micronautics/scala"
 
-    libraryDependencies += "com.micronautics" %% "cached-persistence" % "2.3.0" withSources()
+    libraryDependencies += "com.micronautics" %% "quill-cache" % "2.3.0" withSources()
 
 ## Sample Code
 See the unit tests for examples of how to use this library.
 
 ## Scaladoc
-[Here](http://mslinn.github.io/cached-persistence/latest/api/#model.persistence.package)
+[Here](http://mslinn.github.io/quill-cache/latest/api/#model.persistence.package)
 
 ## Sponsor
 This project is sponsored by [Micronautics Research Corporation](http://www.micronauticsresearch.com/),
