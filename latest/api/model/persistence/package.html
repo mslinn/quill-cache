@@ -276,10 +276,12 @@ or <code>application.conf</code>, if provided.</p></div><dl class="attributes bl
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt"><code>CachePersistence.prefetch</code> must be called before any finders.</p><div class="fullcomment"><div class="comment cmt"><p><code>CachePersistence.prefetch</code> must be called before any finders.
-This trait is experimental, do not use in production.
-The <code>CachedPersistence</code> trait implements the default caching strategy.
-This trait overrides the default finder implementations.</p></div></div>
+      <p class="shortcomment cmt"><code>SoftCache</code> contains &quot;soft&quot; values that might expire or get bumped if memory fills up.</p><div class="fullcomment"><div class="comment cmt"><p><code>SoftCache</code> contains &quot;soft&quot; values that might expire or get bumped if memory fills up.
+Mix this trait into the DAO to provide <code>SoftCache</code> behavior.
+DAOs that mix in <code>SoftCache</code> do not assume that all instances of the case class can fit into memory.</p><p><code>SoftCache</code> finders query the database after every cache miss.
+Because of this, <code>SoftCache</code> finders run more slowly than <code>StrongCache</code> finders when the cache does not contain the desired value.</p><p>The <code>CachedPersistence</code> trait implements the default caching strategy.
+This trait overrides the default finder implementations.
+This trait is experimental, do not use in production.</p></div></div>
     </li><li name="model.persistence.StrongCacheLike" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="StrongCacheLike[Key&lt;:Object,_IdType&lt;:Option[Key],CaseClass&lt;:model.persistence.HasId[CaseClass,_IdType]]extendsCacheLike[Key,_IdType,CaseClass]"></a>
       <a id="StrongCacheLike[Key&lt;:AnyRef,_IdType&lt;:Option[Key],CaseClass&lt;:HasId[CaseClass,_IdType]]:StrongCacheLike[Key,_IdType,CaseClass]"></a>
