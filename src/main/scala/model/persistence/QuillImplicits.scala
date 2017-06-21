@@ -4,7 +4,7 @@ import com.github.nscala_time.time.Imports._
 import java.util.UUID
 import io.getquill._
 
-trait QuillImplicits {
+trait QuillImplicits extends IdImplicitLike {
   import QuillConfiguration.ctx._
 
   implicit val dateTimeDecoder: Decoder[DateTime] =

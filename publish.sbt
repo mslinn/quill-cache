@@ -13,4 +13,4 @@ publishSite
 
 // sbt-ghpages settings
 enablePlugins(GhpagesPlugin)
-git.remoteRepo := "git@github.com:mslinn/cached-persistence.git"
+git.remoteRepo := s"git@$vcs:mslinn/${ name.value }.git"

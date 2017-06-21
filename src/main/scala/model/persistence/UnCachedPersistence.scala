@@ -4,20 +4,35 @@ import com.micronautics.utils.Implicits._
 import org.slf4j.Logger
 import scala.language.{postfixOps, reflectiveCalls}
 
-/** Accesses the table for each query */
+/** Accesses the table for each query.
+  * You can use this abstract class to derive DAOs for case classes that must have direct access to the database so the
+  * case classes are not cached. You don't have to subclass `UnCachedPersistence`, but if you do then the DAOs for your
+  * cached domain objects will have the same interface as the DAOs for your uncached domain objects. */
 abstract class UnCachedPersistence[Key <: Object, _IdType <: Option[Key], CaseClass <: HasId[CaseClass, _IdType]]
-  extends QuillConfiguration with QuillImplicits {
+  extends QuillConfiguration with QuillImplicits with IdImplicitLike {
 
   protected val Logger: Logger = org.slf4j.LoggerFactory.getLogger("persistence")
 
+  /** Encapsulates the Quill query that returns all instances of the case class from the database */
   def _findAll: () => List[CaseClass]
+
+  /** Encapsulates the Quill query that deletes the instance of the case class with the given `Id` from the database */
   def _deleteById: (Id[_IdType]) => Unit
+
+  /** Encapsulates the Quill query that optionally returns the instance of the case class from the database with the given
+    * `Id`, or `None` if not found. */
   def _findById: Id[_IdType] => Option[CaseClass]
+
+  /** Encapsulates the Quill query that inserts the given instance of the case class into the database, and returns the
+    * case class as it was stored, including any auto-increment fields. */
   def _insert: CaseClass => CaseClass
+
+  /** Encapsulates the Quill query that updates the given instance of the case class into the database, and returns the entity.
+    * Throws an Exception if the case class was not previously persisted. */
   def _update: CaseClass => CaseClass
 
   /** Human-readable name of persisted class */
-  val className: String
+  def className: String
 
   @inline def add(caseClass: CaseClass): CaseClass =
     findById(caseClass.id) match {
@@ -50,7 +65,7 @@ abstract class UnCachedPersistence[Key <: Object, _IdType <: Option[Key], CaseCl
     ()
   }
 
-  def findAll: List[CaseClass] = {
+  @inline def findAll: List[CaseClass] = {
     Logger.debug(s"Fetching all ${ className }s from database")
     try { _findAll() } catch {
       case ex: Exception =>

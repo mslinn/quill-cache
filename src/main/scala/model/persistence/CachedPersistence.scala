@@ -25,28 +25,6 @@ abstract class CachedPersistence[Key <: Object, _IdType <: Option[Key], CaseClas
         modified
     }
 
-  @inline def cacheSet(i: Id[_IdType], value: CaseClass): Unit = {
-    i.value.foreach(key => theCache.put(key, value))
-    Logger.trace(s"Added $i to $className cache")
-  }
-
-  @inline def cacheClear(): Unit = {
-    flushCache()
-    Logger.debug(s"Cleared $className cache")
-  }
-
-  @inline def cacheRemoveId(id: Id[_IdType]): Unit = {
-    Logger.debug(s"Removing $id from $className cache")
-    id.value.foreach(key => theCache.remove(key))
-    ()
-  }
-
-  /** Flushes the cache, just to be sure */
- /* @inline override def createTable(): Unit = {
-    super.createTable()
-    cacheClear()
-  }*/
-
   @inline override def deleteById(id: Id[_IdType]): Unit = {
     super.deleteById(id)
     cacheRemoveId(id)
@@ -86,12 +64,6 @@ abstract class CachedPersistence[Key <: Object, _IdType <: Option[Key], CaseClas
         }
       }
     } yield t
-  }
-
-  @inline def preload: List[CaseClass] = {
-    val all = _findAll()
-    all.foreach(x => cacheSet(x.id, x))
-    all
   }
 
   @inline override def update(t: CaseClass): CaseClass = {

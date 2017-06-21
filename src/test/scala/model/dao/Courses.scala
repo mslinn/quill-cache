@@ -3,11 +3,7 @@ package model.dao
 import model.Course
 import model.persistence._
 
-object Courses extends CachedPersistence[Long, Option[Long], Course]
-    with StrongCacheLike[Long, Option[Long], Course]
-    with IdImplicitLike
-    with QuillImplicits {
-
+object Courses extends CachedPersistence[Long, Option[Long], Course] with StrongCacheLike[Long, Option[Long], Course] {
   import ctx._
 
   val _findAll: () => List[Course] =
