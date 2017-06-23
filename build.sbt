@@ -65,7 +65,10 @@ libraryDependencies ++= Seq(
   "io.getquill"            %% "quill-jdbc"         % "1.2.1"  withSources(),
   "net.codingwell"         %% "scala-guice"        % "4.1.0"  withSources(),
   "org.joda"               %  "joda-convert"       % "1.6"    withSources(),
-  "org.scalatest"          %% "scalatest"          % "2.2.3"  % Test withSources()
+  //
+  "ch.qos.logback"         %  "logback-classic"    % "1.2.3"  % Test,
+  "junit"                  %  "junit"              % "4.12"   % Test,
+  "org.scalatest"          %% "scalatest"          % "3.0.1"  % Test withSources()
 )
 
 publishArtifact in (Compile, packageSrc) := false

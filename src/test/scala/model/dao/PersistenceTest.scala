@@ -14,7 +14,7 @@ class PersistenceTest extends WordSpec with Matchers with QuillConfiguration {
     Courses.upsert(Course(groupId=Id(Some(i)), sku=s"course_$i"))
   }
 
-  "Copier" must {
+  "Copier" should {
     "work" in {
         val x = X("hi", 123)
         val result = Copier(x, ("id", 456))
@@ -22,7 +22,7 @@ class PersistenceTest extends WordSpec with Matchers with QuillConfiguration {
     }
   }
 
-  "Course instances" must  {
+  "Course instances" should  {
     "be found by sku" in {
       (1 to 99).foreach { i =>
         Courses.findBySku(s"course_$i").size shouldBe 1

@@ -19,15 +19,21 @@ trait QuillConfiguration {
 
   protected lazy val dbType: String = config.getString("use")
 
-  lazy val ctx/*: JdbcContext[_ >: PostgresDialect <: SqlIdiom, TableNameSnakeCase]*/ =
-    new PostgresJdbcContext[TableNameSnakeCase]("persistence-config.postgres")
-  /*dbType match {
+  lazy val ctx = try {
+    new PostgresJdbcContext[TableNameSnakeCase]("postgres")
+  /*dbType match {  // TODO make this work somehow
     case "h2"       => new H2JdbcContext[TableNameSnakeCase](s"persistence-config.$dbType")
     case "mysql"    => new MysqlJdbcContext[TableNameSnakeCase](s"persistence-config.$dbType")
     case "postgres" => new PostgresJdbcContext[TableNameSnakeCase](s"persistence-config.$dbType")
     case "sqlite"   => new SqliteJdbcContext[TableNameSnakeCase](s"persistence-config.$dbType")
     case _          => throw new Exception("No database configured.")
   }*/
+  } catch {
+    case e: Throwable =>
+//      println(new RichThrowable(e).format())
+      println(e.getMessage)
+      throw e
+  }
 }
 
 object QuillConfiguration extends QuillConfiguration
