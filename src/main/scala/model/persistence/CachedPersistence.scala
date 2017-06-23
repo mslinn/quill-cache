@@ -1,10 +1,9 @@
 package model.persistence
 
-import com.micronautics.utils.Implicits._
 import language.{postfixOps, reflectiveCalls}
 
 /** Overrides the Persistence methods which accesses the table so the cache is used instead */
-abstract class CachedPersistence[Key <: Object, _IdType <: Option[Key], CaseClass <: HasId[CaseClass, _IdType]]
+abstract class CachedPersistence[Key <: Any, _IdType <: Option[Key], CaseClass <: HasId[CaseClass, _IdType]]
   extends UnCachedPersistence[Key, _IdType, CaseClass]
   with CacheLike[Key, _IdType, CaseClass] {
 
@@ -30,7 +29,7 @@ abstract class CachedPersistence[Key <: Object, _IdType <: Option[Key], CaseClas
     cacheRemoveId(id)
   }
 
-  @inline override def findAll(): List[CaseClass] = theCache.getAll
+  @inline override def findAll: List[CaseClass] = theCache.getAll
 
   override def findById(id: Id[_IdType]): Option[CaseClass] = {
     if (Logger.isDebugEnabled) for {
@@ -76,13 +75,13 @@ abstract class CachedPersistence[Key <: Object, _IdType <: Option[Key], CaseClas
   /** Searches by CaseClass.id, removes from cache
    * @return true if CaseClass was removed (false if the CaseClass was not defined prior) */
   @inline override def remove(caseClass: CaseClass): Unit = {
-    caseClass.id.value.foreach(theCache.remove)
+    caseClass.id.value.foreach(x => theCache.remove(x))
     super.remove(caseClass)
   }
 
   @inline override def upsert(t: CaseClass): CaseClass = {
     val upserted = super.upsert(t)
-    upserted.id.value.foreach( key => theCache.put(key, upserted) )
+    upserted.id.value.foreach(key => theCache.put(key, upserted) )
     upserted
   }
 

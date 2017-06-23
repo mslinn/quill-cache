@@ -1,9 +1,8 @@
 package model.persistence
 
-import com.micronautics.cache.{AbstractCache, SoftCache, StrongCache}
 import org.slf4j.Logger
 
-trait CacheLike[Key <: Object, _IdType <: Option[Key], CaseClass <: HasId[CaseClass, _IdType]] {
+trait CacheLike[Key <: Any, _IdType <: Option[Key], CaseClass <: HasId[CaseClass, _IdType]] {
   protected val theCache: AbstractCache[Key, CaseClass]
   protected val Logger: Logger
   protected implicit val ec: scala.concurrent.ExecutionContext
@@ -22,7 +21,7 @@ trait CacheLike[Key <: Object, _IdType <: Option[Key], CaseClass <: HasId[CaseCl
   /** Human-readable name of persisted class */
   def className: String
 
-  @inline def findAll(): List[CaseClass]
+  @inline def findAll: List[CaseClass]
 
   @inline def findById(id: Id[_IdType]): Option[CaseClass]
 
@@ -34,7 +33,7 @@ trait CacheLike[Key <: Object, _IdType <: Option[Key], CaseClass <: HasId[CaseCl
   /** Flushes the cache and then loads all instances of `CaseClass` into the cache from the database. */
   @inline def preload(): List[CaseClass] = theCache.synchronized {
     flushCache()
-    val all = findAll()
+    val all = findAll
     all.foreach(x => cacheSet(x.id, x))
     all
   }
@@ -53,13 +52,13 @@ trait CacheLike[Key <: Object, _IdType <: Option[Key], CaseClass <: HasId[CaseCl
   * This trait overrides the default finder implementations.
   * This trait is experimental, do not use in production. */
   // TODO implement the [[https://google.github.io/guava/releases/16.0/api/docs/com/google/common/cache/CacheBuilder.html#removalListener(com.google.common.cache.RemovalListener) com.google.common.cache.CacheBuilder.removalListener]] callback to detect when a cache has been partially flushed due to timeout or memory pressure.
-trait SoftCacheLike[Key <: Object, _IdType <: Option[Key], CaseClass <: HasId[CaseClass, _IdType]]
+trait SoftCacheLike[Key <: Any, _IdType <: Option[Key], CaseClass <: HasId[CaseClass, _IdType]]
   extends CacheLike[Key, _IdType, CaseClass] { cp: CachedPersistence[Key, _IdType, CaseClass] =>
 
   protected val theCache: SoftCache[Key, CaseClass] = SoftCache[Key, CaseClass]()
 
   /** Cannot assume all values are cached, so always get them from the database */
-  @inline override def findAll(): List[CaseClass] = cp._findAll()
+  @inline override def findAll: List[CaseClass] = cp._findAll
 
   /** First try to fetch from cache, then if not found try to fetch from the database */
   @inline abstract override def findById(id: Id[_IdType]): Option[CaseClass] = super.findById(id).orElse(_findById(id))
@@ -68,13 +67,13 @@ trait SoftCacheLike[Key <: Object, _IdType <: Option[Key], CaseClass <: HasId[Ca
 /** `CachePersistence.prefetch` must be called before any finders.
   * The `CachedPersistence` trait implements the default caching strategy.
   * This trait overrides the default finder implementations. */
-trait StrongCacheLike[Key <: Object, _IdType <: Option[Key], CaseClass <: HasId[CaseClass, _IdType]]
+trait StrongCacheLike[Key <: Any, _IdType <: Option[Key], CaseClass <: HasId[CaseClass, _IdType]]
     extends CacheLike[Key, _IdType, CaseClass] { cp: CachedPersistence[Key, _IdType, CaseClass] =>
 
   protected val theCache: StrongCache[Key, CaseClass] = StrongCache[Key, CaseClass]()
 
-  @inline override def findAll(): List[CaseClass] =
+  @inline override def findAll: List[CaseClass] =
     theCache.underlying.asMap.values.toArray.toList.asInstanceOf[List[CaseClass]]
 
-  @inline def _findAll(): List[CaseClass] = cp._findAll()
+//  @inline def findAllFromDB: List[CaseClass] = cp._findAll
 }

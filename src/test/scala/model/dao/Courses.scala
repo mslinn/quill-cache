@@ -11,9 +11,8 @@ object Courses extends CachedPersistence[Long, Option[Long], Course] with Strong
   /** A real application would provide a dedicated `ExecutionContext` for DAOs */
   implicit val ec: ExecutionContext = global
 
-  override val _findAll: () => List[Course] =
-    () =>
-      run { quote { query[Course] } }
+  override val _findAll: List[Course] =
+    run { quote { query[Course] } }
 
   val queryById: Id[Option[Long]] => Quoted[EntityQuery[Course]] =
     (id: Id[Option[Long]]) =>
@@ -71,10 +70,10 @@ object Courses extends CachedPersistence[Long, Option[Long], Course] with Strong
     }
 
   /** @return Option[Course] with specified SKU */
-  @inline def findBySku(sku: String): Option[Course] = findAll().find(_.sku == longSku(sku))
+  @inline def findBySku(sku: String): Option[Course] = findAll.find(_.sku == longSku(sku))
 
   /** Returns all courses in the specified group */
-  @inline def findByGroupId(groupId: Id[Option[Long]]): List[Course] = findAll().filter(_.groupId == groupId)
+  @inline def findByGroupId(groupId: Id[Option[Long]]): List[Course] = findAll.filter(_.groupId == groupId)
 
 
   @inline def longSku(sku: String): String = sku match {

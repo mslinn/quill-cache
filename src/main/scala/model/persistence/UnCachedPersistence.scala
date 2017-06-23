@@ -1,6 +1,5 @@
 package model.persistence
 
-import com.micronautics.utils.Implicits._
 import org.slf4j.Logger
 import scala.language.{postfixOps, reflectiveCalls}
 
@@ -8,13 +7,13 @@ import scala.language.{postfixOps, reflectiveCalls}
   * You can use this abstract class to derive DAOs for case classes that must have direct access to the database so the
   * case classes are not cached. You don't have to subclass `UnCachedPersistence`, but if you do then the DAOs for your
   * cached domain objects will have the same interface as the DAOs for your uncached domain objects. */
-abstract class UnCachedPersistence[Key <: Object, _IdType <: Option[Key], CaseClass <: HasId[CaseClass, _IdType]]
+abstract class UnCachedPersistence[Key <: Any, _IdType <: Option[Key], CaseClass <: HasId[CaseClass, _IdType]]
   extends QuillConfiguration with QuillImplicits with IdImplicitLike {
 
   protected val Logger: Logger = org.slf4j.LoggerFactory.getLogger("persistence")
 
   /** Encapsulates the Quill query that returns all instances of the case class from the database */
-  def _findAll: () => List[CaseClass]
+  def _findAll: List[CaseClass]
 
   /** Encapsulates the Quill query that deletes the instance of the case class with the given `Id` from the database */
   def _deleteById: (Id[_IdType]) => Unit
@@ -65,9 +64,9 @@ abstract class UnCachedPersistence[Key <: Object, _IdType <: Option[Key], CaseCl
     ()
   }
 
-  @inline def findAll(): List[CaseClass] = {
+  @inline def findAll: List[CaseClass] = {
     Logger.debug(s"Fetching all ${ className }s from database")
-    try { _findAll() } catch {
+    try { _findAll } catch {
       case ex: Exception =>
         Logger.error(ex.format())
         Nil
@@ -77,7 +76,7 @@ abstract class UnCachedPersistence[Key <: Object, _IdType <: Option[Key], CaseCl
   /** Always fetches from the database; bypass cache, useful for startup code. See also [[CachedPersistence.findAll]] */
   @inline def findAllFromDB: List[CaseClass] = {
     try {
-      val caseClasses: List[CaseClass] = _findAll()
+      val caseClasses: List[CaseClass] = _findAll
       Logger.trace(s"Fetched all ${ caseClasses.size } ${ className }s from database")
       caseClasses
     } catch {
@@ -120,7 +119,7 @@ abstract class UnCachedPersistence[Key <: Object, _IdType <: Option[Key], CaseCl
     }
 
   // Empty out the backing table; normally just used for testing
-  @inline def zap(): Unit = _findAll().foreach(remove)
+  @inline def zap(): Unit = _findAll.foreach(remove)
 
   protected val sanitize: CaseClass => CaseClass =
     (t: CaseClass) => t

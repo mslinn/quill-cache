@@ -1,11 +1,11 @@
 package model.persistence
 
-trait CacheOps[T] {
-  def cacheSet(i: Id[Option[Long]], value: T): Unit
+trait CacheOps[Key <: Object, _IdType <: Option[Key], CaseClass <: HasId[CaseClass, _IdType]] {
+  def cacheSet(i: Id[_IdType], value: CaseClass): Unit
 
-  def cacheSet(key: String, value: T): Unit
+  def cacheSet(key: String, value: CaseClass): Unit
 
   def cacheClear(): Unit
 
-  def cacheRemoveId(id: Id[Option[Long]]): Unit
+  def cacheRemoveId(id: Id[_IdType]): Unit
 }

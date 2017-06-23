@@ -60,9 +60,8 @@ resolvers ++= Seq(
 
 libraryDependencies ++= Seq(
   "com.github.nscala-time" %% "nscala-time"        % "2.16.0" withSources(),
-  "com.google.guava"       %  "guava"              % "16.0.1" withSources(),
+  "com.google.guava"       %  "guava"              % "18.0"   withSources(),
   "com.micronautics"       %% "has-id"             % "1.2.3"  withSources(),
-  "com.micronautics"       %% "scalacourses-utils" % "0.2.20" withSources(),
   "io.getquill"            %% "quill-jdbc"         % "1.2.1"  withSources(),
   "net.codingwell"         %% "scala-guice"        % "4.1.0"  withSources(),
   "org.joda"               %  "joda-convert"       % "1.6"    withSources(),

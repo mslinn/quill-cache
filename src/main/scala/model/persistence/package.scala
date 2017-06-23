@@ -51,4 +51,32 @@ import persistence._
   * You don't have to subclass `UnCachedPersistence` to get this behavior, but if you do then the DAOs for your cached
   * domain objects will have the same interface as the DAOs for your uncached domain objects,
   * and your code's structure will be more consistent. */
-package object persistence
+package object persistence {
+  implicit class RichThrowable(throwable: Throwable) {
+    def format(asHtml: Boolean=false, showStackTrace: Boolean = false): String =
+      new Throwables{}.format(throwable, asHtml, showStackTrace)
+  }
+}
+
+package persistence {
+  trait Throwables {
+    /** @param showStackTrace is overridden if the Exception has no cause and no message */
+    def format(ex: Throwable, asHtml: Boolean=false, showStackTrace: Boolean = false): String = {
+      val cause = ex.getCause
+      val noCause = (null==cause) || cause.toString.trim.isEmpty
+
+      val message = ex.getMessage
+      val noMessage = (null==message) || message.trim.isEmpty
+
+      (if (noCause) "" else s"$cause: ") + (if (noMessage) "" else message) +
+        (if (asHtml) {
+          if (showStackTrace || (noCause && noMessage))
+            "\n<pre>" + ex.getStackTrace.mkString("\n  ", "\n  ", "\n") + "</pre>\n"
+          else ""
+        } else { // console output
+          (if (!showStackTrace && (!noCause || !noMessage)) "" else "\n  ") +
+          (if (showStackTrace || (noCause && noMessage)) ex.getStackTrace.mkString("\n  ") else "")
+        })
+    }
+  }
+}
