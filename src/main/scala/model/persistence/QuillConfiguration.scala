@@ -15,18 +15,26 @@ object QuillConfiguration {
   type AllDialects = H2Dialect with MySQLDialect with PostgresDialect with SqliteDialect
   type AllContexts = H2JdbcContext[TableNameSnakeCase] with MysqlJdbcContext[TableNameSnakeCase] with
                      PostgresJdbcContext[TableNameSnakeCase] with SqliteJdbcContext[TableNameSnakeCase]
-  protected lazy val config: Config = ConfigFactory.load.getConfig("persistence-config")
+  protected lazy val quillSection = "quill-cache"
+  protected lazy val config: Config = ConfigFactory.load.getConfig(quillSection)
 
   protected lazy val dbTimeout: Duration = Duration.fromNanos(config.getDuration("timeout").toNanos)
 
   protected lazy val dbType: String = config.getString("use")
 
   // TODO What type can be ascribed to dbWitness such that importing it will define the encoders and decoders?
-  def dbWitness = dbType match {
-    case "h2"       => new H2Witness(s"persistence-config.$dbType")
-    case "mysql"    => new MysqlWitness(s"persistence-config.$dbType")
-    case "postgres" => new PostgresWitness(s"persistence-config.$dbType")
-    case "sqlite"   => new SqliteWitness(s"persistence-config.$dbType")
-    case _          => throw new Exception("No database configured.")
+  def dbWitness = try {
+  val configPrefix = s"$quillSection.$dbType"
+    dbType match {
+      case "h2"       => new H2Witness(configPrefix)
+      case "mysql"    => new MysqlWitness(configPrefix)
+      case "postgres" => new PostgresWitness(configPrefix)
+      case "sqlite"   => new SqliteWitness(configPrefix)
+      case _          => throw new Exception("No database configured.")
+    }
+  } catch {
+    case e: Throwable =>
+      println(e.getMessage)
+      throw e
   }
 }

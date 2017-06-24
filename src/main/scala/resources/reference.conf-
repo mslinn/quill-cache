@@ -3,7 +3,7 @@
 akka.log-config-on-start = off
 akka.log-config-on-start = ${?CONFIG_DUMP}
 
-persistence-config {
+quill-cache {
   use: postgres
   timeout: 1 minute
 
@@ -12,20 +12,24 @@ persistence-config {
     leakDetectionThreshold = 2000
     numThreads = 10
     properties {
-      databaseName = cadenza_model_test
-      password = root
-      serverName = localhost
-      user = root
+      databaseName = ${?DB}
+      password = ${?PGPASSWORD}
+      serverName = ${?PGSERVER}
+      user = ${?USERID}
     }
   }
 
   postgres {
     connectionTimeout = 10000
     dataSourceClassName = "org.postgresql.ds.PGSimpleDataSource"
+    properties.databaseName = ${?DB}
     properties = {
-      dataSourceClassName = ${?DB}
       password = ${?PGPASSWORD}
-      serverName=${?PGSERVER}
+      serverName = ${?PGSERVER}
+      #ssl = true
+      #sslfactory = "org.postgresql.ssl.NonValidatingFactory"
+      // or start with "jdbc:postgresql"
+      url = "postgres://$USERID:$PGPASSWORD@$HOST:$PGPORT/$DB?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory"
       user = ${?USERID}
     }
   }

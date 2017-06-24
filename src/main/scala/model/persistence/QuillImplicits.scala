@@ -5,7 +5,7 @@ import java.util.UUID
 import io.getquill._
 
 class QuillImplicits extends IdImplicitLike {
-  // TODO what is the type of dbWitness?
+  // TODO what is the type of dbWitness.ctx?
   val dbWitness = QuillConfiguration.dbWitness
   import dbWitness.ctx._
 

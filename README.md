@@ -64,6 +64,29 @@ Add this to your project's `build.sbt`:
     resolvers += "micronautics/scala on bintray" at "http://dl.bintray.com/micronautics/scala"
 
     libraryDependencies += "com.micronautics" %% "quill-cache" % "2.3.0" withSources()
+    
+You will also need to add a driver for the database you are using.
+Quill only supports for: H2, MySQL, Postgres and Sqlite.
+For example, for Postgres, add:
+
+    libraryDependencies += "org.postgresql" % "postgresql" % "42.1.1"
+
+You will need a logging framework. Logback is a good choice:
+
+    libraryDependencies += "ch.qos.logback" % "logback-classic" % "1.2.3"
+
+## Configuration
+Your database configuration is specified by a file called `application.conf` on the classpath.
+Please see `src/main/scala/resources/reference.conf` for an example of how to set that up.
+The `quill-cache` section specifies parameters for this library:
+  * `use` indicates the name of a subsection containing detailed database configuration.
+    Only two are provided (`mysql` and `postgres`), but you can make up your own subsections and call them whatever you want.
+  * `timeout` indicates how long a database query is allowed to run before an error is declared.
+  * The contents of the named subsections are database dependent.
+    [Hikari](https://github.com/brettwooldridge/HikariCP#configuration-knobs-baby) interprets the meaning of this section.
+
+For Postgres, you can specify [additional properties](https://jdbc.postgresql.org/documentation/head/connect.html) 
+in `src/main/scala/resources/org/postgresql/driverconfig.properties`.
 
 ## Sample Code
 See the unit tests for examples of how to use this library.
