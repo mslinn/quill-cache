@@ -117,7 +117,11 @@ Because <code>preload()</code> always flushes the cache before loading it you pr
 which you can use to derive DAOs for case classes that must have direct access to the database so the case classes are not cached.
 You don't have to subclass <code>UnCachedPersistence</code> to get this behavior, but if you do then the DAOs for your cached
 domain objects will have the same interface as the DAOs for your uncached domain objects,
-and your code's structure will be more consistent.</p></div></div>
+and your code's structure will be more consistent.</p><h4> Configuration </h4><p>Your database configuration is specified by a file called <code>application.conf</code> on the classpath.
+Please see <code>src/main/scala/resources/reference.conf</code> for an example of how to set that up.
+The <code>quill-cache</code> section specifies parameters for this library:</p><ul><li><code>use</code> indicates the name of a subsection containing detailed database configuration.
+    Only two are provided (<code>mysql</code> and <code>postgres</code>), but you can make up your own subsections and call them whatever you want.</li><li><code>timeout</code> indicates how long a database query is allowed to run before an error is declared.</li><li>The contents of the named subsections are database dependent.
+    [Hikari](https://github.com/brettwooldridge/HikariCP#configuration-knobs-baby) interprets the meaning of this section.</li></ul></div></div>
     </li></ol>
             </div>
 
