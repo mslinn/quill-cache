@@ -4,9 +4,9 @@ import com.typesafe.config.{Config, ConfigFactory}
 import io.getquill._
 import io.getquill.context.jdbc.JdbcContext
 import scala.concurrent.duration.Duration
-import scala.reflect.ClassTag
+import scala.reflect.runtime.universe._
 
-protected sealed class DbWitnesses[T: ClassTag](ctx: T)
+protected sealed class DbWitnesses[T: TypeTag](ctx: T)
 class H2Witness[N](configPrefix: String)       extends DbWitnesses(new H2JdbcContext[N](configPrefix))
 class MysqlWitness[N](configPrefix: String)    extends DbWitnesses(new MysqlJdbcContext[N](configPrefix))
 class PostgresWitness[N](configPrefix: String) extends DbWitnesses(new PostgresJdbcContext[N](configPrefix))
