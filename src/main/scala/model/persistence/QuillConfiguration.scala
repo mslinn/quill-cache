@@ -2,15 +2,14 @@ package model.persistence
 
 import com.typesafe.config.{Config, ConfigFactory}
 import io.getquill._
-import io.getquill.context.jdbc.JdbcContext
 import scala.concurrent.duration.Duration
 import scala.reflect.runtime.universe._
 
-protected sealed class DbWitnesses[T: TypeTag](ctx: T)
-class H2Witness[N](configPrefix: String)       extends DbWitnesses(new H2JdbcContext[N](configPrefix))
-class MysqlWitness[N](configPrefix: String)    extends DbWitnesses(new MysqlJdbcContext[N](configPrefix))
-class PostgresWitness[N](configPrefix: String) extends DbWitnesses(new PostgresJdbcContext[N](configPrefix))
-class SqliteWitness[N](configPrefix: String)   extends DbWitnesses(new SqliteJdbcContext[N](configPrefix))
+protected sealed class DbWitness[T: TypeTag](val ctx: T)
+class H2Witness[N](configPrefix: String)       extends DbWitness(new H2JdbcContext[N](configPrefix))
+class MysqlWitness[N](configPrefix: String)    extends DbWitness(new MysqlJdbcContext[N](configPrefix))
+class PostgresWitness[N](configPrefix: String) extends DbWitness(new PostgresJdbcContext[N](configPrefix))
+class SqliteWitness[N](configPrefix: String)   extends DbWitness(new SqliteJdbcContext[N](configPrefix))
 
 object QuillConfiguration {
   type AllDialects = H2Dialect with MySQLDialect with PostgresDialect with SqliteDialect
@@ -21,7 +20,7 @@ object QuillConfiguration {
 
   protected lazy val dbType: String = config.getString("use")
 
-  def ctx[N <: NamingStrategy] = dbType match {
+  def dbWitness[N <: NamingStrategy]: DbWitness[_] = dbType match {
     case "h2"       => new H2Witness[N](s"persistence-config.$dbType")
     case "mysql"    => new MysqlWitness[N](s"persistence-config.$dbType")
     case "postgres" => new PostgresWitness[N](s"persistence-config.$dbType")
