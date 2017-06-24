@@ -24,7 +24,7 @@ object QuillConfiguration {
 
   // TODO What type can be ascribed to dbWitness such that importing it will define the encoders and decoders?
   def dbWitness = try {
-  val configPrefix = s"$quillSection.$dbType"
+    val configPrefix = s"$quillSection.$dbType"
     dbType match {
       case "h2"       => new H2Witness(configPrefix)
       case "mysql"    => new MysqlWitness(configPrefix)
