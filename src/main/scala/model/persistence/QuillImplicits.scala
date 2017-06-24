@@ -5,7 +5,7 @@ import java.util.UUID
 import io.getquill._
 
 class QuillImplicits extends IdImplicitLike {
-  val dbWitness: DbWitness[_] = QuillConfiguration.dbWitness[TableNameSnakeCase]
+  val dbWitness = QuillConfiguration.dbWitness[TableNameSnakeCase]
   import dbWitness.ctx._
 
   implicit val dateTimeDecoder: Decoder[DateTime] =

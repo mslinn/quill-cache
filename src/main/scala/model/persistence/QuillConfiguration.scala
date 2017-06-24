@@ -20,7 +20,7 @@ object QuillConfiguration {
 
   protected lazy val dbType: String = config.getString("use")
 
-  def dbWitness[N <: NamingStrategy]: DbWitness[_] = dbType match {
+  def dbWitness[N <: NamingStrategy] = dbType match {
     case "h2"       => new H2Witness[N](s"persistence-config.$dbType")
     case "mysql"    => new MysqlWitness[N](s"persistence-config.$dbType")
     case "postgres" => new PostgresWitness[N](s"persistence-config.$dbType")
