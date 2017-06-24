@@ -85,9 +85,6 @@ The `quill-cache` section specifies parameters for this library:
   * The contents of the named subsections are database dependent.
     [Hikari](https://github.com/brettwooldridge/HikariCP#configuration-knobs-baby) interprets the meaning of this section.
 
-For Postgres, you can specify [additional properties](https://jdbc.postgresql.org/documentation/head/connect.html) 
-in `src/main/scala/resources/org/postgresql/driverconfig.properties`.
-
 ## Sample Code
 See the unit tests for examples of how to use this library.
 
