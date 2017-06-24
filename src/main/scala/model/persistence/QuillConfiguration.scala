@@ -29,8 +29,3 @@ object QuillConfiguration {
     case _          => throw new Exception("No database configured.")
   }
 }
-
-/** Selects the appropriate Quill JdbcContext at runtime according to the database configuration in `reference.conf`,
-  * or `application.conf`, if provided.
-  * @see [[http://getquill.io/#contexts-sql-contexts Quill SQL Contexts]] */
-//case class QuillConfiguration[N, T: ClassTag](ctx: T)
