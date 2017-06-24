@@ -6,10 +6,7 @@ import io.getquill._
 
 class QuillImplicits extends IdImplicitLike {
   // what is the type of dbWitness?
-  /* Error:(9, 20) encountered unrecoverable cycle resolving import.
-  Note: this is often due in part to a class depending on a definition nested within its companion.
-  If applicable, you may wish to try moving some members into another object. */
-  val dbWitness = QuillConfiguration.dbWitness[TableNameSnakeCase]
+  val dbWitness = QuillConfiguration.dbWitness
   import dbWitness.ctx._
 
   implicit val dateTimeDecoder: Decoder[DateTime] =
