@@ -21,7 +21,7 @@ object QuillConfiguration {
 
   protected lazy val dbType: String = config.getString("use")
 
-  // What is the type of dbWitness?
+  // TODO What is the type of dbWitness?
   def dbWitness = dbType match {
     case "h2"       => new H2Witness(s"persistence-config.$dbType")
     case "mysql"    => new MysqlWitness(s"persistence-config.$dbType")
