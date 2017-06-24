@@ -7,7 +7,7 @@ import scala.concurrent.ExecutionContext
 import scala.concurrent.ExecutionContext.Implicits.global
 
 object Courses extends CachedPersistence[Long, Option[Long], Course] with StrongCacheLike[Long, Option[Long], Course] {
-  // How to get rid of the `asInstanceOf` abomination?
+  // TODO How to get rid of the `asInstanceOf` abomination?
   val _dbWitness = QuillConfiguration.dbWitness.asInstanceOf[DbWitness[PostgresJdbcContext[TableNameSnakeCase]]]
   import _dbWitness.ctx._
 
