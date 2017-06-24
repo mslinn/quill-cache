@@ -45,7 +45,7 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <span class="name">CacheOps</span><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <span class="name">CacheOps</span><span class="tparams">[<span name="Key">Key &lt;: <span class="extype" name="scala.AnyRef">AnyRef</span></span>, <span name="_IdType">_IdType &lt;: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="model.persistence.CacheOps.Key">Key</span>]</span>, <span name="CaseClass">CaseClass &lt;: <span class="extype" name="model.persistence.HasId">HasId</span>[<span class="extype" name="model.persistence.CacheOps.CaseClass">CaseClass</span>, <span class="extype" name="model.persistence.CacheOps._IdType">_IdType</span>]</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
       
@@ -110,52 +110,52 @@
     </span>
       
     </li><li name="model.persistence.CacheOps#cacheRemoveId" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="cacheRemoveId(id:model.persistence.Id[Option[Long]]):Unit"></a>
-      <a id="cacheRemoveId(Id[Option[Long]]):Unit"></a>
+      <a id="cacheRemoveId(id:model.persistence.Id[_IdType]):Unit"></a>
+      <a id="cacheRemoveId(Id[_IdType]):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">abstract </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">cacheRemoveId</span><span class="params">(<span name="id">id: <span class="extype" name="model.persistence.Id">Id</span>[<span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Long">Long</span>]]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">cacheRemoveId</span><span class="params">(<span name="id">id: <span class="extype" name="model.persistence.Id">Id</span>[<span class="extype" name="model.persistence.CacheOps._IdType">_IdType</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.CacheOps@cacheRemoveId(id:model.persistence.Id[Option[Long]]):Unit" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.CacheOps@cacheRemoveId(id:model.persistence.Id[_IdType]):Unit" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       
     </li><li name="model.persistence.CacheOps#cacheSet" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="cacheSet(key:String,value:T):Unit"></a>
-      <a id="cacheSet(String,T):Unit"></a>
+      <a id="cacheSet(key:String,value:CaseClass):Unit"></a>
+      <a id="cacheSet(String,CaseClass):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">abstract </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">cacheSet</span><span class="params">(<span name="key">key: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="value">value: <span class="extype" name="model.persistence.CacheOps.T">T</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">cacheSet</span><span class="params">(<span name="key">key: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="value">value: <span class="extype" name="model.persistence.CacheOps.CaseClass">CaseClass</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.CacheOps@cacheSet(key:String,value:T):Unit" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.CacheOps@cacheSet(key:String,value:CaseClass):Unit" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       
     </li><li name="model.persistence.CacheOps#cacheSet" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="cacheSet(i:model.persistence.Id[Option[Long]],value:T):Unit"></a>
-      <a id="cacheSet(Id[Option[Long]],T):Unit"></a>
+      <a id="cacheSet(i:model.persistence.Id[_IdType],value:CaseClass):Unit"></a>
+      <a id="cacheSet(Id[_IdType],CaseClass):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">abstract </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">cacheSet</span><span class="params">(<span name="i">i: <span class="extype" name="model.persistence.Id">Id</span>[<span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Long">Long</span>]]</span>, <span name="value">value: <span class="extype" name="model.persistence.CacheOps.T">T</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">cacheSet</span><span class="params">(<span name="i">i: <span class="extype" name="model.persistence.Id">Id</span>[<span class="extype" name="model.persistence.CacheOps._IdType">_IdType</span>]</span>, <span name="value">value: <span class="extype" name="model.persistence.CacheOps.CaseClass">CaseClass</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.CacheOps@cacheSet(i:model.persistence.Id[Option[Long]],value:T):Unit" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.CacheOps@cacheSet(i:model.persistence.Id[_IdType],value:CaseClass):Unit" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>

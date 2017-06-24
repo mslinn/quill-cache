@@ -45,7 +45,7 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <span class="name">StrongCacheLike</span><span class="tparams">[<span name="Key">Key &lt;: <span class="extype" name="scala.AnyRef">AnyRef</span></span>, <span name="_IdType">_IdType &lt;: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="model.persistence.StrongCacheLike.Key">Key</span>]</span>, <span name="CaseClass">CaseClass &lt;: <span class="extype" name="model.persistence.HasId">HasId</span>[<span class="extype" name="model.persistence.StrongCacheLike.CaseClass">CaseClass</span>, <span class="extype" name="model.persistence.StrongCacheLike._IdType">_IdType</span>]</span>]</span><span class="result"> extends <a href="CacheLike.html" class="extype" name="model.persistence.CacheLike">CacheLike</a>[<span class="extype" name="model.persistence.StrongCacheLike.Key">Key</span>, <span class="extype" name="model.persistence.StrongCacheLike._IdType">_IdType</span>, <span class="extype" name="model.persistence.StrongCacheLike.CaseClass">CaseClass</span>]</span>
+        <span class="name">StrongCacheLike</span><span class="tparams">[<span name="Key">Key</span>, <span name="_IdType">_IdType &lt;: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="model.persistence.StrongCacheLike.Key">Key</span>]</span>, <span name="CaseClass">CaseClass &lt;: <span class="extype" name="model.persistence.HasId">HasId</span>[<span class="extype" name="model.persistence.StrongCacheLike.CaseClass">CaseClass</span>, <span class="extype" name="model.persistence.StrongCacheLike._IdType">_IdType</span>]</span>]</span><span class="result"> extends <a href="CacheLike.html" class="extype" name="model.persistence.CacheLike">CacheLike</a>[<span class="extype" name="model.persistence.StrongCacheLike.Key">Key</span>, <span class="extype" name="model.persistence.StrongCacheLike._IdType">_IdType</span>, <span class="extype" name="model.persistence.StrongCacheLike.CaseClass">CaseClass</span>]</span>
       </span>
       </h4>
       
@@ -221,26 +221,6 @@ This trait overrides the default finder implementations.</p></div><dl class="att
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="model.persistence.StrongCacheLike#_findAll" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="_findAll():List[CaseClass]"></a>
-      <a id="_findAll():List[CaseClass]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">_findAll</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.List">List</span>[<span class="extype" name="model.persistence.StrongCacheLike.CaseClass">CaseClass</span>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.StrongCacheLike@_findAll():List[CaseClass]" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
-                <span class="name">@inline</span><span class="args">()</span>
-              
-        </dd></dl></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <a id="asInstanceOf[T0]:T0"></a>
@@ -379,18 +359,18 @@ This trait overrides the default finder implementations.</p></div><dl class="att
               
         </dd></dl></div>
     </li><li name="model.persistence.StrongCacheLike#findAll" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="findAll():List[CaseClass]"></a>
-      <a id="findAll():List[CaseClass]"></a>
+      <a id="findAll:List[CaseClass]"></a>
+      <a id="findAll:List[CaseClass]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">findAll</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.List">List</span>[<span class="extype" name="model.persistence.StrongCacheLike.CaseClass">CaseClass</span>]</span>
+        <span class="name">findAll</span><span class="result">: <span class="extype" name="scala.List">List</span>[<span class="extype" name="model.persistence.StrongCacheLike.CaseClass">CaseClass</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.StrongCacheLike@findAll():List[CaseClass]" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.StrongCacheLike@findAll:List[CaseClass]" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -558,7 +538,7 @@ This trait overrides the default finder implementations.</p></div><dl class="att
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="model.persistence.StrongCacheLike#theCache" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="theCache:com.micronautics.cache.StrongCache[Key,CaseClass]"></a>
+      <a id="theCache:model.persistence.StrongCache[Key,CaseClass]"></a>
       <a id="theCache:StrongCache[Key,CaseClass]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -566,10 +546,10 @@ This trait overrides the default finder implementations.</p></div><dl class="att
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">theCache</span><span class="result">: <span class="extype" name="com.micronautics.cache.StrongCache">StrongCache</span>[<span class="extype" name="model.persistence.StrongCacheLike.Key">Key</span>, <span class="extype" name="model.persistence.StrongCacheLike.CaseClass">CaseClass</span>]</span>
+        <span class="name">theCache</span><span class="result">: <a href="StrongCache.html" class="extype" name="model.persistence.StrongCache">StrongCache</a>[<span class="extype" name="model.persistence.StrongCacheLike.Key">Key</span>, <span class="extype" name="model.persistence.StrongCacheLike.CaseClass">CaseClass</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.StrongCacheLike@theCache:com.micronautics.cache.StrongCache[Key,CaseClass]" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.StrongCacheLike@theCache:model.persistence.StrongCache[Key,CaseClass]" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>

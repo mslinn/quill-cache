@@ -1,9 +1,9 @@
 <!DOCTYPE html >
 <html>
         <head>
-          <title>QuillConfiguration - model.persistence.QuillConfiguration</title>
-          <meta name="description" content="QuillConfiguration - model.persistence.QuillConfiguration" />
-          <meta name="keywords" content="QuillConfiguration model.persistence.QuillConfiguration" />
+          <title>Throwables - model.persistence.Throwables</title>
+          <meta name="description" content="Throwables - model.persistence.Throwables" />
+          <meta name="keywords" content="Throwables model.persistence.Throwables" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       <link href="../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
@@ -16,7 +16,7 @@
       <script type="text/javascript">
          if(top === self) {
             var url = '../../index.html';
-            var hash = 'model.persistence.QuillConfiguration';
+            var hash = 'model.persistence.Throwables';
             var anchor = window.location.hash;
             var anchor_opt = '';
             if (anchor.length >= 1)
@@ -28,14 +28,12 @@
         </head>
         <body class="type">
       <div id="definition">
-        <a href="QuillConfiguration$.html" title="See companion object"><img alt="Trait/Object" src="../../lib/trait_to_object_big.png" /></a>
+        <img alt="Trait" src="../../lib/trait_big.png" />
         <p id="owner"><a href="../package.html" class="extype" name="model">model</a>.<a href="package.html" class="extype" name="model.persistence">persistence</a></p>
-        <h1><a href="QuillConfiguration$.html" title="See companion object">QuillConfiguration</a></h1><h3><span class="morelinks"><div>
-            Related Docs:
-            <a href="QuillConfiguration$.html" title="See companion object">object QuillConfiguration</a>
-            | <a href="package.html" class="extype" name="model.persistence">package persistence</a>
+        <h1>Throwables</h1><h3><span class="morelinks"><div>Related Doc:
+            <a href="package.html" class="extype" name="model.persistence">package persistence</a>
           </div></span></h3><span class="permalink">
-      <a href="../../index.html#model.persistence.QuillConfiguration" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.Throwables" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -47,18 +45,14 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <span class="name">QuillConfiguration</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <span class="name">Throwables</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Selects the appropriate Quill JdbcContext at runtime according to the database configuration in <code>reference.conf</code>,
-or <code>application.conf</code>, if provided.</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/mslinn/quill-cache/tree/master/src/main/scala/model/persistence/QuillConfiguration.scala" target="_blank">QuillConfiguration.scala</a></dd><dt>See also</dt><dd><span class="cmt"><p><a href="http://getquill.io/#contexts-sql-contexts" target="_blank">Quill SQL Contexts</a></p></span></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/mslinn/quill-cache/tree/master/src/main/scala/model/persistence/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
-        </div><div class="toggleContainer block">
-            <span class="toggle">Known Subclasses</span>
-            <div class="subClasses hiddenContent"><a href="CachedPersistence.html" class="extype" name="model.persistence.CachedPersistence">CachedPersistence</a>, <a href="QuillConfiguration$.html" class="extype" name="model.persistence.QuillConfiguration">QuillConfiguration</a>, <a href="UnCachedPersistence.html" class="extype" name="model.persistence.UnCachedPersistence">UnCachedPersistence</a></div>
-          </div></div>
+        </div></div>
         
 
       <div id="mbrsel">
@@ -75,7 +69,7 @@ or <code>application.conf</code>, if provided.</p></div><dl class="attributes bl
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="model.persistence.QuillConfiguration"><span>QuillConfiguration</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="model.persistence.Throwables"><span>Throwables</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -94,44 +88,7 @@ or <code>application.conf</code>, if provided.</p></div><dl class="attributes bl
         <div id="allMembers">
         
 
-        <div id="types" class="types members">
-              <h3>Type Members</h3>
-              <ol><li name="model.persistence.QuillConfiguration.AllDialects" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="AllDialects=io.getquill.H2Dialectwithio.getquill.MySQLDialectwithio.getquill.PostgresDialectwithio.getquill.SqliteDialect"></a>
-      <a id="AllDialects:AllDialects"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">type</span>
-      </span>
-      <span class="symbol">
-        <span class="name">AllDialects</span><span class="result"> = <span class="extype" name="io.getquill.H2Dialect">H2Dialect</span> with <span class="extype" name="io.getquill.MySQLDialect">MySQLDialect</span> with <span class="extype" name="io.getquill.PostgresDialect">PostgresDialect</span> with <span class="extype" name="io.getquill.SqliteDialect">SqliteDialect</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.QuillConfiguration@AllDialects=io.getquill.H2Dialectwithio.getquill.MySQLDialectwithio.getquill.PostgresDialectwithio.getquill.SqliteDialect" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      
-    </li><li name="model.persistence.QuillConfiguration.Ctx" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="Ctx=io.getquill.context.jdbc.JdbcContext[_&gt;:QuillConfiguration.this.AllDialects&lt;:io.getquill.context.sql.idiom.SqlIdiom,model.persistence.TableNameSnakeCase]"></a>
-      <a id="Ctx:Ctx"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">type</span>
-      </span>
-      <span class="symbol">
-        <span class="name">Ctx</span><span class="result"> = <span class="extype" name="io.getquill.context.jdbc.JdbcContext">JdbcContext</span>[_ &gt;: <a href="#AllDialects=io.getquill.H2Dialectwithio.getquill.MySQLDialectwithio.getquill.PostgresDialectwithio.getquill.SqliteDialect" class="extmbr" name="model.persistence.QuillConfiguration.AllDialects">AllDialects</a> &lt;: <span class="extype" name="io.getquill.context.sql.idiom.SqlIdiom">SqlIdiom</span>, <a href="TableNameSnakeCase.html" class="extype" name="model.persistence.TableNameSnakeCase">TableNameSnakeCase</a>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.QuillConfiguration@Ctx=io.getquill.context.jdbc.JdbcContext[_&gt;:QuillConfiguration.this.AllDialects&lt;:io.getquill.context.sql.idiom.SqlIdiom,model.persistence.TableNameSnakeCase]" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      
-    </li></ol>
-            </div>
+        
 
         
 
@@ -149,7 +106,7 @@ or <code>application.conf</code>, if provided.</p></div><dl class="attributes bl
         <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.QuillConfiguration@!=(x$1:Any):Boolean" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.Throwables@!=(x$1:Any):Boolean" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -166,7 +123,7 @@ or <code>application.conf</code>, if provided.</p></div><dl class="attributes bl
         <span title="gt4s: $hash$hash" class="name">##</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.QuillConfiguration@##():Int" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.Throwables@##():Int" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -183,7 +140,7 @@ or <code>application.conf</code>, if provided.</p></div><dl class="attributes bl
         <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.QuillConfiguration@==(x$1:Any):Boolean" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.Throwables@==(x$1:Any):Boolean" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -200,7 +157,7 @@ or <code>application.conf</code>, if provided.</p></div><dl class="attributes bl
         <span class="name">asInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Any.asInstanceOf.T0">T0</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.QuillConfiguration@asInstanceOf[T0]:T0" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.Throwables@asInstanceOf[T0]:T0" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -217,7 +174,7 @@ or <code>application.conf</code>, if provided.</p></div><dl class="attributes bl
         <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.QuillConfiguration@clone():Object" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.Throwables@clone():Object" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -228,74 +185,6 @@ or <code>application.conf</code>, if provided.</p></div><dl class="attributes bl
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="model.persistence.QuillConfiguration#config" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="config:com.typesafe.config.Config"></a>
-      <a id="config:Config"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">lazy val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">config</span><span class="result">: <span class="extype" name="com.typesafe.config.Config">Config</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.QuillConfiguration@config:com.typesafe.config.Config" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
-    </li><li name="model.persistence.QuillConfiguration#ctx" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="ctx:io.getquill.PostgresJdbcContext[model.persistence.TableNameSnakeCase]"></a>
-      <a id="ctx:PostgresJdbcContext[TableNameSnakeCase]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">lazy val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">ctx</span><span class="result">: <span class="extype" name="io.getquill.PostgresJdbcContext">PostgresJdbcContext</span>[<a href="TableNameSnakeCase.html" class="extype" name="model.persistence.TableNameSnakeCase">TableNameSnakeCase</a>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.QuillConfiguration@ctx:io.getquill.PostgresJdbcContext[model.persistence.TableNameSnakeCase]" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      
-    </li><li name="model.persistence.QuillConfiguration#dbTimeout" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="dbTimeout:scala.concurrent.duration.Duration"></a>
-      <a id="dbTimeout:Duration"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">lazy val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">dbTimeout</span><span class="result">: <span class="extype" name="scala.concurrent.duration.Duration">Duration</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.QuillConfiguration@dbTimeout:scala.concurrent.duration.Duration" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
-    </li><li name="model.persistence.QuillConfiguration#dbType" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="dbType:String"></a>
-      <a id="dbType:String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">lazy val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">dbType</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.QuillConfiguration@dbType:String" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -308,7 +197,7 @@ or <code>application.conf</code>, if provided.</p></div><dl class="attributes bl
         <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.QuillConfiguration@eq(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.Throwables@eq(x$1:AnyRef):Boolean" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -325,7 +214,7 @@ or <code>application.conf</code>, if provided.</p></div><dl class="attributes bl
         <span class="name">equals</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.QuillConfiguration@equals(x$1:Any):Boolean" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.Throwables@equals(x$1:Any):Boolean" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -342,7 +231,7 @@ or <code>application.conf</code>, if provided.</p></div><dl class="attributes bl
         <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.QuillConfiguration@finalize():Unit" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.Throwables@finalize():Unit" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -353,6 +242,23 @@ or <code>application.conf</code>, if provided.</p></div><dl class="attributes bl
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="model.persistence.Throwables#format" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="format(ex:Throwable,asHtml:Boolean,showStackTrace:Boolean):String"></a>
+      <a id="format(Throwable,Boolean,Boolean):String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">format</span><span class="params">(<span name="ex">ex: <span class="extype" name="scala.Throwable">Throwable</span></span>, <span name="asHtml">asHtml: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="showStackTrace">showStackTrace: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.Throwables@format(ex:Throwable,asHtml:Boolean,showStackTrace:Boolean):String" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">showStackTrace</dt><dd class="cmt"><p>is overridden if the Exception has no cause and no message</p></dd></dl></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <a id="getClass():Class[_]"></a>
@@ -365,7 +271,7 @@ or <code>application.conf</code>, if provided.</p></div><dl class="attributes bl
         <span class="name">getClass</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.Class">Class</span>[_]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.QuillConfiguration@getClass():Class[_]" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.Throwables@getClass():Class[_]" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -382,7 +288,7 @@ or <code>application.conf</code>, if provided.</p></div><dl class="attributes bl
         <span class="name">hashCode</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.QuillConfiguration@hashCode():Int" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.Throwables@hashCode():Int" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -399,7 +305,7 @@ or <code>application.conf</code>, if provided.</p></div><dl class="attributes bl
         <span class="name">isInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.QuillConfiguration@isInstanceOf[T0]:Boolean" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.Throwables@isInstanceOf[T0]:Boolean" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -416,7 +322,7 @@ or <code>application.conf</code>, if provided.</p></div><dl class="attributes bl
         <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.QuillConfiguration@ne(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.Throwables@ne(x$1:AnyRef):Boolean" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -433,7 +339,7 @@ or <code>application.conf</code>, if provided.</p></div><dl class="attributes bl
         <span class="name">notify</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.QuillConfiguration@notify():Unit" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.Throwables@notify():Unit" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -450,7 +356,7 @@ or <code>application.conf</code>, if provided.</p></div><dl class="attributes bl
         <span class="name">notifyAll</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.QuillConfiguration@notifyAll():Unit" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.Throwables@notifyAll():Unit" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -467,7 +373,7 @@ or <code>application.conf</code>, if provided.</p></div><dl class="attributes bl
         <span class="name">synchronized</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="params">(<span name="arg0">arg0: ⇒ <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>)</span><span class="result">: <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.QuillConfiguration@synchronized[T0](x$1:=&gt;T0):T0" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.Throwables@synchronized[T0](x$1:=&gt;T0):T0" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -484,7 +390,7 @@ or <code>application.conf</code>, if provided.</p></div><dl class="attributes bl
         <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.QuillConfiguration@toString():String" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.Throwables@toString():String" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -501,7 +407,7 @@ or <code>application.conf</code>, if provided.</p></div><dl class="attributes bl
         <span class="name">wait</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.QuillConfiguration@wait():Unit" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.Throwables@wait():Unit" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -524,7 +430,7 @@ or <code>application.conf</code>, if provided.</p></div><dl class="attributes bl
         <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>, <span name="arg1">arg1: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.QuillConfiguration@wait(x$1:Long,x$2:Int):Unit" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.Throwables@wait(x$1:Long,x$2:Int):Unit" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -547,7 +453,7 @@ or <code>application.conf</code>, if provided.</p></div><dl class="attributes bl
         <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.QuillConfiguration@wait(x$1:Long):Unit" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.Throwables@wait(x$1:Long):Unit" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>

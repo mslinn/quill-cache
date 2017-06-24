@@ -45,7 +45,7 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <span class="name">UnCachedPersistence</span><span class="tparams">[<span name="Key">Key &lt;: <span class="extype" name="scala.AnyRef">AnyRef</span></span>, <span name="_IdType">_IdType &lt;: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="model.persistence.UnCachedPersistence.Key">Key</span>]</span>, <span name="CaseClass">CaseClass &lt;: <span class="extype" name="model.persistence.HasId">HasId</span>[<span class="extype" name="model.persistence.UnCachedPersistence.CaseClass">CaseClass</span>, <span class="extype" name="model.persistence.UnCachedPersistence._IdType">_IdType</span>]</span>]</span><span class="result"> extends <a href="QuillConfiguration.html" class="extype" name="model.persistence.QuillConfiguration">QuillConfiguration</a> with <a href="QuillImplicits.html" class="extype" name="model.persistence.QuillImplicits">QuillImplicits</a> with <span class="extype" name="model.persistence.IdImplicitLike">IdImplicitLike</span></span>
+        <span class="name">UnCachedPersistence</span><span class="tparams">[<span name="Key">Key</span>, <span name="_IdType">_IdType &lt;: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="model.persistence.UnCachedPersistence.Key">Key</span>]</span>, <span name="CaseClass">CaseClass &lt;: <span class="extype" name="model.persistence.HasId">HasId</span>[<span class="extype" name="model.persistence.UnCachedPersistence.CaseClass">CaseClass</span>, <span class="extype" name="model.persistence.UnCachedPersistence._IdType">_IdType</span>]</span>]</span><span class="result"> extends <a href="QuillImplicits.html" class="extype" name="model.persistence.QuillImplicits">QuillImplicits</a> with <span class="extype" name="model.persistence.IdImplicitLike">IdImplicitLike</span></span>
       </span>
       </h4>
       
@@ -54,7 +54,7 @@ You can use this abstract class to derive DAOs for case classes that must have d
 case classes are not cached. You don't have to subclass <code>UnCachedPersistence</code>, but if you do then the DAOs for your
 cached domain objects will have the same interface as the DAOs for your uncached domain objects.</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/mslinn/quill-cache/tree/master/src/main/scala/model/persistence/UnCachedPersistence.scala" target="_blank">UnCachedPersistence.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><a href="QuillImplicits.html" class="extype" name="model.persistence.QuillImplicits">QuillImplicits</a>, <span class="extype" name="model.persistence.IdImplicitLike">IdImplicitLike</span>, <a href="QuillConfiguration.html" class="extype" name="model.persistence.QuillConfiguration">QuillConfiguration</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><a href="QuillImplicits.html" class="extype" name="model.persistence.QuillImplicits">QuillImplicits</a>, <span class="extype" name="model.persistence.IdImplicitLike">IdImplicitLike</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div><div class="toggleContainer block">
             <span class="toggle">Known Subclasses</span>
             <div class="subClasses hiddenContent"><a href="CachedPersistence.html" class="extype" name="model.persistence.CachedPersistence">CachedPersistence</a></div>
@@ -75,7 +75,7 @@ cached domain objects will have the same interface as the DAOs for your uncached
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="model.persistence.UnCachedPersistence"><span>UnCachedPersistence</span></li><li class="in" name="model.persistence.QuillImplicits"><span>QuillImplicits</span></li><li class="in" name="model.persistence.IdImplicitLike"><span>IdImplicitLike</span></li><li class="in" name="model.persistence.QuillConfiguration"><span>QuillConfiguration</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="model.persistence.UnCachedPersistence"><span>UnCachedPersistence</span></li><li class="in" name="model.persistence.QuillImplicits"><span>QuillImplicits</span></li><li class="in" name="model.persistence.IdImplicitLike"><span>IdImplicitLike</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -116,41 +116,7 @@ cached domain objects will have the same interface as the DAOs for your uncached
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="model.persistence.QuillConfiguration.AllDialects" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="AllDialects=io.getquill.H2Dialectwithio.getquill.MySQLDialectwithio.getquill.PostgresDialectwithio.getquill.SqliteDialect"></a>
-      <a id="AllDialects:AllDialects"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">type</span>
-      </span>
-      <span class="symbol">
-        <span class="name">AllDialects</span><span class="result"> = <span class="extype" name="io.getquill.H2Dialect">H2Dialect</span> with <span class="extype" name="io.getquill.MySQLDialect">MySQLDialect</span> with <span class="extype" name="io.getquill.PostgresDialect">PostgresDialect</span> with <span class="extype" name="io.getquill.SqliteDialect">SqliteDialect</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.UnCachedPersistence@AllDialects=io.getquill.H2Dialectwithio.getquill.MySQLDialectwithio.getquill.PostgresDialectwithio.getquill.SqliteDialect" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="QuillConfiguration.html" class="extype" name="model.persistence.QuillConfiguration">QuillConfiguration</a></dd></dl></div>
-    </li><li name="model.persistence.QuillConfiguration.Ctx" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="Ctx=io.getquill.context.jdbc.JdbcContext[_&gt;:QuillConfiguration.this.AllDialects&lt;:io.getquill.context.sql.idiom.SqlIdiom,model.persistence.TableNameSnakeCase]"></a>
-      <a id="Ctx:Ctx"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">type</span>
-      </span>
-      <span class="symbol">
-        <span class="name">Ctx</span><span class="result"> = <span class="extype" name="io.getquill.context.jdbc.JdbcContext">JdbcContext</span>[_ &gt;: <a href="#AllDialects=io.getquill.H2Dialectwithio.getquill.MySQLDialectwithio.getquill.PostgresDialectwithio.getquill.SqliteDialect" class="extmbr" name="model.persistence.UnCachedPersistence.AllDialects">AllDialects</a> &lt;: <span class="extype" name="io.getquill.context.sql.idiom.SqlIdiom">SqlIdiom</span>, <a href="TableNameSnakeCase.html" class="extype" name="model.persistence.TableNameSnakeCase">TableNameSnakeCase</a>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.UnCachedPersistence@Ctx=io.getquill.context.jdbc.JdbcContext[_&gt;:QuillConfiguration.this.AllDialects&lt;:io.getquill.context.sql.idiom.SqlIdiom,model.persistence.TableNameSnakeCase]" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="QuillConfiguration.html" class="extype" name="model.persistence.QuillConfiguration">QuillConfiguration</a></dd></dl></div>
-    </li><li name="model.persistence.IdImplicitLike.ToId" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+              <ol><li name="model.persistence.IdImplicitLike.ToId" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ToId[From&lt;:&lt;?&gt;]extendsAnyRef"></a>
       <a id="ToId[From]:ToId[From]"></a>
       <h4 class="signature">
@@ -190,18 +156,18 @@ cached domain objects will have the same interface as the DAOs for your uncached
     </span>
       <p class="shortcomment cmt">Encapsulates the Quill query that deletes the instance of the case class with the given <code>Id</code> from the database</p>
     </li><li name="model.persistence.UnCachedPersistence#_findAll" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="_findAll:()=&gt;List[CaseClass]"></a>
-      <a id="_findAll:()⇒List[CaseClass]"></a>
+      <a id="_findAll:List[CaseClass]"></a>
+      <a id="_findAll:List[CaseClass]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">abstract </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">_findAll</span><span class="result">: () ⇒ <span class="extype" name="scala.List">List</span>[<span class="extype" name="model.persistence.UnCachedPersistence.CaseClass">CaseClass</span>]</span>
+        <span class="name">_findAll</span><span class="result">: <span class="extype" name="scala.List">List</span>[<span class="extype" name="model.persistence.UnCachedPersistence.CaseClass">CaseClass</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.UnCachedPersistence@_findAll:()=&gt;List[CaseClass]" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@_findAll:List[CaseClass]" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -410,23 +376,6 @@ Throws an Exception if the case class was not previously persisted.</p></div></d
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="model.persistence.QuillConfiguration#config" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="config:com.typesafe.config.Config"></a>
-      <a id="config:Config"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">lazy val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">config</span><span class="result">: <span class="extype" name="com.typesafe.config.Config">Config</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.UnCachedPersistence@config:com.typesafe.config.Config" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="QuillConfiguration.html" class="extype" name="model.persistence.QuillConfiguration">QuillConfiguration</a></dd></dl></div>
     </li><li name="model.persistence.UnCachedPersistence#copyUpdate" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="copyUpdate:(CaseClass,model.persistence.Id[_IdType])=&gt;CaseClass"></a>
       <a id="copyUpdate:(CaseClass,Id[_IdType])⇒CaseClass"></a>
@@ -444,91 +393,57 @@ Throws an Exception if the case class was not previously persisted.</p></div></d
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
-    </li><li name="model.persistence.QuillConfiguration#ctx" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="ctx:io.getquill.PostgresJdbcContext[model.persistence.TableNameSnakeCase]"></a>
-      <a id="ctx:PostgresJdbcContext[TableNameSnakeCase]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">lazy val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">ctx</span><span class="result">: <span class="extype" name="io.getquill.PostgresJdbcContext">PostgresJdbcContext</span>[<a href="TableNameSnakeCase.html" class="extype" name="model.persistence.TableNameSnakeCase">TableNameSnakeCase</a>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.UnCachedPersistence@ctx:io.getquill.PostgresJdbcContext[model.persistence.TableNameSnakeCase]" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="QuillConfiguration.html" class="extype" name="model.persistence.QuillConfiguration">QuillConfiguration</a></dd></dl></div>
     </li><li name="model.persistence.QuillImplicits#dateTimeDecoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="dateTimeDecoder:model.persistence.QuillConfiguration.ctx.Decoder[com.github.nscala_time.time.Imports.DateTime]"></a>
-      <a id="dateTimeDecoder:io.getquill.PostgresJdbcContext.Decoder[com.github.nscala_time.time.Imports.DateTime]"></a>
+      <a id="dateTimeDecoder:QuillImplicits.this.dbWitness.ctx.Decoder[com.github.nscala_time.time.Imports.DateTime]"></a>
+      <a id="dateTimeDecoder:QuillImplicits.dbWitness._16.Decoder[com.github.nscala_time.time.Imports.DateTime]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">implicit </span>
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">dateTimeDecoder</span><span class="result">: <span class="extype" name="io.getquill.context.jdbc.Decoders.Decoder">io.getquill.PostgresJdbcContext.Decoder</span>[<span class="extype" name="com.github.nscala_time.time.TypeImports.DateTime">com.github.nscala_time.time.Imports.DateTime</span>]</span>
+        <span class="name">dateTimeDecoder</span><span class="result">: <span class="extype" name="io.getquill.context.jdbc.Decoders.Decoder">QuillImplicits.dbWitness._16.Decoder</span>[<span class="extype" name="com.github.nscala_time.time.TypeImports.DateTime">com.github.nscala_time.time.Imports.DateTime</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.UnCachedPersistence@dateTimeDecoder:model.persistence.QuillConfiguration.ctx.Decoder[com.github.nscala_time.time.Imports.DateTime]" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@dateTimeDecoder:QuillImplicits.this.dbWitness.ctx.Decoder[com.github.nscala_time.time.Imports.DateTime]" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="QuillImplicits.html" class="extype" name="model.persistence.QuillImplicits">QuillImplicits</a></dd></dl></div>
     </li><li name="model.persistence.QuillImplicits#dateTimeEncoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="dateTimeEncoder:model.persistence.QuillConfiguration.ctx.Encoder[com.github.nscala_time.time.Imports.DateTime]"></a>
-      <a id="dateTimeEncoder:io.getquill.PostgresJdbcContext.Encoder[com.github.nscala_time.time.Imports.DateTime]"></a>
+      <a id="dateTimeEncoder:QuillImplicits.this.dbWitness.ctx.Encoder[com.github.nscala_time.time.Imports.DateTime]"></a>
+      <a id="dateTimeEncoder:QuillImplicits.dbWitness._16.Encoder[com.github.nscala_time.time.Imports.DateTime]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">implicit </span>
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">dateTimeEncoder</span><span class="result">: <span class="extype" name="io.getquill.context.jdbc.Encoders.Encoder">io.getquill.PostgresJdbcContext.Encoder</span>[<span class="extype" name="com.github.nscala_time.time.TypeImports.DateTime">com.github.nscala_time.time.Imports.DateTime</span>]</span>
+        <span class="name">dateTimeEncoder</span><span class="result">: <span class="extype" name="io.getquill.context.jdbc.Encoders.Encoder">QuillImplicits.dbWitness._16.Encoder</span>[<span class="extype" name="com.github.nscala_time.time.TypeImports.DateTime">com.github.nscala_time.time.Imports.DateTime</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.UnCachedPersistence@dateTimeEncoder:model.persistence.QuillConfiguration.ctx.Encoder[com.github.nscala_time.time.Imports.DateTime]" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@dateTimeEncoder:QuillImplicits.this.dbWitness.ctx.Encoder[com.github.nscala_time.time.Imports.DateTime]" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="QuillImplicits.html" class="extype" name="model.persistence.QuillImplicits">QuillImplicits</a></dd></dl></div>
-    </li><li name="model.persistence.QuillConfiguration#dbTimeout" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="dbTimeout:scala.concurrent.duration.Duration"></a>
-      <a id="dbTimeout:Duration"></a>
+    </li><li name="model.persistence.QuillImplicits#dbWitness" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="dbWitness:model.persistence.DbWitness[_&gt;:io.getquill.H2JdbcContext[model.persistence.TableNameSnakeCase]withio.getquill.MysqlJdbcContext[model.persistence.TableNameSnakeCase]withio.getquill.PostgresJdbcContext[model.persistence.TableNameSnakeCase]withio.getquill.SqliteJdbcContext[model.persistence.TableNameSnakeCase]&lt;:io.getquill.context.jdbc.JdbcContext[_&gt;:io.getquill.H2Dialectwithio.getquill.MySQLDialectwithio.getquill.PostgresDialectwithio.getquill.SqliteDialect&lt;:io.getquill.context.sql.idiom.SqlIdiom,model.persistence.TableNameSnakeCase]]"></a>
+      <a id="dbWitness:DbWitness[_&gt;:H2JdbcContext[TableNameSnakeCase]withMysqlJdbcContext[TableNameSnakeCase]withPostgresJdbcContext[TableNameSnakeCase]withSqliteJdbcContext[TableNameSnakeCase]&lt;:JdbcContext[_&gt;:H2DialectwithMySQLDialectwithPostgresDialectwithSqliteDialect&lt;:SqlIdiom,TableNameSnakeCase]]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">lazy val</span>
+        <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">dbTimeout</span><span class="result">: <span class="extype" name="scala.concurrent.duration.Duration">Duration</span></span>
+        <span class="name">dbWitness</span><span class="result">: <a href="DbWitness.html" class="extype" name="model.persistence.DbWitness">DbWitness</a>[_ &gt;: <span class="extype" name="io.getquill.H2JdbcContext">H2JdbcContext</span>[<a href="TableNameSnakeCase.html" class="extype" name="model.persistence.TableNameSnakeCase">TableNameSnakeCase</a>] with <span class="extype" name="io.getquill.MysqlJdbcContext">MysqlJdbcContext</span>[<a href="TableNameSnakeCase.html" class="extype" name="model.persistence.TableNameSnakeCase">TableNameSnakeCase</a>] with <span class="extype" name="io.getquill.PostgresJdbcContext">PostgresJdbcContext</span>[<a href="TableNameSnakeCase.html" class="extype" name="model.persistence.TableNameSnakeCase">TableNameSnakeCase</a>] with <span class="extype" name="io.getquill.SqliteJdbcContext">SqliteJdbcContext</span>[<a href="TableNameSnakeCase.html" class="extype" name="model.persistence.TableNameSnakeCase">TableNameSnakeCase</a>] &lt;: <span class="extype" name="io.getquill.context.jdbc.JdbcContext">JdbcContext</span>[_ &gt;: <span class="extype" name="io.getquill.H2Dialect">H2Dialect</span> with <span class="extype" name="io.getquill.MySQLDialect">MySQLDialect</span> with <span class="extype" name="io.getquill.PostgresDialect">PostgresDialect</span> with <span class="extype" name="io.getquill.SqliteDialect">SqliteDialect</span> &lt;: <span class="extype" name="io.getquill.context.sql.idiom.SqlIdiom">SqlIdiom</span>, <a href="TableNameSnakeCase.html" class="extype" name="model.persistence.TableNameSnakeCase">TableNameSnakeCase</a>]]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.UnCachedPersistence@dbTimeout:scala.concurrent.duration.Duration" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@dbWitness:model.persistence.DbWitness[_&gt;:io.getquill.H2JdbcContext[model.persistence.TableNameSnakeCase]withio.getquill.MysqlJdbcContext[model.persistence.TableNameSnakeCase]withio.getquill.PostgresJdbcContext[model.persistence.TableNameSnakeCase]withio.getquill.SqliteJdbcContext[model.persistence.TableNameSnakeCase]&lt;:io.getquill.context.jdbc.JdbcContext[_&gt;:io.getquill.H2Dialectwithio.getquill.MySQLDialectwithio.getquill.PostgresDialectwithio.getquill.SqliteDialect&lt;:io.getquill.context.sql.idiom.SqlIdiom,model.persistence.TableNameSnakeCase]]" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="QuillConfiguration.html" class="extype" name="model.persistence.QuillConfiguration">QuillConfiguration</a></dd></dl></div>
-    </li><li name="model.persistence.QuillConfiguration#dbType" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="dbType:String"></a>
-      <a id="dbType:String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">lazy val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">dbType</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.UnCachedPersistence@dbType:String" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="QuillConfiguration.html" class="extype" name="model.persistence.QuillConfiguration">QuillConfiguration</a></dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="QuillImplicits.html" class="extype" name="model.persistence.QuillImplicits">QuillImplicits</a></dd></dl></div>
     </li><li name="model.persistence.QuillImplicits#decodeIdLong" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="decodeIdLong:io.getquill.MappedEncoding[model.persistence.Id[Long],Long]"></a>
       <a id="decodeIdLong:MappedEncoding[Id[Long],Long]"></a>
@@ -763,18 +678,18 @@ Throws an Exception if the case class was not previously persisted.</p></div></d
               
         </dd></dl></div>
     </li><li name="model.persistence.UnCachedPersistence#findAll" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="findAll():List[CaseClass]"></a>
-      <a id="findAll():List[CaseClass]"></a>
+      <a id="findAll:List[CaseClass]"></a>
+      <a id="findAll:List[CaseClass]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">findAll</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.List">List</span>[<span class="extype" name="model.persistence.UnCachedPersistence.CaseClass">CaseClass</span>]</span>
+        <span class="name">findAll</span><span class="result">: <span class="extype" name="scala.List">List</span>[<span class="extype" name="model.persistence.UnCachedPersistence.CaseClass">CaseClass</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.UnCachedPersistence@findAll():List[CaseClass]" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@findAll:List[CaseClass]" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -798,7 +713,7 @@ Throws an Exception if the case class was not previously persisted.</p></div></d
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Always fetches from the database; bypass cache, useful for startup code.</p><div class="fullcomment"><div class="comment cmt"><p>Always fetches from the database; bypass cache, useful for startup code. See also <a href="CachedPersistence.html#findAll():List[CaseClass]" class="extmbr" name="model.persistence.CachedPersistence#findAll">CachedPersistence.findAll</a></p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+      <p class="shortcomment cmt">Always fetches from the database; bypass cache, useful for startup code.</p><div class="fullcomment"><div class="comment cmt"><p>Always fetches from the database; bypass cache, useful for startup code. See also <a href="CachedPersistence.html#findAll:List[CaseClass]" class="extmbr" name="model.persistence.CachedPersistence#findAll">CachedPersistence.findAll</a></p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@inline</span><span class="args">()</span>
               
         </dd></dl></div>
@@ -897,69 +812,69 @@ Throws an Exception if the case class was not previously persisted.</p></div></d
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="model.persistence.QuillImplicits#idLongDecoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="idLongDecoder:model.persistence.QuillConfiguration.ctx.Decoder[model.persistence.Id[Long]]"></a>
-      <a id="idLongDecoder:io.getquill.PostgresJdbcContext.Decoder[Id[Long]]"></a>
+      <a id="idLongDecoder:QuillImplicits.this.dbWitness.ctx.Decoder[model.persistence.Id[Long]]"></a>
+      <a id="idLongDecoder:QuillImplicits.dbWitness._16.Decoder[Id[Long]]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">implicit </span>
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">idLongDecoder</span><span class="result">: <span class="extype" name="io.getquill.context.jdbc.Decoders.Decoder">io.getquill.PostgresJdbcContext.Decoder</span>[<span class="extype" name="model.persistence.Id">Id</span>[<span class="extype" name="scala.Long">Long</span>]]</span>
+        <span class="name">idLongDecoder</span><span class="result">: <span class="extype" name="io.getquill.context.jdbc.Decoders.Decoder">QuillImplicits.dbWitness._16.Decoder</span>[<span class="extype" name="model.persistence.Id">Id</span>[<span class="extype" name="scala.Long">Long</span>]]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.UnCachedPersistence@idLongDecoder:model.persistence.QuillConfiguration.ctx.Decoder[model.persistence.Id[Long]]" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@idLongDecoder:QuillImplicits.this.dbWitness.ctx.Decoder[model.persistence.Id[Long]]" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="QuillImplicits.html" class="extype" name="model.persistence.QuillImplicits">QuillImplicits</a></dd></dl></div>
     </li><li name="model.persistence.QuillImplicits#idLongEncoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="idLongEncoder:model.persistence.QuillConfiguration.ctx.Encoder[model.persistence.Id[Long]]"></a>
-      <a id="idLongEncoder:io.getquill.PostgresJdbcContext.Encoder[Id[Long]]"></a>
+      <a id="idLongEncoder:QuillImplicits.this.dbWitness.ctx.Encoder[model.persistence.Id[Long]]"></a>
+      <a id="idLongEncoder:QuillImplicits.dbWitness._16.Encoder[Id[Long]]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">implicit </span>
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">idLongEncoder</span><span class="result">: <span class="extype" name="io.getquill.context.jdbc.Encoders.Encoder">io.getquill.PostgresJdbcContext.Encoder</span>[<span class="extype" name="model.persistence.Id">Id</span>[<span class="extype" name="scala.Long">Long</span>]]</span>
+        <span class="name">idLongEncoder</span><span class="result">: <span class="extype" name="io.getquill.context.jdbc.Encoders.Encoder">QuillImplicits.dbWitness._16.Encoder</span>[<span class="extype" name="model.persistence.Id">Id</span>[<span class="extype" name="scala.Long">Long</span>]]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.UnCachedPersistence@idLongEncoder:model.persistence.QuillConfiguration.ctx.Encoder[model.persistence.Id[Long]]" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@idLongEncoder:QuillImplicits.this.dbWitness.ctx.Encoder[model.persistence.Id[Long]]" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="QuillImplicits.html" class="extype" name="model.persistence.QuillImplicits">QuillImplicits</a></dd></dl></div>
     </li><li name="model.persistence.QuillImplicits#idOptionLongDecoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="idOptionLongDecoder:model.persistence.QuillConfiguration.ctx.Decoder[model.persistence.Id[Option[Long]]]"></a>
-      <a id="idOptionLongDecoder:io.getquill.PostgresJdbcContext.Decoder[Id[Option[Long]]]"></a>
+      <a id="idOptionLongDecoder:QuillImplicits.this.dbWitness.ctx.Decoder[model.persistence.Id[Option[Long]]]"></a>
+      <a id="idOptionLongDecoder:QuillImplicits.dbWitness._16.Decoder[Id[Option[Long]]]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">implicit </span>
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">idOptionLongDecoder</span><span class="result">: <span class="extype" name="io.getquill.context.jdbc.Decoders.Decoder">io.getquill.PostgresJdbcContext.Decoder</span>[<span class="extype" name="model.persistence.Id">Id</span>[<span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Long">Long</span>]]]</span>
+        <span class="name">idOptionLongDecoder</span><span class="result">: <span class="extype" name="io.getquill.context.jdbc.Decoders.Decoder">QuillImplicits.dbWitness._16.Decoder</span>[<span class="extype" name="model.persistence.Id">Id</span>[<span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Long">Long</span>]]]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.UnCachedPersistence@idOptionLongDecoder:model.persistence.QuillConfiguration.ctx.Decoder[model.persistence.Id[Option[Long]]]" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@idOptionLongDecoder:QuillImplicits.this.dbWitness.ctx.Decoder[model.persistence.Id[Option[Long]]]" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="QuillImplicits.html" class="extype" name="model.persistence.QuillImplicits">QuillImplicits</a></dd></dl></div>
     </li><li name="model.persistence.QuillImplicits#idOptionLongEncoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="idOptionLongEncoder:model.persistence.QuillConfiguration.ctx.Encoder[model.persistence.Id[Option[Long]]]"></a>
-      <a id="idOptionLongEncoder:io.getquill.PostgresJdbcContext.Encoder[Id[Option[Long]]]"></a>
+      <a id="idOptionLongEncoder:QuillImplicits.this.dbWitness.ctx.Encoder[model.persistence.Id[Option[Long]]]"></a>
+      <a id="idOptionLongEncoder:QuillImplicits.dbWitness._16.Encoder[Id[Option[Long]]]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">implicit </span>
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">idOptionLongEncoder</span><span class="result">: <span class="extype" name="io.getquill.context.jdbc.Encoders.Encoder">io.getquill.PostgresJdbcContext.Encoder</span>[<span class="extype" name="model.persistence.Id">Id</span>[<span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Long">Long</span>]]]</span>
+        <span class="name">idOptionLongEncoder</span><span class="result">: <span class="extype" name="io.getquill.context.jdbc.Encoders.Encoder">QuillImplicits.dbWitness._16.Encoder</span>[<span class="extype" name="model.persistence.Id">Id</span>[<span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Long">Long</span>]]]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.UnCachedPersistence@idOptionLongEncoder:model.persistence.QuillConfiguration.ctx.Encoder[model.persistence.Id[Option[Long]]]" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@idOptionLongEncoder:QuillImplicits.this.dbWitness.ctx.Encoder[model.persistence.Id[Option[Long]]]" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -1265,8 +1180,6 @@ Throws an Exception if the case class was not previously persisted.</p></div></d
               <h3>Inherited from <a href="QuillImplicits.html" class="extype" name="model.persistence.QuillImplicits">QuillImplicits</a></h3>
             </div><div class="parent" name="model.persistence.IdImplicitLike">
               <h3>Inherited from <span class="extype" name="model.persistence.IdImplicitLike">IdImplicitLike</span></h3>
-            </div><div class="parent" name="model.persistence.QuillConfiguration">
-              <h3>Inherited from <a href="QuillConfiguration.html" class="extype" name="model.persistence.QuillConfiguration">QuillConfiguration</a></h3>
             </div><div class="parent" name="scala.AnyRef">
               <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
             </div><div class="parent" name="scala.Any">
