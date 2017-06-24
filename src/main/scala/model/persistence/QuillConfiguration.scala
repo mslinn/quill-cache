@@ -3,37 +3,34 @@ package model.persistence
 import com.typesafe.config.{Config, ConfigFactory}
 import io.getquill._
 import io.getquill.context.jdbc.JdbcContext
-import io.getquill.context.sql.idiom.SqlIdiom
 import scala.concurrent.duration.Duration
+import scala.reflect.ClassTag
 
-/** Selects the appropriate Quill JdbcContext at runtime according to the database configuration in `reference.conf`,
-  * or `application.conf`, if provided.
-  * @see [[http://getquill.io/#contexts-sql-contexts Quill SQL Contexts]] */
-trait QuillConfiguration {
+protected sealed class DbWitnesses[T: ClassTag](ctx: T)
+class H2Witness[N](configPrefix: String)       extends DbWitnesses(new H2JdbcContext[N](configPrefix))
+class MysqlWitness[N](configPrefix: String)    extends DbWitnesses(new MysqlJdbcContext[N](configPrefix))
+class PostgresWitness[N](configPrefix: String) extends DbWitnesses(new PostgresJdbcContext[N](configPrefix))
+class SqliteWitness[N](configPrefix: String)   extends DbWitnesses(new SqliteJdbcContext[N](configPrefix))
+
+object QuillConfiguration {
   type AllDialects = H2Dialect with MySQLDialect with PostgresDialect with SqliteDialect
-  type Ctx = JdbcContext[_ >: AllDialects <: SqlIdiom, TableNameSnakeCase]
-
+  type AllContexts[N] = H2JdbcContext[N] with MysqlJdbcContext[N] with PostgresJdbcContext[N] with SqliteJdbcContext[N]
   protected lazy val config: Config = ConfigFactory.load.getConfig("persistence-config")
 
   protected lazy val dbTimeout: Duration = Duration.fromNanos(config.getDuration("timeout").toNanos)
 
   protected lazy val dbType: String = config.getString("use")
 
-  lazy val ctx = try {
-    new PostgresJdbcContext[TableNameSnakeCase]("postgres")
-  /*dbType match {  // TODO make this work somehow
-    case "h2"       => new H2JdbcContext[TableNameSnakeCase](s"persistence-config.$dbType")
-    case "mysql"    => new MysqlJdbcContext[TableNameSnakeCase](s"persistence-config.$dbType")
-    case "postgres" => new PostgresJdbcContext[TableNameSnakeCase](s"persistence-config.$dbType")
-    case "sqlite"   => new SqliteJdbcContext[TableNameSnakeCase](s"persistence-config.$dbType")
+  def ctx[N <: NamingStrategy] = dbType match {
+    case "h2"       => new H2Witness[N](s"persistence-config.$dbType")
+    case "mysql"    => new MysqlWitness[N](s"persistence-config.$dbType")
+    case "postgres" => new PostgresWitness[N](s"persistence-config.$dbType")
+    case "sqlite"   => new SqliteWitness[N](s"persistence-config.$dbType")
     case _          => throw new Exception("No database configured.")
-  }*/
-  } catch {
-    case e: Throwable =>
-//      println(new RichThrowable(e).format())
-      println(e.getMessage)
-      throw e
   }
 }
 
-object QuillConfiguration extends QuillConfiguration
+/** Selects the appropriate Quill JdbcContext at runtime according to the database configuration in `reference.conf`,
+  * or `application.conf`, if provided.
+  * @see [[http://getquill.io/#contexts-sql-contexts Quill SQL Contexts]] */
+//case class QuillConfiguration[N, T: ClassTag](ctx: T)

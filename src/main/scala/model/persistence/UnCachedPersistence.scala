@@ -8,7 +8,7 @@ import scala.language.{postfixOps, reflectiveCalls}
   * case classes are not cached. You don't have to subclass `UnCachedPersistence`, but if you do then the DAOs for your
   * cached domain objects will have the same interface as the DAOs for your uncached domain objects. */
 abstract class UnCachedPersistence[Key <: Any, _IdType <: Option[Key], CaseClass <: HasId[CaseClass, _IdType]]
-  extends QuillConfiguration with QuillImplicits with IdImplicitLike {
+  extends QuillImplicits with IdImplicitLike {
 
   protected val Logger: Logger = org.slf4j.LoggerFactory.getLogger("persistence")
 

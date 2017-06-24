@@ -3,9 +3,12 @@ package model.persistence
 import com.github.nscala_time.time.Imports._
 import java.util.UUID
 import io.getquill._
+import io.getquill.context.jdbc.JdbcContext
+import model.persistence.QuillConfiguration.{AllContexts, AllDialects}
 
-trait QuillImplicits extends IdImplicitLike {
-  import QuillConfiguration.ctx._
+class QuillImplicits extends IdImplicitLike {
+  val ctx: DbWitnesses[_ >: AllContexts[TableNameSnakeCase] <: JdbcContext[_ >: AllDialects, TableNameSnakeCase]] = QuillConfiguration.ctx[TableNameSnakeCase]
+  import ctx._
 
   implicit val dateTimeDecoder: Decoder[DateTime] =
     decoder(java.sql.Types.TIMESTAMP, (index, row) => new DateTime(row.getTimestamp(index).getTime))

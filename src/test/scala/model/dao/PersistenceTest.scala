@@ -6,7 +6,7 @@ import org.scalatest._
 
 case class X(a: String, id: Int)
 
-class PersistenceTest extends WordSpec with Matchers with QuillConfiguration {
+class PersistenceTest extends WordSpec with Matchers {
   val course: Course = Courses.upsert(Course(groupId=Id(Some(99)), sku=s"course_Blah"))
 
   // Ensure connection pool works
