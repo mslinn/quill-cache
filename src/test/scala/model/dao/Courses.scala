@@ -33,7 +33,13 @@ object Courses extends CachedPersistence[Long, Option[Long], Course] with Strong
 
   val _insert: Course => Course =
     (course: Course) => {
-      val id: Id[Option[Long]] = run { quote { query[Course].insert(lift(course)) }.returning(_.id) }
+      val id: Id[Option[Long]] = try {
+        run { quote { query[Course].insert(lift(course)) }.returning(_.id) }
+      } catch {
+        case e: Throwable =>
+          Logger.error(e.getMessage)
+          throw e
+      }
       course.copy(id=id)
     }
 
@@ -44,10 +50,15 @@ object Courses extends CachedPersistence[Long, Option[Long], Course] with Strong
     }
 
   val className: String = "Course"
+  val tableName: String = className.toLowerCase
   val skuBase: String = className.toLowerCase
 
   override protected val sanitize: (Course) => Course =
     (course: Course) => course
+
+  // On startup:
+  setAutoInc()
+
 
   /** Inserts newCourse into database and augments cache. */
   override def add(newCourse: Course): Course =
@@ -88,5 +99,15 @@ object Courses extends CachedPersistence[Long, Option[Long], Course] with Strong
 
     case _ =>
       s"${ skuBase }_$sku"
+  }
+
+  /** Ensure that autoInc value is properly set when the app starts
+    * Assumes that column named `id` is present, and that `${ tableName }_id_seq` exists.
+    * @see [[https://stackoverflow.com/a/244265/553865]]
+    * List sequences with {{{\ds}}} */
+  @inline def setAutoInc(): Unit = {
+    val maxId: Long = executeQuerySingle(s"SELECT Max(id) FROM $tableName", extractor = rs => rs.getLong(1))
+    executeAction(s"ALTER SEQUENCE ${ tableName }_id_seq RESTART WITH ${ maxId + 1L }")
+    ()
   }
 }

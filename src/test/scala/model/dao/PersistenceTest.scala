@@ -1,7 +1,7 @@
 package model.dao
 
 import model.Course
-import model.persistence.{Copier, Id, QuillConfiguration}
+import model.persistence.{Copier, Id}
 import org.scalatest._
 
 case class X(a: String, id: Int)

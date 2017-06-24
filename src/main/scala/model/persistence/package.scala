@@ -50,7 +50,17 @@ import persistence._
   * which you can use to derive DAOs for case classes that must have direct access to the database so the case classes are not cached.
   * You don't have to subclass `UnCachedPersistence` to get this behavior, but if you do then the DAOs for your cached
   * domain objects will have the same interface as the DAOs for your uncached domain objects,
-  * and your code's structure will be more consistent. */
+  * and your code's structure will be more consistent.
+  *
+  * <h2>Configuration</h2>
+  * Your database configuration is specified by a file called `application.conf` on the classpath.
+  * Please see `src/main/scala/resources/reference.conf` for an example of how to set that up.
+  * The `quill-cache` section specifies parameters for this library:
+  *   - `use` indicates the name of a subsection containing detailed database configuration.
+  *     Only two are provided (`mysql` and `postgres`), but you can make up your own subsections and call them whatever you want.
+  *   - `timeout` indicates how long a database query is allowed to run before an error is declared.
+  *   - The contents of the named subsections are database dependent.
+  *     [Hikari](https://github.com/brettwooldridge/HikariCP#configuration-knobs-baby) interprets the meaning of this section. */
 package object persistence {
   implicit class RichThrowable(throwable: Throwable) {
     def format(asHtml: Boolean=false, showStackTrace: Boolean = false): String =
