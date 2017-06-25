@@ -9,6 +9,7 @@ import scala.language.{postfixOps, reflectiveCalls}
   * cached domain objects will have the same interface as the DAOs for your uncached domain objects. */
 abstract class UnCachedPersistence[Key <: Any, _IdType <: Option[Key], CaseClass <: HasId[CaseClass, _IdType]]
   extends QuillImplicits with IdImplicitLike {
+  import dbWitness.ctx._
 
   protected val Logger: Logger = org.slf4j.LoggerFactory.getLogger("persistence")
 
@@ -32,6 +33,8 @@ abstract class UnCachedPersistence[Key <: Any, _IdType <: Option[Key], CaseClass
 
   /** Human-readable name of persisted class */
   def className: String
+
+  lazy val tableName: String = className.toLowerCase
 
   @inline def add(caseClass: CaseClass): CaseClass =
     findById(caseClass.id) match {
@@ -104,6 +107,21 @@ abstract class UnCachedPersistence[Key <: Any, _IdType <: Option[Key], CaseClass
   @inline def remove(t: CaseClass): Unit = t.id.value match {
     case _: Some[_IdType] => deleteById(t.id)
     case x if x==None => ()
+  }
+
+  /** This method only has relevance for Postgres databases; it ensures that the next `autoInc` value is properly set when the app starts.
+    * Assumes that column named `id` is present, and that `$${ tableName }_id_seq` exists.
+    * There is no harm in invoking this method of other types of databases,
+    * because it does not do anything unless the database is Postgres.
+    * @see [[https://stackoverflow.com/a/244265/553865]]
+    * List sequences with {{{\ds}}} */
+  @inline def setAutoInc(): Unit = if (dbWitness.isInstanceOf[PostgresWitness]) try {
+    val maxId: Long = executeQuerySingle(s"SELECT Max(id) FROM $tableName", extractor = _.getLong(1))
+    executeAction(s"ALTER SEQUENCE ${ tableName }_id_seq RESTART WITH ${ maxId + 1L }")
+    ()
+  } catch {
+    case ex: Exception =>
+      Logger.error(ex.format())
   }
 
   @inline def update(caseClass: CaseClass): CaseClass = _update(caseClass)

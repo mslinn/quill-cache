@@ -50,13 +50,11 @@ object Courses extends CachedPersistence[Long, Option[Long], Course] with Strong
     }
 
   val className: String = "Course"
-  val tableName: String = className.toLowerCase
-  val skuBase: String = className.toLowerCase
 
   override protected val sanitize: (Course) => Course =
     (course: Course) => course
 
-  // On startup:
+  // On startup
   setAutoInc()
 
 
@@ -91,23 +89,13 @@ object Courses extends CachedPersistence[Long, Option[Long], Course] with Strong
 
 
   @inline def longSku(sku: String): String = sku match {
-    case name if name.startsWith(s"${ skuBase }_") =>
+    case name if name.startsWith(s"${ tableName }_") =>
       name
 
-    case name if name.startsWith(skuBase) =>
-      s"${ skuBase }_" + name.substring(skuBase.length)
+    case name if name.startsWith(tableName) =>
+      s"${ tableName }_" + name.substring(tableName.length)
 
     case _ =>
-      s"${ skuBase }_$sku"
-  }
-
-  /** Ensure that autoInc value is properly set when the app starts
-    * Assumes that column named `id` is present, and that `${ tableName }_id_seq` exists.
-    * @see [[https://stackoverflow.com/a/244265/553865]]
-    * List sequences with {{{\ds}}} */
-  @inline def setAutoInc(): Unit = {
-    val maxId: Long = executeQuerySingle(s"SELECT Max(id) FROM $tableName", extractor = rs => rs.getLong(1))
-    executeAction(s"ALTER SEQUENCE ${ tableName }_id_seq RESTART WITH ${ maxId + 1L }")
-    ()
+      s"${ tableName }_$sku"
   }
 }
