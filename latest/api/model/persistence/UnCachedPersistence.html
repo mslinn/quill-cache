@@ -1004,6 +1004,30 @@ Throws an Exception if the case class was not previously persisted.</p></div></d
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
+    </li><li name="model.persistence.UnCachedPersistence#setAutoInc" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setAutoInc():Unit"></a>
+      <a id="setAutoInc():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setAutoInc</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@setAutoInc():Unit" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">This method only has relevance for Postgres databases; it ensures that the next <code>autoInc</code> value is properly set when the app starts.</p><div class="fullcomment"><div class="comment cmt"><p>This method only has relevance for Postgres databases; it ensures that the next <code>autoInc</code> value is properly set when the app starts.
+Assumes that column named <code>id</code> is present, and that <code>$${ tableName }_id_seq</code> exists.
+There is no harm in invoking this method of other types of databases,
+because it does not do anything unless the database is Postgres.</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd><dt>See also</dt><dd><span class="cmt"><p><a href="https://stackoverflow.com/a/244265/553865" target="_blank">https://stackoverflow.com/a/244265/553865</a>
+List sequences with </p><pre>\ds</pre></span></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -1021,6 +1045,23 @@ Throws an Exception if the case class was not previously persisted.</p></div></d
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="model.persistence.UnCachedPersistence#tableName" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="tableName:String"></a>
+      <a id="tableName:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">lazy val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">tableName</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@tableName:String" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li><li name="scala.AnyRef#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toString():String"></a>
       <a id="toString():String"></a>
