@@ -66,7 +66,7 @@ Add this to your project's `build.sbt`:
     libraryDependencies += "com.micronautics" %% "quill-cache" % "3.0.0" withSources()
     
 You will also need to add a driver for the database you are using.
-Quill only supports for: H2, MySQL, Postgres and Sqlite.
+Quill only supports H2, MySQL, Postgres and Sqlite.
 For example, for Postgres, add:
 
     libraryDependencies += "org.postgresql" % "postgresql" % "42.1.1"
