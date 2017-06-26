@@ -18,23 +18,23 @@ object Courses extends CachedPersistence[Long, OptionLong, Course] with StrongCa
   override val _findAll: List[Course] =
     run { quote { query[Course] } }
 
-  val queryById: Id[OptionLong] => Quoted[EntityQuery[Course]] =
+  val queryById: IdOptionLong => Quoted[EntityQuery[Course]] =
     (id: Id[OptionLong]) =>
       quote { query[Course].filter(_.id == lift(id)) }
 
-  val _deleteById: (Id[OptionLong]) => Unit =
+  val _deleteById: (IdOptionLong) => Unit =
     (id: Id[OptionLong]) => {
       run { quote { queryById(id).delete } }
       ()
     }
 
-  val _findById: Id[OptionLong] => Option[Course] =
+  val _findById: IdOptionLong => Option[Course] =
     (name: Id[OptionLong]) =>
       run { quote { queryById(name) } }.headOption
 
   val _insert: Course => Course =
     (course: Course) => {
-      val id: Id[OptionLong] = try {
+      val id: IdOptionLong = try {
         run { quote { query[Course].insert(lift(course)) }.returning(_.id) }
       } catch {
         case e: Throwable =>
@@ -86,7 +86,7 @@ object Courses extends CachedPersistence[Long, OptionLong, Course] with StrongCa
   @inline def findBySku(sku: String): Option[Course] = findAll.find(_.sku == longSku(sku))
 
   /** Returns all courses in the specified group */
-  @inline def findByGroupId(groupId: Id[OptionLong]): List[Course] = findAll.filter(_.groupId == groupId)
+  @inline def findByGroupId(groupId: IdOptionLong): List[Course] = findAll.filter(_.groupId == groupId)
 
 
   @inline def longSku(sku: String): String = sku match {
