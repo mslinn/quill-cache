@@ -2,7 +2,7 @@ import sbt.Keys._
 
 organization := "com.micronautics"
 name := "quill-cache"
-version := "3.0.0"
+version := "3.0.1"
 licenses +=  ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0.html"))
 scalaVersion := "2.11.11"
 crossScalaVersions := Seq("2.11.11", "2.12.2")
@@ -61,7 +61,7 @@ resolvers ++= Seq(
 libraryDependencies ++= Seq(
   "com.github.nscala-time" %% "nscala-time"        % "2.16.0" withSources(),
   "com.google.guava"       %  "guava"              % "18.0"   withSources(),
-  "com.micronautics"       %% "has-id"             % "1.2.3"  withSources(),
+  "com.micronautics"       %% "has-id"             % "1.2.4"  withSources(),
   "io.getquill"            %% "quill-jdbc"         % "1.2.1"  withSources(),
   "net.codingwell"         %% "scala-guice"        % "4.1.0"  withSources(),
   "org.joda"               %  "joda-convert"       % "1.6"    withSources(),

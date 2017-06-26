@@ -3,9 +3,10 @@ package model.dao
 import io.getquill.PostgresJdbcContext
 import model.Course
 import model.persistence._
+import model.persistence.Types._
 import scala.concurrent.ExecutionContext
 
-object Courses extends CachedPersistence[Long, Option[Long], Course] with StrongCacheLike[Long, Option[Long], Course] {
+object Courses extends CachedPersistence[Long, OptionLong, Course] with StrongCacheLike[Long, OptionLong, Course] {
   // TODO How to get rid of the `asInstanceOf` abomination?
   // This code needs to work with all flavors of DbWitness, not just the Postgres flavor
   val ctx = dbWitness.asInstanceOf[DbWitness[PostgresJdbcContext[TableNameSnakeCase]]].ctx
@@ -17,23 +18,23 @@ object Courses extends CachedPersistence[Long, Option[Long], Course] with Strong
   override val _findAll: List[Course] =
     run { quote { query[Course] } }
 
-  val queryById: Id[Option[Long]] => Quoted[EntityQuery[Course]] =
-    (id: Id[Option[Long]]) =>
+  val queryById: Id[OptionLong] => Quoted[EntityQuery[Course]] =
+    (id: Id[OptionLong]) =>
       quote { query[Course].filter(_.id == lift(id)) }
 
-  val _deleteById: (Id[Option[Long]]) => Unit =
-    (id: Id[Option[Long]]) => {
+  val _deleteById: (Id[OptionLong]) => Unit =
+    (id: Id[OptionLong]) => {
       run { quote { queryById(id).delete } }
       ()
     }
 
-  val _findById: Id[Option[Long]] => Option[Course] =
-    (name: Id[Option[Long]]) =>
+  val _findById: Id[OptionLong] => Option[Course] =
+    (name: Id[OptionLong]) =>
       run { quote { queryById(name) } }.headOption
 
   val _insert: Course => Course =
     (course: Course) => {
-      val id: Id[Option[Long]] = try {
+      val id: Id[OptionLong] = try {
         run { quote { query[Course].insert(lift(course)) }.returning(_.id) }
       } catch {
         case e: Throwable =>
@@ -71,7 +72,7 @@ object Courses extends CachedPersistence[Long, Option[Long], Course] with Strong
             update(sanitizedCourse)
             sanitizedCourse
 
-          case None => // new group; insert it and return modified course
+          case None => // new course; insert it and return modified course
             val sanitizedCourse = sanitize(newCourse)
             val inserted: Course = insert(sanitizedCourse)
             cacheSet(inserted.id, inserted)
@@ -85,7 +86,7 @@ object Courses extends CachedPersistence[Long, Option[Long], Course] with Strong
   @inline def findBySku(sku: String): Option[Course] = findAll.find(_.sku == longSku(sku))
 
   /** Returns all courses in the specified group */
-  @inline def findByGroupId(groupId: Id[Option[Long]]): List[Course] = findAll.filter(_.groupId == groupId)
+  @inline def findByGroupId(groupId: Id[OptionLong]): List[Course] = findAll.filter(_.groupId == groupId)
 
 
   @inline def longSku(sku: String): String = sku match {
