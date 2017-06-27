@@ -59,5 +59,10 @@ object QuillConfiguration extends ConfigParse {
       throw e
   }
 
-  val ctx = h2Holder.ctx // selectHolder(dialect) // TODO implicitly select the correct holder, instead of hard-coding it like this
+  // TODO implicitly select the correct holder, instead of hard-coding it like this. Might selectHolder(dialect) help?
+  val ctx = postgresHolder.ctx
+  val ctxH2 = h2Holder.ctx
+  val ctxMySQL = mySqlHolder.ctx
+  val ctxPostgres = postgresHolder.ctx
+  val ctxSqlite = sqliteHolder.ctx
 }

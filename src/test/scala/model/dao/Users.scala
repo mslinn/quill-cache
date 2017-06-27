@@ -9,7 +9,7 @@ import scala.language.postfixOps
 object Users extends CachedPersistence[Long, Option[Long], User]
              with SoftCacheLike[Long, Option[Long], User]
              with QuillImplicits {
-  import model.persistence.QuillConfiguration.ctx._
+  import model.persistence.QuillConfiguration.ctxH2._
 
   /** A real application would provide a dedicated `ExecutionContext` for DAOs */
   implicit val ec: ExecutionContext = scala.concurrent.ExecutionContext.Implicits.global
