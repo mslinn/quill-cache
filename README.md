@@ -77,13 +77,51 @@ You will need a logging framework. Logback is a good choice:
 
 ## Configuration
 Your database configuration is specified by a file called `application.conf` on the classpath.
-Please see `src/main/scala/resources/reference.conf` for an example of how to set that up.
+Please see `src/main/scala/resources/reference.conf` for an example of how to set that up. 
+
+Here is an excerpt:
+
+```
+quill-cache {
+  use: h2
+  timeout: 1 minute
+
+  # See https://github.com/getquill/quill/blob/master/quill-jdbc/src/test/resources/application.conf
+  # See https://github.com/brettwooldridge/HikariCP#initialization
+  # See https://github.com/brettwooldridge/HikariCP/blob/master/src/main/java/com/zaxxer/hikari/HikariConfig.java#L63-L97
+
+  h2 {
+    dataSourceClassName = org.h2.jdbcx.JdbcDataSource
+    dataSource {
+      url = "jdbc:h2:mem:default"
+      user = sa
+      password = ""
+    }
+  }
+
+  postgres {
+    connectionTimeout = 10000
+    dataSource {
+      databaseName = ${?DB}
+      password = ${?PGPASSWORD}
+      serverName = ${?PGSERVER}
+      ssl = true
+      sslfactory = "org.postgresql.ssl.NonValidatingFactory"
+      user = ${?USERID}
+    }
+    dataSourceClassName = "org.postgresql.ds.PGSimpleDataSource"
+  }
+}
+```
+
 The `quill-cache` section specifies parameters for this library:
-  * `use` indicates the name of a subsection containing detailed database configuration.
-    Only two are provided (`mysql` and `postgres`), but you can make up your own subsections and call them whatever you want.
+  * `use` indicates the name of a subsection containing the active database configuration.
+    The other database configuration subsections are ignored.
+    Only two are shown above (`h2` and `postgres`), but you can make up your own subsections and call them whatever you want.
+    The supplied `reference.conf` file also has a sample MySQL section.
   * `timeout` indicates how long a database query is allowed to run before an error is declared.
-  * The contents of the named subsections are database dependent.
-    [Hikari](https://github.com/brettwooldridge/HikariCP#configuration-knobs-baby) interprets the meaning of this section.
+  * The contents of the named subsections are database-dependent.
+  * [Hikari](https://github.com/brettwooldridge/HikariCP#configuration-knobs-baby) interprets the meaning of `datSource` sections.
 
 ## Sample Code
 See the unit tests for examples of how to use this library.
