@@ -1,5 +1,6 @@
 package model.persistence
 
+import io.getquill.PostgresJdbcContext
 import org.slf4j.Logger
 import scala.language.{postfixOps, reflectiveCalls}
 
@@ -9,7 +10,8 @@ import scala.language.{postfixOps, reflectiveCalls}
   * cached domain objects will have the same interface as the DAOs for your uncached domain objects. */
 abstract class UnCachedPersistence[Key <: Any, _IdType <: Option[Key], CaseClass <: HasId[CaseClass, _IdType]]
   extends QuillImplicits with IdImplicitLike {
-  import dbWitness.ctx._
+  import QuillConfiguration.ctx
+  import ctx._
 
   protected val Logger: Logger = org.slf4j.LoggerFactory.getLogger("persistence")
 
@@ -115,7 +117,7 @@ abstract class UnCachedPersistence[Key <: Any, _IdType <: Option[Key], CaseClass
     * because it does not do anything unless the database is Postgres.
     * @see [[https://stackoverflow.com/a/244265/553865]]
     * List sequences with {{{\ds}}} */
-  @inline def setAutoInc(): Unit = if (dbWitness.isInstanceOf[PostgresWitness]) try {
+  @inline def setAutoInc(): Unit = if (ctx.isInstanceOf[PostgresJdbcContext[_]]) try {
     val maxId: Long = executeQuerySingle(s"SELECT Max(id) FROM $tableName", extractor = _.getLong(1))
     executeAction(s"ALTER SEQUENCE ${ tableName }_id_seq RESTART WITH ${ maxId + 1L }")
     ()

@@ -1,16 +1,12 @@
 package model.dao
 
-import io.getquill.PostgresJdbcContext
 import model.Course
-import model.persistence._
 import model.persistence.Types._
+import model.persistence._
 import scala.concurrent.ExecutionContext
 
 object Courses extends CachedPersistence[Long, OptionLong, Course] with StrongCacheLike[Long, OptionLong, Course] {
-  // TODO How to get rid of the `asInstanceOf` abomination?
-  // This code needs to work with all flavors of DbWitness, not just the Postgres flavor
-  val ctx = dbWitness.asInstanceOf[DbWitness[PostgresJdbcContext[TableNameSnakeCase]]].ctx
-  import ctx._
+  import QuillConfiguration.ctx._
 
   /** A real application would provide a dedicated `ExecutionContext` for DAOs */
   implicit val ec: ExecutionContext = scala.concurrent.ExecutionContext.Implicits.global

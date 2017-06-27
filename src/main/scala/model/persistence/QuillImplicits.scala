@@ -5,9 +5,8 @@ import java.util.UUID
 import io.getquill._
 
 class QuillImplicits extends IdImplicitLike {
-  // TODO what is the type of dbWitness.ctx?
-  val dbWitness = QuillConfiguration.dbWitness
-  import dbWitness.ctx._
+  import QuillConfiguration.ctx
+  import ctx._
 
   implicit val dateTimeDecoder: Decoder[DateTime] =
     decoder(java.sql.Types.TIMESTAMP, (index, row) => new DateTime(row.getTimestamp(index).getTime))
