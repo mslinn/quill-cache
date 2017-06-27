@@ -118,10 +118,36 @@ which you can use to derive DAOs for case classes that must have direct access t
 You don't have to subclass <code>UnCachedPersistence</code> to get this behavior, but if you do then the DAOs for your cached
 domain objects will have the same interface as the DAOs for your uncached domain objects,
 and your code's structure will be more consistent.</p><h4> Configuration </h4><p>Your database configuration is specified by a file called <code>application.conf</code> on the classpath.
-Please see <code>src/main/scala/resources/reference.conf</code> for an example of how to set that up.
-The <code>quill-cache</code> section specifies parameters for this library:</p><ul><li><code>use</code> indicates the name of a subsection containing detailed database configuration.
-    Only two are provided (<code>mysql</code> and <code>postgres</code>), but you can make up your own subsections and call them whatever you want.</li><li><code>timeout</code> indicates how long a database query is allowed to run before an error is declared.</li><li>The contents of the named subsections are database dependent.
-    [Hikari](https://github.com/brettwooldridge/HikariCP#configuration-knobs-baby) interprets the meaning of this section.</li></ul></div></div>
+Please see <code>src/main/scala/resources/reference.conf</code> for an example of how to set that up.</p><p>Here is an excerpt:</p><pre>quill-cache {
+  use: h2
+  timeout: <span class="num">1</span> minute
+
+  h2 {
+    dataSourceClassName = org.h2.jdbcx.JdbcDataSource
+    dataSource {
+      url = <span class="lit">"jdbc:h2:mem:default"</span>
+      user = sa
+      password = <span class="lit">""</span>
+    }
+  }
+
+  postgres {
+    connectionTimeout = <span class="num">10000</span>
+    dataSource {
+      databaseName = ${?DB}
+      password = ${?PGPASSWORD}
+      serverName = ${?PGSERVER}
+      ssl = <span class="kw">true</span>
+      sslfactory = <span class="lit">"org.postgresql.ssl.NonValidatingFactory"</span>
+      user = ${?USERID}
+    }
+    dataSourceClassName = <span class="lit">"org.postgresql.ds.PGSimpleDataSource"</span>
+  }
+}</pre><p>The <code>quill-cache</code> section specifies parameters for this library:</p><ul><li><code>use</code> indicates the name of a subsection containing detailed database configuration.
+    The other database configuration subsections are ignored.
+    Only three are provided (<code>h2</code>, <code>mysql</code> and <code>postgres</code>), but you can make up your own subsections and call them whatever you want.</li><li><code>timeout</code> indicates how long a database query is allowed to run before an error is declared.</li><li>The contents of the named subsections are database dependent.</li><li><a href="https://github.com/brettwooldridge/HikariCP#configuration-knobs-baby" target="_blank">Hikari</a> interprets the meaning of this section.</li></ul><p>See also <a href="https://github.com/getquill/quill/blob/master/quill-jdbc/src/test/resources/application.conf" target="_blank">the Quill test application.conf</a>,
+<a href="https://github.com/brettwooldridge/HikariCP#initialization" target="_blank">Hikari initialization</a> and
+<a href="https://github.com/brettwooldridge/HikariCP/blob/master/src/main/java/com/zaxxer/hikari/HikariConfig.java#L63-L97" target="_blank">HikariConfig.java</a></p></div></div>
     </li></ol>
             </div>
 

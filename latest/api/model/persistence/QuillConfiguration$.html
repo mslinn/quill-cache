@@ -45,13 +45,15 @@
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <span class="name">QuillConfiguration</span>
+        <span class="name">QuillConfiguration</span><span class="result"> extends <a href="ConfigParse.html" class="extype" name="model.persistence.ConfigParse">ConfigParse</a></span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/mslinn/quill-cache/tree/master/src/main/scala/model/persistence/QuillConfiguration.scala" target="_blank">QuillConfiguration.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Computes a property called <code>ctx</code>, which is the Quill context.
+Its type varies according to the database selected, which complicates things.
+Seems no type can be ascribed to <code>ctx</code> such that importing it will define the encoders and decoders.</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/mslinn/quill-cache/tree/master/src/main/scala/model/persistence/QuillConfiguration.scala" target="_blank">QuillConfiguration.scala</a></dd><dt>See also</dt><dd><span class="cmt"><p><a href="http://getquill.io/#quotation-introduction" target="_blank">The Quill docs</a>.</p></span></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><a href="ConfigParse.html" class="extype" name="model.persistence.ConfigParse">ConfigParse</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -69,7 +71,7 @@
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="model.persistence.QuillConfiguration"><span>QuillConfiguration</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="model.persistence.QuillConfiguration"><span>QuillConfiguration</span></li><li class="in" name="model.persistence.ConfigParse"><span>ConfigParse</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -90,40 +92,40 @@
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="model.persistence.QuillConfiguration.AllContexts" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="AllContexts=io.getquill.H2JdbcContext[model.persistence.TableNameSnakeCase]withio.getquill.MysqlJdbcContext[model.persistence.TableNameSnakeCase]withio.getquill.PostgresJdbcContext[model.persistence.TableNameSnakeCase]withio.getquill.SqliteJdbcContext[model.persistence.TableNameSnakeCase]"></a>
-      <a id="AllContexts:AllContexts"></a>
+              <ol><li name="model.persistence.QuillConfiguration.DbContextHolder" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="DbContextHolder[A]extendsAnyRef"></a>
+      <a id="DbContextHolder[A]:DbContextHolder[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="QuillConfiguration$$DbContextHolder.html"><span class="name">DbContextHolder</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.QuillConfiguration$@DbContextHolder[A]extendsAnyRef" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
+    </li><li name="model.persistence.QuillConfiguration.N" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="N=model.persistence.TableNameSnakeCase"></a>
+      <a id="N:N"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">type</span>
       </span>
       <span class="symbol">
-        <span class="name">AllContexts</span><span class="result"> = <span class="extype" name="io.getquill.H2JdbcContext">H2JdbcContext</span>[<a href="TableNameSnakeCase.html" class="extype" name="model.persistence.TableNameSnakeCase">TableNameSnakeCase</a>] with <span class="extype" name="io.getquill.MysqlJdbcContext">MysqlJdbcContext</span>[<a href="TableNameSnakeCase.html" class="extype" name="model.persistence.TableNameSnakeCase">TableNameSnakeCase</a>] with <span class="extype" name="io.getquill.PostgresJdbcContext">PostgresJdbcContext</span>[<a href="TableNameSnakeCase.html" class="extype" name="model.persistence.TableNameSnakeCase">TableNameSnakeCase</a>] with <span class="extype" name="io.getquill.SqliteJdbcContext">SqliteJdbcContext</span>[<a href="TableNameSnakeCase.html" class="extype" name="model.persistence.TableNameSnakeCase">TableNameSnakeCase</a>]</span>
+        <span class="name">N</span><span class="result"> = <a href="TableNameSnakeCase.html" class="extype" name="model.persistence.TableNameSnakeCase">TableNameSnakeCase</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.QuillConfiguration$@AllContexts=io.getquill.H2JdbcContext[model.persistence.TableNameSnakeCase]withio.getquill.MysqlJdbcContext[model.persistence.TableNameSnakeCase]withio.getquill.PostgresJdbcContext[model.persistence.TableNameSnakeCase]withio.getquill.SqliteJdbcContext[model.persistence.TableNameSnakeCase]" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.QuillConfiguration$@N=model.persistence.TableNameSnakeCase" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
-    </li><li name="model.persistence.QuillConfiguration.AllDialects" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="AllDialects=io.getquill.H2Dialectwithio.getquill.MySQLDialectwithio.getquill.PostgresDialectwithio.getquill.SqliteDialect"></a>
-      <a id="AllDialects:AllDialects"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">type</span>
-      </span>
-      <span class="symbol">
-        <span class="name">AllDialects</span><span class="result"> = <span class="extype" name="io.getquill.H2Dialect">H2Dialect</span> with <span class="extype" name="io.getquill.MySQLDialect">MySQLDialect</span> with <span class="extype" name="io.getquill.PostgresDialect">PostgresDialect</span> with <span class="extype" name="io.getquill.SqliteDialect">SqliteDialect</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.QuillConfiguration$@AllDialects=io.getquill.H2Dialectwithio.getquill.MySQLDialectwithio.getquill.PostgresDialectwithio.getquill.SqliteDialect" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
     </li></ol>
             </div>
 
@@ -182,6 +184,23 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="model.persistence.QuillConfiguration.DbContextHolder" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="DbContextHolder"></a>
+      <a id="DbContextHolder:DbContextHolder"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="QuillConfiguration$$DbContextHolder$.html"><span class="name">DbContextHolder</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.QuillConfiguration$@DbContextHolder" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <a id="asInstanceOf[T0]:T0"></a>
@@ -222,13 +241,13 @@
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="model.persistence.QuillConfiguration#config" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="model.persistence.ConfigParse#config" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="config:com.typesafe.config.Config"></a>
       <a id="config:Config"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">lazy val</span>
+        <span class="kind">val</span>
       </span>
       <span class="symbol">
         <span class="name">config</span><span class="result">: <span class="extype" name="com.typesafe.config.Config">Config</span></span>
@@ -238,14 +257,48 @@
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
-    </li><li name="model.persistence.QuillConfiguration#dbTimeout" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="ConfigParse.html" class="extype" name="model.persistence.ConfigParse">ConfigParse</a></dd></dl></div>
+    </li><li name="model.persistence.ConfigParse#configPrefix" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="configPrefix:String"></a>
+      <a id="configPrefix:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">configPrefix</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.QuillConfiguration$@configPrefix:String" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="ConfigParse.html" class="extype" name="model.persistence.ConfigParse">ConfigParse</a></dd></dl></div>
+    </li><li name="model.persistence.QuillConfiguration#ctx" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ctx:io.getquill.H2JdbcContext[model.persistence.QuillConfiguration.N]"></a>
+      <a id="ctx:H2JdbcContext[N]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ctx</span><span class="result">: <span class="extype" name="io.getquill.H2JdbcContext">H2JdbcContext</span>[<a href="#N=model.persistence.TableNameSnakeCase" class="extmbr" name="model.persistence.QuillConfiguration.N">N</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.QuillConfiguration$@ctx:io.getquill.H2JdbcContext[model.persistence.QuillConfiguration.N]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="model.persistence.ConfigParse#dbTimeout" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="dbTimeout:scala.concurrent.duration.Duration"></a>
       <a id="dbTimeout:Duration"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">lazy val</span>
+        <span class="kind">val</span>
       </span>
       <span class="symbol">
         <span class="name">dbTimeout</span><span class="result">: <span class="extype" name="scala.concurrent.duration.Duration">Duration</span></span>
@@ -255,14 +308,14 @@
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
-    </li><li name="model.persistence.QuillConfiguration#dbType" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="ConfigParse.html" class="extype" name="model.persistence.ConfigParse">ConfigParse</a></dd></dl></div>
+    </li><li name="model.persistence.ConfigParse#dbType" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="dbType:String"></a>
       <a id="dbType:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">lazy val</span>
+        <span class="kind">val</span>
       </span>
       <span class="symbol">
         <span class="name">dbType</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
@@ -272,24 +325,24 @@
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
-    </li><li name="model.persistence.QuillConfiguration#dbWitness" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="dbWitness:model.persistence.DbWitness[_&gt;:io.getquill.H2JdbcContext[model.persistence.TableNameSnakeCase]withio.getquill.MysqlJdbcContext[model.persistence.TableNameSnakeCase]withio.getquill.PostgresJdbcContext[model.persistence.TableNameSnakeCase]withio.getquill.SqliteJdbcContext[model.persistence.TableNameSnakeCase]&lt;:io.getquill.context.jdbc.JdbcContext[_&gt;:io.getquill.H2Dialectwithio.getquill.MySQLDialectwithio.getquill.PostgresDialectwithio.getquill.SqliteDialect&lt;:io.getquill.context.sql.idiom.SqlIdiom,model.persistence.TableNameSnakeCase]]"></a>
-      <a id="dbWitness:DbWitness[_&gt;:H2JdbcContext[TableNameSnakeCase]withMysqlJdbcContext[TableNameSnakeCase]withPostgresJdbcContext[TableNameSnakeCase]withSqliteJdbcContext[TableNameSnakeCase]&lt;:JdbcContext[_&gt;:H2DialectwithMySQLDialectwithPostgresDialectwithSqliteDialect&lt;:SqlIdiom,TableNameSnakeCase]]"></a>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="ConfigParse.html" class="extype" name="model.persistence.ConfigParse">ConfigParse</a></dd></dl></div>
+    </li><li name="model.persistence.QuillConfiguration#dialect" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="dialect:reflect.runtime.universe.Type"></a>
+      <a id="dialect:scala.reflect.api.JavaUniverse.Type"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">def</span>
+        <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">dbWitness</span><span class="result">: <a href="DbWitness.html" class="extype" name="model.persistence.DbWitness">DbWitness</a>[_ &gt;: <span class="extype" name="io.getquill.H2JdbcContext">H2JdbcContext</span>[<a href="TableNameSnakeCase.html" class="extype" name="model.persistence.TableNameSnakeCase">TableNameSnakeCase</a>] with <span class="extype" name="io.getquill.MysqlJdbcContext">MysqlJdbcContext</span>[<a href="TableNameSnakeCase.html" class="extype" name="model.persistence.TableNameSnakeCase">TableNameSnakeCase</a>] with <span class="extype" name="io.getquill.PostgresJdbcContext">PostgresJdbcContext</span>[<a href="TableNameSnakeCase.html" class="extype" name="model.persistence.TableNameSnakeCase">TableNameSnakeCase</a>] with <span class="extype" name="io.getquill.SqliteJdbcContext">SqliteJdbcContext</span>[<a href="TableNameSnakeCase.html" class="extype" name="model.persistence.TableNameSnakeCase">TableNameSnakeCase</a>] &lt;: <span class="extype" name="io.getquill.context.jdbc.JdbcContext">JdbcContext</span>[_ &gt;: <span class="extype" name="io.getquill.H2Dialect">H2Dialect</span> with <span class="extype" name="io.getquill.MySQLDialect">MySQLDialect</span> with <span class="extype" name="io.getquill.PostgresDialect">PostgresDialect</span> with <span class="extype" name="io.getquill.SqliteDialect">SqliteDialect</span> &lt;: <span class="extype" name="io.getquill.context.sql.idiom.SqlIdiom">SqlIdiom</span>, <a href="TableNameSnakeCase.html" class="extype" name="model.persistence.TableNameSnakeCase">TableNameSnakeCase</a>]]</span>
+        <span class="name">dialect</span><span class="result">: <span class="extype" name="scala.reflect.api.Types.Type">scala.reflect.api.JavaUniverse.Type</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.QuillConfiguration$@dbWitness:model.persistence.DbWitness[_&gt;:io.getquill.H2JdbcContext[model.persistence.TableNameSnakeCase]withio.getquill.MysqlJdbcContext[model.persistence.TableNameSnakeCase]withio.getquill.PostgresJdbcContext[model.persistence.TableNameSnakeCase]withio.getquill.SqliteJdbcContext[model.persistence.TableNameSnakeCase]&lt;:io.getquill.context.jdbc.JdbcContext[_&gt;:io.getquill.H2Dialectwithio.getquill.MySQLDialectwithio.getquill.PostgresDialectwithio.getquill.SqliteDialect&lt;:io.getquill.context.sql.idiom.SqlIdiom,model.persistence.TableNameSnakeCase]]" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.QuillConfiguration$@dialect:reflect.runtime.universe.Type" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -364,6 +417,23 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="model.persistence.QuillConfiguration#h2Holder" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="h2Holder:model.persistence.QuillConfiguration.DbContextHolder[io.getquill.H2JdbcContext[model.persistence.QuillConfiguration.N]]"></a>
+      <a id="h2Holder:DbContextHolder[H2JdbcContext[N]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">h2Holder</span><span class="result">: <a href="QuillConfiguration$$DbContextHolder.html" class="extype" name="model.persistence.QuillConfiguration.DbContextHolder">DbContextHolder</a>[<span class="extype" name="io.getquill.H2JdbcContext">H2JdbcContext</span>[<a href="#N=model.persistence.TableNameSnakeCase" class="extmbr" name="model.persistence.QuillConfiguration.N">N</a>]]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.QuillConfiguration$@h2Holder:model.persistence.QuillConfiguration.DbContextHolder[io.getquill.H2JdbcContext[model.persistence.QuillConfiguration.N]]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
     </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
       <a id="hashCode():Int"></a>
@@ -398,6 +468,23 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="model.persistence.QuillConfiguration#mySqlHolder" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="mySqlHolder:model.persistence.QuillConfiguration.DbContextHolder[io.getquill.MysqlJdbcContext[model.persistence.QuillConfiguration.N]]"></a>
+      <a id="mySqlHolder:DbContextHolder[MysqlJdbcContext[N]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">mySqlHolder</span><span class="result">: <a href="QuillConfiguration$$DbContextHolder.html" class="extype" name="model.persistence.QuillConfiguration.DbContextHolder">DbContextHolder</a>[<span class="extype" name="io.getquill.MysqlJdbcContext">MysqlJdbcContext</span>[<a href="#N=model.persistence.TableNameSnakeCase" class="extmbr" name="model.persistence.QuillConfiguration.N">N</a>]]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.QuillConfiguration$@mySqlHolder:model.persistence.QuillConfiguration.DbContextHolder[io.getquill.MysqlJdbcContext[model.persistence.QuillConfiguration.N]]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a>
       <a id="ne(AnyRef):Boolean"></a>
@@ -449,19 +536,70 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="model.persistence.QuillConfiguration#quillSection" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="model.persistence.QuillConfiguration#postgresHolder" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="postgresHolder:model.persistence.QuillConfiguration.DbContextHolder[io.getquill.PostgresJdbcContext[model.persistence.QuillConfiguration.N]]"></a>
+      <a id="postgresHolder:DbContextHolder[PostgresJdbcContext[N]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">postgresHolder</span><span class="result">: <a href="QuillConfiguration$$DbContextHolder.html" class="extype" name="model.persistence.QuillConfiguration.DbContextHolder">DbContextHolder</a>[<span class="extype" name="io.getquill.PostgresJdbcContext">PostgresJdbcContext</span>[<a href="#N=model.persistence.TableNameSnakeCase" class="extmbr" name="model.persistence.QuillConfiguration.N">N</a>]]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.QuillConfiguration$@postgresHolder:model.persistence.QuillConfiguration.DbContextHolder[io.getquill.PostgresJdbcContext[model.persistence.QuillConfiguration.N]]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
+    </li><li name="model.persistence.ConfigParse#quillSection" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="quillSection:String"></a>
       <a id="quillSection:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">lazy val</span>
+        <span class="kind">val</span>
       </span>
       <span class="symbol">
         <span class="name">quillSection</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
       </span>
       </h4><span class="permalink">
       <a href="../../index.html#model.persistence.QuillConfiguration$@quillSection:String" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="ConfigParse.html" class="extype" name="model.persistence.ConfigParse">ConfigParse</a></dd></dl></div>
+    </li><li name="model.persistence.QuillConfiguration#selectHolder" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="selectHolder(dialect:reflect.runtime.universe.Type):model.persistence.QuillConfiguration.DbContextHolder[_]"></a>
+      <a id="selectHolder(scala.reflect.api.JavaUniverse.Type):DbContextHolder[_]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">selectHolder</span><span class="params">(<span name="dialect">dialect: <span class="extype" name="scala.reflect.api.Types.Type">scala.reflect.api.JavaUniverse.Type</span></span>)</span><span class="result">: <a href="QuillConfiguration$$DbContextHolder.html" class="extype" name="model.persistence.QuillConfiguration.DbContextHolder">DbContextHolder</a>[_]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.QuillConfiguration$@selectHolder(dialect:reflect.runtime.universe.Type):model.persistence.QuillConfiguration.DbContextHolder[_]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Convert from a dialect type to a DbContextHolder</p><div class="fullcomment"><div class="comment cmt"><p>Convert from a dialect type to a DbContextHolder</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
+    </li><li name="model.persistence.QuillConfiguration#sqliteHolder" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="sqliteHolder:model.persistence.QuillConfiguration.DbContextHolder[io.getquill.SqliteJdbcContext[model.persistence.QuillConfiguration.N]]"></a>
+      <a id="sqliteHolder:DbContextHolder[SqliteJdbcContext[N]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">sqliteHolder</span><span class="result">: <a href="QuillConfiguration$$DbContextHolder.html" class="extype" name="model.persistence.QuillConfiguration.DbContextHolder">DbContextHolder</a>[<span class="extype" name="io.getquill.SqliteJdbcContext">SqliteJdbcContext</span>[<a href="#N=model.persistence.TableNameSnakeCase" class="extmbr" name="model.persistence.QuillConfiguration.N">N</a>]]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.QuillConfiguration$@sqliteHolder:model.persistence.QuillConfiguration.DbContextHolder[io.getquill.SqliteJdbcContext[model.persistence.QuillConfiguration.N]]" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -578,7 +716,9 @@
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="scala.AnyRef">
+        <div class="parent" name="model.persistence.ConfigParse">
+              <h3>Inherited from <a href="ConfigParse.html" class="extype" name="model.persistence.ConfigParse">ConfigParse</a></h3>
+            </div><div class="parent" name="scala.AnyRef">
               <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
             </div><div class="parent" name="scala.Any">
               <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>

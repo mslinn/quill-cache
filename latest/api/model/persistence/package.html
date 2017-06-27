@@ -79,10 +79,36 @@ which you can use to derive DAOs for case classes that must have direct access t
 You don't have to subclass <code>UnCachedPersistence</code> to get this behavior, but if you do then the DAOs for your cached
 domain objects will have the same interface as the DAOs for your uncached domain objects,
 and your code's structure will be more consistent.</p><h4> Configuration </h4><p>Your database configuration is specified by a file called <code>application.conf</code> on the classpath.
-Please see <code>src/main/scala/resources/reference.conf</code> for an example of how to set that up.
-The <code>quill-cache</code> section specifies parameters for this library:</p><ul><li><code>use</code> indicates the name of a subsection containing detailed database configuration.
-    Only two are provided (<code>mysql</code> and <code>postgres</code>), but you can make up your own subsections and call them whatever you want.</li><li><code>timeout</code> indicates how long a database query is allowed to run before an error is declared.</li><li>The contents of the named subsections are database dependent.
-    [Hikari](https://github.com/brettwooldridge/HikariCP#configuration-knobs-baby) interprets the meaning of this section.</li></ul></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/mslinn/quill-cache/tree/master/src/main/scala/model/persistence/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
+Please see <code>src/main/scala/resources/reference.conf</code> for an example of how to set that up.</p><p>Here is an excerpt:</p><pre>quill-cache {
+  use: h2
+  timeout: <span class="num">1</span> minute
+
+  h2 {
+    dataSourceClassName = org.h2.jdbcx.JdbcDataSource
+    dataSource {
+      url = <span class="lit">"jdbc:h2:mem:default"</span>
+      user = sa
+      password = <span class="lit">""</span>
+    }
+  }
+
+  postgres {
+    connectionTimeout = <span class="num">10000</span>
+    dataSource {
+      databaseName = ${?DB}
+      password = ${?PGPASSWORD}
+      serverName = ${?PGSERVER}
+      ssl = <span class="kw">true</span>
+      sslfactory = <span class="lit">"org.postgresql.ssl.NonValidatingFactory"</span>
+      user = ${?USERID}
+    }
+    dataSourceClassName = <span class="lit">"org.postgresql.ds.PGSimpleDataSource"</span>
+  }
+}</pre><p>The <code>quill-cache</code> section specifies parameters for this library:</p><ul><li><code>use</code> indicates the name of a subsection containing detailed database configuration.
+    The other database configuration subsections are ignored.
+    Only three are provided (<code>h2</code>, <code>mysql</code> and <code>postgres</code>), but you can make up your own subsections and call them whatever you want.</li><li><code>timeout</code> indicates how long a database query is allowed to run before an error is declared.</li><li>The contents of the named subsections are database dependent.</li><li><a href="https://github.com/brettwooldridge/HikariCP#configuration-knobs-baby" target="_blank">Hikari</a> interprets the meaning of this section.</li></ul><p>See also <a href="https://github.com/getquill/quill/blob/master/quill-jdbc/src/test/resources/application.conf" target="_blank">the Quill test application.conf</a>,
+<a href="https://github.com/brettwooldridge/HikariCP#initialization" target="_blank">Hikari initialization</a> and
+<a href="https://github.com/brettwooldridge/HikariCP/blob/master/src/main/java/com/zaxxer/hikari/HikariConfig.java#L63-L97" target="_blank">HikariConfig.java</a></p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/mslinn/quill-cache/tree/master/src/main/scala/model/persistence/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -191,6 +217,23 @@ The <code>quill-cache</code> section specifies parameters for this library:</p><
       </a>
     </span>
       <p class="shortcomment cmt">Overrides the Persistence methods which accesses the table so the cache is used instead</p>
+    </li><li name="model.persistence.ConfigParse" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ConfigParseextendsAnyRef"></a>
+      <a id="ConfigParse:ConfigParse"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="ConfigParse.html"><span class="name">ConfigParse</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.package@ConfigParseextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Parse <code>application.conf</code> or <code>reference.conf</code> for database parameters</p>
     </li><li name="model.persistence.Copier" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="CopierextendsAnyRef"></a>
       <a id="Copier:Copier"></a>
@@ -259,23 +302,6 @@ The <code>quill-cache</code> section specifies parameters for this library:</p><
       </a>
     </span>
       
-    </li><li name="model.persistence.DbWitness" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="DbWitness[T]extendsAnyRef"></a>
-      <a id="DbWitness[T]:DbWitness[T]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">sealed </span>
-        <span class="kind">class</span>
-      </span>
-      <span class="symbol">
-        <a href="DbWitness.html"><span class="name">DbWitness</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.package@DbWitness[T]extendsAnyRef" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      
     </li><li name="model.persistence.DefaultExecutionContextProvider" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="DefaultExecutionContextProviderextendsProvider[scala.concurrent.ExecutionContext]"></a>
       <a id="DefaultExecutionContextProvider:DefaultExecutionContextProvider"></a>
@@ -293,64 +319,13 @@ The <code>quill-cache</code> section specifies parameters for this library:</p><
       </a>
     </span>
       
-    </li><li name="model.persistence.H2Witness" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="H2WitnessextendsDbWitness[io.getquill.H2JdbcContext[model.persistence.TableNameSnakeCase]]"></a>
-      <a id="H2Witness:H2Witness"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">class</span>
-      </span>
-      <span class="symbol">
-        <a href="H2Witness.html"><span class="name">H2Witness</span></a><span class="result"> extends <a href="DbWitness.html" class="extype" name="model.persistence.DbWitness">DbWitness</a>[<span class="extype" name="io.getquill.H2JdbcContext">H2JdbcContext</span>[<a href="TableNameSnakeCase.html" class="extype" name="model.persistence.TableNameSnakeCase">TableNameSnakeCase</a>]]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.package@H2WitnessextendsDbWitness[io.getquill.H2JdbcContext[model.persistence.TableNameSnakeCase]]" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      
-    </li><li name="model.persistence.MysqlWitness" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="MysqlWitnessextendsDbWitness[io.getquill.MysqlJdbcContext[model.persistence.TableNameSnakeCase]]"></a>
-      <a id="MysqlWitness:MysqlWitness"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">class</span>
-      </span>
-      <span class="symbol">
-        <a href="MysqlWitness.html"><span class="name">MysqlWitness</span></a><span class="result"> extends <a href="DbWitness.html" class="extype" name="model.persistence.DbWitness">DbWitness</a>[<span class="extype" name="io.getquill.MysqlJdbcContext">MysqlJdbcContext</span>[<a href="TableNameSnakeCase.html" class="extype" name="model.persistence.TableNameSnakeCase">TableNameSnakeCase</a>]]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.package@MysqlWitnessextendsDbWitness[io.getquill.MysqlJdbcContext[model.persistence.TableNameSnakeCase]]" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      
-    </li><li name="model.persistence.PostgresWitness" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="PostgresWitnessextendsDbWitness[io.getquill.PostgresJdbcContext[model.persistence.TableNameSnakeCase]]"></a>
-      <a id="PostgresWitness:PostgresWitness"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">class</span>
-      </span>
-      <span class="symbol">
-        <a href="PostgresWitness.html"><span class="name">PostgresWitness</span></a><span class="result"> extends <a href="DbWitness.html" class="extype" name="model.persistence.DbWitness">DbWitness</a>[<span class="extype" name="io.getquill.PostgresJdbcContext">PostgresJdbcContext</span>[<a href="TableNameSnakeCase.html" class="extype" name="model.persistence.TableNameSnakeCase">TableNameSnakeCase</a>]]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.package@PostgresWitnessextendsDbWitness[io.getquill.PostgresJdbcContext[model.persistence.TableNameSnakeCase]]" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      
-    </li><li name="model.persistence.QuillImplicits" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="model.persistence.QuillImplicits" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="QuillImplicitsextendsIdImplicitLike"></a>
       <a id="QuillImplicits:QuillImplicits"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">class</span>
+        <span class="kind">trait</span>
       </span>
       <span class="symbol">
         <a href="QuillImplicits.html"><span class="name">QuillImplicits</span></a><span class="result"> extends <span class="extype" name="model.persistence.IdImplicitLike">IdImplicitLike</span></span>
@@ -417,23 +392,6 @@ DAOs that mix in <code>SoftCache</code> do not assume that all instances of the 
 Because of this, those <code>SoftCache</code> finders run more slowly than <code>StrongCache</code> finders when the cache does not contain the desired value.</p><p><code>SoftCache</code> finders that return a list of items must always query the database and never look in the cache.</p><p>The <code>CachedPersistence</code> trait implements the default caching strategy.
 This trait overrides the default finder implementations.
 This trait is experimental, do not use in production.</p></div></div>
-    </li><li name="model.persistence.SqliteWitness" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="SqliteWitnessextendsDbWitness[io.getquill.SqliteJdbcContext[model.persistence.TableNameSnakeCase]]"></a>
-      <a id="SqliteWitness:SqliteWitness"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">class</span>
-      </span>
-      <span class="symbol">
-        <a href="SqliteWitness.html"><span class="name">SqliteWitness</span></a><span class="result"> extends <a href="DbWitness.html" class="extype" name="model.persistence.DbWitness">DbWitness</a>[<span class="extype" name="io.getquill.SqliteJdbcContext">SqliteJdbcContext</span>[<a href="TableNameSnakeCase.html" class="extype" name="model.persistence.TableNameSnakeCase">TableNameSnakeCase</a>]]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.package@SqliteWitnessextendsDbWitness[io.getquill.SqliteJdbcContext[model.persistence.TableNameSnakeCase]]" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      
     </li><li name="model.persistence.StrongCache" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="StrongCache[Key,Value]extendsAbstractCache[Key,Value]"></a>
       <a id="StrongCache[Key,Value]:StrongCache[Key,Value]"></a>
@@ -582,7 +540,7 @@ cached domain objects will have the same interface as the DAOs for your uncached
       </a>
     </span>
       
-    </li><li name="model.persistence.QuillConfiguration" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="model.persistence.QuillConfiguration" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="QuillConfiguration"></a>
       <a id="QuillConfiguration:QuillConfiguration"></a>
       <h4 class="signature">
@@ -591,14 +549,16 @@ cached domain objects will have the same interface as the DAOs for your uncached
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="QuillConfiguration$.html"><span class="name">QuillConfiguration</span></a>
+        <a href="QuillConfiguration$.html"><span class="name">QuillConfiguration</span></a><span class="result"> extends <a href="ConfigParse.html" class="extype" name="model.persistence.ConfigParse">ConfigParse</a></span>
       </span>
       </h4><span class="permalink">
       <a href="../../index.html#model.persistence.package@QuillConfiguration" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">Computes a property called <code>ctx</code>, which is the Quill context.</p><div class="fullcomment"><div class="comment cmt"><p>Computes a property called <code>ctx</code>, which is the Quill context.
+Its type varies according to the database selected, which complicates things.
+Seems no type can be ascribed to <code>ctx</code> such that importing it will define the encoders and decoders.</p></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p><a href="http://getquill.io/#quotation-introduction" target="_blank">The Quill docs</a>.</p></span></dd></dl></div>
     </li><li name="model.persistence.QuillImplicits" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="QuillImplicits"></a>
       <a id="QuillImplicits:QuillImplicits"></a>
