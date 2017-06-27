@@ -1,35 +1,56 @@
 package model.persistence
 
-import com.typesafe.config.{Config, ConfigFactory}
-import io.getquill._
-import scala.concurrent.duration.Duration
-import scala.reflect.runtime.universe._
+/** Parse `application.conf` or `reference.conf` for database parameters */
+trait ConfigParse {
+  import com.typesafe.config.{Config, ConfigFactory}
+  import scala.concurrent.duration.Duration
 
-sealed class DbWitness[T: TypeTag](val ctx: T)
-class H2Witness(configPrefix: String)       extends DbWitness(new H2JdbcContext[TableNameSnakeCase](configPrefix))
-class MysqlWitness(configPrefix: String)    extends DbWitness(new MysqlJdbcContext[TableNameSnakeCase](configPrefix))
-class PostgresWitness(configPrefix: String) extends DbWitness(new PostgresJdbcContext[TableNameSnakeCase](configPrefix))
-class SqliteWitness(configPrefix: String)   extends DbWitness(new SqliteJdbcContext[TableNameSnakeCase](configPrefix))
+  val quillSection = "quill-cache"
+  val config: Config = ConfigFactory.load.getConfig(quillSection)
+  val dbTimeout: Duration = Duration.fromNanos(config.getDuration("timeout").toNanos)
+  val dbType: String = config.getString("use")
+  val configPrefix: String = s"$quillSection.$dbType"
+}
 
-object QuillConfiguration {
-  type AllDialects = H2Dialect with MySQLDialect with PostgresDialect with SqliteDialect
-  type AllContexts = H2JdbcContext[TableNameSnakeCase] with MysqlJdbcContext[TableNameSnakeCase] with
-                     PostgresJdbcContext[TableNameSnakeCase] with SqliteJdbcContext[TableNameSnakeCase]
-  protected lazy val quillSection = "quill-cache"
-  protected lazy val config: Config = ConfigFactory.load.getConfig(quillSection)
+/** Computes a property called `ctx`, which is the Quill context.
+  * Its type varies according to the database selected, which complicates things.
+  * Seems no type can be ascribed to `ctx` such that importing it will define the encoders and decoders.
+  * @see [[http://getquill.io/#quotation-introduction The Quill docs]]. */
+object QuillConfiguration extends ConfigParse {
+  import io.getquill._
+  import scala.language.{higherKinds, implicitConversions}
+  import scala.reflect.runtime.universe
+  import scala.reflect.runtime.universe._
 
-  protected lazy val dbTimeout: Duration = Duration.fromNanos(config.getDuration("timeout").toNanos)
+  // If DbContextHolder had a TypeTag or ClassTag for A, would it somehow be possible to use that type to set the type of ctx at the bottom of this object?
+  protected class DbContextHolder[A](val ctx: A)
 
-  protected lazy val dbType: String = config.getString("use")
+  protected object DbContextHolder {
+    def apply[A](ctx: A) = new DbContextHolder(ctx)
+  }
 
-  // TODO What type can be ascribed to dbWitness such that importing it will define the encoders and decoders?
-  def dbWitness = try {
-    val configPrefix = s"$quillSection.$dbType"
+  protected type N = TableNameSnakeCase
+  protected implicit val h2Holder       = DbContextHolder(new H2JdbcContext[N](configPrefix))
+  protected implicit val mySqlHolder    = DbContextHolder(new MysqlJdbcContext[N](configPrefix))
+  protected implicit val postgresHolder = DbContextHolder(new PostgresJdbcContext[N](configPrefix))
+  protected implicit val sqliteHolder   = DbContextHolder(new SqliteJdbcContext[N](configPrefix))
+
+  /** Convert from a dialect type to a DbContextHolder */
+  // TODO not used - not even sure if this is helpful
+  protected implicit def selectHolder(dialect: universe.Type): DbContextHolder[_] = dialect match {
+    case _: H2Dialect       => h2Holder
+    case _: MySQLDialect    => mySqlHolder
+    case _: PostgresDialect => postgresHolder
+    case _: SqliteDialect   => sqliteHolder
+  }
+
+  // this works properly
+  protected val dialect: universe.Type = try {
     dbType match {
-      case "h2"       => new H2Witness(configPrefix)
-      case "mysql"    => new MysqlWitness(configPrefix)
-      case "postgres" => new PostgresWitness(configPrefix)
-      case "sqlite"   => new SqliteWitness(configPrefix)
+      case "h2"       => typeOf[H2Dialect]
+      case "mysql"    => typeOf[MySQLDialect]
+      case "postgres" => typeOf[PostgresDialect]
+      case "sqlite"   => typeOf[SqliteDialect]
       case _          => throw new Exception("No database configured.")
     }
   } catch {
@@ -37,4 +58,7 @@ object QuillConfiguration {
       println(e.getMessage)
       throw e
   }
+
+  //
+  val ctx = postgresHolder.ctx // selectHolder(dialect) // TODO implicitly select the correct holder, instead of hard-coding it like this
 }
