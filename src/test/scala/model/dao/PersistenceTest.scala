@@ -1,17 +1,15 @@
 package model.dao
 
-import model.Course
+import model.User
 import model.persistence.{Copier, Id}
 import org.scalatest._
 
 case class X(a: String, id: Int)
 
-class PersistenceTest extends WordSpec with Matchers {
-  val course: Course = Courses.upsert(Course(groupId=Id(Some(99)), sku=s"course_Blah"))
-
-  // Ensure connection pool works
-  (1L to 299L).foreach { i =>
-    Courses.upsert(Course(groupId=Id(Some(i)), sku=s"course_$i"))
+class PersistenceTest extends WordSpec with Matchers with BeforeAndAfterAll {
+  override def beforeAll(): Unit = {
+    ProcessEvolutionUp.apply(new java.io.File("src/test/resources/evolutions/default/1.sql"))
+    println("Database should exist now.")
   }
 
   "Copier" should {
@@ -23,14 +21,21 @@ class PersistenceTest extends WordSpec with Matchers {
   }
 
   "Course instances" should  {
-    "be found by sku" in {
-      (1 to 99).foreach { i =>
-        Courses.findBySku(s"course_$i").size shouldBe 1
-      }
+    "work" in {
+      val user: User = Users.upsert(User(userId = s"user0", email = s"user0@gmail.com", firstName = s"Joe0", lastName = "Smith", password = "secret"))
+      user.id.value shouldBe Some(1L)
     }
 
     "be found by id" in {
-      Courses.findById(course.id).size shouldBe 1
+      Users.findById(Id(Option(1L))).size shouldBe 1
+    }
+  }
+
+  "Connection pool" should {
+    "work" in {
+      (1L to 299L).foreach { i =>
+        Users.upsert(User(userId = s"user$i", email = s"user$i@gmail.com", firstName = s"Joe$i", lastName = "Smith", password = "secret"))
+      }
     }
   }
 }

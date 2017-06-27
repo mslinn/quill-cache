@@ -57,7 +57,7 @@ import persistence._
   * Please see `src/main/scala/resources/reference.conf` for an example of how to set that up.
   * The `quill-cache` section specifies parameters for this library:
   *   - `use` indicates the name of a subsection containing detailed database configuration.
-  *     Only two are provided (`mysql` and `postgres`), but you can make up your own subsections and call them whatever you want.
+  *     Only three are provided (`h2`, `mysql` and `postgres`), but you can make up your own subsections and call them whatever you want.
   *   - `timeout` indicates how long a database query is allowed to run before an error is declared.
   *   - The contents of the named subsections are database dependent.
   *     [Hikari](https://github.com/brettwooldridge/HikariCP#configuration-knobs-baby) interprets the meaning of this section. */

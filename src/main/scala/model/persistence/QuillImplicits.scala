@@ -4,7 +4,7 @@ import com.github.nscala_time.time.Imports._
 import java.util.UUID
 import io.getquill._
 
-class QuillImplicits extends IdImplicitLike {
+trait QuillImplicits extends IdImplicitLike {
   import QuillConfiguration.ctx
   import ctx._
 

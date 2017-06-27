@@ -51,7 +51,7 @@ object QuillConfiguration extends ConfigParse {
       case "mysql"    => typeOf[MySQLDialect]
       case "postgres" => typeOf[PostgresDialect]
       case "sqlite"   => typeOf[SqliteDialect]
-      case _          => throw new Exception("No database configured.")
+      case x          => throw new Exception(s"Error: '$x' is an invalid database type. No database configured.")
     }
   } catch {
     case e: Throwable =>
@@ -59,6 +59,5 @@ object QuillConfiguration extends ConfigParse {
       throw e
   }
 
-  //
-  val ctx = postgresHolder.ctx // selectHolder(dialect) // TODO implicitly select the correct holder, instead of hard-coding it like this
+  val ctx = h2Holder.ctx // selectHolder(dialect) // TODO implicitly select the correct holder, instead of hard-coding it like this
 }

@@ -66,10 +66,11 @@ libraryDependencies ++= Seq(
   "net.codingwell"         %% "scala-guice"        % "4.1.0"  withSources(),
   "org.joda"               %  "joda-convert"       % "1.6"    withSources(),
   //
-  "ch.qos.logback"         %  "logback-classic"    % "1.2.3"  % Test,
-  "junit"                  %  "junit"              % "4.12"   % Test,
-  "org.postgresql"         %  "postgresql"         % "42.1.1" % Test,
-  "org.scalatest"          %% "scalatest"          % "3.0.1"  % Test withSources()
+  "ch.qos.logback"         %  "logback-classic"    % "1.2.3"   % Test,
+  "junit"                  %  "junit"              % "4.12"    % Test,
+  "org.postgresql"         %  "postgresql"         % "42.1.1"  % Test,
+  "com.h2database"         %  "h2"                 % "1.4.192" % Test withSources(),
+  "org.scalatest"          %% "scalatest"          % "3.0.1"   % Test withSources()
 )
 
 publishArtifact in (Compile, packageSrc) := false

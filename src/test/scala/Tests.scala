@@ -1,4 +1,4 @@
-import model.dao.Courses
+import model.dao.Users
 import org.scalatest._
 
 class CompilationTest extends WordSpec with MustMatchers { this: Suite =>
@@ -14,7 +14,7 @@ trait TestSetup extends WordSpec
     with BeforeAndAfter
 
 trait Lifecycle { this: TestSetup =>
-  def wipeDB(): Unit = Courses.findAll.foreach(c => Courses.deleteById(c.id))
+  def wipeDB(): Unit = Users.findAll.foreach(c => Users.deleteById(c.id))
 
   override def afterAll(): Unit = wipeDB()
 
