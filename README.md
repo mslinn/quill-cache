@@ -86,11 +86,6 @@ quill-cache {
   use: h2
   timeout: 1 minute
 
-  # See https://github.com/getquill/quill/blob/master/quill-jdbc/src/test/resources/application.conf
-  # See https://github.com/brettwooldridge/HikariCP#initialization
-  # See https://github.com/brettwooldridge/HikariCP/blob/master/src/main/java/com/zaxxer/hikari/HikariConfig.java#L63-L97
-  # See https://github.com/brettwooldridge/HikariCP/wiki/About-Pool-Sizing#the-formula
-
   h2 {
     dataSourceClassName = org.h2.jdbcx.JdbcDataSource
     dataSource {
@@ -123,6 +118,11 @@ The `quill-cache` section specifies parameters for this library:
   * `timeout` indicates how long a database query is allowed to run before an error is declared.
   * The contents of the named subsections are database-dependent.
   * [Hikari](https://github.com/brettwooldridge/HikariCP#configuration-knobs-baby) interprets the meaning of `datSource` sections.
+
+See also the [Quill application.conf](https://github.com/getquill/quill/blob/master/quill-jdbc/src/test/resources/application.conf),
+[HikariCP initialization docs](https://github.com/brettwooldridge/HikariCP#initialization),
+[HikariConfig source code](https://github.com/brettwooldridge/HikariCP/blob/master/src/main/java/com/zaxxer/hikari/HikariConfig.java#L63-L97),
+and the [Hikari pool sizing docs](https://github.com/brettwooldridge/HikariCP/wiki/About-Pool-Sizing#the-formula).
 
 ## Sample Code
 See the unit tests for examples of how to use this library.
