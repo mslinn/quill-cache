@@ -58,19 +58,21 @@ resolvers ++= Seq(
   "micronautics/scala on bintray" at "http://dl.bintray.com/micronautics/scala"
 )
 
+val quillVer = "1.2.1"
 libraryDependencies ++= Seq(
-  "com.github.nscala-time" %% "nscala-time"        % "2.16.0" withSources(),
-  "com.google.guava"       %  "guava"              % "18.0"   withSources(),
-  "com.micronautics"       %% "has-id"             % "1.2.5"  withSources(),
-  "io.getquill"            %% "quill-jdbc"         % "1.2.1"  withSources(),
-  "net.codingwell"         %% "scala-guice"        % "4.1.0"  withSources(),
-  "org.joda"               %  "joda-convert"       % "1.6"    withSources(),
+  "com.github.nscala-time" %% "nscala-time"          % "2.16.0" withSources(),
+  "com.google.guava"       %  "guava"                % "19.0"   withSources(),
+  "com.micronautics"       %% "has-id"               % "1.2.5"  withSources(),
+  "io.getquill"            %% "quill-jdbc"           % quillVer withSources(),
+  "io.getquill"            %% "quill-async-postgres" % quillVer withSources(),
+  "net.codingwell"         %% "scala-guice"          % "4.1.0"  withSources(),
+  "org.joda"               %  "joda-convert"         % "1.6"    withSources(),
+  "ch.qos.logback"         %  "logback-classic"      % "1.2.3",
+  "junit"                  %  "junit"                % "4.12",
+  "org.postgresql"         %  "postgresql"           % "42.1.1",
+  "com.h2database"         %  "h2"                   % "1.4.192" withSources(),
   //
-  "ch.qos.logback"         %  "logback-classic"    % "1.2.3"   % Test,
-  "junit"                  %  "junit"              % "4.12"    % Test,
-  "org.postgresql"         %  "postgresql"         % "42.1.1"  % Test,
-  "com.h2database"         %  "h2"                 % "1.4.192" % Test withSources(),
-  "org.scalatest"          %% "scalatest"          % "3.0.1"   % Test withSources()
+  "org.scalatest"          %% "scalatest"            % "3.0.1"   % Test withSources()
 )
 
 publishArtifact in (Compile, packageSrc) := false
