@@ -7,29 +7,6 @@ licenses +=  ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0.html
 scalaVersion := "2.11.11"
 crossScalaVersions := Seq("2.11.11", "2.12.2")
 
-scalacOptions ++=
-  scalaVersion {
-    case sv if sv.startsWith("2.10") => List(
-      "-target:jvm-1.7"
-    )
-
-    case _ => List(
-      "-target:jvm-1.8",
-      "-Ywarn-unused"
-    )
-  }.value ++ Seq(
-    "-deprecation",
-    "-encoding", "UTF-8",
-    "-feature",
-    "-unchecked",
-    "-Ywarn-adapted-args",
-    "-Ywarn-dead-code",
-    "-Ywarn-numeric-widen",
-    "-Ywarn-value-discard",
-    "-Xfuture",
-    "-Xlint"
-  )
-
 scalacOptions in (Compile, doc) ++= baseDirectory.map {
   (bd: File) => Seq[String](
      "-sourcepath", bd.getAbsolutePath,
@@ -37,43 +14,93 @@ scalacOptions in (Compile, doc) ++= baseDirectory.map {
   )
 }.value
 
-javacOptions ++=
-  scalaVersion {
-    case sv if sv.startsWith("2.10") => List(
-      "-source", "1.7",
-      "-target", "1.7"
-    )
+val quillVer = "1.2.1"
 
-    case _ => List(
-      "-source", "1.8",
-      "-target", "1.8"
+
+
+lazy val commonSettings = Seq(
+  version := "1.0",
+  scalaVersion := scalaVersion.value,
+  scalacOptions ++=
+    scalaVersion {
+      case sv if sv.startsWith("2.10") => List(
+        "-target:jvm-1.7"
+      )
+
+      case _ => List(
+        "-target:jvm-1.8",
+        "-Ywarn-unused"
+      )
+    }.value ++ Seq(
+      "-deprecation",
+      "-encoding", "UTF-8",
+      "-feature",
+      "-unchecked",
+      "-Ywarn-adapted-args",
+      "-Ywarn-dead-code",
+      "-Ywarn-numeric-widen",
+      "-Ywarn-value-discard",
+      "-Xfuture",
+      "-Xlint"
+    ),
+  javacOptions ++=
+    scalaVersion {
+      case sv if sv.startsWith("2.10") => List(
+        "-source", "1.7",
+        "-target", "1.7"
+      )
+
+      case _ => List(
+        "-source", "1.8",
+        "-target", "1.8"
+      )
+    }.value ++ Seq(
+      "-Xlint:deprecation",
+      "-Xlint:unchecked",
+      "-g:vars"
+    ),
+  resolvers ++= Seq(
+    "micronautics/scala on bintray" at "http://dl.bintray.com/micronautics/scala"
+//    Resolver.sonatypeRepo("snapshots")
+  )
+)
+
+lazy val macrosModule = project.in(file("macro"))
+  .settings(commonSettings: _*)
+  .settings(
+    libraryDependencies ++= Seq(
+      "org.scala-lang" % "scala-reflect",
+      "org.scala-lang" % "scala-compiler"
+    ).map(_ % scalaVersion.value),
+    libraryDependencies ++= Seq( // probably don't need any of the following dependencies
+      "io.getquill" %% "quill-async-postgres",
+      "io.getquill" %% "quill-jdbc"
+    ).map(_ % quillVer),
+    libraryDependencies ++= Seq(
+      "org.postgresql" % "postgresql" % "9.4.1208"
     )
-  }.value ++ Seq(
-    "-Xlint:deprecation",
-    "-Xlint:unchecked",
-    "-g:vars"
   )
 
-resolvers ++= Seq(
-  "micronautics/scala on bintray" at "http://dl.bintray.com/micronautics/scala"
-)
-
-val quillVer = "1.2.1"
-libraryDependencies ++= Seq(
-  "com.github.nscala-time" %% "nscala-time"          % "2.16.0" withSources(),
-  "com.google.guava"       %  "guava"                % "19.0"   withSources(),
-  "com.micronautics"       %% "has-id"               % "1.2.5"  withSources(),
-  "io.getquill"            %% "quill-jdbc"           % quillVer withSources(),
-  "io.getquill"            %% "quill-async-postgres" % quillVer withSources(),
-  "net.codingwell"         %% "scala-guice"          % "4.1.0"  withSources(),
-  "org.joda"               %  "joda-convert"         % "1.6"    withSources(),
-  "ch.qos.logback"         %  "logback-classic"      % "1.2.3",
-  "junit"                  %  "junit"                % "4.12",
-  "org.postgresql"         %  "postgresql"           % "42.1.1",
-  "com.h2database"         %  "h2"                   % "1.4.192" withSources(),
-  //
-  "org.scalatest"          %% "scalatest"            % "3.0.1"   % Test withSources()
-)
+lazy val root = project.in(file("."))
+  .settings(commonSettings: _*)
+  .settings(
+    libraryDependencies ++= Seq(
+      "ch.qos.logback"         %  "logback-classic"      % "1.2.3"   withSources(),
+      "com.github.nscala-time" %% "nscala-time"          % "2.16.0"  withSources(),
+      "com.google.guava"       %  "guava"                % "19.0"    withSources(),
+      "com.micronautics"       %% "has-id"               % "1.2.5"   withSources(),
+      "io.getquill"            %% "quill-jdbc"           % quillVer  withSources(),
+      "io.getquill"            %% "quill-async-postgres" % quillVer  withSources(),
+      "net.codingwell"         %% "scala-guice"          % "4.1.0"   withSources(),
+      "org.joda"               %  "joda-convert"         % "1.6"     withSources(),
+      "com.h2database"         %  "h2"                   % "1.4.192" withSources(),
+      "org.postgresql"         %  "postgresql"           % "42.1.1"  withSources(),
+      //
+      "junit"                  %  "junit"                % "4.12"    % Test withSources(),
+      "org.scalatest"          %% "scalatest"            % "3.0.1"   % Test withSources()
+    )
+  )
+  .dependsOn(macrosModule)
 
 publishArtifact in (Compile, packageSrc) := false
 
