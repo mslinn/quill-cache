@@ -89,6 +89,7 @@ quill-cache {
   # See https://github.com/getquill/quill/blob/master/quill-jdbc/src/test/resources/application.conf
   # See https://github.com/brettwooldridge/HikariCP#initialization
   # See https://github.com/brettwooldridge/HikariCP/blob/master/src/main/java/com/zaxxer/hikari/HikariConfig.java#L63-L97
+  # See https://github.com/brettwooldridge/HikariCP/wiki/About-Pool-Sizing#the-formula
 
   h2 {
     dataSourceClassName = org.h2.jdbcx.JdbcDataSource

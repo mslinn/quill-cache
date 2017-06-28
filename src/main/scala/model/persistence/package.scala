@@ -96,8 +96,9 @@ import persistence._
   *   - [[https://github.com/brettwooldridge/HikariCP#configuration-knobs-baby Hikari]] interprets the meaning of this section.
   *
   * See also [[https://github.com/getquill/quill/blob/master/quill-jdbc/src/test/resources/application.conf the Quill test application.conf]],
-  * [[https://github.com/brettwooldridge/HikariCP#initialization Hikari initialization]] and
-  * [[https://github.com/brettwooldridge/HikariCP/blob/master/src/main/java/com/zaxxer/hikari/HikariConfig.java#L63-L97 HikariConfig.java]] */
+  * [[https://github.com/brettwooldridge/HikariCP#initialization Hikari initialization]],
+  * [[https://github.com/brettwooldridge/HikariCP/blob/master/src/main/java/com/zaxxer/hikari/HikariConfig.java#L63-L97 HikariConfig.java]], and
+  * [[https://github.com/brettwooldridge/HikariCP/wiki/About-Pool-Sizing#the-formula Hikari pool sizing]] */
 package object persistence {
   implicit class RichThrowable(throwable: Throwable) {
     def format(asHtml: Boolean=false, showStackTrace: Boolean = false): String =
