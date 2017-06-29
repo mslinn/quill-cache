@@ -60,7 +60,6 @@ import persistence._
   *
   * {{{
   * quill-cache {
-  *   use: h2
   *   timeout: 1 minute
   *
   *   h2 {
@@ -88,9 +87,7 @@ import persistence._
   * }}}
   *
   * The `quill-cache` section specifies parameters for this library:
-  *   - `use` indicates the name of a subsection containing detailed database configuration.
-  *     The other database configuration subsections are ignored.
-  *     Only three are provided (`h2`, `mysql` and `postgres`), but you can make up your own subsections and call them whatever you want.
+  *   - You can make up your own subsections and call them whatever you want.
   *   - `timeout` indicates how long a database query is allowed to run before an error is declared.
   *   - The contents of the named subsections are database dependent.
   *   - [[https://github.com/brettwooldridge/HikariCP#configuration-knobs-baby Hikari]] interprets the meaning of this section.
@@ -98,7 +95,36 @@ import persistence._
   * See also [[https://github.com/getquill/quill/blob/master/quill-jdbc/src/test/resources/application.conf the Quill test application.conf]],
   * [[https://github.com/brettwooldridge/HikariCP#initialization Hikari initialization]],
   * [[https://github.com/brettwooldridge/HikariCP/blob/master/src/main/java/com/zaxxer/hikari/HikariConfig.java#L63-L97 HikariConfig.java]], and
-  * [[https://github.com/brettwooldridge/HikariCP/wiki/About-Pool-Sizing#the-formula Hikari pool sizing]] */
+  * [[https://github.com/brettwooldridge/HikariCP/wiki/About-Pool-Sizing#the-formula Hikari pool sizing]]
+  *
+  * <h2>Working with quill-cache</h2>
+  * <h3>Quill Contexts</h3>
+  * Quill-cache provides many flavors of Quill contexts, one for each type of supported database driver.
+  * Each context is exposed as a Scala `trait`, and they are also available wrapped into Scala `object`s.
+  * Import the Quill context `ctx` from the appropriate type wherever you need to access the database.
+  *
+  * Available traits are: `H2Ctx`, `MySqlCtx`, `PostgresCtx`, and `SqliteCtx`.
+  * Import the `ctx` property from the appropriate `trait` for the type of database driver you need, like this:
+  * {{{
+  * class MyClass extends model.persistence.H2Ctx {
+  *   import ctx._
+  * }
+  * }}}
+  *
+  * Available objects are: `H2Configuration`, `MysqlConfiguration`, `PostgresConfiguration`, and `SqliteConfiguration`.
+  * Import the `ctx` property from the appropriate `object` for the type of database driver you need, like this:
+  * {{{
+  * class MyClass {
+  *   import model.persistence.PostgresConfiguration.ctx._
+  * }
+  * }}}
+  *
+  * You can make a custom context like this:
+  * {{{ lazy val ctx = new PostgresJdbcContext[model.persistence.TableNameSnakeCase]("quill-cache.my-section-name") }}}
+  *
+  * Asynchronous drivers are not supported by `quill-cache`.
+  * <h2>Working with DAOs</h2>
+  * See the unit tests for examples of how to use this library. */
 package object persistence {
   implicit class RichThrowable(throwable: Throwable) {
     def format(asHtml: Boolean=false, showStackTrace: Boolean = false): String =

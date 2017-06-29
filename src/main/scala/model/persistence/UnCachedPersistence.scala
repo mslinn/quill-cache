@@ -9,9 +9,7 @@ import scala.language.{postfixOps, reflectiveCalls}
   * case classes are not cached. You don't have to subclass `UnCachedPersistence`, but if you do then the DAOs for your
   * cached domain objects will have the same interface as the DAOs for your uncached domain objects. */
 abstract class UnCachedPersistence[Key <: Any, _IdType <: Option[Key], CaseClass <: HasId[CaseClass, _IdType]]
-  extends QuillImplicits with IdImplicitLike {
-  import QuillConfiguration.ctx
-  import ctx._
+  extends QuillImplicits with IdImplicitLike with CtxLike {
 
   protected val Logger: Logger = org.slf4j.LoggerFactory.getLogger("persistence")
 
@@ -118,8 +116,8 @@ abstract class UnCachedPersistence[Key <: Any, _IdType <: Option[Key], CaseClass
     * @see [[https://stackoverflow.com/a/244265/553865]]
     * List sequences with {{{\ds}}} */
   @inline def setAutoInc(): Unit = if (ctx.isInstanceOf[PostgresJdbcContext[_]]) try {
-    val maxId: Long = executeQuerySingle(s"SELECT Max(id) FROM $tableName", extractor = _.getLong(1))
-    executeAction(s"ALTER SEQUENCE ${ tableName }_id_seq RESTART WITH ${ maxId + 1L }")
+    val maxId: Long = ctx.executeQuerySingle(s"SELECT Max(id) FROM $tableName", extractor = _.getLong(1))
+    ctx.executeAction(s"ALTER SEQUENCE ${ tableName }_id_seq RESTART WITH ${ maxId + 1L }")
     ()
   } catch {
     case ex: Exception =>

@@ -5,9 +5,8 @@ trait ConfigParse {
   import com.typesafe.config.{Config, ConfigFactory}
   import scala.concurrent.duration.Duration
 
-  val quillSection = "quill-cache"
-  val config: Config = ConfigFactory.load.getConfig(quillSection)
+  val config: Config = ConfigFactory.load.getConfig("quill-cache")
   val dbTimeout: Duration = Duration.fromNanos(config.getDuration("timeout").toNanos)
-  val dbType: String = config.getString("use")
-  val configPrefix: String = s"$quillSection.$dbType"
+
+  def configPrefix(dbType: String): String = s"quill-cache.$dbType"
 }

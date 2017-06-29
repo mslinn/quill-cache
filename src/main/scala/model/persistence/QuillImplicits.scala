@@ -5,8 +5,7 @@ import com.github.nscala_time.time.Imports._
 import java.util.UUID
 import io.getquill._
 
-trait QuillImplicits extends IdImplicitLike {
-  import QuillConfiguration.ctx
+trait QuillImplicits extends IdImplicitLike with CtxLike {
   import ctx._
 
   implicit val dateTimeDecoder: Decoder[DateTime] =
@@ -59,16 +58,3 @@ trait QuillImplicits extends IdImplicitLike {
   implicit val decodeOptionURL: MappedEncoding[String, Option[URL]] =
     MappedEncoding[String, Option[URL]](x => Option(new URL(x)))
 }
-
-object QuillImplicits extends QuillImplicits
-
-/** Ensures that table names are quoted and snake_case but never start with a leading _. */
-trait TableNameSnakeCase extends NamingStrategy with Escape with SnakeCase {
-  override def table(s: String): String   = {
-    val x = super.default(s)
-    val y = if (x.startsWith("_")) x.substring(1) else x
-    s""""$y""""
-  }
-}
-
-object TableNameSnakeCase extends TableNameSnakeCase

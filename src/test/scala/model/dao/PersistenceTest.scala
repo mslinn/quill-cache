@@ -8,8 +8,9 @@ case class X(a: String, id: Int)
 
 class PersistenceTest extends WordSpec with Matchers with BeforeAndAfterAll {
   override def beforeAll(): Unit = {
+    println("Creating H2 in-memory database from test/resources/evolutions/default/1.sql.")
     ProcessEvolutionUp.apply("evolutions/default/1.sql")
-    println("Database should exist now.")
+    println("H2 in-memory database should exist now.")
   }
 
   "Copier" should {

@@ -2,13 +2,18 @@ package model.dao
 
 import model.User
 import model.persistence.Types.IdOptionLong
-import model.persistence.{CachedPersistence, Id, QuillImplicits, SoftCacheLike}
+import model.persistence.{CachedPersistence, H2Ctx, Id, QuillImplicits, SoftCacheLike}
 import scala.concurrent.ExecutionContext
+
+/** Define `SelectedCtx` for use with all DAOs */
+trait SelectedCtx extends H2Ctx
+
 
 object Users extends CachedPersistence[Long, Option[Long], User]
              with SoftCacheLike[Long, Option[Long], User]
-             with QuillImplicits {
-  import model.persistence.QuillConfiguration.ctxH2._
+             with QuillImplicits
+             with SelectedCtx {
+  import ctx._
 
   /** A real application would provide a dedicated `ExecutionContext` for DAOs */
   implicit val ec: ExecutionContext = scala.concurrent.ExecutionContext.Implicits.global
@@ -49,8 +54,6 @@ object Users extends CachedPersistence[Long, Option[Long], User]
     }
 
   val className = "User"
-
-//  @inline override def findAll: List[User] = _findAll
 
   @inline override def findById(id: IdOptionLong): Option[User] =
     id.value.map(theCache.get).getOrElse { run { queryById(id) }.headOption }

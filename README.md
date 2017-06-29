@@ -35,12 +35,12 @@ Because `preload()` always flushes the cache before loading it you probably won'
 
 ## Cache Types
 Two types of caches are supported by `CachedPersistence`: 
-  * [StrongCache](http://mslinn.github.io/scalacourses-utils/latest/api/com/micronautics/cache/StrongCache.html),
+[StrongCache](http://mslinn.github.io/scalacourses-utils/latest/api/com/micronautics/cache/StrongCache.html),
     which is locked into memory until the cache is explicitly flushed.
     Mix the [StrongCacheLike](http://mslinn.github.io/quill-cache/latest/api/#model.persistence.StrongCacheLike) 
     trait into the DAO to provide this behavior.
     This type of cache is useful when there is enough memory to hold all instances of the case class.
-  * [SoftCache](http://mslinn.github.io/scalacourses-utils/latest/api/com/micronautics/cache/SoftCache.html),
+[SoftCache](http://mslinn.github.io/scalacourses-utils/latest/api/com/micronautics/cache/SoftCache.html),
      which contains "soft" values that might expire by timing out or might get bumped if memory fills up.
      Mix the [SoftCacheLike](http://mslinn.github.io/quill-cache/latest/api/#model.persistence.SoftCacheLike) 
      trait into the DAO to provide this behavior.
@@ -63,7 +63,7 @@ Add this to your project's `build.sbt`:
 
     resolvers += "micronautics/scala on bintray" at "http://dl.bintray.com/micronautics/scala"
 
-    libraryDependencies += "com.micronautics" %% "quill-cache" % "3.0.5" withSources()
+    libraryDependencies += "com.micronautics" %% "quill-cache" % "3.0.6" withSources()
     
 You will also need to add a driver for the database you are using.
 Quill only supports H2, MySQL, Postgres and Sqlite.
@@ -83,7 +83,6 @@ Here is an excerpt:
 
 ```
 quill-cache {
-  use: h2
   timeout: 1 minute
 
   h2 {
@@ -111,20 +110,47 @@ quill-cache {
 ```
 
 The `quill-cache` section specifies parameters for this library:
-  * `use` indicates the name of a subsection containing the active database configuration.
-    The other database configuration subsections are ignored.
-    Only two are shown above (`h2` and `postgres`), but you can make up your own subsections and call them whatever you want.
-    The supplied `reference.conf` file also has a sample MySQL section.
-  * `timeout` indicates how long a database query is allowed to run before an error is declared.
-  * The contents of the named subsections are database-dependent.
-  * [Hikari](https://github.com/brettwooldridge/HikariCP#configuration-knobs-baby) interprets the meaning of `datSource` sections.
+You can make up your own subsections and call them whatever you want.
+    The supplied `reference.conf` file also has sample MySQL sections for sync and async, plus an async Postgres section.
+`timeout` indicates how long a database query is allowed to run before an error is declared.
+The contents of the named subsections are database-dependent.
+[Hikari](https://github.com/brettwooldridge/HikariCP#configuration-knobs-baby) interprets the meaning of `datSource` sections.
 
 See also the [Quill application.conf](https://github.com/getquill/quill/blob/master/quill-jdbc/src/test/resources/application.conf),
 [HikariCP initialization docs](https://github.com/brettwooldridge/HikariCP#initialization),
 [HikariConfig source code](https://github.com/brettwooldridge/HikariCP/blob/master/src/main/java/com/zaxxer/hikari/HikariConfig.java#L63-L97),
 and the [Hikari pool sizing docs](https://github.com/brettwooldridge/HikariCP/wiki/About-Pool-Sizing#the-formula).
 
-## Sample Code
+## Working with quill-cache
+### Quill Contexts
+Quill-cache provides many flavors of Quill contexts, one for each type of supported database driver.
+Each context is exposed as a Scala `trait`, and they are also available wrapped into Scala `object`s.
+Import the Quill context `ctx` from the appropriate type wherever you need to access the database.
+
+Available traits are: `H2Ctx`, `MySqlCtx`, `PostgresCtx`, and `SqliteCtx`.
+Import the `ctx` property from the appropriate `trait` for the type of database driver you need, like this:
+```
+class MyClass extends model.persistence.H2Ctx {
+  import ctx._
+}
+```
+
+Available objects are: `H2Configuration`, `MysqlConfiguration`, `PostgresConfiguration`, and `SqliteConfiguration`.
+Import the `ctx` property from the appropriate `object` for the type of database driver you need, like this:
+```
+class MyClass {
+  import model.persistence.PostgresConfiguration.ctx._
+}
+```
+
+You can make a custom context like this:
+
+    lazy val ctx = new PostgresJdbcContext[model.persistence.TableNameSnakeCase]("quill-cache.my-section-name")
+
+Asynchronous drivers are not supported by quill-cache.
+
+### Working with DAOs
+
 See the unit tests for examples of how to use this library.
 
 ## Scaladoc
