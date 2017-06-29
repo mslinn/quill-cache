@@ -45,15 +45,17 @@
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <span class="name">QuillConfiguration</span><span class="result"> extends <a href="ConfigParse.html" class="extype" name="model.persistence.ConfigParse">ConfigParse</a></span>
+        <span class="name">QuillConfiguration</span><span class="result"> extends <a href="PostgresCtx.html" class="extype" name="model.persistence.PostgresCtx">PostgresCtx</a></span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Computes a property called <code>ctx</code>, which is the Quill context.
-Its type varies according to the database selected, which complicates things.
-Seems no type can be ascribed to <code>ctx</code> such that importing it will define the encoders and decoders.</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/mslinn/quill-cache/tree/master/src/main/scala/model/persistence/QuillConfiguration.scala" target="_blank">QuillConfiguration.scala</a></dd><dt>See also</dt><dd><span class="cmt"><p><a href="http://getquill.io/#quotation-introduction" target="_blank">The Quill docs</a>.</p></span></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Sample object for exposing the Postgres synchronous configuration.
+Exposes a property called <code>ctx</code>, which is the Quill context.
+To use, simply import the context, like this:</p><pre><span class="kw">import</span> QuillConfiguration.ctx._</pre><p>You can define your own object if you need to use a different database
+The type of <code>ctx</code> varies according to the database selected, so no type can be ascribed to <code>ctx</code>,
+otherwise the Quill encoders and decoders won't be recognized.</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/mslinn/quill-cache/tree/master/src/main/scala/model/persistence/QuillConfiguration.scala" target="_blank">QuillConfiguration.scala</a></dd><dt>See also</dt><dd><span class="cmt"><p><a href="http://getquill.io/#quotation-introduction" target="_blank">The Quill docs</a>.</p></span></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><a href="ConfigParse.html" class="extype" name="model.persistence.ConfigParse">ConfigParse</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><a href="PostgresCtx.html" class="extype" name="model.persistence.PostgresCtx">PostgresCtx</a>, <a href="ConfigParse.html" class="extype" name="model.persistence.ConfigParse">ConfigParse</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -71,7 +73,7 @@ Seems no type can be ascribed to <code>ctx</code> such that importing it will de
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="model.persistence.QuillConfiguration"><span>QuillConfiguration</span></li><li class="in" name="model.persistence.ConfigParse"><span>ConfigParse</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="model.persistence.QuillConfiguration"><span>QuillConfiguration</span></li><li class="in" name="model.persistence.PostgresCtx"><span>PostgresCtx</span></li><li class="in" name="model.persistence.ConfigParse"><span>ConfigParse</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -90,27 +92,7 @@ Seems no type can be ascribed to <code>ctx</code> such that importing it will de
         <div id="allMembers">
         
 
-        <div id="types" class="types members">
-              <h3>Type Members</h3>
-              <ol><li name="model.persistence.QuillConfiguration.N" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="N=model.persistence.TableNameSnakeCase"></a>
-      <a id="N:N"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">type</span>
-      </span>
-      <span class="symbol">
-        <span class="name">N</span><span class="result"> = <a href="TableNameSnakeCase.html" class="extype" name="model.persistence.TableNameSnakeCase">TableNameSnakeCase</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.QuillConfiguration$@N=model.persistence.TableNameSnakeCase" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
-    </li></ol>
-            </div>
+        
 
         
 
@@ -241,108 +223,23 @@ Seems no type can be ascribed to <code>ctx</code> such that importing it will de
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="ConfigParse.html" class="extype" name="model.persistence.ConfigParse">ConfigParse</a></dd></dl></div>
-    </li><li name="model.persistence.QuillConfiguration#ctx" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="ctx:io.getquill.PostgresJdbcContext[model.persistence.QuillConfiguration.N]"></a>
-      <a id="ctx:PostgresJdbcContext[N]"></a>
+    </li><li name="model.persistence.PostgresCtx#ctx" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ctx:io.getquill.PostgresJdbcContext[model.persistence.TableNameSnakeCase]"></a>
+      <a id="ctx:PostgresJdbcContext[TableNameSnakeCase]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">lazy val</span>
       </span>
       <span class="symbol">
-        <span class="name">ctx</span><span class="result">: <span class="extype" name="io.getquill.PostgresJdbcContext">PostgresJdbcContext</span>[<a href="#N=model.persistence.TableNameSnakeCase" class="extmbr" name="model.persistence.QuillConfiguration.N">N</a>]</span>
+        <span class="name">ctx</span><span class="result">: <span class="extype" name="io.getquill.PostgresJdbcContext">PostgresJdbcContext</span>[<a href="TableNameSnakeCase.html" class="extype" name="model.persistence.TableNameSnakeCase">TableNameSnakeCase</a>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.QuillConfiguration$@ctx:io.getquill.PostgresJdbcContext[model.persistence.QuillConfiguration.N]" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.QuillConfiguration$@ctx:io.getquill.PostgresJdbcContext[model.persistence.TableNameSnakeCase]" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
-    </li><li name="model.persistence.QuillConfiguration#ctxH2" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="ctxH2:io.getquill.H2JdbcContext[model.persistence.QuillConfiguration.N]"></a>
-      <a id="ctxH2:H2JdbcContext[N]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">lazy val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">ctxH2</span><span class="result">: <span class="extype" name="io.getquill.H2JdbcContext">H2JdbcContext</span>[<a href="#N=model.persistence.TableNameSnakeCase" class="extmbr" name="model.persistence.QuillConfiguration.N">N</a>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.QuillConfiguration$@ctxH2:io.getquill.H2JdbcContext[model.persistence.QuillConfiguration.N]" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      
-    </li><li name="model.persistence.QuillConfiguration#ctxMySQL" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="ctxMySQL:io.getquill.MysqlJdbcContext[model.persistence.QuillConfiguration.N]"></a>
-      <a id="ctxMySQL:MysqlJdbcContext[N]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">lazy val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">ctxMySQL</span><span class="result">: <span class="extype" name="io.getquill.MysqlJdbcContext">MysqlJdbcContext</span>[<a href="#N=model.persistence.TableNameSnakeCase" class="extmbr" name="model.persistence.QuillConfiguration.N">N</a>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.QuillConfiguration$@ctxMySQL:io.getquill.MysqlJdbcContext[model.persistence.QuillConfiguration.N]" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      
-    </li><li name="model.persistence.QuillConfiguration#ctxPostgres" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="ctxPostgres:io.getquill.PostgresJdbcContext[model.persistence.QuillConfiguration.N]"></a>
-      <a id="ctxPostgres:PostgresJdbcContext[N]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">lazy val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">ctxPostgres</span><span class="result">: <span class="extype" name="io.getquill.PostgresJdbcContext">PostgresJdbcContext</span>[<a href="#N=model.persistence.TableNameSnakeCase" class="extmbr" name="model.persistence.QuillConfiguration.N">N</a>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.QuillConfiguration$@ctxPostgres:io.getquill.PostgresJdbcContext[model.persistence.QuillConfiguration.N]" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      
-    </li><li name="model.persistence.QuillConfiguration#ctxPostgresAsync" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="ctxPostgresAsync:io.getquill.PostgresAsyncContext[model.persistence.QuillConfiguration.N]"></a>
-      <a id="ctxPostgresAsync:PostgresAsyncContext[N]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">lazy val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">ctxPostgresAsync</span><span class="result">: <span class="extype" name="io.getquill.PostgresAsyncContext">PostgresAsyncContext</span>[<a href="#N=model.persistence.TableNameSnakeCase" class="extmbr" name="model.persistence.QuillConfiguration.N">N</a>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.QuillConfiguration$@ctxPostgresAsync:io.getquill.PostgresAsyncContext[model.persistence.QuillConfiguration.N]" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      
-    </li><li name="model.persistence.QuillConfiguration#ctxSqlite" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="ctxSqlite:io.getquill.SqliteJdbcContext[model.persistence.QuillConfiguration.N]"></a>
-      <a id="ctxSqlite:SqliteJdbcContext[N]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">lazy val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">ctxSqlite</span><span class="result">: <span class="extype" name="io.getquill.SqliteJdbcContext">SqliteJdbcContext</span>[<a href="#N=model.persistence.TableNameSnakeCase" class="extmbr" name="model.persistence.QuillConfiguration.N">N</a>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.QuillConfiguration$@ctxSqlite:io.getquill.SqliteJdbcContext[model.persistence.QuillConfiguration.N]" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="PostgresCtx.html" class="extype" name="model.persistence.PostgresCtx">PostgresCtx</a></dd></dl></div>
     </li><li name="model.persistence.ConfigParse#dbTimeout" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="dbTimeout:scala.concurrent.duration.Duration"></a>
       <a id="dbTimeout:Duration"></a>
@@ -665,7 +562,9 @@ Seems no type can be ascribed to <code>ctx</code> such that importing it will de
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="model.persistence.ConfigParse">
+        <div class="parent" name="model.persistence.PostgresCtx">
+              <h3>Inherited from <a href="PostgresCtx.html" class="extype" name="model.persistence.PostgresCtx">PostgresCtx</a></h3>
+            </div><div class="parent" name="model.persistence.ConfigParse">
               <h3>Inherited from <a href="ConfigParse.html" class="extype" name="model.persistence.ConfigParse">ConfigParse</a></h3>
             </div><div class="parent" name="scala.AnyRef">
               <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>

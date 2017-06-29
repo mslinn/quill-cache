@@ -1,9 +1,9 @@
 <!DOCTYPE html >
 <html>
         <head>
-          <title>DynImpl - model.persistence.DynImpl</title>
-          <meta name="description" content="DynImpl - model.persistence.DynImpl" />
-          <meta name="keywords" content="DynImpl model.persistence.DynImpl" />
+          <title>H2Ctx - model.persistence.H2Ctx</title>
+          <meta name="description" content="H2Ctx - model.persistence.H2Ctx" />
+          <meta name="keywords" content="H2Ctx model.persistence.H2Ctx" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       <link href="../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
@@ -16,7 +16,7 @@
       <script type="text/javascript">
          if(top === self) {
             var url = '../../index.html';
-            var hash = 'model.persistence.DynImpl';
+            var hash = 'model.persistence.H2Ctx';
             var anchor = window.location.hash;
             var anchor_opt = '';
             if (anchor.length >= 1)
@@ -28,12 +28,12 @@
         </head>
         <body class="type">
       <div id="definition">
-        <img alt="Class" src="../../lib/class_big.png" />
+        <img alt="Trait" src="../../lib/trait_big.png" />
         <p id="owner"><a href="../package.html" class="extype" name="model">model</a>.<a href="package.html" class="extype" name="model.persistence">persistence</a></p>
-        <h1>DynImpl</h1><h3><span class="morelinks"><div>Related Doc:
+        <h1>H2Ctx</h1><h3><span class="morelinks"><div>Related Doc:
             <a href="package.html" class="extype" name="model.persistence">package persistence</a>
           </div></span></h3><span class="permalink">
-      <a href="../../index.html#model.persistence.DynImpl" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.H2Ctx" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -42,17 +42,24 @@
       <h4 id="signature" class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">class</span>
+        <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <span class="name">DynImpl</span><span class="result"> extends <span class="extype" name="scala.Dynamic">Dynamic</span></span>
+        <span class="name">H2Ctx</span><span class="result"> extends <a href="ConfigParse.html" class="extype" name="model.persistence.ConfigParse">ConfigParse</a></span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/mslinn/quill-cache/tree/master/src/main/scala/model/persistence/QuillConfiguration__.scala" target="_blank">QuillConfiguration__.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Mix this trait into any class that needs to access the H2 synchronous configuration.
+Exposes a property called <code>ctx</code>, which is the Quill context.
+To use, simply import the context, like this:</p><pre><span class="kw">class</span> MyClass <span class="kw">extends</span> H2Ctx {
+  <span class="kw">import</span> ctx._
+}</pre><p>The <a href="H2Configuration$.html" class="extype" name="model.persistence.H2Configuration">H2Configuration</a> object mixes in this trait and provides an alternative mechanism.</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/mslinn/quill-cache/tree/master/src/main/scala/model/persistence/QuillConfiguration.scala" target="_blank">QuillConfiguration.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><span class="extype" name="scala.Dynamic">Dynamic</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
-        </div></div>
+          <div class="superTypes hiddenContent"><a href="ConfigParse.html" class="extype" name="model.persistence.ConfigParse">ConfigParse</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+        </div><div class="toggleContainer block">
+            <span class="toggle">Known Subclasses</span>
+            <div class="subClasses hiddenContent"><a href="H2Configuration$.html" class="extype" name="model.persistence.H2Configuration">H2Configuration</a></div>
+          </div></div>
         
 
       <div id="mbrsel">
@@ -69,7 +76,7 @@
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="model.persistence.DynImpl"><span>DynImpl</span></li><li class="in" name="scala.Dynamic"><span>Dynamic</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="model.persistence.H2Ctx"><span>H2Ctx</span></li><li class="in" name="model.persistence.ConfigParse"><span>ConfigParse</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -86,49 +93,9 @@
 
       <div id="template">
         <div id="allMembers">
-        <div id="constructors" class="members">
-              <h3>Instance Constructors</h3>
-              <ol><li name="model.persistence.DynImpl#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="&lt;init&gt;():model.persistence.DynImpl"></a>
-      <a id="&lt;init&gt;:DynImpl"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">new</span>
-      </span>
-      <span class="symbol">
-        <span class="name">DynImpl</span><span class="params">()</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.DynImpl@&lt;init&gt;():model.persistence.DynImpl" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      
-    </li></ol>
-            </div>
+        
 
-        <div id="types" class="types members">
-              <h3>Type Members</h3>
-              <ol><li name="model.persistence.DynImpl.N" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="N=model.persistence.TableNameSnakeCase"></a>
-      <a id="N:N"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">type</span>
-      </span>
-      <span class="symbol">
-        <span class="name">N</span><span class="result"> = <a href="TableNameSnakeCase.html" class="extype" name="model.persistence.TableNameSnakeCase">TableNameSnakeCase</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.DynImpl@N=model.persistence.TableNameSnakeCase" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
-    </li></ol>
-            </div>
+        
 
         
 
@@ -146,7 +113,7 @@
         <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.DynImpl@!=(x$1:Any):Boolean" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.H2Ctx@!=(x$1:Any):Boolean" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -163,7 +130,7 @@
         <span title="gt4s: $hash$hash" class="name">##</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.DynImpl@##():Int" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.H2Ctx@##():Int" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -180,28 +147,11 @@
         <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.DynImpl@==(x$1:Any):Boolean" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.H2Ctx@==(x$1:Any):Boolean" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="model.persistence.DynImpl#applyDynamic" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="applyDynamic(configPrefix:String):io.getquill.context.sql.SqlContext[_&gt;:io.getquill.H2Dialectwithio.getquill.MySQLDialectwithio.getquill.PostgresDialectwithio.getquill.SqliteDialect&lt;:io.getquill.context.sql.idiom.SqlIdiom,model.persistence.TableNameSnakeCase]{implicitvaluuidEncoder:ProductwithSerializablewith(Encoders.this.Index,java.util.UUID,Encoders.this.PrepareRowwithEncoders.this.PrepareRow)=&gt;Object;implicitvallocalDateEncoder:ProductwithSerializablewith(Encoders.this.Index,java.time.LocalDate,Encoders.this.PrepareRowwithEncoders.this.PrepareRow)=&gt;Object;implicitvaldateEncoder:ProductwithSerializablewith(Encoders.this.Index,java.util.Date,Encoders.this.PrepareRowwithEncoders.this.PrepareRow)=&gt;Object;implicitvalbyteArrayEncoder:ProductwithSerializablewith(Encoders.this.Index,Array[Byte],Encoders.this.PrepareRowwithEncoders.this.PrepareRow)=&gt;Object;implicitvaldoubleEncoder:ProductwithSerializablewith(Encoders.this.Index,Double,Encoders.this.PrepareRowwithEncoders.this.PrepareRow)=&gt;Object;implicitvalfloatEncoder:ProductwithSerializablewith(Encoders.this.Index,Float,Encoders.this.PrepareRowwithEncoders.this.PrepareRow)=&gt;Object;implicitvallongEncoder:ProductwithSerializablewith(Encoders.this.Index,Long,Encoders.this.PrepareRowwithEncoders.this.PrepareRow)=&gt;Object;implicitvalintEncoder:ProductwithSerializablewith(Encoders.this.Index,Int,Encoders.this.PrepareRowwithEncoders.this.PrepareRow)=&gt;Object;implicitvalshortEncoder:ProductwithSerializablewith(Encoders.this.Index,Short,Encoders.this.PrepareRowwithEncoders.this.PrepareRow)=&gt;Object;implicitvalbyteEncoder:ProductwithSerializablewith(Encoders.this.Index,Byte,Encoders.this.PrepareRowwithEncoders.this.PrepareRow)=&gt;Object;implicitvalbooleanEncoder:ProductwithSerializablewith(Encoders.this.Index,Boolean,Encoders.this.PrepareRowwithEncoders.this.PrepareRow)=&gt;Object;implicitvalbigDecimalEncoder:ProductwithSerializablewith(Encoders.this.Index,BigDecimal,Encoders.this.PrepareRowwithEncoders.this.PrepareRow)=&gt;Object;implicitvalstringEncoder:ProductwithSerializablewith(Encoders.this.Index,String,Encoders.this.PrepareRowwithEncoders.this.PrepareRow)=&gt;Object;implicitvaluuidDecoder:(Decoders.this.Index,Decoders.this.ResultRowwithDecoders.this.ResultRow)=&gt;java.util.UUIDwithProductwithSerializable;implicitvallocalDateDecoder:(Decoders.this.Index,Decoders.this.ResultRowwithDecoders.this.ResultRow)=&gt;java.time.LocalDatewithProductwithSerializable;implicitvaldateDecoder:(Decoders.this.Index,Decoders.this.ResultRowwithDecoders.this.ResultRow)=&gt;java.util.DatewithProductwithSerializable;implicitvalbyteArrayDecoder:(Decoders.this.Index,Decoders.this.ResultRowwithDecoders.this.ResultRow)=&gt;Array[Byte]withProductwithSerializable;implicitvaldoubleDecoder:(Decoders.this.Index,Decoders.this.ResultRowwithDecoders.this.ResultRow)=&gt;DoublewithProductwithSerializable;implicitvalfloatDecoder:(Decoders.this.Index,Decoders.this.ResultRowwithDecoders.this.ResultRow)=&gt;FloatwithProductwithSerializable;implicitvallongDecoder:(Decoders.this.Index,Decoders.this.ResultRowwithDecoders.this.ResultRow)=&gt;LongwithProductwithSerializable;implicitvalintDecoder:(Decoders.this.Index,Decoders.this.ResultRowwithDecoders.this.ResultRow)=&gt;IntwithProductwithSerializable;implicitvalshortDecoder:(Decoders.this.Index,Decoders.this.ResultRowwithDecoders.this.ResultRow)=&gt;ShortwithProductwithSerializable;implicitvalbyteDecoder:(Decoders.this.Index,Decoders.this.ResultRowwithDecoders.this.ResultRow)=&gt;BytewithProductwithSerializable;implicitvalbooleanDecoder:(Decoders.this.Index,Decoders.this.ResultRowwithDecoders.this.ResultRow)=&gt;BooleanwithProductwithSerializable;implicitvalbigDecimalDecoder:(Decoders.this.Index,Decoders.this.ResultRowwithDecoders.this.ResultRow)=&gt;BigDecimalwithProductwithSerializable;implicitvalstringDecoder:(Decoders.this.Index,Decoders.this.ResultRowwithDecoders.this.ResultRow)=&gt;StringwithProductwithSerializable;typeRunBatchActionResult&gt;:List[Long]withscala.concurrent.Future[List[Long]]&lt;:Object;typeRunActionResult&gt;:Longwithscala.concurrent.Future[Long];typeResultRow&gt;:java.sql.ResultSetwithcom.github.mauricio.async.db.RowData&lt;:Object;typePrepareRow&gt;:java.sql.PreparedStatementwithList[Any]&lt;:Object}"></a>
-      <a id="applyDynamic(String):SqlContext[_&gt;:H2DialectwithMySQLDialectwithPostgresDialectwithSqliteDialect&lt;:SqlIdiom,TableNameSnakeCase]{.../*30definitionsintyperefinement*/}"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">applyDynamic</span><span class="params">(<span name="configPrefix">configPrefix: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="io.getquill.context.sql.SqlContext">SqlContext</span>[_ &gt;: <span class="extype" name="io.getquill.H2Dialect">H2Dialect</span> with <span class="extype" name="io.getquill.MySQLDialect">MySQLDialect</span> with <span class="extype" name="io.getquill.PostgresDialect">PostgresDialect</span> with <span class="extype" name="io.getquill.SqliteDialect">SqliteDialect</span> &lt;: <span class="extype" name="io.getquill.context.sql.idiom.SqlIdiom">SqlIdiom</span>, <a href="TableNameSnakeCase.html" class="extype" name="model.persistence.TableNameSnakeCase">TableNameSnakeCase</a>] { ... /* 30 definitions in type refinement */ }</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.DynImpl@applyDynamic(configPrefix:String):io.getquill.context.sql.SqlContext[_&gt;:io.getquill.H2Dialectwithio.getquill.MySQLDialectwithio.getquill.PostgresDialectwithio.getquill.SqliteDialect&lt;:io.getquill.context.sql.idiom.SqlIdiom,model.persistence.TableNameSnakeCase]{implicitvaluuidEncoder:ProductwithSerializablewith(Encoders.this.Index,java.util.UUID,Encoders.this.PrepareRowwithEncoders.this.PrepareRow)=&gt;Object;implicitvallocalDateEncoder:ProductwithSerializablewith(Encoders.this.Index,java.time.LocalDate,Encoders.this.PrepareRowwithEncoders.this.PrepareRow)=&gt;Object;implicitvaldateEncoder:ProductwithSerializablewith(Encoders.this.Index,java.util.Date,Encoders.this.PrepareRowwithEncoders.this.PrepareRow)=&gt;Object;implicitvalbyteArrayEncoder:ProductwithSerializablewith(Encoders.this.Index,Array[Byte],Encoders.this.PrepareRowwithEncoders.this.PrepareRow)=&gt;Object;implicitvaldoubleEncoder:ProductwithSerializablewith(Encoders.this.Index,Double,Encoders.this.PrepareRowwithEncoders.this.PrepareRow)=&gt;Object;implicitvalfloatEncoder:ProductwithSerializablewith(Encoders.this.Index,Float,Encoders.this.PrepareRowwithEncoders.this.PrepareRow)=&gt;Object;implicitvallongEncoder:ProductwithSerializablewith(Encoders.this.Index,Long,Encoders.this.PrepareRowwithEncoders.this.PrepareRow)=&gt;Object;implicitvalintEncoder:ProductwithSerializablewith(Encoders.this.Index,Int,Encoders.this.PrepareRowwithEncoders.this.PrepareRow)=&gt;Object;implicitvalshortEncoder:ProductwithSerializablewith(Encoders.this.Index,Short,Encoders.this.PrepareRowwithEncoders.this.PrepareRow)=&gt;Object;implicitvalbyteEncoder:ProductwithSerializablewith(Encoders.this.Index,Byte,Encoders.this.PrepareRowwithEncoders.this.PrepareRow)=&gt;Object;implicitvalbooleanEncoder:ProductwithSerializablewith(Encoders.this.Index,Boolean,Encoders.this.PrepareRowwithEncoders.this.PrepareRow)=&gt;Object;implicitvalbigDecimalEncoder:ProductwithSerializablewith(Encoders.this.Index,BigDecimal,Encoders.this.PrepareRowwithEncoders.this.PrepareRow)=&gt;Object;implicitvalstringEncoder:ProductwithSerializablewith(Encoders.this.Index,String,Encoders.this.PrepareRowwithEncoders.this.PrepareRow)=&gt;Object;implicitvaluuidDecoder:(Decoders.this.Index,Decoders.this.ResultRowwithDecoders.this.ResultRow)=&gt;java.util.UUIDwithProductwithSerializable;implicitvallocalDateDecoder:(Decoders.this.Index,Decoders.this.ResultRowwithDecoders.this.ResultRow)=&gt;java.time.LocalDatewithProductwithSerializable;implicitvaldateDecoder:(Decoders.this.Index,Decoders.this.ResultRowwithDecoders.this.ResultRow)=&gt;java.util.DatewithProductwithSerializable;implicitvalbyteArrayDecoder:(Decoders.this.Index,Decoders.this.ResultRowwithDecoders.this.ResultRow)=&gt;Array[Byte]withProductwithSerializable;implicitvaldoubleDecoder:(Decoders.this.Index,Decoders.this.ResultRowwithDecoders.this.ResultRow)=&gt;DoublewithProductwithSerializable;implicitvalfloatDecoder:(Decoders.this.Index,Decoders.this.ResultRowwithDecoders.this.ResultRow)=&gt;FloatwithProductwithSerializable;implicitvallongDecoder:(Decoders.this.Index,Decoders.this.ResultRowwithDecoders.this.ResultRow)=&gt;LongwithProductwithSerializable;implicitvalintDecoder:(Decoders.this.Index,Decoders.this.ResultRowwithDecoders.this.ResultRow)=&gt;IntwithProductwithSerializable;implicitvalshortDecoder:(Decoders.this.Index,Decoders.this.ResultRowwithDecoders.this.ResultRow)=&gt;ShortwithProductwithSerializable;implicitvalbyteDecoder:(Decoders.this.Index,Decoders.this.ResultRowwithDecoders.this.ResultRow)=&gt;BytewithProductwithSerializable;implicitvalbooleanDecoder:(Decoders.this.Index,Decoders.this.ResultRowwithDecoders.this.ResultRow)=&gt;BooleanwithProductwithSerializable;implicitvalbigDecimalDecoder:(Decoders.this.Index,Decoders.this.ResultRowwithDecoders.this.ResultRow)=&gt;BigDecimalwithProductwithSerializable;implicitvalstringDecoder:(Decoders.this.Index,Decoders.this.ResultRowwithDecoders.this.ResultRow)=&gt;StringwithProductwithSerializable;typeRunBatchActionResult&gt;:List[Long]withscala.concurrent.Future[List[Long]]&lt;:Object;typeRunActionResult&gt;:Longwithscala.concurrent.Future[Long];typeResultRow&gt;:java.sql.ResultSetwithcom.github.mauricio.async.db.RowData&lt;:Object;typePrepareRow&gt;:java.sql.PreparedStatementwithList[Any]&lt;:Object}" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <a id="asInstanceOf[T0]:T0"></a>
@@ -214,7 +164,7 @@
         <span class="name">asInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Any.asInstanceOf.T0">T0</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.DynImpl@asInstanceOf[T0]:T0" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.H2Ctx@asInstanceOf[T0]:T0" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -231,7 +181,7 @@
         <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.DynImpl@clone():Object" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.H2Ctx@clone():Object" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -242,6 +192,91 @@
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="model.persistence.ConfigParse#config" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="config:com.typesafe.config.Config"></a>
+      <a id="config:Config"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">config</span><span class="result">: <span class="extype" name="com.typesafe.config.Config">Config</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.H2Ctx@config:com.typesafe.config.Config" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="ConfigParse.html" class="extype" name="model.persistence.ConfigParse">ConfigParse</a></dd></dl></div>
+    </li><li name="model.persistence.ConfigParse#configPrefix" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="configPrefix:String"></a>
+      <a id="configPrefix:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">configPrefix</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.H2Ctx@configPrefix:String" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="ConfigParse.html" class="extype" name="model.persistence.ConfigParse">ConfigParse</a></dd></dl></div>
+    </li><li name="model.persistence.H2Ctx#ctx" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ctx:io.getquill.H2JdbcContext[model.persistence.TableNameSnakeCase]"></a>
+      <a id="ctx:H2JdbcContext[TableNameSnakeCase]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">lazy val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ctx</span><span class="result">: <span class="extype" name="io.getquill.H2JdbcContext">H2JdbcContext</span>[<a href="TableNameSnakeCase.html" class="extype" name="model.persistence.TableNameSnakeCase">TableNameSnakeCase</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.H2Ctx@ctx:io.getquill.H2JdbcContext[model.persistence.TableNameSnakeCase]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="model.persistence.ConfigParse#dbTimeout" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="dbTimeout:scala.concurrent.duration.Duration"></a>
+      <a id="dbTimeout:Duration"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">dbTimeout</span><span class="result">: <span class="extype" name="scala.concurrent.duration.Duration">Duration</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.H2Ctx@dbTimeout:scala.concurrent.duration.Duration" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="ConfigParse.html" class="extype" name="model.persistence.ConfigParse">ConfigParse</a></dd></dl></div>
+    </li><li name="model.persistence.ConfigParse#dbType" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="dbType:String"></a>
+      <a id="dbType:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">dbType</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.H2Ctx@dbType:String" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="ConfigParse.html" class="extype" name="model.persistence.ConfigParse">ConfigParse</a></dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -254,7 +289,7 @@
         <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.DynImpl@eq(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.H2Ctx@eq(x$1:AnyRef):Boolean" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -271,7 +306,7 @@
         <span class="name">equals</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.DynImpl@equals(x$1:Any):Boolean" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.H2Ctx@equals(x$1:Any):Boolean" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -288,7 +323,7 @@
         <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.DynImpl@finalize():Unit" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.H2Ctx@finalize():Unit" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -311,7 +346,7 @@
         <span class="name">getClass</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.Class">Class</span>[_]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.DynImpl@getClass():Class[_]" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.H2Ctx@getClass():Class[_]" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -328,7 +363,7 @@
         <span class="name">hashCode</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.DynImpl@hashCode():Int" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.H2Ctx@hashCode():Int" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -345,7 +380,7 @@
         <span class="name">isInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.DynImpl@isInstanceOf[T0]:Boolean" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.H2Ctx@isInstanceOf[T0]:Boolean" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -362,7 +397,7 @@
         <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.DynImpl@ne(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.H2Ctx@ne(x$1:AnyRef):Boolean" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -379,7 +414,7 @@
         <span class="name">notify</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.DynImpl@notify():Unit" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.H2Ctx@notify():Unit" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -396,11 +431,28 @@
         <span class="name">notifyAll</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.DynImpl@notifyAll():Unit" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.H2Ctx@notifyAll():Unit" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="model.persistence.ConfigParse#quillSection" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="quillSection:String"></a>
+      <a id="quillSection:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">quillSection</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.H2Ctx@quillSection:String" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="ConfigParse.html" class="extype" name="model.persistence.ConfigParse">ConfigParse</a></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -413,7 +465,7 @@
         <span class="name">synchronized</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="params">(<span name="arg0">arg0: ⇒ <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>)</span><span class="result">: <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.DynImpl@synchronized[T0](x$1:=&gt;T0):T0" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.H2Ctx@synchronized[T0](x$1:=&gt;T0):T0" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -430,7 +482,7 @@
         <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.DynImpl@toString():String" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.H2Ctx@toString():String" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -447,7 +499,7 @@
         <span class="name">wait</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.DynImpl@wait():Unit" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.H2Ctx@wait():Unit" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -470,7 +522,7 @@
         <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>, <span name="arg1">arg1: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.DynImpl@wait(x$1:Long,x$2:Int):Unit" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.H2Ctx@wait(x$1:Long,x$2:Int):Unit" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -493,7 +545,7 @@
         <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.DynImpl@wait(x$1:Long):Unit" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.H2Ctx@wait(x$1:Long):Unit" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -513,8 +565,8 @@
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="scala.Dynamic">
-              <h3>Inherited from <span class="extype" name="scala.Dynamic">Dynamic</span></h3>
+        <div class="parent" name="model.persistence.ConfigParse">
+              <h3>Inherited from <a href="ConfigParse.html" class="extype" name="model.persistence.ConfigParse">ConfigParse</a></h3>
             </div><div class="parent" name="scala.AnyRef">
               <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
             </div><div class="parent" name="scala.Any">

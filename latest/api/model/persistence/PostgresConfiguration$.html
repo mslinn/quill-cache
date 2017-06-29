@@ -1,9 +1,9 @@
 <!DOCTYPE html >
 <html>
         <head>
-          <title>PostgresAsyncType - model.persistence.QuillConfiguration__.PostgresAsyncType</title>
-          <meta name="description" content="PostgresAsyncType - model.persistence.QuillConfiguration .PostgresAsyncType" />
-          <meta name="keywords" content="PostgresAsyncType model.persistence.QuillConfiguration .PostgresAsyncType" />
+          <title>PostgresConfiguration - model.persistence.PostgresConfiguration</title>
+          <meta name="description" content="PostgresConfiguration - model.persistence.PostgresConfiguration" />
+          <meta name="keywords" content="PostgresConfiguration model.persistence.PostgresConfiguration" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       <link href="../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
@@ -16,7 +16,7 @@
       <script type="text/javascript">
          if(top === self) {
             var url = '../../index.html';
-            var hash = 'model.persistence.QuillConfiguration__$$PostgresAsyncType$';
+            var hash = 'model.persistence.PostgresConfiguration$';
             var anchor = window.location.hash;
             var anchor_opt = '';
             if (anchor.length >= 1)
@@ -29,11 +29,11 @@
         <body class="value">
       <div id="definition">
         <img alt="Object" src="../../lib/object_big.png" />
-        <p id="owner"><a href="../package.html" class="extype" name="model">model</a>.<a href="package.html" class="extype" name="model.persistence">persistence</a>.<a href="QuillConfiguration__$.html" class="extype" name="model.persistence.QuillConfiguration__">QuillConfiguration__</a></p>
-        <h1>PostgresAsyncType</h1><h3><span class="morelinks"><div>Related Doc:
-            <a href="QuillConfiguration__$.html" class="extype" name="model.persistence.QuillConfiguration__">package QuillConfiguration__</a>
+        <p id="owner"><a href="../package.html" class="extype" name="model">model</a>.<a href="package.html" class="extype" name="model.persistence">persistence</a></p>
+        <h1>PostgresConfiguration</h1><h3><span class="morelinks"><div>Related Doc:
+            <a href="package.html" class="extype" name="model.persistence">package persistence</a>
           </div></span></h3><span class="permalink">
-      <a href="../../index.html#model.persistence.QuillConfiguration__$$PostgresAsyncType$" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.PostgresConfiguration$" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -41,17 +41,19 @@
 
       <h4 id="signature" class="signature">
       <span class="modifier_kind">
-        <span class="modifier">implicit </span>
+        <span class="modifier"></span>
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <span class="name">PostgresAsyncType</span><span class="result"> extends <a href="QuillConfiguration__$$DynType.html" class="extype" name="model.persistence.QuillConfiguration__.DynType">DynType</a>[<span class="extype" name="io.getquill.PostgresAsyncContext">PostgresAsyncContext</span>[<a href="QuillConfiguration__$.html#N=model.persistence.TableNameSnakeCase" class="extmbr" name="model.persistence.QuillConfiguration__.N">N</a>]]</span>
+        <span class="name">PostgresConfiguration</span><span class="result"> extends <a href="PostgresCtx.html" class="extype" name="model.persistence.PostgresCtx">PostgresCtx</a></span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/mslinn/quill-cache/tree/master/src/main/scala/model/persistence/QuillConfiguration__.scala" target="_blank">QuillConfiguration__.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Object for exposing the Postgres synchronous configuration.
+Exposes a property called <code>ctx</code>, which is the Quill context.
+To use, simply import the context, like this:</p><pre><span class="kw">import</span> PostgresConfiguration.ctx._</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/mslinn/quill-cache/tree/master/src/main/scala/model/persistence/QuillConfiguration.scala" target="_blank">QuillConfiguration.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><a href="QuillConfiguration__$$DynType.html" class="extype" name="model.persistence.QuillConfiguration__.DynType">DynType</a>[<span class="extype" name="io.getquill.PostgresAsyncContext">PostgresAsyncContext</span>[<a href="QuillConfiguration__$.html#N=model.persistence.TableNameSnakeCase" class="extmbr" name="model.persistence.QuillConfiguration__.N">N</a>]], <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><a href="PostgresCtx.html" class="extype" name="model.persistence.PostgresCtx">PostgresCtx</a>, <a href="ConfigParse.html" class="extype" name="model.persistence.ConfigParse">ConfigParse</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -69,7 +71,7 @@
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="model.persistence.QuillConfiguration__.PostgresAsyncType"><span>PostgresAsyncType</span></li><li class="in" name="model.persistence.QuillConfiguration__.DynType"><span>DynType</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="model.persistence.PostgresConfiguration"><span>PostgresConfiguration</span></li><li class="in" name="model.persistence.PostgresCtx"><span>PostgresCtx</span></li><li class="in" name="model.persistence.ConfigParse"><span>ConfigParse</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -106,7 +108,7 @@
         <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.QuillConfiguration__$$PostgresAsyncType$@!=(x$1:Any):Boolean" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.PostgresConfiguration$@!=(x$1:Any):Boolean" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -123,7 +125,7 @@
         <span title="gt4s: $hash$hash" class="name">##</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.QuillConfiguration__$$PostgresAsyncType$@##():Int" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.PostgresConfiguration$@##():Int" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -140,7 +142,7 @@
         <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.QuillConfiguration__$$PostgresAsyncType$@==(x$1:Any):Boolean" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.PostgresConfiguration$@==(x$1:Any):Boolean" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -157,7 +159,7 @@
         <span class="name">asInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Any.asInstanceOf.T0">T0</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.QuillConfiguration__$$PostgresAsyncType$@asInstanceOf[T0]:T0" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.PostgresConfiguration$@asInstanceOf[T0]:T0" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -174,7 +176,7 @@
         <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.QuillConfiguration__$$PostgresAsyncType$@clone():Object" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.PostgresConfiguration$@clone():Object" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -185,6 +187,91 @@
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="model.persistence.ConfigParse#config" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="config:com.typesafe.config.Config"></a>
+      <a id="config:Config"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">config</span><span class="result">: <span class="extype" name="com.typesafe.config.Config">Config</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.PostgresConfiguration$@config:com.typesafe.config.Config" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="ConfigParse.html" class="extype" name="model.persistence.ConfigParse">ConfigParse</a></dd></dl></div>
+    </li><li name="model.persistence.ConfigParse#configPrefix" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="configPrefix:String"></a>
+      <a id="configPrefix:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">configPrefix</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.PostgresConfiguration$@configPrefix:String" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="ConfigParse.html" class="extype" name="model.persistence.ConfigParse">ConfigParse</a></dd></dl></div>
+    </li><li name="model.persistence.PostgresCtx#ctx" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ctx:io.getquill.PostgresJdbcContext[model.persistence.TableNameSnakeCase]"></a>
+      <a id="ctx:PostgresJdbcContext[TableNameSnakeCase]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">lazy val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ctx</span><span class="result">: <span class="extype" name="io.getquill.PostgresJdbcContext">PostgresJdbcContext</span>[<a href="TableNameSnakeCase.html" class="extype" name="model.persistence.TableNameSnakeCase">TableNameSnakeCase</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.PostgresConfiguration$@ctx:io.getquill.PostgresJdbcContext[model.persistence.TableNameSnakeCase]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="PostgresCtx.html" class="extype" name="model.persistence.PostgresCtx">PostgresCtx</a></dd></dl></div>
+    </li><li name="model.persistence.ConfigParse#dbTimeout" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="dbTimeout:scala.concurrent.duration.Duration"></a>
+      <a id="dbTimeout:Duration"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">dbTimeout</span><span class="result">: <span class="extype" name="scala.concurrent.duration.Duration">Duration</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.PostgresConfiguration$@dbTimeout:scala.concurrent.duration.Duration" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="ConfigParse.html" class="extype" name="model.persistence.ConfigParse">ConfigParse</a></dd></dl></div>
+    </li><li name="model.persistence.ConfigParse#dbType" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="dbType:String"></a>
+      <a id="dbType:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">dbType</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.PostgresConfiguration$@dbType:String" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="ConfigParse.html" class="extype" name="model.persistence.ConfigParse">ConfigParse</a></dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -197,7 +284,7 @@
         <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.QuillConfiguration__$$PostgresAsyncType$@eq(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.PostgresConfiguration$@eq(x$1:AnyRef):Boolean" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -214,28 +301,11 @@
         <span class="name">equals</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.QuillConfiguration__$$PostgresAsyncType$@equals(x$1:Any):Boolean" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.PostgresConfiguration$@equals(x$1:Any):Boolean" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="model.persistence.QuillConfiguration__.PostgresAsyncType#exec" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="exec(configPrefix:String,contextType:io.getquill.PostgresAsyncContext[model.persistence.QuillConfiguration__.N]):io.getquill.PostgresAsyncContext[model.persistence.QuillConfiguration__.N]"></a>
-      <a id="exec(String,PostgresAsyncContext[N]):PostgresAsyncContext[N]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">exec</span><span class="params">(<span name="configPrefix">configPrefix: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="contextType">contextType: <span class="extype" name="io.getquill.PostgresAsyncContext">PostgresAsyncContext</span>[<a href="QuillConfiguration__$.html#N=model.persistence.TableNameSnakeCase" class="extmbr" name="model.persistence.QuillConfiguration__.N">N</a>]</span>)</span><span class="result">: <span class="extype" name="io.getquill.PostgresAsyncContext">PostgresAsyncContext</span>[<a href="QuillConfiguration__$.html#N=model.persistence.TableNameSnakeCase" class="extmbr" name="model.persistence.QuillConfiguration__.N">N</a>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.QuillConfiguration__$$PostgresAsyncType$@exec(configPrefix:String,contextType:io.getquill.PostgresAsyncContext[model.persistence.QuillConfiguration__.N]):io.getquill.PostgresAsyncContext[model.persistence.QuillConfiguration__.N]" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="model.persistence.QuillConfiguration__.PostgresAsyncType">PostgresAsyncType</a> → <a href="QuillConfiguration__$$DynType.html" class="extype" name="model.persistence.QuillConfiguration__.DynType">DynType</a></dd></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <a id="finalize():Unit"></a>
@@ -248,7 +318,7 @@
         <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.QuillConfiguration__$$PostgresAsyncType$@finalize():Unit" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.PostgresConfiguration$@finalize():Unit" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -271,7 +341,7 @@
         <span class="name">getClass</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.Class">Class</span>[_]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.QuillConfiguration__$$PostgresAsyncType$@getClass():Class[_]" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.PostgresConfiguration$@getClass():Class[_]" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -288,7 +358,7 @@
         <span class="name">hashCode</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.QuillConfiguration__$$PostgresAsyncType$@hashCode():Int" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.PostgresConfiguration$@hashCode():Int" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -305,7 +375,7 @@
         <span class="name">isInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.QuillConfiguration__$$PostgresAsyncType$@isInstanceOf[T0]:Boolean" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.PostgresConfiguration$@isInstanceOf[T0]:Boolean" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -322,7 +392,7 @@
         <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.QuillConfiguration__$$PostgresAsyncType$@ne(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.PostgresConfiguration$@ne(x$1:AnyRef):Boolean" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -339,7 +409,7 @@
         <span class="name">notify</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.QuillConfiguration__$$PostgresAsyncType$@notify():Unit" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.PostgresConfiguration$@notify():Unit" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -356,11 +426,28 @@
         <span class="name">notifyAll</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.QuillConfiguration__$$PostgresAsyncType$@notifyAll():Unit" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.PostgresConfiguration$@notifyAll():Unit" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="model.persistence.ConfigParse#quillSection" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="quillSection:String"></a>
+      <a id="quillSection:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">quillSection</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.PostgresConfiguration$@quillSection:String" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="ConfigParse.html" class="extype" name="model.persistence.ConfigParse">ConfigParse</a></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -373,7 +460,7 @@
         <span class="name">synchronized</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="params">(<span name="arg0">arg0: ⇒ <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>)</span><span class="result">: <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.QuillConfiguration__$$PostgresAsyncType$@synchronized[T0](x$1:=&gt;T0):T0" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.PostgresConfiguration$@synchronized[T0](x$1:=&gt;T0):T0" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -390,7 +477,7 @@
         <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.QuillConfiguration__$$PostgresAsyncType$@toString():String" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.PostgresConfiguration$@toString():String" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -407,7 +494,7 @@
         <span class="name">wait</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.QuillConfiguration__$$PostgresAsyncType$@wait():Unit" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.PostgresConfiguration$@wait():Unit" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -430,7 +517,7 @@
         <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>, <span name="arg1">arg1: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.QuillConfiguration__$$PostgresAsyncType$@wait(x$1:Long,x$2:Int):Unit" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.PostgresConfiguration$@wait(x$1:Long,x$2:Int):Unit" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -453,7 +540,7 @@
         <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.QuillConfiguration__$$PostgresAsyncType$@wait(x$1:Long):Unit" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.PostgresConfiguration$@wait(x$1:Long):Unit" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -473,8 +560,10 @@
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="model.persistence.QuillConfiguration__.DynType">
-              <h3>Inherited from <a href="QuillConfiguration__$$DynType.html" class="extype" name="model.persistence.QuillConfiguration__.DynType">DynType</a>[<span class="extype" name="io.getquill.PostgresAsyncContext">PostgresAsyncContext</span>[<a href="QuillConfiguration__$.html#N=model.persistence.TableNameSnakeCase" class="extmbr" name="model.persistence.QuillConfiguration__.N">N</a>]]</h3>
+        <div class="parent" name="model.persistence.PostgresCtx">
+              <h3>Inherited from <a href="PostgresCtx.html" class="extype" name="model.persistence.PostgresCtx">PostgresCtx</a></h3>
+            </div><div class="parent" name="model.persistence.ConfigParse">
+              <h3>Inherited from <a href="ConfigParse.html" class="extype" name="model.persistence.ConfigParse">ConfigParse</a></h3>
             </div><div class="parent" name="scala.AnyRef">
               <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
             </div><div class="parent" name="scala.Any">
