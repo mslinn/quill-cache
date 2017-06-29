@@ -147,7 +147,7 @@ You can make a custom context like this:
 
     lazy val ctx = new PostgresJdbcContext[model.persistence.TableNameSnakeCase]("quill-cache.my-section-name")
 
-Asynchronous drivers are not supported by quill-cache.
+Asynchronous drivers are not currently supported by `quill-cache`, but there is an [open issue for this enhancement](https://github.com/mslinn/quill-cache/issues/2).
 
 ### Working with DAOs
 
