@@ -2,7 +2,7 @@ import sbt.Keys._
 
 organization := "com.micronautics"
 name := "quill-cache"
-version := "3.0.7"
+version := "3.0.8"
 licenses +=  ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0.html"))
 scalaVersion := "2.11.11"
 crossScalaVersions := Seq("2.11.11", "2.12.2")
@@ -63,8 +63,8 @@ libraryDependencies ++= Seq(
   "com.github.nscala-time" %% "nscala-time"          % "2.16.0"   withSources(),
   "com.google.guava"       %  "guava"                % "19.0"     withSources(),
   "com.micronautics"       %% "has-id"               % "1.2.5"    withSources(),
-  //  "io.getquill"            %% "quill-async-mysql"    % quillVer   withSources(),
-  //  "io.getquill"            %% "quill-async-postgres" % quillVer   withSources(),
+  "io.getquill"            %% "quill-async-mysql"    % quillVer   withSources(),
+  "io.getquill"            %% "quill-async-postgres" % quillVer   withSources(),
   "io.getquill"            %% "quill-jdbc"           % quillVer   withSources(),
   "net.codingwell"         %% "scala-guice"          % "4.1.0"    withSources(),
   "ch.qos.logback"         %  "logback-classic"      % "1.2.3",

@@ -63,7 +63,7 @@ Add this to your project's `build.sbt`:
 
     resolvers += "micronautics/scala on bintray" at "http://dl.bintray.com/micronautics/scala"
 
-    libraryDependencies += "com.micronautics" %% "quill-cache" % "3.0.7" withSources()
+    libraryDependencies += "com.micronautics" %% "quill-cache" % "3.0.8" withSources()
     
 You will also need to add a driver for the database you are using.
 Quill only supports H2, MySQL, Postgres and Sqlite.
@@ -168,9 +168,8 @@ object Users extends CachedPersistence[Long, Option[Long], User]
 ### Asynchronous Drivers
 Asynchronous drivers are not currently supported by `quill-cache`, but there is an 
 [open issue for this enhancement](https://github.com/mslinn/quill-cache/issues/2).
-The database contexts `MysqlAsyncCtx` and `PostgresAsyncCtx` were written in anticipation of async support, 
-but are currently commented out.
-Similarly, `MysqlAsyncConfiguration` and `PostgresAsyncConfiguration` were written, but are currently commented out.
+The database contexts `MysqlAsyncCtx` and `PostgresAsyncCtx` were written in anticipation of async support.
+Similarly, `MysqlAsyncConfiguration` and `PostgresAsyncConfiguration` were written.
 
 ### Working with DAOs
 

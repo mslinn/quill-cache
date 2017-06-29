@@ -1,25 +1,37 @@
 package model.persistence
 
+import scala.concurrent.ExecutionContext
 import scala.io.{BufferedSource, Codec}
 import scala.io.Source.fromInputStream
 
-/** Extract the Up portion of Play Evolution file and execute those SQL statements */
-class ProcessEvolutionUp(selectedCtx: CtxLike) {
+/** Extract the Up portion of a Play evolution file and execute SQL statements, including DDL */
+object ProcessEvolutionUp {
   /** @param target must be lower case */
   protected def contains(line: String, target: String): Boolean =
     line.toLowerCase.replaceAll("\\s+", " ") contains target
 
-  def fromResource(resource: String, classLoader: ClassLoader = Thread.currentThread.getContextClassLoader)
+  protected def fromResource(resource: String, classLoader: ClassLoader = Thread.currentThread.getContextClassLoader)
                   (implicit codec: Codec): BufferedSource =
     fromInputStream(classLoader.getResourceAsStream(resource))
 
-  def apply(resource: String): Unit = {
-    val upString: String = fromResource(resource).getLines
+  protected def ups(resource: String): String =
+    fromResource(resource).getLines
       .dropWhile(!contains(_, "# --- !Ups".toLowerCase))
       .drop(1)
       .takeWhile(!contains(_, "# --- !Downs".toLowerCase))
       .mkString("\n")
-    selectedCtx.ctx.executeAction(upString)
+
+  /** Works with synchronous Quill contexts */
+  def apply(selectedCtx: CtxLike, resource: String): Unit = {
+    selectedCtx.ctx.executeAction(ups(resource))
+    ()
+  }
+
+  /** Works with asynchronous Quill contexts.
+    * Requires an implicit [[ExecutionContext]], uses `concurrent.ExecutionContext.Implicits.global` if none found. */
+  def apply(selectedCtx: AsyncCtxLike, resource: String)
+           (implicit ec: ExecutionContext = scala.concurrent.ExecutionContext.Implicits.global): Unit = {
+    selectedCtx.ctx.executeAction(ups(resource))
     ()
   }
 }

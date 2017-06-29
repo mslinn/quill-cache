@@ -3,10 +3,15 @@ package model.persistence
 import io.getquill._
 
 trait CtxLike {
-//  import io.getquill.context.async.AsyncContext
   import io.getquill.context.jdbc.JdbcContext
 
-  val ctx: JdbcContext[_, _] /*with AsyncContext[_, _, _]*/
+  val ctx: JdbcContext[_, _]
+}
+
+trait AsyncCtxLike {
+  import io.getquill.context.async.AsyncContext
+
+  val ctx: AsyncContext[_, _, _]
 }
 
 /** Mix this trait into any class that needs to access the H2 synchronous configuration.
@@ -44,9 +49,9 @@ trait MySqlCtx extends ConfigParse with CtxLike {
   * }
   * }}}
   * The [[MysqlAsyncConfiguration]] object mixes in this trait and provides an alternative mechanism. */
-//trait MysqlAsyncCtx extends ConfigParse with CtxLike {
-//  lazy val ctx = new MysqlAsyncContext[TableNameSnakeCase](configPrefix("mysql-async"))
-//}
+trait MysqlAsyncCtx extends ConfigParse with AsyncCtxLike {
+  lazy val ctx = new MysqlAsyncContext[TableNameSnakeCase](configPrefix("mysql-async"))
+}
 
 /** Mix this trait into any class that needs to access the Postgres synchronous configuration.
   * Exposes a property called `ctx`, which is the Quill context.
@@ -70,9 +75,9 @@ trait PostgresCtx extends ConfigParse with CtxLike {
   * }
   * }}}
   * The [[PostgresAsyncConfiguration]] object mixes in this trait and provides an alternative mechanism. */
-//trait PostgresAsyncCtx extends ConfigParse with CtxLike {
-//  lazy val ctx = new PostgresAsyncContext[TableNameSnakeCase](configPrefix("postgres-async"))
-//}
+trait PostgresAsyncCtx extends ConfigParse with AsyncCtxLike {
+  lazy val ctx = new PostgresAsyncContext[TableNameSnakeCase](configPrefix("postgres-async"))
+}
 
 /** Mix this trait into any class that needs to access the Sqlite synchronous configuration.
   * Exposes a property called `ctx`, which is the Quill context.
@@ -114,7 +119,7 @@ object MysqlConfiguration extends MySqlCtx
   * Exposes a property called `ctx`, which is the Quill context.
   * To use, simply import the context, like this:
   * {{{import MysqlAsyncConfiguration.ctx._}}} */
-//object MysqlAsyncConfiguration extends MysqlAsyncCtx
+object MysqlAsyncConfiguration extends MysqlAsyncCtx
 
 /** Object for exposing the Postgres synchronous configuration.
   * Exposes a property called `ctx`, which is the Quill context.
@@ -126,7 +131,7 @@ object PostgresConfiguration extends PostgresCtx
   * Exposes a property called `ctx`, which is the Quill context.
   * To use, simply import the context, like this:
   * {{{import PostgresAsyncConfiguration.ctx._}}} */
-//object PostgresAsyncConfiguration extends PostgresAsyncCtx
+object PostgresAsyncConfiguration extends PostgresAsyncCtx
 
 /** Object for exposing the Sqlite synchronous configuration.
   * Exposes a property called `ctx`, which is the Quill context.
