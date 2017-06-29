@@ -45,7 +45,7 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <span class="name">PostgresCtx</span><span class="result"> extends <a href="ConfigParse.html" class="extype" name="model.persistence.ConfigParse">ConfigParse</a></span>
+        <span class="name">PostgresCtx</span><span class="result"> extends <a href="ConfigParse.html" class="extype" name="model.persistence.ConfigParse">ConfigParse</a> with <a href="CtxLike.html" class="extype" name="model.persistence.CtxLike">CtxLike</a></span>
       </span>
       </h4>
       
@@ -55,7 +55,7 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
   <span class="kw">import</span> ctx._
 }</pre><p>The <a href="PostgresConfiguration$.html" class="extype" name="model.persistence.PostgresConfiguration">PostgresConfiguration</a> object mixes in this trait and provides an alternative mechanism.</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/mslinn/quill-cache/tree/master/src/main/scala/model/persistence/QuillConfiguration.scala" target="_blank">QuillConfiguration.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><a href="ConfigParse.html" class="extype" name="model.persistence.ConfigParse">ConfigParse</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><a href="CtxLike.html" class="extype" name="model.persistence.CtxLike">CtxLike</a>, <a href="ConfigParse.html" class="extype" name="model.persistence.ConfigParse">ConfigParse</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div><div class="toggleContainer block">
             <span class="toggle">Known Subclasses</span>
             <div class="subClasses hiddenContent"><a href="PostgresConfiguration$.html" class="extype" name="model.persistence.PostgresConfiguration">PostgresConfiguration</a>, <a href="QuillConfiguration$.html" class="extype" name="model.persistence.QuillConfiguration">QuillConfiguration</a></div>
@@ -76,7 +76,7 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="model.persistence.PostgresCtx"><span>PostgresCtx</span></li><li class="in" name="model.persistence.ConfigParse"><span>ConfigParse</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="model.persistence.PostgresCtx"><span>PostgresCtx</span></li><li class="in" name="model.persistence.CtxLike"><span>CtxLike</span></li><li class="in" name="model.persistence.ConfigParse"><span>ConfigParse</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -210,23 +210,23 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="ConfigParse.html" class="extype" name="model.persistence.ConfigParse">ConfigParse</a></dd></dl></div>
     </li><li name="model.persistence.ConfigParse#configPrefix" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="configPrefix:String"></a>
-      <a id="configPrefix:String"></a>
+      <a id="configPrefix(dbType:String):String"></a>
+      <a id="configPrefix(String):String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">val</span>
+        <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">configPrefix</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+        <span class="name">configPrefix</span><span class="params">(<span name="dbType">dbType: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.PostgresCtx@configPrefix:String" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.PostgresCtx@configPrefix(dbType:String):String" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="ConfigParse.html" class="extype" name="model.persistence.ConfigParse">ConfigParse</a></dd></dl></div>
-    </li><li name="model.persistence.PostgresCtx#ctx" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="model.persistence.PostgresCtx#ctx" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ctx:io.getquill.PostgresJdbcContext[model.persistence.TableNameSnakeCase]"></a>
       <a id="ctx:PostgresJdbcContext[TableNameSnakeCase]"></a>
       <h4 class="signature">
@@ -242,7 +242,7 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="model.persistence.PostgresCtx">PostgresCtx</a> → <a href="CtxLike.html" class="extype" name="model.persistence.CtxLike">CtxLike</a></dd></dl></div>
     </li><li name="model.persistence.ConfigParse#dbTimeout" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="dbTimeout:scala.concurrent.duration.Duration"></a>
       <a id="dbTimeout:Duration"></a>
@@ -256,23 +256,6 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
       </span>
       </h4><span class="permalink">
       <a href="../../index.html#model.persistence.PostgresCtx@dbTimeout:scala.concurrent.duration.Duration" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="ConfigParse.html" class="extype" name="model.persistence.ConfigParse">ConfigParse</a></dd></dl></div>
-    </li><li name="model.persistence.ConfigParse#dbType" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="dbType:String"></a>
-      <a id="dbType:String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">dbType</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.PostgresCtx@dbType:String" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -436,23 +419,6 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="model.persistence.ConfigParse#quillSection" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="quillSection:String"></a>
-      <a id="quillSection:String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">quillSection</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.PostgresCtx@quillSection:String" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="ConfigParse.html" class="extype" name="model.persistence.ConfigParse">ConfigParse</a></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -565,7 +531,9 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="model.persistence.ConfigParse">
+        <div class="parent" name="model.persistence.CtxLike">
+              <h3>Inherited from <a href="CtxLike.html" class="extype" name="model.persistence.CtxLike">CtxLike</a></h3>
+            </div><div class="parent" name="model.persistence.ConfigParse">
               <h3>Inherited from <a href="ConfigParse.html" class="extype" name="model.persistence.ConfigParse">ConfigParse</a></h3>
             </div><div class="parent" name="scala.AnyRef">
               <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>

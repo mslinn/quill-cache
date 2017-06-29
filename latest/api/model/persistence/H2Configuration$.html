@@ -53,7 +53,7 @@
 Exposes a property called <code>ctx</code>, which is the Quill context.
 To use, simply import the context, like this:</p><pre><span class="kw">import</span> H2Configuration.ctx._</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/mslinn/quill-cache/tree/master/src/main/scala/model/persistence/QuillConfiguration.scala" target="_blank">QuillConfiguration.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><a href="H2Ctx.html" class="extype" name="model.persistence.H2Ctx">H2Ctx</a>, <a href="ConfigParse.html" class="extype" name="model.persistence.ConfigParse">ConfigParse</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><a href="H2Ctx.html" class="extype" name="model.persistence.H2Ctx">H2Ctx</a>, <a href="CtxLike.html" class="extype" name="model.persistence.CtxLike">CtxLike</a>, <a href="ConfigParse.html" class="extype" name="model.persistence.ConfigParse">ConfigParse</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -71,7 +71,7 @@ To use, simply import the context, like this:</p><pre><span class="kw">import</s
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="model.persistence.H2Configuration"><span>H2Configuration</span></li><li class="in" name="model.persistence.H2Ctx"><span>H2Ctx</span></li><li class="in" name="model.persistence.ConfigParse"><span>ConfigParse</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="model.persistence.H2Configuration"><span>H2Configuration</span></li><li class="in" name="model.persistence.H2Ctx"><span>H2Ctx</span></li><li class="in" name="model.persistence.CtxLike"><span>CtxLike</span></li><li class="in" name="model.persistence.ConfigParse"><span>ConfigParse</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -205,18 +205,18 @@ To use, simply import the context, like this:</p><pre><span class="kw">import</s
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="ConfigParse.html" class="extype" name="model.persistence.ConfigParse">ConfigParse</a></dd></dl></div>
     </li><li name="model.persistence.ConfigParse#configPrefix" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="configPrefix:String"></a>
-      <a id="configPrefix:String"></a>
+      <a id="configPrefix(dbType:String):String"></a>
+      <a id="configPrefix(String):String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">val</span>
+        <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">configPrefix</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+        <span class="name">configPrefix</span><span class="params">(<span name="dbType">dbType: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.H2Configuration$@configPrefix:String" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.H2Configuration$@configPrefix(dbType:String):String" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -237,7 +237,7 @@ To use, simply import the context, like this:</p><pre><span class="kw">import</s
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="H2Ctx.html" class="extype" name="model.persistence.H2Ctx">H2Ctx</a></dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="H2Ctx.html" class="extype" name="model.persistence.H2Ctx">H2Ctx</a> → <a href="CtxLike.html" class="extype" name="model.persistence.CtxLike">CtxLike</a></dd></dl></div>
     </li><li name="model.persistence.ConfigParse#dbTimeout" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="dbTimeout:scala.concurrent.duration.Duration"></a>
       <a id="dbTimeout:Duration"></a>
@@ -251,23 +251,6 @@ To use, simply import the context, like this:</p><pre><span class="kw">import</s
       </span>
       </h4><span class="permalink">
       <a href="../../index.html#model.persistence.H2Configuration$@dbTimeout:scala.concurrent.duration.Duration" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="ConfigParse.html" class="extype" name="model.persistence.ConfigParse">ConfigParse</a></dd></dl></div>
-    </li><li name="model.persistence.ConfigParse#dbType" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="dbType:String"></a>
-      <a id="dbType:String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">dbType</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.H2Configuration$@dbType:String" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -431,23 +414,6 @@ To use, simply import the context, like this:</p><pre><span class="kw">import</s
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="model.persistence.ConfigParse#quillSection" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="quillSection:String"></a>
-      <a id="quillSection:String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">quillSection</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.H2Configuration$@quillSection:String" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="ConfigParse.html" class="extype" name="model.persistence.ConfigParse">ConfigParse</a></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -562,6 +528,8 @@ To use, simply import the context, like this:</p><pre><span class="kw">import</s
         <div id="inheritedMembers">
         <div class="parent" name="model.persistence.H2Ctx">
               <h3>Inherited from <a href="H2Ctx.html" class="extype" name="model.persistence.H2Ctx">H2Ctx</a></h3>
+            </div><div class="parent" name="model.persistence.CtxLike">
+              <h3>Inherited from <a href="CtxLike.html" class="extype" name="model.persistence.CtxLike">CtxLike</a></h3>
             </div><div class="parent" name="model.persistence.ConfigParse">
               <h3>Inherited from <a href="ConfigParse.html" class="extype" name="model.persistence.ConfigParse">ConfigParse</a></h3>
             </div><div class="parent" name="scala.AnyRef">

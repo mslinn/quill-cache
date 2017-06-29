@@ -108,13 +108,13 @@ Please see <code>src/main/scala/resources/reference.conf</code> for an example o
 <a href="https://github.com/brettwooldridge/HikariCP/blob/master/src/main/java/com/zaxxer/hikari/HikariConfig.java#L63-L97" target="_blank">HikariConfig.java</a>, and
 <a href="https://github.com/brettwooldridge/HikariCP/wiki/About-Pool-Sizing#the-formula" target="_blank">Hikari pool sizing</a></p><h4> Working with quill-cache </h4><h5> Quill Contexts </h5><p>Quill-cache provides many flavors of Quill contexts, one for each type of supported database driver.
 Each context is exposed as a Scala <code>trait</code>, and they are also available wrapped into Scala <code>object</code>s.
-Import the Quill context <code>ctx</code> from the appropriate type wherever you need to access the database.</p><p>Available traits are: <code>H2Ctx</code>, <code>MySqlCtx</code>, <code>MysqlAsyncCtx</code>, <code>PostgresCtx</code>, <code>PostgresAsyncCtx</code>, and <code>SqliteCtx</code>.
+Import the Quill context <code>ctx</code> from the appropriate type wherever you need to access the database.</p><p>Available traits are: <code>H2Ctx</code>, <code>MySqlCtx</code>, <code>PostgresCtx</code>, and <code>SqliteCtx</code>.
 Import the <code>ctx</code> property from the appropriate <code>trait</code> for the type of database driver you need, like this:</p><pre><span class="kw">class</span> MyClass <span class="kw">extends</span> model.persistence.H2Ctx {
   <span class="kw">import</span> ctx._
-}</pre><p>Available objects are: <code>H2Configuration</code>, <code>MysqlConfiguration</code>, <code>MysqlAsyncConfiguration</code>, <code>PostgresConfiguration</code>, <code>PostgresAsyncConfiguration</code>, and <code>SqliteConfiguration</code>.
+}</pre><p>Available objects are: <code>H2Configuration</code>, <code>MysqlConfiguration</code>, <code>PostgresConfiguration</code>, and <code>SqliteConfiguration</code>.
 Import the <code>ctx</code> property from the appropriate <code>object</code> for the type of database driver you need, like this:</p><pre><span class="kw">class</span> MyClass {
   <span class="kw">import</span> model.persistence.PostgresConfiguration.ctx._
-}</pre><p>You can make a custom context like this:</p><pre><span class="kw">lazy</span> <span class="kw">val</span> ctx = <span class="kw">new</span> PostgresJdbcContext[model.persistence.TableNameSnakeCase](<span class="lit">"quill-cache.my-section-name"</span>)</pre><h4> Working with DAOs </h4><p>See the unit tests for examples of how to use this library.</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/mslinn/quill-cache/tree/master/src/main/scala/model/persistence/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
+}</pre><p>You can make a custom context like this:</p><pre><span class="kw">lazy</span> <span class="kw">val</span> ctx = <span class="kw">new</span> PostgresJdbcContext[model.persistence.TableNameSnakeCase](<span class="lit">"quill-cache.my-section-name"</span>)</pre><p>Asynchronous drivers are not supported by <code>quill-cache</code>.</p><h4> Working with DAOs </h4><p>See the unit tests for examples of how to use this library.</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/mslinn/quill-cache/tree/master/src/main/scala/model/persistence/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -274,6 +274,23 @@ Import the <code>ctx</code> property from the appropriate <code>object</code> fo
       </a>
     </span>
       
+    </li><li name="model.persistence.CtxLike" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="CtxLikeextendsAnyRef"></a>
+      <a id="CtxLike:CtxLike"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="CtxLike.html"><span class="name">CtxLike</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.package@CtxLikeextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li><li name="model.persistence.DBComponent" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="DBComponentextendsAnyRef"></a>
       <a id="DBComponent:DBComponent"></a>
@@ -326,7 +343,7 @@ Import the <code>ctx</code> property from the appropriate <code>object</code> fo
     </span>
       
     </li><li name="model.persistence.H2Ctx" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="H2CtxextendsConfigParse"></a>
+      <a id="H2CtxextendsConfigParsewithCtxLike"></a>
       <a id="H2Ctx:H2Ctx"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -334,10 +351,10 @@ Import the <code>ctx</code> property from the appropriate <code>object</code> fo
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="H2Ctx.html"><span class="name">H2Ctx</span></a><span class="result"> extends <a href="ConfigParse.html" class="extype" name="model.persistence.ConfigParse">ConfigParse</a></span>
+        <a href="H2Ctx.html"><span class="name">H2Ctx</span></a><span class="result"> extends <a href="ConfigParse.html" class="extype" name="model.persistence.ConfigParse">ConfigParse</a> with <a href="CtxLike.html" class="extype" name="model.persistence.CtxLike">CtxLike</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.package@H2CtxextendsConfigParse" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.package@H2CtxextendsConfigParsewithCtxLike" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -347,7 +364,7 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
   <span class="kw">import</span> ctx._
 }</pre><p>The <a href="H2Configuration$.html" class="extype" name="model.persistence.H2Configuration">H2Configuration</a> object mixes in this trait and provides an alternative mechanism.</p></div></div>
     </li><li name="model.persistence.MySqlCtx" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="MySqlCtxextendsConfigParse"></a>
+      <a id="MySqlCtxextendsConfigParsewithCtxLike"></a>
       <a id="MySqlCtx:MySqlCtx"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -355,10 +372,10 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="MySqlCtx.html"><span class="name">MySqlCtx</span></a><span class="result"> extends <a href="ConfigParse.html" class="extype" name="model.persistence.ConfigParse">ConfigParse</a></span>
+        <a href="MySqlCtx.html"><span class="name">MySqlCtx</span></a><span class="result"> extends <a href="ConfigParse.html" class="extype" name="model.persistence.ConfigParse">ConfigParse</a> with <a href="CtxLike.html" class="extype" name="model.persistence.CtxLike">CtxLike</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.package@MySqlCtxextendsConfigParse" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.package@MySqlCtxextendsConfigParsewithCtxLike" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -367,50 +384,8 @@ Exposes a property called <code>ctx</code>, which is the Quill context.
 To use, simply import the context, like this:</p><pre><span class="kw">class</span> MyClass <span class="kw">extends</span> MySqlCtx {
   <span class="kw">import</span> ctx._
 }</pre><p>The <a href="MysqlConfiguration$.html" class="extype" name="model.persistence.MysqlConfiguration">MysqlConfiguration</a> object mixes in this trait and provides an alternative mechanism.</p></div></div>
-    </li><li name="model.persistence.MysqlAsyncCtx" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="MysqlAsyncCtxextendsConfigParse"></a>
-      <a id="MysqlAsyncCtx:MysqlAsyncCtx"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">trait</span>
-      </span>
-      <span class="symbol">
-        <a href="MysqlAsyncCtx.html"><span class="name">MysqlAsyncCtx</span></a><span class="result"> extends <a href="ConfigParse.html" class="extype" name="model.persistence.ConfigParse">ConfigParse</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.package@MysqlAsyncCtxextendsConfigParse" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Mix this trait into any class that needs to access the MySQL asynchronous configuration.</p><div class="fullcomment"><div class="comment cmt"><p>Mix this trait into any class that needs to access the MySQL asynchronous configuration.
-Exposes a property called <code>ctx</code>, which is the Quill context.
-To use, simply import the context, like this:</p><pre><span class="kw">class</span> MyClass <span class="kw">extends</span> MysqlAsyncCtx {
-  <span class="kw">import</span> ctx._
-}</pre><p>The <a href="MysqlAsyncConfiguration$.html" class="extype" name="model.persistence.MysqlAsyncConfiguration">MysqlAsyncConfiguration</a> object mixes in this trait and provides an alternative mechanism.</p></div></div>
-    </li><li name="model.persistence.PostgresAsyncCtx" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="PostgresAsyncCtxextendsConfigParse"></a>
-      <a id="PostgresAsyncCtx:PostgresAsyncCtx"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">trait</span>
-      </span>
-      <span class="symbol">
-        <a href="PostgresAsyncCtx.html"><span class="name">PostgresAsyncCtx</span></a><span class="result"> extends <a href="ConfigParse.html" class="extype" name="model.persistence.ConfigParse">ConfigParse</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.package@PostgresAsyncCtxextendsConfigParse" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Mix this trait into any class that needs to access the Postgres asynchronous configuration.</p><div class="fullcomment"><div class="comment cmt"><p>Mix this trait into any class that needs to access the Postgres asynchronous configuration.
-Exposes a property called <code>ctx</code>, which is the Quill context.
-To use, simply import the context, like this:</p><pre><span class="kw">class</span> MyClass <span class="kw">extends</span> PostgresAsyncCtx {
-  <span class="kw">import</span> ctx._
-}</pre><p>The <a href="PostgresAsyncConfiguration$.html" class="extype" name="model.persistence.PostgresAsyncConfiguration">PostgresAsyncConfiguration</a> object mixes in this trait and provides an alternative mechanism.</p></div></div>
     </li><li name="model.persistence.PostgresCtx" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="PostgresCtxextendsConfigParse"></a>
+      <a id="PostgresCtxextendsConfigParsewithCtxLike"></a>
       <a id="PostgresCtx:PostgresCtx"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -418,10 +393,10 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="PostgresCtx.html"><span class="name">PostgresCtx</span></a><span class="result"> extends <a href="ConfigParse.html" class="extype" name="model.persistence.ConfigParse">ConfigParse</a></span>
+        <a href="PostgresCtx.html"><span class="name">PostgresCtx</span></a><span class="result"> extends <a href="ConfigParse.html" class="extype" name="model.persistence.ConfigParse">ConfigParse</a> with <a href="CtxLike.html" class="extype" name="model.persistence.CtxLike">CtxLike</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.package@PostgresCtxextendsConfigParse" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.package@PostgresCtxextendsConfigParsewithCtxLike" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -431,7 +406,7 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
   <span class="kw">import</span> ctx._
 }</pre><p>The <a href="PostgresConfiguration$.html" class="extype" name="model.persistence.PostgresConfiguration">PostgresConfiguration</a> object mixes in this trait and provides an alternative mechanism.</p></div></div>
     </li><li name="model.persistence.QuillImplicits" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="QuillImplicitsextendsIdImplicitLike"></a>
+      <a id="QuillImplicitsextendsIdImplicitLikewithCtxLike"></a>
       <a id="QuillImplicits:QuillImplicits"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -439,10 +414,10 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="QuillImplicits.html"><span class="name">QuillImplicits</span></a><span class="result"> extends <span class="extype" name="model.persistence.IdImplicitLike">IdImplicitLike</span></span>
+        <a href="QuillImplicits.html"><span class="name">QuillImplicits</span></a><span class="result"> extends <span class="extype" name="model.persistence.IdImplicitLike">IdImplicitLike</span> with <a href="CtxLike.html" class="extype" name="model.persistence.CtxLike">CtxLike</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.package@QuillImplicitsextendsIdImplicitLike" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.package@QuillImplicitsextendsIdImplicitLikewithCtxLike" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -504,7 +479,7 @@ Because of this, those <code>SoftCache</code> finders run more slowly than <code
 This trait overrides the default finder implementations.
 This trait is experimental, do not use in production.</p></div></div>
     </li><li name="model.persistence.SqliteCtx" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="SqliteCtxextendsConfigParse"></a>
+      <a id="SqliteCtxextendsConfigParsewithCtxLike"></a>
       <a id="SqliteCtx:SqliteCtx"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -512,10 +487,10 @@ This trait is experimental, do not use in production.</p></div></div>
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="SqliteCtx.html"><span class="name">SqliteCtx</span></a><span class="result"> extends <a href="ConfigParse.html" class="extype" name="model.persistence.ConfigParse">ConfigParse</a></span>
+        <a href="SqliteCtx.html"><span class="name">SqliteCtx</span></a><span class="result"> extends <a href="ConfigParse.html" class="extype" name="model.persistence.ConfigParse">ConfigParse</a> with <a href="CtxLike.html" class="extype" name="model.persistence.CtxLike">CtxLike</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.package@SqliteCtxextendsConfigParse" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.package@SqliteCtxextendsConfigParsewithCtxLike" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -595,7 +570,7 @@ This trait overrides the default finder implementations.</p></div></div>
     </span>
       
     </li><li name="model.persistence.UnCachedPersistence" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="UnCachedPersistence[Key,_IdType&lt;:Option[Key],CaseClass&lt;:model.persistence.HasId[CaseClass,_IdType]]extendsQuillImplicitswithIdImplicitLike"></a>
+      <a id="UnCachedPersistence[Key,_IdType&lt;:Option[Key],CaseClass&lt;:model.persistence.HasId[CaseClass,_IdType]]extendsQuillImplicitswithIdImplicitLikewithCtxLike"></a>
       <a id="UnCachedPersistence[Key,_IdType&lt;:Option[Key],CaseClass&lt;:HasId[CaseClass,_IdType]]:UnCachedPersistence[Key,_IdType,CaseClass]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -603,10 +578,10 @@ This trait overrides the default finder implementations.</p></div></div>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="UnCachedPersistence.html"><span class="name">UnCachedPersistence</span></a><span class="tparams">[<span name="Key">Key</span>, <span name="_IdType">_IdType &lt;: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="model.persistence.UnCachedPersistence.Key">Key</span>]</span>, <span name="CaseClass">CaseClass &lt;: <span class="extype" name="model.persistence.HasId">HasId</span>[<span class="extype" name="model.persistence.UnCachedPersistence.CaseClass">CaseClass</span>, <span class="extype" name="model.persistence.UnCachedPersistence._IdType">_IdType</span>]</span>]</span><span class="result"> extends <a href="QuillImplicits.html" class="extype" name="model.persistence.QuillImplicits">QuillImplicits</a> with <span class="extype" name="model.persistence.IdImplicitLike">IdImplicitLike</span></span>
+        <a href="UnCachedPersistence.html"><span class="name">UnCachedPersistence</span></a><span class="tparams">[<span name="Key">Key</span>, <span name="_IdType">_IdType &lt;: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="model.persistence.UnCachedPersistence.Key">Key</span>]</span>, <span name="CaseClass">CaseClass &lt;: <span class="extype" name="model.persistence.HasId">HasId</span>[<span class="extype" name="model.persistence.UnCachedPersistence.CaseClass">CaseClass</span>, <span class="extype" name="model.persistence.UnCachedPersistence._IdType">_IdType</span>]</span>]</span><span class="result"> extends <a href="QuillImplicits.html" class="extype" name="model.persistence.QuillImplicits">QuillImplicits</a> with <span class="extype" name="model.persistence.IdImplicitLike">IdImplicitLike</span> with <a href="CtxLike.html" class="extype" name="model.persistence.CtxLike">CtxLike</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.package@UnCachedPersistence[Key,_IdType&lt;:Option[Key],CaseClass&lt;:model.persistence.HasId[CaseClass,_IdType]]extendsQuillImplicitswithIdImplicitLike" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.package@UnCachedPersistence[Key,_IdType&lt;:Option[Key],CaseClass&lt;:model.persistence.HasId[CaseClass,_IdType]]extendsQuillImplicitswithIdImplicitLikewithCtxLike" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -691,25 +666,6 @@ cached domain objects will have the same interface as the DAOs for your uncached
       <p class="shortcomment cmt">Object for exposing the H2 synchronous configuration.</p><div class="fullcomment"><div class="comment cmt"><p>Object for exposing the H2 synchronous configuration.
 Exposes a property called <code>ctx</code>, which is the Quill context.
 To use, simply import the context, like this:</p><pre><span class="kw">import</span> H2Configuration.ctx._</pre></div></div>
-    </li><li name="model.persistence.MysqlAsyncConfiguration" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="MysqlAsyncConfiguration"></a>
-      <a id="MysqlAsyncConfiguration:MysqlAsyncConfiguration"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">object</span>
-      </span>
-      <span class="symbol">
-        <a href="MysqlAsyncConfiguration$.html"><span class="name">MysqlAsyncConfiguration</span></a><span class="result"> extends <a href="MysqlAsyncCtx.html" class="extype" name="model.persistence.MysqlAsyncCtx">MysqlAsyncCtx</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.package@MysqlAsyncConfiguration" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Object for exposing the MySQL asynchronous configuration.</p><div class="fullcomment"><div class="comment cmt"><p>Object for exposing the MySQL asynchronous configuration.
-Exposes a property called <code>ctx</code>, which is the Quill context.
-To use, simply import the context, like this:</p><pre><span class="kw">import</span> MysqlAsyncConfiguration.ctx._</pre></div></div>
     </li><li name="model.persistence.MysqlConfiguration" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="MysqlConfiguration"></a>
       <a id="MysqlConfiguration:MysqlConfiguration"></a>
@@ -729,25 +685,6 @@ To use, simply import the context, like this:</p><pre><span class="kw">import</s
       <p class="shortcomment cmt">Object for exposing the MySQL synchronous configuration.</p><div class="fullcomment"><div class="comment cmt"><p>Object for exposing the MySQL synchronous configuration.
 Exposes a property called <code>ctx</code>, which is the Quill context.
 To use, simply import the context, like this:</p><pre><span class="kw">import</span> MysqlConfiguration.ctx._</pre></div></div>
-    </li><li name="model.persistence.PostgresAsyncConfiguration" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="PostgresAsyncConfiguration"></a>
-      <a id="PostgresAsyncConfiguration:PostgresAsyncConfiguration"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">object</span>
-      </span>
-      <span class="symbol">
-        <a href="PostgresAsyncConfiguration$.html"><span class="name">PostgresAsyncConfiguration</span></a><span class="result"> extends <a href="PostgresAsyncCtx.html" class="extype" name="model.persistence.PostgresAsyncCtx">PostgresAsyncCtx</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.package@PostgresAsyncConfiguration" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Object for exposing the Postgres asynchronous configuration.</p><div class="fullcomment"><div class="comment cmt"><p>Object for exposing the Postgres asynchronous configuration.
-Exposes a property called <code>ctx</code>, which is the Quill context.
-To use, simply import the context, like this:</p><pre><span class="kw">import</span> PostgresAsyncConfiguration.ctx._</pre></div></div>
     </li><li name="model.persistence.PostgresConfiguration" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="PostgresConfiguration"></a>
       <a id="PostgresConfiguration:PostgresConfiguration"></a>
@@ -805,23 +742,6 @@ Exposes a property called <code>ctx</code>, which is the Quill context.
 To use, simply import the context, like this:</p><pre><span class="kw">import</span> QuillConfiguration.ctx._</pre><p>You can define your own object if you need to use a different database
 The type of <code>ctx</code> varies according to the database selected, so no type can be ascribed to <code>ctx</code>,
 otherwise the Quill encoders and decoders won't be recognized.</p></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p><a href="http://getquill.io/#quotation-introduction" target="_blank">The Quill docs</a>.</p></span></dd></dl></div>
-    </li><li name="model.persistence.QuillImplicits" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="QuillImplicits"></a>
-      <a id="QuillImplicits:QuillImplicits"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">object</span>
-      </span>
-      <span class="symbol">
-        <a href="QuillImplicits$.html"><span class="name">QuillImplicits</span></a><span class="result"> extends <a href="QuillImplicits.html" class="extype" name="model.persistence.QuillImplicits">QuillImplicits</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.package@QuillImplicits" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      
     </li><li name="model.persistence.SoftCache" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="SoftCache"></a>
       <a id="SoftCache:SoftCache"></a>
