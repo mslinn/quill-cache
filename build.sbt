@@ -62,15 +62,14 @@ val quillVer = "1.2.1"
 libraryDependencies ++= Seq(
   "com.github.nscala-time" %% "nscala-time"          % "2.16.0"   withSources(),
   "com.google.guava"       %  "guava"                % "19.0"     withSources(),
-  "com.h2database"         %  "h2"                   % "1.4.192"  withSources(),
   "com.micronautics"       %% "has-id"               % "1.2.5"    withSources(),
-//  "io.getquill"            %% "quill-async-mysql"    % quillVer   withSources(),
-//  "io.getquill"            %% "quill-async-postgres" % quillVer   withSources(),
+  //  "io.getquill"            %% "quill-async-mysql"    % quillVer   withSources(),
+  //  "io.getquill"            %% "quill-async-postgres" % quillVer   withSources(),
   "io.getquill"            %% "quill-jdbc"           % quillVer   withSources(),
   "net.codingwell"         %% "scala-guice"          % "4.1.0"    withSources(),
-  "org.joda"               %  "joda-convert"         % "1.6"      withSources(),
   "ch.qos.logback"         %  "logback-classic"      % "1.2.3",
   //
+  "com.h2database"         %  "h2"                   % "1.4.192"  % Test withSources(),
   "junit"                  %  "junit"                % "4.12"     % Test,
   "org.postgresql"         %  "postgresql"           % "42.1.1"   % Test,
   "org.xerial"             %  "sqlite-jdbc"          % "3.8.11.2" % Test withSources(),
