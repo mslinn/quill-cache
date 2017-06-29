@@ -1,8 +1,10 @@
 package model.dao
 
 import model.User
-import model.persistence.{Copier, Id}
+import model.persistence._
+import model.persistence.macros._
 import org.scalatest._
+import scala.language.experimental.macros
 
 case class X(a: String, id: Int)
 
@@ -17,6 +19,14 @@ class PersistenceTest extends WordSpec with Matchers with BeforeAndAfterAll {
         val x = X("hi", 123)
         val result = Copier(x, ("id", 456))
         result shouldBe X("hi", 456)
+    }
+  }
+
+  "InsertOrUpdateMacro" should {
+    "work" in {
+      def upsert[T](entity: T, filter: T => Boolean): Unit = macro InsertOrUpdateMacro.insertOrUpdate[T]
+      val user = User(userId = s"userX", email = s"userx@gmail.com", firstName = s"Joe", lastName = "Smith", password = "secret")
+      upsert(user, (user: User) => user.id.value.isEmpty)
     }
   }
 

@@ -35,8 +35,6 @@ object QuillConfiguration__ extends ConfigParse {
   val ctx = dynImpl.applyDynamic(dbType)
 }
 
-case class Blah(x: String)
-
 class DynImpl extends Dynamic {
   import model.persistence.QuillConfiguration._
 

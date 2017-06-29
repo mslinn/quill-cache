@@ -4,7 +4,7 @@ organization := "com.micronautics"
 name := "quill-cache"
 version := "3.0.3"
 licenses +=  ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0.html"))
-scalaVersion := "2.11.11"
+val scalaVer = "2.11.11"
 crossScalaVersions := Seq("2.11.11", "2.12.2")
 
 scalacOptions in (Compile, doc) ++= baseDirectory.map {
@@ -16,11 +16,9 @@ scalacOptions in (Compile, doc) ++= baseDirectory.map {
 
 val quillVer = "1.2.1"
 
-
-
 lazy val commonSettings = Seq(
   version := "1.0",
-  scalaVersion := scalaVersion.value,
+  scalaVersion := scalaVer,
   scalacOptions ++=
     scalaVersion {
       case sv if sv.startsWith("2.10") => List(
@@ -69,15 +67,12 @@ lazy val macrosModule = project.in(file("macro"))
   .settings(commonSettings: _*)
   .settings(
     libraryDependencies ++= Seq(
-      "org.scala-lang" % "scala-reflect",
-      "org.scala-lang" % "scala-compiler"
-    ).map(_ % scalaVersion.value),
-    libraryDependencies ++= Seq( // probably don't need any of the following dependencies
-      "io.getquill" %% "quill-async-postgres",
-      "io.getquill" %% "quill-jdbc"
-    ).map(_ % quillVer),
-    libraryDependencies ++= Seq(
-      "org.postgresql" % "postgresql" % "9.4.1208"
+      "org.scala-lang" % "scala-reflect"         % scalaVer,
+      "org.scala-lang" % "scala-compiler"        % scalaVer,
+     // probably don't need any of the following dependencies
+      "io.getquill"    %% "quill-async-postgres" % quillVer,
+      "io.getquill"    %% "quill-jdbc"           % quillVer,
+      "org.postgresql" %  "postgresql"           % "9.4.1208"
     )
   )
 
