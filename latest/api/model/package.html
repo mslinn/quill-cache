@@ -155,8 +155,8 @@ Import the <code>ctx</code> property from the appropriate <code>object</code> fo
   <span class="kw">import</span> model.persistence.PostgresConfiguration.ctx._
 }</pre><p>You can make a custom context like this:</p><pre><span class="kw">lazy</span> <span class="kw">val</span> ctx = <span class="kw">new</span> PostgresJdbcContext[model.persistence.TableNameSnakeCase](<span class="lit">"quill-cache.my-section-name"</span>)</pre><h5> Best Practice </h5><p>Define a trait called <code>SelectedCtx</code>, and mix it into all your DAOs.
 <code>SelectedCtx</code> merely extends the database context used in your application.
-The <code>PersistenceTest</code> DAO in <code>test/scala/model/dao</code> follows this pattern:</p><pre><span class="kw">trait</span> SelectedCtx <span class="kw">extends</span> H2Ctx
-
+The <code>PersistenceTest</code> DAO in <code>test/scala/model/dao</code> follows this pattern:</p><pre><span class="kw">trait</span> SelectedCtx <span class="kw">extends</span> model.persistence.H2Ctx
+<span class="kw">object</span> SelectedCtx <span class="kw">extends</span> SelectedCtx
 
 <span class="kw">object</span> Users <span class="kw">extends</span> CachedPersistence[<span class="std">Long</span>, <span class="std">Option</span>[<span class="std">Long</span>], User]
              <span class="kw">with</span> SoftCacheLike[<span class="std">Long</span>, <span class="std">Option</span>[<span class="std">Long</span>], User]

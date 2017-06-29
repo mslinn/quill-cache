@@ -116,8 +116,8 @@ Import the <code>ctx</code> property from the appropriate <code>object</code> fo
   <span class="kw">import</span> model.persistence.PostgresConfiguration.ctx._
 }</pre><p>You can make a custom context like this:</p><pre><span class="kw">lazy</span> <span class="kw">val</span> ctx = <span class="kw">new</span> PostgresJdbcContext[model.persistence.TableNameSnakeCase](<span class="lit">"quill-cache.my-section-name"</span>)</pre><h5> Best Practice </h5><p>Define a trait called <code>SelectedCtx</code>, and mix it into all your DAOs.
 <code>SelectedCtx</code> merely extends the database context used in your application.
-The <code>PersistenceTest</code> DAO in <code>test/scala/model/dao</code> follows this pattern:</p><pre><span class="kw">trait</span> SelectedCtx <span class="kw">extends</span> H2Ctx
-
+The <code>PersistenceTest</code> DAO in <code>test/scala/model/dao</code> follows this pattern:</p><pre><span class="kw">trait</span> SelectedCtx <span class="kw">extends</span> model.persistence.H2Ctx
+<span class="kw">object</span> SelectedCtx <span class="kw">extends</span> SelectedCtx
 
 <span class="kw">object</span> Users <span class="kw">extends</span> CachedPersistence[<span class="std">Long</span>, <span class="std">Option</span>[<span class="std">Long</span>], User]
              <span class="kw">with</span> SoftCacheLike[<span class="std">Long</span>, <span class="std">Option</span>[<span class="std">Long</span>], User]
@@ -420,6 +420,23 @@ Exposes a property called <code>ctx</code>, which is the Quill context.
 To use, simply import the context, like this:</p><pre><span class="kw">class</span> MyClass <span class="kw">extends</span> PostgresCtx {
   <span class="kw">import</span> ctx._
 }</pre><p>The <a href="PostgresConfiguration$.html" class="extype" name="model.persistence.PostgresConfiguration">PostgresConfiguration</a> object mixes in this trait and provides an alternative mechanism.</p></div></div>
+    </li><li name="model.persistence.ProcessEvolutionUp" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ProcessEvolutionUpextendsAnyRef"></a>
+      <a id="ProcessEvolutionUp:ProcessEvolutionUp"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="ProcessEvolutionUp.html"><span class="name">ProcessEvolutionUp</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.package@ProcessEvolutionUpextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Extract the Up portion of Play Evolution file and execute those SQL statements</p>
     </li><li name="model.persistence.QuillImplicits" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="QuillImplicitsextendsIdImplicitLikewithCtxLike"></a>
       <a id="QuillImplicits:QuillImplicits"></a>
@@ -719,23 +736,6 @@ To use, simply import the context, like this:</p><pre><span class="kw">import</s
       <p class="shortcomment cmt">Object for exposing the Postgres synchronous configuration.</p><div class="fullcomment"><div class="comment cmt"><p>Object for exposing the Postgres synchronous configuration.
 Exposes a property called <code>ctx</code>, which is the Quill context.
 To use, simply import the context, like this:</p><pre><span class="kw">import</span> PostgresConfiguration.ctx._</pre></div></div>
-    </li><li name="model.persistence.ProcessEvolutionUp" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="ProcessEvolutionUp"></a>
-      <a id="ProcessEvolutionUp:ProcessEvolutionUp"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">object</span>
-      </span>
-      <span class="symbol">
-        <a href="ProcessEvolutionUp$.html"><span class="name">ProcessEvolutionUp</span></a>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.package@ProcessEvolutionUp" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Extract the Up portion of Play Evolution file and execute those SQL statements</p>
     </li><li name="model.persistence.QuillConfiguration" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="QuillConfiguration"></a>
       <a id="QuillConfiguration:QuillConfiguration"></a>
