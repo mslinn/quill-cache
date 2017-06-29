@@ -153,7 +153,22 @@ Import the <code>ctx</code> property from the appropriate <code>trait</code> for
 }</pre><p>Available objects are: <code>H2Configuration</code>, <code>MysqlConfiguration</code>, <code>PostgresConfiguration</code>, and <code>SqliteConfiguration</code>.
 Import the <code>ctx</code> property from the appropriate <code>object</code> for the type of database driver you need, like this:</p><pre><span class="kw">class</span> MyClass {
   <span class="kw">import</span> model.persistence.PostgresConfiguration.ctx._
-}</pre><p>You can make a custom context like this:</p><pre><span class="kw">lazy</span> <span class="kw">val</span> ctx = <span class="kw">new</span> PostgresJdbcContext[model.persistence.TableNameSnakeCase](<span class="lit">"quill-cache.my-section-name"</span>)</pre><p>Asynchronous drivers are not supported by <code>quill-cache</code>.</p><h4> Working with DAOs </h4><p>See the unit tests for examples of how to use this library.</p></div></div>
+}</pre><p>You can make a custom context like this:</p><pre><span class="kw">lazy</span> <span class="kw">val</span> ctx = <span class="kw">new</span> PostgresJdbcContext[model.persistence.TableNameSnakeCase](<span class="lit">"quill-cache.my-section-name"</span>)</pre><h5> Best Practice </h5><p>Define a trait called <code>SelectedCtx</code>, and mix it into all your DAOs.
+<code>SelectedCtx</code> merely extends the database context used in your application.
+The <code>PersistenceTest</code> DAO in <code>test/scala/model/dao</code> follows this pattern:</p><pre><span class="kw">trait</span> SelectedCtx <span class="kw">extends</span> H2Ctx
+
+
+<span class="kw">object</span> Users <span class="kw">extends</span> CachedPersistence[<span class="std">Long</span>, <span class="std">Option</span>[<span class="std">Long</span>], User]
+             <span class="kw">with</span> SoftCacheLike[<span class="std">Long</span>, <span class="std">Option</span>[<span class="std">Long</span>], User]
+             <span class="kw">with</span> QuillImplicits
+             <span class="kw">with</span> SelectedCtx {
+  <span class="kw">import</span> ctx._
+  <span class="cmt">// DAO code goes here</span>
+}</pre><h5> Asynchronous Drivers </h5><p>Asynchronous drivers are not currently supported by <code>quill-cache</code>, but there is an
+<a href="https://github.com/mslinn/quill-cache/issues/2" target="_blank">open issue for this enhancement</a>.
+The database contexts <code>MysqlAsyncCtx</code> and <code>PostgresAsyncCtx</code> were written in anticipation of async support,
+but are currently commented out.
+Similarly, <code>MysqlAsyncConfiguration</code> and <code>PostgresAsyncConfiguration</code> were written, but are currently commented out.</p><h4> Working with DAOs </h4><p>See the unit tests for examples of how to use this library.</p></div></div>
     </li></ol>
             </div>
 
