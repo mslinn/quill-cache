@@ -54,6 +54,10 @@ trait QuillImplicits extends IdImplicitLike {
 
   implicit val encodeURL: MappedEncoding[URL, String] = MappedEncoding[URL, String](_.toString)
   implicit val decodeURL: MappedEncoding[String, URL] = MappedEncoding[String, URL](new URL(_))
+
+  implicit val encodeOptionURL: MappedEncoding[Option[URL], String] = MappedEncoding[Option[URL], String](_.mkString)
+  implicit val decodeOptionURL: MappedEncoding[String, Option[URL]] =
+    MappedEncoding[String, Option[URL]](x => Option(new URL(x)))
 }
 
 object QuillImplicits extends QuillImplicits
