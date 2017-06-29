@@ -3,7 +3,7 @@ package model.persistence
 import io.getquill._
 
 trait CtxLike {
-  import io.getquill.context.async.AsyncContext
+//  import io.getquill.context.async.AsyncContext
   import io.getquill.context.jdbc.JdbcContext
 
   val ctx: JdbcContext[_, _] /*with AsyncContext[_, _, _]*/
