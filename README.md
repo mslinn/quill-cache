@@ -147,7 +147,30 @@ You can make a custom context like this:
 
     lazy val ctx = new PostgresJdbcContext[model.persistence.TableNameSnakeCase]("quill-cache.my-section-name")
 
-Asynchronous drivers are not currently supported by `quill-cache`, but there is an [open issue for this enhancement](https://github.com/mslinn/quill-cache/issues/2).
+### Best Practice
+Define a trait called `SelectedCtx`, and mix it into all your DAOs.
+`SelectedCtx` merely extends the database context used in your application.
+The `PersistenceTest` DAO in `test/scala/model/dao` follows this pattern:
+
+```
+trait SelectedCtx extends H2Ctx
+
+
+object Users extends CachedPersistence[Long, Option[Long], User]
+             with SoftCacheLike[Long, Option[Long], User]
+             with QuillImplicits
+             with SelectedCtx {
+  import ctx._
+  // DAO code goes here
+}
+```
+
+### Asynchronous Drivers
+Asynchronous drivers are not currently supported by `quill-cache`, but there is an 
+[open issue for this enhancement](https://github.com/mslinn/quill-cache/issues/2).
+The database contexts `MysqlAsyncCtx` and `PostgresAsyncCtx` were written in anticipation of async support, 
+but are currently commented out.
+Similarly, `MysqlAsyncConfiguration` and `PostgresAsyncConfiguration` were written, but are currently commented out.
 
 ### Working with DAOs
 
