@@ -1,6 +1,6 @@
 package model.dao
 
-import model.User
+import model.{SelectedCtx, User}
 import model.persistence.{Copier, Id, ProcessEvolutionUp}
 import org.scalatest._
 
@@ -9,7 +9,7 @@ case class X(a: String, id: Int)
 class PersistenceTest extends WordSpec with Matchers with BeforeAndAfterAll {
   override def beforeAll(): Unit = {
     println("Creating H2 in-memory database from test/resources/evolutions/default/1.sql.")
-    ProcessEvolutionUp.apply("evolutions/default/1.sql")
+    new ProcessEvolutionUp(SelectedCtx).apply("evolutions/default/1.sql")
     println("H2 in-memory database should exist now.")
   }
 

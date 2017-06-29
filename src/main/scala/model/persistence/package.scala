@@ -128,8 +128,8 @@ import persistence._
   * The `PersistenceTest` DAO in `test/scala/model/dao` follows this pattern:
   *
   * {{{
-  * trait SelectedCtx extends H2Ctx
-  *
+  * trait SelectedCtx extends model.persistence.H2Ctx
+  * object SelectedCtx extends SelectedCtx
   *
   * object Users extends CachedPersistence[Long, Option[Long], User]
   *              with SoftCacheLike[Long, Option[Long], User]

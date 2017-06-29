@@ -4,9 +4,7 @@ import scala.io.{BufferedSource, Codec}
 import scala.io.Source.fromInputStream
 
 /** Extract the Up portion of Play Evolution file and execute those SQL statements */
-object ProcessEvolutionUp {
-  import H2Configuration.ctx
-
+class ProcessEvolutionUp(selectedCtx: CtxLike) {
   /** @param target must be lower case */
   protected def contains(line: String, target: String): Boolean =
     line.toLowerCase.replaceAll("\\s+", " ") contains target
@@ -21,7 +19,7 @@ object ProcessEvolutionUp {
       .drop(1)
       .takeWhile(!contains(_, "# --- !Downs".toLowerCase))
       .mkString("\n")
-    ctx.executeAction(upString)
+    selectedCtx.ctx.executeAction(upString)
     ()
   }
 }

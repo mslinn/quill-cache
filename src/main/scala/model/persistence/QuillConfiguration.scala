@@ -87,6 +87,7 @@ trait SqliteCtx extends ConfigParse with CtxLike {
   lazy val ctx = new SqliteJdbcContext[TableNameSnakeCase](configPrefix("sqlite"))
 }
 
+
 /** Sample object for exposing the Postgres synchronous configuration.
   * Exposes a property called `ctx`, which is the Quill context.
   * To use, simply import the context, like this:

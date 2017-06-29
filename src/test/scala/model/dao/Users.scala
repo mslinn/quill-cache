@@ -1,13 +1,9 @@
 package model.dao
 
-import model.User
+import model.{SelectedCtx, User}
 import model.persistence.Types.IdOptionLong
-import model.persistence.{CachedPersistence, H2Ctx, Id, QuillImplicits, SoftCacheLike}
+import model.persistence.{CachedPersistence, Id, QuillImplicits, SoftCacheLike}
 import scala.concurrent.ExecutionContext
-
-/** Define `SelectedCtx` for use with all DAOs */
-trait SelectedCtx extends H2Ctx
-
 
 object Users extends CachedPersistence[Long, Option[Long], User]
              with SoftCacheLike[Long, Option[Long], User]

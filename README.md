@@ -63,7 +63,7 @@ Add this to your project's `build.sbt`:
 
     resolvers += "micronautics/scala on bintray" at "http://dl.bintray.com/micronautics/scala"
 
-    libraryDependencies += "com.micronautics" %% "quill-cache" % "3.0.6" withSources()
+    libraryDependencies += "com.micronautics" %% "quill-cache" % "3.0.7" withSources()
     
 You will also need to add a driver for the database you are using.
 Quill only supports H2, MySQL, Postgres and Sqlite.
@@ -153,8 +153,8 @@ Define a trait called `SelectedCtx`, and mix it into all your DAOs.
 The `PersistenceTest` DAO in `test/scala/model/dao` follows this pattern:
 
 ```
-trait SelectedCtx extends H2Ctx
-
+trait SelectedCtx extends model.persistence.H2Ctx
+object SelectedCtx extends SelectedCtx
 
 object Users extends CachedPersistence[Long, Option[Long], User]
              with SoftCacheLike[Long, Option[Long], User]
