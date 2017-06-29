@@ -1,5 +1,6 @@
 package model.persistence
 
+import java.net.URL
 import com.github.nscala_time.time.Imports._
 import java.util.UUID
 import io.getquill._
@@ -50,6 +51,9 @@ trait QuillImplicits extends IdImplicitLike {
   implicit val encodeIdOptionLong: MappedEncoding[Long, Id[Option[Long]]] = MappedEncoding(x => Id(Some(x)))
   implicit val decodeIdOptionLong: MappedEncoding[Id[Option[Long]], Long] =
     MappedEncoding(_.value.getOrElse(Id.empty[Long].value))
+
+  implicit val encodeURL: MappedEncoding[URL, String] = MappedEncoding[URL, String](_.toString)
+  implicit val decodeURL: MappedEncoding[String, URL] = MappedEncoding[String, URL](new URL(_))
 }
 
 object QuillImplicits extends QuillImplicits

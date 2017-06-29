@@ -1,10 +1,9 @@
 package model.dao
 
 import model.User
-import model.persistence.Types.{IdLong, IdOptionLong}
+import model.persistence.Types.IdOptionLong
 import model.persistence.{CachedPersistence, Id, QuillImplicits, SoftCacheLike}
 import scala.concurrent.ExecutionContext
-import scala.language.postfixOps
 
 object Users extends CachedPersistence[Long, Option[Long], User]
              with SoftCacheLike[Long, Option[Long], User]

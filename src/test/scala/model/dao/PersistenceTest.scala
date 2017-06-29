@@ -1,14 +1,14 @@
 package model.dao
 
 import model.User
-import model.persistence.{Copier, Id}
+import model.persistence.{Copier, Id, ProcessEvolutionUp}
 import org.scalatest._
 
 case class X(a: String, id: Int)
 
 class PersistenceTest extends WordSpec with Matchers with BeforeAndAfterAll {
   override def beforeAll(): Unit = {
-    ProcessEvolutionUp.apply(new java.io.File("src/test/resources/evolutions/default/1.sql"))
+    ProcessEvolutionUp.apply("evolutions/default/1.sql")
     println("Database should exist now.")
   }
 
