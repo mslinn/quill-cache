@@ -60,6 +60,7 @@ resolvers ++= Seq(
 
 val quillVer = "1.2.1"
 libraryDependencies ++= Seq(
+  "ai.x"                   %% "safe"                 % "0.1.0"    withSources(),
   "com.github.nscala-time" %% "nscala-time"          % "2.16.0"   withSources(),
   "com.google.guava"       %  "guava"                % "19.0"     withSources(),
   "com.micronautics"       %% "has-id"               % "1.2.5"    withSources(),

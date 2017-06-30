@@ -1,5 +1,6 @@
 package model
 
+import ai.x.safe._
 import persistence._
 
 /** Scala uses case classes for modeling domain objects.
@@ -164,16 +165,16 @@ package persistence {
       val noCause = (null==cause) || cause.toString.trim.isEmpty
 
       val message = ex.getMessage
-      val noMessage = (null==message) || message.trim.isEmpty
+      val noMessage = (null===message) || message.trim.isEmpty
 
-      (if (noCause) "" else s"$cause: ") + (if (noMessage) "" else message) +
+      (if (noCause) "" else safe"$cause: ") + (if (noMessage) "" else message) +
         (if (asHtml) {
           if (showStackTrace || (noCause && noMessage))
-            "\n<pre>" + ex.getStackTrace.mkString("\n  ", "\n  ", "\n") + "</pre>\n"
+            "\n<pre>" + ex.getStackTrace.safeMkString("\n  ", "\n  ", "\n") + "</pre>\n"
           else ""
         } else { // console output
           (if (!showStackTrace && (!noCause || !noMessage)) "" else "\n  ") +
-          (if (showStackTrace || (noCause && noMessage)) ex.getStackTrace.mkString("\n  ") else "")
+          (if (showStackTrace || (noCause && noMessage)) ex.getStackTrace.safeMkString("\n  ") else "")
         })
     }
   }

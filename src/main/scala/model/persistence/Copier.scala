@@ -1,5 +1,7 @@
 package model.persistence
 
+import ai.x.safe._
+
 object CopierTest extends App {
   case class X(a: String, id: Int)
   val x = X("hi", 123)
@@ -32,8 +34,8 @@ class Copier(cls: Class[_]) {
   def apply[T](o: T, vals: (String, Any)*): T = {
     val byIx: Map[Int, Object] = vals.map {
       case (name, value) =>
-        val ix: Int = getters.indexWhere(_.getName == name)
-        if (ix < 0) throw new IllegalArgumentException(s"Unknown field $name in ${ cls.getName }")
+        val ix: Int = getters.indexWhere(_.getName === name)
+        if (ix < 0) throw new IllegalArgumentException(safe"Unknown field $name in ${ cls.getName }")
         (ix, value.asInstanceOf[Object])
     }.toMap
 

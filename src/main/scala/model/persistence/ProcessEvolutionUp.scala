@@ -1,5 +1,6 @@
 package model.persistence
 
+import ai.x.safe._
 import scala.concurrent.ExecutionContext
 import scala.io.{BufferedSource, Codec}
 import scala.io.Source.fromInputStream
@@ -8,7 +9,7 @@ import scala.io.Source.fromInputStream
 object ProcessEvolutionUp {
   /** @param target must be lower case */
   protected def contains(line: String, target: String): Boolean =
-    line.toLowerCase.replaceAll("\\s+", " ") contains target
+    line.toLowerCase.replaceAll("\\s+", " ").safeContains(target)
 
   protected def fromResource(resource: String, classLoader: ClassLoader = Thread.currentThread.getContextClassLoader)
                   (implicit codec: Codec): BufferedSource =
@@ -16,10 +17,10 @@ object ProcessEvolutionUp {
 
   protected def ups(resource: String): String =
     fromResource(resource).getLines
-      .dropWhile(!contains(_, "# --- !Ups".toLowerCase))
+      .dropWhile(!safeContains(_, "# --- !Ups".toLowerCase))
       .drop(1)
-      .takeWhile(!contains(_, "# --- !Downs".toLowerCase))
-      .mkString("\n")
+      .takeWhile(!safeContains(_, "# --- !Downs".toLowerCase))
+      .safeMkString("\n")
 
   /** Works with synchronous Quill contexts */
   def apply(selectedCtx: CtxLike, resource: String): Unit = {

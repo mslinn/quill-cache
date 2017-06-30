@@ -1,5 +1,6 @@
 package model.persistence
 
+import ai.x.safe._
 import java.net.URL
 import com.github.nscala_time.time.Imports._
 import java.util.UUID
@@ -54,7 +55,7 @@ trait QuillImplicits extends IdImplicitLike with CtxLike {
   implicit val encodeURL: MappedEncoding[URL, String] = MappedEncoding[URL, String](_.toString)
   implicit val decodeURL: MappedEncoding[String, URL] = MappedEncoding[String, URL](new URL(_))
 
-  implicit val encodeOptionURL: MappedEncoding[Option[URL], String] = MappedEncoding[Option[URL], String](_.mkString)
+  implicit val encodeOptionURL: MappedEncoding[Option[URL], String] = MappedEncoding[Option[URL], String](_.safeMkString)
   implicit val decodeOptionURL: MappedEncoding[String, Option[URL]] =
     MappedEncoding[String, Option[URL]](x => Option(new URL(x)))
 }

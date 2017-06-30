@@ -1,5 +1,6 @@
 package model.persistence
 
+import ai.x.safe._
 import org.slf4j.Logger
 
 trait CacheLike[Key <: Any, _IdType <: Option[Key], CaseClass <: HasId[CaseClass, _IdType]] {
@@ -8,14 +9,14 @@ trait CacheLike[Key <: Any, _IdType <: Option[Key], CaseClass <: HasId[CaseClass
   protected implicit val ec: scala.concurrent.ExecutionContext
 
   @inline def cacheRemoveId(id: Id[_IdType]): Unit = {
-    Logger.debug(s"Removing $id from $className cache")
+    Logger.debug(safe"Removing $id from $className cache")
     id.value.foreach(key => theCache.remove(key))
     ()
   }
 
   @inline def cacheSet(i: Id[_IdType], value: CaseClass): Unit = {
     i.value.foreach(key => theCache.put(key, value))
-    Logger.trace(s"Added $i to $className cache")
+    Logger.trace(safe"Added $i to $className cache")
   }
 
   /** Human-readable name of persisted class */
@@ -27,7 +28,7 @@ trait CacheLike[Key <: Any, _IdType <: Option[Key], CaseClass <: HasId[CaseClass
 
   @inline def flushCache(): Unit = {
     theCache.underlying.invalidateAll()
-    Logger.debug(s"Cleared $className cache")
+    Logger.debug(safe"Cleared $className cache")
   }
 
   /** Flushes the cache and then loads all instances of `CaseClass` into the cache from the database. */

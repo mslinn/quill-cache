@@ -1,5 +1,6 @@
 package model.persistence
 
+import ai.x.safe._
 import java.util.concurrent.{Callable, TimeUnit}
 import com.google.common.cache.{Cache, CacheBuilder}
 import scala.concurrent.{ExecutionContext, Future}
@@ -9,7 +10,7 @@ class SoftCache[Key<:Any, Value<:Any](override val concurrencyLevel: Int=4, over
                                      (implicit ec: ExecutionContext)
   extends AbstractCache[Key, Value](concurrencyLevel, timeoutMinutes) {
 
-  lazy val underlying: Cache[Object, Object] = if (timeoutMinutes==0)
+  lazy val underlying: Cache[Object, Object] = if (timeoutMinutes===0)
     CacheBuilder
       .newBuilder
       .concurrencyLevel(concurrencyLevel)
@@ -37,7 +38,7 @@ class StrongCache[Key<:Any, Value<:Any](override val concurrencyLevel: Int=4, ti
                                        (implicit ec: ExecutionContext)
   extends AbstractCache[Key, Value](concurrencyLevel, timeoutMinutes) {
 
-  lazy val underlying: Cache[Object, Object] = if (timeoutMinutes==0)
+  lazy val underlying: Cache[Object, Object] = if (timeoutMinutes===0)
     CacheBuilder.newBuilder()
       .concurrencyLevel(concurrencyLevel)
       .recordStats

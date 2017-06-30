@@ -1,5 +1,7 @@
 package model.persistence
 
+import ai.x.safe._
+
 /** Parse `application.conf` or `reference.conf` for database parameters */
 trait ConfigParse {
   import com.typesafe.config.{Config, ConfigFactory}
@@ -8,5 +10,5 @@ trait ConfigParse {
   val config: Config = ConfigFactory.load.getConfig("quill-cache")
   val dbTimeout: Duration = Duration.fromNanos(config.getDuration("timeout").toNanos)
 
-  def configPrefix(dbType: String): String = s"quill-cache.$dbType"
+  def configPrefix(dbType: String): String = safe"quill-cache.$dbType"
 }

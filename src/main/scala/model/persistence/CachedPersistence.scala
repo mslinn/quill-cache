@@ -1,5 +1,7 @@
 package model.persistence
 
+import ai.x.safe._
+
 /** Overrides the Persistence methods which accesses the table so the cache is used instead */
 abstract class CachedPersistence[Key <: Any, _IdType <: Option[Key], CaseClass <: HasId[CaseClass, _IdType]]
   extends UnCachedPersistence[Key, _IdType, CaseClass]
@@ -15,7 +17,7 @@ abstract class CachedPersistence[Key <: Any, _IdType <: Option[Key], CaseClass <
           case _: Some[Key] =>
             update(sanitize(caseClass))
 
-          case x if x==None => // new entity; insert it and return modified entity
+          case x if x === None => // new entity; insert it and return modified entity
             insert(sanitize(caseClass))
         }
 //        cacheSet(modified.id, modified)
@@ -33,11 +35,11 @@ abstract class CachedPersistence[Key <: Any, _IdType <: Option[Key], CaseClass <
     if (Logger.isDebugEnabled) for {
       key <- id.value
       _   <- theCache.get(key)
-    } Logger.trace(s"Found $id in $className cache")
+    } Logger.trace(safe"Found $id in $className cache")
     for {
       key <- id.value
       t   <- theCache.get(key).map { x =>
-        Logger.trace(s"Found $id in $className cache")
+        Logger.trace(safe"Found $id in $className cache")
         try {
           x
         } catch {
@@ -46,11 +48,11 @@ abstract class CachedPersistence[Key <: Any, _IdType <: Option[Key], CaseClass <
             throw e
         }
       }.orElse {
-        Logger.debug(s"Attempting to fetch $className #$id from database")
+        Logger.debug(safe"Attempting to fetch $className #$id from database")
         try {
           val maybeEntity: Option[CaseClass] = _findById(id)
           maybeEntity.foreach { e =>
-            Logger.debug(s"Caching $className #$id")
+            Logger.debug(safe"Caching $className #$id")
             cacheSet(id, e)
           }
           maybeEntity
