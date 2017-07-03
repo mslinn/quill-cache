@@ -1,8 +1,7 @@
 package model.dao
 
-import ai.x.safe._
-import model.{SelectedCtx, User}
 import model.persistence.{Copier, Id, ProcessEvolutionUp}
+import model.{SelectedCtx, User}
 import org.scalatest._
 
 case class X(a: String, id: Int)
@@ -36,7 +35,7 @@ class PersistenceTest extends WordSpec with Matchers with BeforeAndAfterAll {
   "Connection pool" should {
     "work" in {
       (1L to 299L).foreach { i =>
-        Users.upsert(User(userId = safe"user$i", email = safe"user$i@gmail.com", firstName = safe"Joe$i", lastName = "Smith", password = "secret"))
+        Users.upsert(User(userId = s"user$i", email = s"user$i@gmail.com", firstName = s"Joe$i", lastName = "Smith", password = "secret"))
       }
     }
   }

@@ -3,20 +3,22 @@ package model.persistence
 import ai.x.safe._
 import org.slf4j.Logger
 
-trait CacheLike[Key <: Any, _IdType <: Option[Key], CaseClass <: HasId[CaseClass, _IdType]] {
+trait CacheLike[Key <: IdTypes, _IdType <: Option[Key], CaseClass <: HasId[CaseClass, _IdType]] {
+    this: UnCachedPersistence[Key, _IdType, CaseClass] =>
+
   protected val theCache: AbstractCache[Key, CaseClass]
   protected val Logger: Logger
   protected implicit val ec: scala.concurrent.ExecutionContext
 
   @inline def cacheRemoveId(id: Id[_IdType]): Unit = {
-    Logger.debug(safe"Removing $id from $className cache")
+    Logger.debug(safe"Removing ${ id.toString } from $className cache")
     id.value.foreach(key => theCache.remove(key))
     ()
   }
 
   @inline def cacheSet(i: Id[_IdType], value: CaseClass): Unit = {
     i.value.foreach(key => theCache.put(key, value))
-    Logger.trace(safe"Added $i to $className cache")
+    Logger.trace(safe"Added ${ i.toString } to $className cache")
   }
 
   /** Human-readable name of persisted class */
@@ -53,7 +55,7 @@ trait CacheLike[Key <: Any, _IdType <: Option[Key], CaseClass <: HasId[CaseClass
   * This trait overrides the default finder implementations.
   * This trait is experimental, do not use in production. */
   // TODO implement the [[https://google.github.io/guava/releases/16.0/api/docs/com/google/common/cache/CacheBuilder.html#removalListener(com.google.common.cache.RemovalListener) com.google.common.cache.CacheBuilder.removalListener]] callback to detect when a cache has been partially flushed due to timeout or memory pressure.
-trait SoftCacheLike[Key <: Any, _IdType <: Option[Key], CaseClass <: HasId[CaseClass, _IdType]]
+trait SoftCacheLike[Key <: IdTypes, _IdType <: Option[Key], CaseClass <: HasId[CaseClass, _IdType]]
   extends CacheLike[Key, _IdType, CaseClass] { cp: CachedPersistence[Key, _IdType, CaseClass] =>
 
   protected val theCache: SoftCache[Key, CaseClass] = SoftCache[Key, CaseClass]()
@@ -68,7 +70,7 @@ trait SoftCacheLike[Key <: Any, _IdType <: Option[Key], CaseClass <: HasId[CaseC
 /** `CachePersistence.prefetch` must be called before any finders.
   * The `CachedPersistence` trait implements the default caching strategy.
   * This trait overrides the default finder implementations. */
-trait StrongCacheLike[Key <: Any, _IdType <: Option[Key], CaseClass <: HasId[CaseClass, _IdType]]
+trait StrongCacheLike[Key <: IdTypes, _IdType <: Option[Key], CaseClass <: HasId[CaseClass, _IdType]]
     extends CacheLike[Key, _IdType, CaseClass] { cp: CachedPersistence[Key, _IdType, CaseClass] =>
 
   protected val theCache: StrongCache[Key, CaseClass] = StrongCache[Key, CaseClass]()

@@ -3,7 +3,7 @@ package model.persistence
 import ai.x.safe._
 
 /** Overrides the Persistence methods which accesses the table so the cache is used instead */
-abstract class CachedPersistence[Key <: Any, _IdType <: Option[Key], CaseClass <: HasId[CaseClass, _IdType]]
+abstract class CachedPersistence[Key <: IdTypes, _IdType <: Option[Key], CaseClass <: HasId[CaseClass, _IdType]]
   extends UnCachedPersistence[Key, _IdType, CaseClass]
   with CacheLike[Key, _IdType, CaseClass] {
 
@@ -17,7 +17,7 @@ abstract class CachedPersistence[Key <: Any, _IdType <: Option[Key], CaseClass <
           case _: Some[Key] =>
             update(sanitize(caseClass))
 
-          case x if x === None => // new entity; insert it and return modified entity
+          case x if x == None => // new entity; insert it and return modified entity
             insert(sanitize(caseClass))
         }
 //        cacheSet(modified.id, modified)
@@ -35,11 +35,11 @@ abstract class CachedPersistence[Key <: Any, _IdType <: Option[Key], CaseClass <
     if (Logger.isDebugEnabled) for {
       key <- id.value
       _   <- theCache.get(key)
-    } Logger.trace(safe"Found $id in $className cache")
+    } Logger.trace(safe"Found ${ id.toString } in $className cache")
     for {
       key <- id.value
       t   <- theCache.get(key).map { x =>
-        Logger.trace(safe"Found $id in $className cache")
+        Logger.trace(safe"Found ${ id.toString } in $className cache")
         try {
           x
         } catch {
@@ -48,11 +48,11 @@ abstract class CachedPersistence[Key <: Any, _IdType <: Option[Key], CaseClass <
             throw e
         }
       }.orElse {
-        Logger.debug(safe"Attempting to fetch $className #$id from database")
+        Logger.debug(safe"Attempting to fetch $className #${ id.toString } from database")
         try {
           val maybeEntity: Option[CaseClass] = _findById(id)
           maybeEntity.foreach { e =>
-            Logger.debug(safe"Caching $className #$id")
+            Logger.debug(safe"Caching $className #${ id.toString }")
             cacheSet(id, e)
           }
           maybeEntity

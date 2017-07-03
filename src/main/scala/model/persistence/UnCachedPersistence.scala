@@ -3,7 +3,6 @@ package model.persistence
 import ai.x.safe._
 import io.getquill.PostgresJdbcContext
 import org.slf4j.Logger
-import scala.language.{postfixOps, reflectiveCalls}
 
 /** Accesses the table for each query.
   * You can use this abstract class to derive DAOs for case classes that must have direct access to the database so the
@@ -49,7 +48,7 @@ abstract class UnCachedPersistence[Key <: Any, _IdType <: Option[Key], CaseClass
             val updated = update(sanitized)
             updated
 
-          case x if x===None => // new entity; insert it and return modified entity
+          case x if x==None => // new entity; insert it and return modified entity
             val t2: CaseClass = insert(sanitize(caseClass))
             t2
         }
@@ -57,13 +56,13 @@ abstract class UnCachedPersistence[Key <: Any, _IdType <: Option[Key], CaseClass
     }
 
   @inline def delete(caseClass: CaseClass): Unit = {
-    Logger.debug(safe"Deleting $className #${ caseClass.id } from database and cache")
+    Logger.debug(safe"Deleting $className #${ caseClass.id.toString } from database and cache")
     deleteById(caseClass.id)
     ()
   }
 
   @inline def deleteById(id: Id[_IdType]): Unit = {
-    Logger.debug(safe"Deleting $className #$id from database and cache")
+    Logger.debug(safe"Deleting $className #${ id.toString } from database and cache")
     _deleteById(id)
     ()
   }
@@ -81,7 +80,7 @@ abstract class UnCachedPersistence[Key <: Any, _IdType <: Option[Key], CaseClass
   @inline def findAllFromDB: List[CaseClass] = {
     try {
       val caseClasses: List[CaseClass] = _findAll
-      Logger.trace(safe"Fetched all ${ caseClasses.size } ${ className }s from database")
+      Logger.trace(s"Fetched all ${ caseClasses.size } ${ className }s from database")
       caseClasses
     } catch {
       case ex: Exception =>
@@ -107,7 +106,7 @@ abstract class UnCachedPersistence[Key <: Any, _IdType <: Option[Key], CaseClass
    * @return true if `CaseClass` was removed (false if the `CaseClass` was not defined prior) */
   @inline def remove(t: CaseClass): Unit = t.id.value match {
     case _: Some[_IdType] => deleteById(t.id)
-    case x if x===None => ()
+    case x if x==None => ()
   }
 
   /** This method only has relevance for Postgres databases; it ensures that the next `autoInc` value is properly set when the app starts.
@@ -117,8 +116,8 @@ abstract class UnCachedPersistence[Key <: Any, _IdType <: Option[Key], CaseClass
     * @see [[https://stackoverflow.com/a/244265/553865]]
     * List sequences with {{{\ds}}} */
   @inline def setAutoInc(): Unit = if (ctx.isInstanceOf[PostgresJdbcContext[_]]) try {
-    val maxId: Long = ctx.executeQuerySingle(safe"SELECT Max(id) FROM $tableName", extractor = _.getLong(1))
-    ctx.executeAction(safe"ALTER SEQUENCE ${ tableName }_id_seq RESTART WITH ${ maxId + 1L }")
+    val maxId: Long = ctx.executeQuerySingle(s"SELECT Max(id) FROM $tableName", extractor = _.getLong(1))
+    ctx.executeAction(s"ALTER SEQUENCE ${ tableName }_id_seq RESTART WITH ${ maxId + 1L }")
     ()
   } catch {
     case ex: Exception =>
@@ -133,7 +132,7 @@ abstract class UnCachedPersistence[Key <: Any, _IdType <: Option[Key], CaseClass
       if (notFound) insert(caseClass) else update(caseClass)
     } catch {
       case ex: Exception =>
-        Logger.error(safe"upsert $caseClass" + ex.format())
+        Logger.error(s"upsert $caseClass" + ex.format())
         throw ex
     }
 

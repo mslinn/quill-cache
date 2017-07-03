@@ -9,7 +9,7 @@ import scala.io.Source.fromInputStream
 object ProcessEvolutionUp {
   /** @param target must be lower case */
   protected def contains(line: String, target: String): Boolean =
-    line.toLowerCase.replaceAll("\\s+", " ").safeContains(target)
+    line.toLowerCase.replaceAll("\\s+", " ") contains target
 
   protected def fromResource(resource: String, classLoader: ClassLoader = Thread.currentThread.getContextClassLoader)
                   (implicit codec: Codec): BufferedSource =
@@ -17,9 +17,9 @@ object ProcessEvolutionUp {
 
   protected def ups(resource: String): String =
     fromResource(resource).getLines
-      .dropWhile(!safeContains(_, "# --- !Ups".toLowerCase))
+      .dropWhile(contains(_, "# --- !Ups".toLowerCase))
       .drop(1)
-      .takeWhile(!safeContains(_, "# --- !Downs".toLowerCase))
+      .takeWhile(contains(_, "# --- !Downs".toLowerCase))
       .safeMkString("\n")
 
   /** Works with synchronous Quill contexts */

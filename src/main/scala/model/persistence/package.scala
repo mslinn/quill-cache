@@ -1,7 +1,7 @@
 package model
 
-import ai.x.safe._
-import persistence._
+import java.util.UUID
+import model.persistence._
 
 /** Scala uses case classes for modeling domain objects.
   * `quill-cache` optimizes database access for read-mostly domain objects by providing a caching layer overtop
@@ -149,15 +149,29 @@ import persistence._
   * Similarly, `MysqlAsyncConfiguration` and `PostgresAsyncConfiguration` were written, but are currently commented out.
   *
   * <h2>Working with DAOs</h2>
-  * See the unit tests for examples of how to use this library. */
+  * See the unit tests for examples of how to use this library.
+  *
+  * <h2>Type Safety</h2>
+  * This project incorporates the [[https://github.com/xdotai/safe Safe project]], which supports typesafe comparisons:
+  *   - `===`, a replacement for Scala's `==` operator.
+  *   - `safeContains`, a replacement for Scala's 'contains' method implementations.
+  *   - `~`, a replacement for Scala's `+` operator implementations.
+  *   - `safeMkString`, a replacement for Scala's `mkString` method implementations.
+  *   - Scala's string interpolation can be made typesafe by using the `safe""` prefix, instead of `s""`.
+  *
+  * To enjoy these benefits, use the following import:
+  * {{{ import ai.x.safe._ }}} */
 package object persistence {
   implicit class RichThrowable(throwable: Throwable) {
     def format(asHtml: Boolean=false, showStackTrace: Boolean = false): String =
       new Throwables{}.format(throwable, asHtml, showStackTrace)
   }
+
+  type IdTypes = Long with String with UUID
 }
 
 package persistence {
+
   trait Throwables {
     /** @param showStackTrace is overridden if the Exception has no cause and no message */
     def format(ex: Throwable, asHtml: Boolean=false, showStackTrace: Boolean = false): String = {
@@ -165,16 +179,16 @@ package persistence {
       val noCause = (null==cause) || cause.toString.trim.isEmpty
 
       val message = ex.getMessage
-      val noMessage = (null===message) || message.trim.isEmpty
+      val noMessage = (null==message) || message.trim.isEmpty
 
-      (if (noCause) "" else safe"$cause: ") + (if (noMessage) "" else message) +
+      (if (noCause) "" else s"$cause: ") + (if (noMessage) "" else message) +
         (if (asHtml) {
           if (showStackTrace || (noCause && noMessage))
-            "\n<pre>" + ex.getStackTrace.safeMkString("\n  ", "\n  ", "\n") + "</pre>\n"
+            "\n<pre>" + ex.getStackTrace.mkString("\n  ", "\n  ", "\n") + "</pre>\n"
           else ""
         } else { // console output
           (if (!showStackTrace && (!noCause || !noMessage)) "" else "\n  ") +
-          (if (showStackTrace || (noCause && noMessage)) ex.getStackTrace.safeMkString("\n  ") else "")
+          (if (showStackTrace || (noCause && noMessage)) ex.getStackTrace.mkString("\n  ") else "")
         })
     }
   }

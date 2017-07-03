@@ -175,18 +175,6 @@ Similarly, `MysqlAsyncConfiguration` and `PostgresAsyncConfiguration` were writt
 
 See the unit tests for examples of how to use this library.
 
-## Type Safety
-This project incorporates the [Safe project](https://github.com/xdotai/safe), which supports typesafe comparisons:
- * `===`, a replacement for Scala's `==` operator.
- * `safeContains` a replacement for Scala's 'contains' method implementations.
- * `~`, a replacement for Scala's `+` operator implementations.
- * `safeMkString`, a replacement for Scala's `mkString` method implementations.
- * Scala's string interpolation can be made typesafe by using the `safe""` prefix, instead of `s""`.
- 
-To enjoy these benefits, use the following import:
-
-    import ai.x.safe._
-
 ## Scaladoc
 [Here](http://mslinn.github.io/quill-cache/latest/api/#model.persistence.package)
 
