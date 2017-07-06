@@ -1,9 +1,8 @@
 package model.persistence
 
 import java.net.URL
-import com.github.nscala_time.time.Imports._
 import java.util.UUID
-import io.getquill._
+import com.github.nscala_time.time.Imports._
 
 trait QuillImplicits extends IdImplicitLike with CtxLike {
   import ctx._

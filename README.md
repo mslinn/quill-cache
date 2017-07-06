@@ -63,7 +63,7 @@ Add this to your project's `build.sbt`:
 
     resolvers += "micronautics/scala on bintray" at "http://dl.bintray.com/micronautics/scala"
 
-    libraryDependencies += "com.micronautics" %% "quill-cache" % "3.0.9" withSources()
+    libraryDependencies += "com.micronautics" %% "quill-cache" % "3.1.0" withSources()
     
 You will also need to add a driver for the database you are using.
 Quill only supports H2, MySQL, Postgres and Sqlite.
@@ -83,8 +83,6 @@ Here is an excerpt:
 
 ```
 quill-cache {
-  timeout: 1 minute
-
   h2 {
     dataSourceClassName = org.h2.jdbcx.JdbcDataSource
     dataSource {
@@ -112,7 +110,6 @@ quill-cache {
 The `quill-cache` section specifies parameters for this library:
 You can make up your own subsections and call them whatever you want.
     The supplied `reference.conf` file also has sample MySQL sections for sync and async, plus an async Postgres section.
-`timeout` indicates how long a database query is allowed to run before an error is declared.
 The contents of the named subsections are database-dependent.
 [Hikari](https://github.com/brettwooldridge/HikariCP#configuration-knobs-baby) interprets the meaning of `datSource` sections.
 

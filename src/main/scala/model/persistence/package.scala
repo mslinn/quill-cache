@@ -60,8 +60,6 @@ import persistence._
   *
   * {{{
   * quill-cache {
-  *   timeout: 1 minute
-  *
   *   h2 {
   *     dataSourceClassName = org.h2.jdbcx.JdbcDataSource
   *     dataSource {
@@ -88,7 +86,6 @@ import persistence._
   *
   * The `quill-cache` section specifies parameters for this library:
   *   - You can make up your own subsections and call them whatever you want.
-  *   - `timeout` indicates how long a database query is allowed to run before an error is declared.
   *   - The contents of the named subsections are database dependent.
   *   - [[https://github.com/brettwooldridge/HikariCP#configuration-knobs-baby Hikari]] interprets the meaning of this section.
   *

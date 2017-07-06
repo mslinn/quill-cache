@@ -10,16 +10,18 @@ object ProcessEvolutionUp {
   protected def contains(line: String, target: String): Boolean =
     line.toLowerCase.replaceAll("\\s+", " ") contains target
 
+  // DOES NOT WORK UNDER INTELLIJ IDEA
   protected def fromResource(resource: String, classLoader: ClassLoader = Thread.currentThread.getContextClassLoader)
-                  (implicit codec: Codec): BufferedSource =
+                            (implicit codec: Codec): BufferedSource =
     fromInputStream(classLoader.getResourceAsStream(resource))
 
-  protected def ups(resource: String): String =
+  protected def ups(resource: String): String = {
     fromResource(resource).getLines
       .dropWhile(!contains(_, "# --- !Ups".toLowerCase))
       .drop(1)
       .takeWhile(!contains(_, "# --- !Downs".toLowerCase))
       .mkString("\n")
+  }
 
   /** Works with synchronous Quill contexts */
   def apply(selectedCtx: CtxLike, resource: String): Unit = {

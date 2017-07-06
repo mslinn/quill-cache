@@ -2,7 +2,7 @@ package model.persistence
 
 import io.getquill.PostgresJdbcContext
 import org.slf4j.Logger
-import scala.language.{postfixOps, reflectiveCalls}
+import scala.language.postfixOps
 
 /** Accesses the table for each query.
   * You can use this abstract class to derive DAOs for case classes that must have direct access to the database so the
