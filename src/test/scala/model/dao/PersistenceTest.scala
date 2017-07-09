@@ -1,7 +1,7 @@
 package model.dao
 
-import model.{SelectedCtx, User}
-import model.persistence.{Copier, Id, ProcessEvolutionUp}
+import model.{PaymentMechanism, SelectedCtx, User}
+import model.persistence.{Copier, EnumQuillEncoder, Id, ProcessEvolutionUp}
 import org.scalatest._
 
 case class X(a: String, id: Int)
@@ -37,6 +37,12 @@ class PersistenceTest extends WordSpec with Matchers with BeforeAndAfterAll {
       (1L to 299L).foreach { i =>
         Users.upsert(User(userId = s"user$i", email = s"user$i@gmail.com", firstName = s"Joe$i", lastName = "Smith", password = "secret"))
       }
+    }
+  }
+
+  "Java Enums" should {
+    "behave" in {
+      val _ = new EnumQuillEncoder[PaymentMechanism]
     }
   }
 }

@@ -3,6 +3,24 @@ package model.persistence
 import java.net.URL
 import java.util.UUID
 import com.github.nscala_time.time.Imports._
+import io.getquill.context.jdbc.JdbcContext
+import scala.reflect.ClassTag
+
+class EnumQuillEncoder[E <: Enum[E] : ClassTag](implicit ctx: JdbcContext[_, _]) {
+  import ctx._
+
+  implicit val enumDecoder: Decoder[E] = decoder(java.sql.Types.VARCHAR,
+    (index, row) => {
+      val clazz = implicitly[ClassTag[E]].runtimeClass.asInstanceOf[Class[E]]
+      Enum.valueOf(clazz, row.getString(index))
+    })
+
+  implicit val enumEncoder: Encoder[E] =
+    encoder(
+      java.sql.Types.VARCHAR,
+      (index, value, row) => row.setString(index, value.name)
+    )
+}
 
 trait QuillImplicits extends IdImplicitLike with CtxLike {
   import ctx._
