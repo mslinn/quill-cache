@@ -88,7 +88,12 @@ logLevel in compile := Level.Warn
 logLevel in test := Level.Info
 
 // define the statements initially evaluated when entering 'console', 'console-quick', but not 'console-project'
-initialCommands in console := """
+initialCommands in console := """import java.net.URL
+                                |import java.util.UUID
+                                |import com.github.nscala_time.time.Imports._
+                                |import io.getquill.context.jdbc.JdbcContext
+                                |import scala.reflect.ClassTag
+                                |import model._
                                 |""".stripMargin
 
 cancelable := true

@@ -41,8 +41,10 @@ class PersistenceTest extends WordSpec with Matchers with BeforeAndAfterAll {
   }
 
   "Java Enums" should {
-    "behave" in {
-      val _ = new EnumQuillEncoder[PaymentMechanism]
+    "have encoders/decoders created automagically" in {
+      new SelectedCtx {
+        implicit val paymentMechanismEncoder = new EnumQuillEncoder[PaymentMechanism](ctx)
+      }
     }
   }
 }
