@@ -3,7 +3,7 @@ val vcs = "github.com"
 // bintray settings
 bintrayOrganization := Some("micronautics")
 bintrayRepository := "scala"
-bintrayPackageLabels := Seq("aws", "scala")
+bintrayPackageLabels := Seq("database", "quill", "scala")
 bintrayVcsUrl := Some(s"git@$vcs:mslinn/${ name.value }.git")
 
 // sbt-site settings

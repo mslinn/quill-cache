@@ -116,8 +116,10 @@ abstract class UnCachedPersistence[Key <: Any, _IdType <: Option[Key], CaseClass
     * @see [[https://stackoverflow.com/a/244265/553865]]
     * List sequences with {{{\ds}}} */
   @inline def setAutoInc(): Unit = if (ctx.isInstanceOf[PostgresJdbcContext[_]]) try {
-    val maxId: Long = ctx.executeQuerySingle(s"SELECT Max(id) FROM $tableName", extractor = _.getLong(1))
-    ctx.executeAction(s"ALTER SEQUENCE ${ tableName }_id_seq RESTART WITH ${ maxId + 1L }")
+    Logger.info(s"About to set autoinc for $tableName")
+    val maxId: Long = ctx.executeQuerySingle(s"SELECT max(id) FROM $tableName", extractor = _.getLong(1))
+    val seqName = tableName.replaceAll(""""$""", s"""_id_seq"""")
+    ctx.executeAction(s"ALTER SEQUENCE $seqName RESTART WITH ${ maxId + 1L }")
     ()
   } catch {
     case ex: Exception =>
