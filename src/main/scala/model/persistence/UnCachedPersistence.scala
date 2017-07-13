@@ -34,7 +34,7 @@ abstract class UnCachedPersistence[Key <: Any, _IdType <: Option[Key], CaseClass
   /** Human-readable name of persisted class */
   def className: String
 
-  lazy val tableName: String = className.toLowerCase
+  lazy val tableName: String = TableNameSnakeCase.table(className) // todo publish this new version
 
   @inline def add(caseClass: CaseClass): CaseClass =
     findById(caseClass.id) match {
