@@ -2,7 +2,7 @@ import sbt.Keys._
 
 organization := "com.micronautics"
 name := "quill-cache"
-version := "3.1.3"
+version := "3.1.4"
 licenses +=  ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0.html"))
 scalaVersion := "2.11.11"
 crossScalaVersions := Seq("2.11.11", "2.12.2")
@@ -58,7 +58,7 @@ resolvers ++= Seq(
   "micronautics/scala on bintray" at "http://dl.bintray.com/micronautics/scala"
 )
 
-val quillVer = "1.2.1"
+val quillVer = "1.3.0"
 libraryDependencies ++= Seq(
   "com.github.nscala-time" %% "nscala-time"          % "2.16.0"   withSources(),
   "com.google.guava"       %  "guava"                % "19.0"     withSources(),
