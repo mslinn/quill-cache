@@ -2,7 +2,6 @@ package model.persistence
 
 import io.getquill.PostgresJdbcContext
 import org.slf4j.Logger
-import scala.language.postfixOps
 
 /** Accesses the table for each query.
   * You can use this abstract class to derive DAOs for case classes that must have direct access to the database so the
@@ -116,13 +115,17 @@ abstract class UnCachedPersistence[Key <: Any, _IdType <: Option[Key], CaseClass
     * @see [[https://stackoverflow.com/a/244265/553865]]
     * List sequences with {{{\ds}}} */
   @inline def setAutoInc(): Unit = if (ctx.isInstanceOf[PostgresJdbcContext[_]]) try {
-    Logger.info(s"About to set autoinc for $tableName")
-    val maxId: Long = ctx.executeQuerySingle(s"SELECT max(id) FROM $tableName", extractor = _.getLong(1))
+    val selectStmt = s"SELECT max(id) FROM $tableName"
+    Logger.info(s"About to find highest index for $tableName with '$selectStmt'")
+    val maxId: Long = ctx.executeQuerySingle(selectStmt, extractor = _.getLong(1))
+
     val seqName = tableName.replaceAll(""""$""", s"""_id_seq"""")
-    ctx.executeAction(s"ALTER SEQUENCE $seqName RESTART WITH ${ maxId + 1L }")
+    val alterSeq = s"ALTER SEQUENCE $seqName RESTART WITH ${ maxId + 1L }"
+    Logger.info(s"About to set autoinc for $tableName with '$alterSeq'")
+    ctx.executeAction(alterSeq)
     ()
   } catch {
-    case ex: Exception =>
+    case ex: Throwable =>
       Logger.error(ex.format())
   }
 

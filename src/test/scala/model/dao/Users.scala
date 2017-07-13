@@ -1,6 +1,6 @@
 package model.dao
 
-import model.{SelectedCtx, User}
+import model.User
 import model.persistence.Types.IdOptionLong
 import model.persistence.{CachedPersistence, Id, QuillImplicits, SoftCacheLike}
 import scala.concurrent.ExecutionContext

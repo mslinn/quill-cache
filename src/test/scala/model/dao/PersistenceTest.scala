@@ -1,16 +1,19 @@
 package model.dao
 
-import model.{SelectedCtx, User}
+import model.persistence.ProcessEvolutionUp.Logger
+import model.User
 import model.persistence.{Copier, Id, ProcessEvolutionUp}
 import org.scalatest._
 
 case class X(a: String, id: Int)
 
-class PersistenceTest extends WordSpec with Matchers with BeforeAndAfterAll {
+class PersistenceTest extends WordSpec with Matchers with BeforeAndAfterAll with SelectedCtx {
   override def beforeAll(): Unit = {
-    println("Creating H2 in-memory database from test/resources/evolutions/default/1.sql.")
-    ProcessEvolutionUp(SelectedCtx, "evolutions/default/1.sql")
-    println("H2 in-memory database should exist now.")
+    val resourcePath = "evolutions/default/1.sql" // for accessing evolution file as a resource from a jar
+    val fallbackPath = s"src/test/resources/$resourcePath" // for testing this project
+    Logger.warn(s"Creating H2 in-memory database from $resourcePath or $fallbackPath")
+    ProcessEvolutionUp(SelectedCtx, resourcePath, fallbackPath)
+    Logger.warn("H2 in-memory database should exist now.")
   }
 
   "Copier" should {

@@ -39,21 +39,11 @@
   <logger name="akka.actor" level="{LOGGER_AKKA_ACTOR:-INFO}" additivity="false">
     <appender-ref ref="CONFIG" />
   </logger>
-  <logger name="CachedPersistence"                     level="${LOGGER_PERSIST:-WARN}" />
-  <logger name="com.zaxxer.hikari"                     level="${LOGGER_HIKARI:-WARN}"/>
-  <logger name="com.zaxxer.hikari.pool"                level="${LOGGER_HIKARI_POOL:-WARN}"/>
-  <logger name="persistence"                           level="${LOGGER_PERSISTENCE:-WARN}"/>
-
-  <!-- See https://github.com/slick/slick/blob/master/common-test-resources/logback.xml -->
-  <logger name="slick"                                 level="${LOGGER_SLICK:-WARN}" />
-  <logger name="slickUtils"                            level="${LOGGER_SLICK:-WARN}" />
-  <logger name="slick.session"                         level="${LOGGER_SLICK_SESSION:-WARN}" />
-  <logger name="slick.jdbc.JdbcBackend.statement"      level="${LOGGER_SLICK_STATEMENT:-WARN}" />
-  <logger name="slick.jdbc.StatementInvoker.result"    level="${LOGGER_SLICK_RESULT:-WARN}" />
-  <logger name="slick.jdbc.JdbcBackend.benchmark"      level="${LOGGER_SLICK_BENCHMARK:-WARN}" />
-  <logger name="slick.compiler.QueryCompilerBenchmark" level="${LOGGER_SLICK_QUERY_BENCHMARK:-WARN}" />
-
-  <logger name="testDbFixture"                         level="${LOGGER_TEST_DB:-WARN}" />
+  <logger name="CachedPersistence"      level="${LOGGER_PERSIST:-WARN}" />
+  <logger name="com.zaxxer.hikari"      level="${LOGGER_HIKARI:-WARN}"/>
+  <logger name="com.zaxxer.hikari.pool" level="${LOGGER_HIKARI_POOL:-WARN}"/>
+  <logger name="persistence"            level="${LOGGER_PERSISTENCE:-WARN}"/>
+  <logger name="testDbFixture"          level="${LOGGER_TEST_DB:-WARN}" />
 
   <root level="WARN">
     <appender-ref ref="STDOUT" />
