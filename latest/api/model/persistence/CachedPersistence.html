@@ -49,7 +49,8 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Overrides the Persistence methods which accesses the table so the cache is used instead</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/mslinn/quill-cache/tree/master/src/main/scala/model/persistence/CachedPersistence.scala" target="_blank">CachedPersistence.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Overrides the Persistence methods which accesses the table so the cache is used instead.
+All instances of the domain model are expected to fit into the cache.</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/mslinn/quill-cache/tree/master/src/main/scala/model/persistence/CachedPersistence.scala" target="_blank">CachedPersistence.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="CacheLike.html" class="extype" name="model.persistence.CacheLike">CacheLike</a>[<span class="extype" name="model.persistence.CachedPersistence.Key">Key</span>, <span class="extype" name="model.persistence.CachedPersistence._IdType">_IdType</span>, <span class="extype" name="model.persistence.CachedPersistence.CaseClass">CaseClass</span>], <a href="UnCachedPersistence.html" class="extype" name="model.persistence.UnCachedPersistence">UnCachedPersistence</a>[<span class="extype" name="model.persistence.CachedPersistence.Key">Key</span>, <span class="extype" name="model.persistence.CachedPersistence._IdType">_IdType</span>, <span class="extype" name="model.persistence.CachedPersistence.CaseClass">CaseClass</span>], <a href="QuillImplicits.html" class="extype" name="model.persistence.QuillImplicits">QuillImplicits</a>, <a href="CtxLike.html" class="extype" name="model.persistence.CtxLike">CtxLike</a>, <span class="extype" name="model.persistence.IdImplicitLike">IdImplicitLike</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -346,40 +347,6 @@ Throws an Exception if the case class was not previously persisted.</p></div><dl
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="model.persistence.UnCachedPersistence#Logger" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="Logger:org.slf4j.Logger"></a>
-      <a id="Logger:Logger"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">Logger</span><span class="result">: <span class="extype" name="org.slf4j.Logger">Logger</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.CachedPersistence@Logger:org.slf4j.Logger" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="UnCachedPersistence.html" class="extype" name="model.persistence.UnCachedPersistence">UnCachedPersistence</a></dd></dl></div>
-    </li><li name="model.persistence.CachedPersistence#add" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="add(caseClass:CaseClass):CaseClass"></a>
-      <a id="add(CaseClass):CaseClass"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">add</span><span class="params">(<span name="caseClass">caseClass: <span class="extype" name="model.persistence.CachedPersistence.CaseClass">CaseClass</span></span>)</span><span class="result">: <span class="extype" name="model.persistence.CachedPersistence.CaseClass">CaseClass</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.CachedPersistence@add(caseClass:CaseClass):CaseClass" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="model.persistence.CachedPersistence">CachedPersistence</a> → <a href="UnCachedPersistence.html" class="extype" name="model.persistence.UnCachedPersistence">UnCachedPersistence</a></dd></dl></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <a id="asInstanceOf[T0]:T0"></a>
@@ -1081,7 +1048,8 @@ Throws an Exception if the case class was not previously persisted.</p></div><dl
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="UnCachedPersistence.html" class="extype" name="model.persistence.UnCachedPersistence">UnCachedPersistence</a></dd><dt>Annotations</dt><dd>
+      <p class="shortcomment cmt">Sanitizes and inserts <code>caseClass</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Sanitizes and inserts <code>caseClass</code>.
+Does not check to see if <code>caseClass</code> was previously persisted</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="UnCachedPersistence.html" class="extype" name="model.persistence.UnCachedPersistence">UnCachedPersistence</a></dd><dt>Annotations</dt><dd>
                 <span class="name">@inline</span><span class="args">()</span>
               
         </dd></dl></div>
@@ -1301,7 +1269,8 @@ List sequences with </p><pre>\ds</pre></span></dd></dl></div>
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="model.persistence.CachedPersistence">CachedPersistence</a> → <a href="UnCachedPersistence.html" class="extype" name="model.persistence.UnCachedPersistence">UnCachedPersistence</a></dd><dt>Annotations</dt><dd>
+      <p class="shortcomment cmt">Sanitizes and updates <code>caseClass</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Sanitizes and updates <code>caseClass</code>.
+Does not check to see if <code>caseClass</code> was previously persisted</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="model.persistence.CachedPersistence">CachedPersistence</a> → <a href="UnCachedPersistence.html" class="extype" name="model.persistence.UnCachedPersistence">UnCachedPersistence</a></dd><dt>Annotations</dt><dd>
                 <span class="name">@inline</span><span class="args">()</span>
               
         </dd></dl></div>
@@ -1321,7 +1290,7 @@ List sequences with </p><pre>\ds</pre></span></dd></dl></div>
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="model.persistence.CachedPersistence">CachedPersistence</a> → <a href="UnCachedPersistence.html" class="extype" name="model.persistence.UnCachedPersistence">UnCachedPersistence</a></dd><dt>Annotations</dt><dd>
+      <p class="shortcomment cmt">Sanitizes and inserts or updates <code>caseClass</code></p><div class="fullcomment"><div class="comment cmt"><p>Sanitizes and inserts or updates <code>caseClass</code></p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="model.persistence.CachedPersistence">CachedPersistence</a> → <a href="UnCachedPersistence.html" class="extype" name="model.persistence.UnCachedPersistence">UnCachedPersistence</a></dd><dt>Annotations</dt><dd>
                 <span class="name">@inline</span><span class="args">()</span>
               
         </dd></dl></div>
