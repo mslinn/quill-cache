@@ -94,7 +94,7 @@ This library depends on <a href="https://github.com/mslinn/has-id" target="_blan
 <code>HasId</code> is generic and quite flexible, so you are encouraged to subclass all your domain objects from <code>HasId</code>,
 even if they do not require database caching.</p><p>The current version of this library has no provision for distributed caches.
 This could be retrofitted, however the author did not have the need, so the work was not done.</p><h4> DAOs </h4><p>The <a href="https://en.wikipedia.org/wiki/Data_access_object" target="_blank">data access object pattern</a> (DAO) is common across all computer languages.
-DAOs for case classes that require database caching must extend the <a href="persistence/CachedPersistence.html" class="extype" name="model.persistence.CachedPersistence">CachedPersistence</a> abstract class.</p><p>You are free to name DAOs anything you like; this library does not mandate any naming convention.
+DAOs for case classes that require database caching must extend the <a href="persistence/CachedPersistence.html" class="extype" name="model.persistence.CachedPersistence">persistence.CachedPersistence</a> abstract class.</p><p>You are free to name DAOs anything you like; this library does not mandate any naming convention.
 Scala DAOs are often given the same name as the class that they persist, but with a suffix indicating plurality.
 For example, if a case class named <code>Point</code> needs to be persisted, the DAO is usually called <code>Points</code>.
 Unlike some other persistence libraries for Scala, Quill allows you to define your DAO in the case class's companion object,
@@ -113,7 +113,7 @@ Because <code>preload()</code> always flushes the cache before loading it you pr
      DAOs that mix in <code>SoftCacheLike</code> do not assume that all instances of the case class can fit into memory.
      <code>SoftCacheLike</code> finders query the database after every cache miss.
      Because of this, <code>SoftCacheLike</code> finders run more slowly than <code>StrongCacheLike</code> finders when the cache does not contain the desired value.
-     This trait is experimental, do not use in production.</li></ul><h4> Consistent APIs for Cached and Uncached DAOs </h4><p><code>CachedPersistence</code> subclasses <a href="persistence/UnCachedPersistence.html" class="extype" name="model.persistence.UnCachedPersistence">UnCachedPersistence</a>,
+     This trait is experimental, do not use in production.</li></ul><h4> Consistent APIs for Cached and Uncached DAOs </h4><p><a href="persistence/CachedPersistence.html" class="extype" name="model.persistence.CachedPersistence">persistence.CachedPersistence</a> subclasses <a href="persistence/UnCachedPersistence.html" class="extype" name="model.persistence.UnCachedPersistence">persistence.UnCachedPersistence</a>,
 which you can use to derive DAOs for case classes that must have direct access to the database so the case classes are not cached.
 You don't have to subclass <code>UnCachedPersistence</code> to get this behavior, but if you do then the DAOs for your cached
 domain objects will have the same interface as the DAOs for your uncached domain objects,

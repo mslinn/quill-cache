@@ -231,7 +231,7 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">downs</span><span class="params">(<span name="selectedCtx">selectedCtx: <a href="AsyncCtxLike.html" class="extype" name="model.persistence.AsyncCtxLike">AsyncCtxLike</a></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ec">ec: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span> = <span class="symbol">defaultEC</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">downs</span><span class="params">(<span name="selectedCtx">selectedCtx: <a href="AsyncCtxLike.html" class="extype" name="model.persistence.AsyncCtxLike">AsyncCtxLike</a></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ec">ec: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span> = <span class="symbol">EC.global</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
       <a href="../../index.html#model.persistence.ProcessEvolution@downs(selectedCtx:model.persistence.AsyncCtxLike)(implicitec:scala.concurrent.ExecutionContext):Unit" title="Permalink" target="_top">
@@ -239,7 +239,7 @@
       </a>
     </span>
       <p class="shortcomment cmt">Works with asynchronous Quill contexts.</p><div class="fullcomment"><div class="comment cmt"><p>Works with asynchronous Quill contexts.
-Requires an implicit <span class="extype" name="ExecutionContext">ExecutionContext</span>, uses <code>concurrent.ExecutionContext.Implicits.global</code> if none found.</p></div></div>
+Looks for an implicit <span class="extype" name="concurrent.ExecutionContext">concurrent.ExecutionContext</span>, uses <span class="extype" name="concurrent.ExecutionContext.Implicits.global">concurrent.ExecutionContext.Implicits.global</span> if none found.</p></div></div>
     </li><li name="model.persistence.ProcessEvolution#downs" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="downs(selectedCtx:model.persistence.CtxLike):Unit"></a>
       <a id="downs(CtxLike):Unit"></a>
@@ -510,7 +510,7 @@ Requires an implicit <span class="extype" name="ExecutionContext">ExecutionConte
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">ups</span><span class="params">(<span name="selectedCtx">selectedCtx: <a href="AsyncCtxLike.html" class="extype" name="model.persistence.AsyncCtxLike">AsyncCtxLike</a></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ec">ec: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span> = <span class="symbol">defaultEC</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">ups</span><span class="params">(<span name="selectedCtx">selectedCtx: <a href="AsyncCtxLike.html" class="extype" name="model.persistence.AsyncCtxLike">AsyncCtxLike</a></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ec">ec: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span> = <span class="symbol">EC.global</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
       <a href="../../index.html#model.persistence.ProcessEvolution@ups(selectedCtx:model.persistence.AsyncCtxLike)(implicitec:scala.concurrent.ExecutionContext):Unit" title="Permalink" target="_top">
@@ -518,7 +518,7 @@ Requires an implicit <span class="extype" name="ExecutionContext">ExecutionConte
       </a>
     </span>
       <p class="shortcomment cmt">Works with asynchronous Quill contexts.</p><div class="fullcomment"><div class="comment cmt"><p>Works with asynchronous Quill contexts.
-Requires an implicit <span class="extype" name="ExecutionContext">ExecutionContext</span>, uses <code>concurrent.ExecutionContext.Implicits.global</code> if none found.</p></div></div>
+Looks for an implicit <span class="extype" name="concurrent.ExecutionContext">concurrent.ExecutionContext</span>, uses <span class="extype" name="concurrent.ExecutionContext.Implicits.global">concurrent.ExecutionContext.Implicits.global</span> if none found.</p></div></div>
     </li><li name="model.persistence.ProcessEvolution#ups" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="ups(selectedCtx:model.persistence.CtxLike):Unit"></a>
       <a id="ups(CtxLike):Unit"></a>
