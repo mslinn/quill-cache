@@ -3,6 +3,7 @@
 CREATE TABLE "token" (
   id BIGSERIAL PRIMARY KEY,
   created TIMESTAMP DEFAULT now(),
+  prerequisite_ids varchar(1024),
   value VARCHAR(255) NOT NULL
 );
 

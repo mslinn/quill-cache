@@ -27,31 +27,85 @@ class EnumQuillEncoder[E <: Enum[E] : ClassTag](val ctx: JdbcContext[_, _]) {
 trait QuillImplicits extends IdImplicitLike with CtxLike {
   import ctx._
 
+  /** Expects a `TIMESTAMP` or similar column type. */
   implicit val dateTimeDecoder: Decoder[DateTime] =
     decoder(java.sql.Types.TIMESTAMP, (index, row) => new DateTime(row.getTimestamp(index).getTime))
 
+  /** Persists to a `TIMESTAMP` or similar column type. */
   implicit val dateTimeEncoder: Encoder[DateTime] =
     encoder(
       java.sql.Types.TIMESTAMP,
       (index, value, row) => row.setTimestamp(index, new java.sql.Timestamp(value.getMillis))
     )
 
+
+  /** Expects a `BIGINT` or similar column type. */
   implicit val idLongDecoder: Decoder[Id[Long]] =
     decoder(java.sql.Types.BIGINT, (index, row) => Id(row.getLong(index)))
 
+  /** Persists to a `BIGINT` or similar column type. */
   implicit val idLongEncoder: Encoder[Id[Long]] =
     encoder(java.sql.Types.BIGINT, (index, value, row) => row.setLong(index, value.value))
 
 
+  /** Expects a `VARCHAR` or similar column type. */
+  implicit val idLongDecoderFromString: Decoder[Id[Long]] =
+    decoder(java.sql.Types.VARCHAR, (index, row) => Id(row.getLong(index)))
+
+  /** Persists to a `VARCHAR` or similar column type. */
+  implicit val idLongEncoderFromString: Encoder[Id[Long]] =
+    encoder(java.sql.Types.VARCHAR, (index, value, row) => row.setLong(index, value.value))
+
+
+  /** Expects a `BIGINT` or similar column type. */
   implicit val idOptionLongDecoder: Decoder[Id[Option[Long]]] =
     decoder(java.sql.Types.BIGINT, (index, row) => Id(Some(row.getLong(index))))
 
+  /** Persists to a `BIGINT` or similar column type. */
   implicit val idOptionLongEncoder: Encoder[Id[Option[Long]]] =
     encoder(java.sql.Types.BIGINT, (index, value, row) =>
       value.value match {
         case Some(v) => row.setLong(index, v)
         case None    => row.setNull(index, java.sql.Types.BIGINT)
       })
+
+
+  /** Expects a `VARCHAR` or similar column type. */
+  implicit val idOptionLongDecoderFromString: Decoder[Id[Option[Long]]] =
+    decoder(java.sql.Types.VARCHAR, (index, row) => Id(Some(row.getLong(index))))
+
+  /** Persists to a `VARCHAR` or similar column type. */
+  implicit val idOptionLongEncoderFromString: Encoder[Id[Option[Long]]] =
+    encoder(java.sql.Types.VARCHAR, (index, value, row) =>
+      value.value match {
+        case Some(v) => row.setLong(index, v)
+        case None    => row.setNull(index, java.sql.Types.VARCHAR)
+      })
+
+
+  /** Expects a `VARCHAR` or similar column type.
+    * Each item in the list is separated by a comma. */
+  implicit val listIdOptionLongDecoder: Decoder[List[Id[Option[Long]]]] =
+    decoder(java.sql.Types.VARCHAR,
+            (index, row) =>
+              row
+                .getString(index)
+                .split(",")
+                .map { id => Id(Option(row.getLong(index))) }
+                .toList
+    )
+
+  /** Persists to `VARCHAR` or similar column type.
+    * Each item in the list is separated by a comma. */
+  implicit val listIdOptionLongEncoder: Encoder[List[Id[Option[Long]]]] =
+    encoder(java.sql.Types.VARCHAR,
+            (index, value, row) =>
+              value.mkString(",") match {
+                case "" => row.setNull(index, java.sql.Types.VARCHAR)
+                case v  => row.setString(index, v)
+              }
+    )
+
 
   /** @see [[https://github.com/getquill/quill/issues/805#issuecomment-309304298]] */
   import io.getquill.MappedEncoding
