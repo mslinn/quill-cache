@@ -116,7 +116,7 @@ abstract class UnCachedPersistence[Key <: Any, _IdType <: Option[Key], CaseClass
   @inline def upsert(caseClass: CaseClass): CaseClass =
     try {
       val notFound = caseClass.id.value.isEmpty || findById(caseClass.id).isEmpty
-      val result: CaseClass = if (notFound) insert(sanitize(caseClass)) else update(sanitize(caseClass))
+      val result: CaseClass = if (notFound) insert(caseClass) else update(caseClass)
       result
     } catch {
       case ex: Exception =>
