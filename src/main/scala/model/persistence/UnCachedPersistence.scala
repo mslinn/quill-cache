@@ -29,7 +29,7 @@ abstract class UnCachedPersistence[Key <: Any, _IdType <: Option[Key], CaseClass
   /** Human-readable name of persisted class */
   def className: String
 
-  lazy val tableName: String = TableNameSnakeCase.table(className) // todo publish this new version
+  lazy val tableName: String = TableNameSnakeCase.table(className)
 
   @inline def delete(caseClass: CaseClass): Unit = {
     logger.debug(s"Deleting $className #${ caseClass.id } from database and cache")
