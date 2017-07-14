@@ -105,7 +105,7 @@ abstract class UnCachedPersistence[Key <: Any, _IdType <: Option[Key], CaseClass
     ()
   } catch {
     case ex: Throwable =>
-      logger.warning(ex.format())
+      logger.warn(ex.format())
   }
 
   /** Sanitizes and updates `caseClass`.
