@@ -2,11 +2,11 @@ package model.dao
 
 import model.User
 import model.persistence.Types.IdOptionLong
-import model.persistence.{CachedPersistence, Id, QuillImplicits, SoftCacheLike}
+import model.persistence._
 import scala.concurrent.ExecutionContext
 
 object Users extends CachedPersistence[Long, Option[Long], User]
-             with SoftCacheLike[Long, Option[Long], User]
+             with StrongCacheLike[Long, Option[Long], User]
              with QuillImplicits
              with SelectedCtx {
   import ctx._
@@ -14,8 +14,7 @@ object Users extends CachedPersistence[Long, Option[Long], User]
   /** A real application would provide a dedicated `ExecutionContext` for DAOs */
   implicit val ec: ExecutionContext = scala.concurrent.ExecutionContext.Implicits.global
 
-  override val _findAll: List[User] =
-    run { quote { query[User] } }
+  override val _findAll: List[User] = run { quote { query[User] } }
 
   val queryById: IdOptionLong => Quoted[EntityQuery[User]] =
     (id: IdOptionLong) =>
@@ -37,7 +36,7 @@ object Users extends CachedPersistence[Long, Option[Long], User]
         run { quote { query[User].insert(lift(user)) }.returning(_.id) }
       } catch {
         case e: Throwable =>
-          Logger.error(e.getMessage)
+          logger.error(e.getMessage)
           throw e
       }
       user.setId(id)
@@ -58,17 +57,4 @@ object Users extends CachedPersistence[Long, Option[Long], User]
     findAll.find(_.userId==userId).orElse {
       run { query[User].filter(_.userId == lift(userId)) }.headOption
     }
-
-  @inline def create(email: String, userId: String, password: String, firstName: String, lastName: String): (String, String) = {
-    if (findByUserId(userId).isDefined) {
-      "error" -> s"UserID $userId is already in use."
-    } else {
-      run { quote {
-        query[User]
-          .insert(lift(User(email=email, firstName=firstName, lastName=lastName, userId=userId, password=password)))
-          .returning(_.id.value)
-      } }
-      "success" -> s"Created user $userId"
-    }
-  }
 }

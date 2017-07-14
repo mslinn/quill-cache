@@ -1,5 +1,6 @@
 package model
 
+import org.slf4j.Logger
 import persistence._
 
 /** Scala uses case classes for modeling domain objects.
@@ -107,7 +108,15 @@ import persistence._
   *   import ctx._
   * }
   * }}}
-  *
+  *  val Logger: Logger = org.slf4j.L  val Logger: Logger = org.slf4j.LoggerFactory.getLogger("persistence")
+
+  val Logger: Logger = org.slf4j.LoggerFactory.getLogger("persistence")
+
+  val Logger: Logger = org.slf4j.LoggerFactory.getLogger("persistence")
+
+oggerFactory.getLogger("persistence")
+
+
   * Available objects are: `H2Configuration`, `MysqlConfiguration`, `PostgresConfiguration`, and `SqliteConfiguration`.
   * Import the `ctx` property from the appropriate `object` for the type of database driver you need, like this:
   * {{{
@@ -147,6 +156,8 @@ import persistence._
   * <h2>Working with DAOs</h2>
   * See the unit tests for examples of how to use this library. */
 package object persistence {
+  val logger: Logger = org.slf4j.LoggerFactory.getLogger("persistence")
+
   implicit class RichThrowable(throwable: Throwable) {
     def format(asHtml: Boolean=false, showStackTrace: Boolean = false): String =
       new Throwables{}.format(throwable, asHtml, showStackTrace)

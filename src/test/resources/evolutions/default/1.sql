@@ -1,9 +1,9 @@
 # --- !Ups
 
-CREATE TABLE "auth_token" (
-  id UUID PRIMARY KEY,
-  expiry TIMESTAMP DEFAULT now(),
-  uid BIGINT NOT NULL
+CREATE TABLE "token" (
+  id BIGSERIAL PRIMARY KEY,
+  created TIMESTAMP DEFAULT now(),
+  value VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE "user" (
@@ -13,6 +13,8 @@ CREATE TABLE "user" (
   id BIGSERIAL PRIMARY KEY,
   last_name varchar(255) not null,
   password varchar(255) NOT NULL,
+  payment_mechanism varchar(255),
+  payment_mechanisms varchar(1024),
   user_id varchar(255) NOT NULL
 );
 
@@ -21,4 +23,5 @@ CREATE INDEX index_email_user ON "user" (email);
 
 # --- !Downs
 
+DROP TABLE IF EXISTS "token" CASCADE;
 DROP TABLE IF EXISTS "user" CASCADE;

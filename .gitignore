@@ -1,4 +1,5 @@
 *.gz
+h2data*
 .ensime*
 logs
 *.sublime*

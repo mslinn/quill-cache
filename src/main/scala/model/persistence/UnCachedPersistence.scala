@@ -1,7 +1,6 @@
 package model.persistence
 
-import io.getquill.PostgresJdbcContext
-import org.slf4j.Logger
+import io.getquill._
 
 /** Accesses the table for each query.
   * You can use this abstract class to derive DAOs for case classes that must have direct access to the database so the
@@ -9,9 +8,6 @@ import org.slf4j.Logger
   * cached domain objects will have the same interface as the DAOs for your uncached domain objects. */
 abstract class UnCachedPersistence[Key <: Any, _IdType <: Option[Key], CaseClass <: HasId[CaseClass, _IdType]]
   extends QuillImplicits with IdImplicitLike with CtxLike {
-
-  protected val Logger: Logger = org.slf4j.LoggerFactory.getLogger("persistence")
-
   /** Encapsulates the Quill query that returns all instances of the case class from the database */
   def _findAll: List[CaseClass]
 
@@ -35,42 +31,23 @@ abstract class UnCachedPersistence[Key <: Any, _IdType <: Option[Key], CaseClass
 
   lazy val tableName: String = TableNameSnakeCase.table(className) // todo publish this new version
 
-  @inline def add(caseClass: CaseClass): CaseClass =
-    findById(caseClass.id) match {
-      case Some(_) => // entity already persisted, update and return it.
-        upsert(caseClass)
-
-      case None => // new entity; return modified entity after inserting
-        val modified: CaseClass = caseClass.id.value match {
-          case _: Some[_IdType] =>
-            val sanitized = sanitize(caseClass)
-            val updated = update(sanitized)
-            updated
-
-          case x if x==None => // new entity; insert it and return modified entity
-            val t2: CaseClass = insert(sanitize(caseClass))
-            t2
-        }
-        modified
-    }
-
   @inline def delete(caseClass: CaseClass): Unit = {
-    Logger.debug(s"Deleting $className #${ caseClass.id } from database and cache")
+    logger.debug(s"Deleting $className #${ caseClass.id } from database and cache")
     deleteById(caseClass.id)
     ()
   }
 
   @inline def deleteById(id: Id[_IdType]): Unit = {
-    Logger.debug(s"Deleting $className #$id from database and cache")
+    logger.debug(s"Deleting $className #$id from database and cache")
     _deleteById(id)
     ()
   }
 
   @inline def findAll: List[CaseClass] = {
-    Logger.debug(s"Fetching all ${ className }s from database")
+    logger.debug(s"Fetching all ${ className }s from database")
     try { _findAll } catch {
       case ex: Exception =>
-        Logger.error(ex.format())
+        logger.error(ex.format())
         Nil
     }
   }
@@ -79,11 +56,11 @@ abstract class UnCachedPersistence[Key <: Any, _IdType <: Option[Key], CaseClass
   @inline def findAllFromDB: List[CaseClass] = {
     try {
       val caseClasses: List[CaseClass] = _findAll
-      Logger.trace(s"Fetched all ${ caseClasses.size } ${ className }s from database")
+      logger.trace(s"Fetched all ${ caseClasses.size } ${ className }s from database")
       caseClasses
     } catch {
       case ex: Exception =>
-        Logger.error(s"_findAll $className " + ex.format())
+        logger.error(s"_findAll $className " + ex.format())
         Nil
     }
   }
@@ -99,7 +76,9 @@ abstract class UnCachedPersistence[Key <: Any, _IdType <: Option[Key], CaseClass
     .invoke(t)
     .asInstanceOf[Id[Key]]
 
-  @inline def insert(caseClass: CaseClass): CaseClass = _insert(caseClass)
+  /** Sanitizes and inserts `caseClass`.
+    * Does not check to see if `caseClass` was previously persisted */
+  @inline def insert(caseClass: CaseClass): CaseClass = _insert(sanitize(caseClass))
 
   /** Searches by `CaseClass.id`
    * @return true if `CaseClass` was removed (false if the `CaseClass` was not defined prior) */
@@ -116,28 +95,32 @@ abstract class UnCachedPersistence[Key <: Any, _IdType <: Option[Key], CaseClass
     * List sequences with {{{\ds}}} */
   @inline def setAutoInc(): Unit = if (ctx.isInstanceOf[PostgresJdbcContext[_]]) try {
     val selectStmt = s"SELECT max(id) FROM $tableName"
-    Logger.info(s"About to find highest index for $tableName with '$selectStmt'")
+    logger.info(s"About to find highest index for $tableName with '$selectStmt'")
     val maxId: Long = ctx.executeQuerySingle(selectStmt, extractor = _.getLong(1))
 
     val seqName = tableName.replaceAll(""""$""", s"""_id_seq"""")
     val alterSeq = s"ALTER SEQUENCE $seqName RESTART WITH ${ maxId + 1L }"
-    Logger.info(s"About to set autoinc for $tableName with '$alterSeq'")
+    logger.info(s"About to set autoinc for $tableName with '$alterSeq'")
     ctx.executeAction(alterSeq)
     ()
   } catch {
     case ex: Throwable =>
-      Logger.error(ex.format())
+      logger.error(ex.format())
   }
 
-  @inline def update(caseClass: CaseClass): CaseClass = _update(caseClass)
+  /** Sanitizes and updates `caseClass`.
+    * Does not check to see if `caseClass` was previously persisted */
+  @inline def update(caseClass: CaseClass): CaseClass = _update(sanitize(caseClass))
 
+  /** Sanitizes and inserts or updates `caseClass` */
   @inline def upsert(caseClass: CaseClass): CaseClass =
     try {
       val notFound = caseClass.id.value.isEmpty || findById(caseClass.id).isEmpty
-      if (notFound) insert(caseClass) else update(caseClass)
+      val result: CaseClass = if (notFound) insert(sanitize(caseClass)) else update(sanitize(caseClass))
+      result
     } catch {
       case ex: Exception =>
-        Logger.error(s"upsert $caseClass" + ex.format())
+        logger.error(s"upsert $caseClass" + ex.format())
         throw ex
     }
 

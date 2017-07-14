@@ -1,26 +1,10 @@
 package model.persistence
 
-/** Overrides the Persistence methods which accesses the table so the cache is used instead */
+/** Overrides the Persistence methods which accesses the table so the cache is used instead.
+  * All instances of the domain model are expected to fit into the cache. */
 abstract class CachedPersistence[Key <: Any, _IdType <: Option[Key], CaseClass <: HasId[CaseClass, _IdType]]
   extends UnCachedPersistence[Key, _IdType, CaseClass]
   with CacheLike[Key, _IdType, CaseClass] {
-
-  override def add(caseClass: CaseClass): CaseClass =
-    findById(caseClass.id) match {
-      case Some(_) => // entity already persisted, update and return it.
-        upsert(caseClass)
-
-      case None => // new entity, capture id and return modified entity after inserting
-        val modified: CaseClass = caseClass.id.value match {
-          case _: Some[Key] =>
-            update(sanitize(caseClass))
-
-          case x if x==None => // new entity; insert it and return modified entity
-            insert(sanitize(caseClass))
-        }
-//        cacheSet(modified.id, modified)
-        modified
-    }
 
   @inline override def deleteById(id: Id[_IdType]): Unit = {
     super.deleteById(id)
@@ -30,14 +14,14 @@ abstract class CachedPersistence[Key <: Any, _IdType <: Option[Key], CaseClass <
   @inline override def findAll: List[CaseClass] = theCache.getAll
 
   override def findById(id: Id[_IdType]): Option[CaseClass] = {
-    if (Logger.isDebugEnabled) for {
+    if (logger.isDebugEnabled) for {
       key <- id.value
       _   <- theCache.get(key)
-    } Logger.trace(s"Found $id in $className cache")
+    } logger.trace(s"Found $id in $className cache")
     for {
       key <- id.value
       t   <- theCache.get(key).map { x =>
-        Logger.trace(s"Found $id in $className cache")
+        logger.trace(s"Found $id in $className cache")
         try {
           x
         } catch {
@@ -46,17 +30,17 @@ abstract class CachedPersistence[Key <: Any, _IdType <: Option[Key], CaseClass <
             throw e
         }
       }.orElse {
-        Logger.debug(s"Attempting to fetch $className #$id from database")
+        logger.debug(s"Attempting to fetch $className #$id from database")
         try {
           val maybeEntity: Option[CaseClass] = _findById(id)
           maybeEntity.foreach { e =>
-            Logger.debug(s"Caching $className #$id")
+            logger.debug(s"Caching $className #$id")
             cacheSet(id, e)
           }
           maybeEntity
         } catch {
           case e: Exception =>
-            Logger.error(e.format())
+            logger.error(e.format())
             None
         }
       }

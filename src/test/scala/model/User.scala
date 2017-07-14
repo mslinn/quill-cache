@@ -7,6 +7,8 @@ case class User(
   email: String,
   firstName: String,
   lastName: String,
+  paymentMechanism: PaymentMechanism,
+  paymentMechanisms: List[PaymentMechanism],
   password: String,
   activated: Boolean = false,
   override val id: Id[Option[Long]] = Id.empty

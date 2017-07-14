@@ -2,7 +2,7 @@ import sbt.Keys._
 
 organization := "com.micronautics"
 name := "quill-cache"
-version := "3.1.4"
+version := "3.2.1"
 licenses +=  ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0.html"))
 scalaVersion := "2.11.11"
 crossScalaVersions := Seq("2.11.11", "2.12.2")
@@ -69,7 +69,7 @@ libraryDependencies ++= Seq(
   "net.codingwell"         %% "scala-guice"          % "4.1.0"    withSources(),
   "ch.qos.logback"         %  "logback-classic"      % "1.2.3",
   //
-  "com.h2database"         %  "h2"                   % "1.4.192"  % Test withSources(),
+  "com.h2database"         %  "h2"                   % "1.4.196"  % Test withSources(),
   "junit"                  %  "junit"                % "4.12"     % Test,
   "org.postgresql"         %  "postgresql"           % "42.1.1"   % Test,
   "org.xerial"             %  "sqlite-jdbc"          % "3.8.11.2" % Test withSources(),
@@ -88,7 +88,12 @@ logLevel in compile := Level.Warn
 logLevel in test := Level.Info
 
 // define the statements initially evaluated when entering 'console', 'console-quick', but not 'console-project'
-initialCommands in console := """
+initialCommands in console := """import java.net.URL
+                                |import java.util.UUID
+                                |import com.github.nscala_time.time.Imports._
+                                |import io.getquill.context.jdbc.JdbcContext
+                                |import scala.reflect.ClassTag
+                                |import model._
                                 |""".stripMargin
 
 cancelable := true
