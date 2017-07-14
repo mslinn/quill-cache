@@ -13,8 +13,7 @@ object Tokens extends UnCachedPersistence[Long, Option[Long], Token]
   /** A real application would provide a dedicated `ExecutionContext` for DAOs */
   implicit val ec: ExecutionContext = scala.concurrent.ExecutionContext.Implicits.global
 
-  override val _findAll: List[Token] =
-    run { quote { query[Token] } }
+  override val _findAll: List[Token] = run { quote { query[Token] } }
 
   val queryById: IdOptionLong => Quoted[EntityQuery[Token]] =
     (id: IdOptionLong) =>

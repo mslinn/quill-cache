@@ -10,6 +10,7 @@ class PersistenceTest extends WordSpec with Matchers with BeforeAndAfterAll with
   val resourcePath = "evolutions/default/1.sql" // for accessing evolution file as a resource from a jar
   val fallbackPath = s"src/test/resources/$resourcePath" // for testing this project
   val processEvolution = new ProcessEvolution(resourcePath, fallbackPath)
+  org.h2.tools.Server.createTcpServer().start() // start H2 server
 
   override def beforeAll(): Unit = {
     logger.warn(s"Creating H2 embedded database from $resourcePath or $fallbackPath")
