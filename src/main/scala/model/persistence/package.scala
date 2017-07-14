@@ -1,7 +1,6 @@
 package model
 
 import org.slf4j.Logger
-import persistence._
 
 /** Scala uses case classes for modeling domain objects.
   * `quill-cache` optimizes database access for read-mostly domain objects by providing a caching layer overtop
@@ -16,7 +15,7 @@ import persistence._
   *
   * <h2>DAOs</h2>
   * The [[https://en.wikipedia.org/wiki/Data_access_object data access object pattern]] (DAO) is common across all computer languages.
-  * DAOs for case classes that require database caching must extend the [[CachedPersistence]] abstract class.
+  * DAOs for case classes that require database caching must extend the [[persistence.CachedPersistence]] abstract class.
   *
   * You are free to name DAOs anything you like; this library does not mandate any naming convention.
   * Scala DAOs are often given the same name as the class that they persist, but with a suffix indicating plurality.
@@ -47,7 +46,7 @@ import persistence._
   *      This trait is experimental, do not use in production.
   *
   * <h2>Consistent APIs for Cached and Uncached DAOs</h2>
-  * `CachedPersistence` subclasses [[UnCachedPersistence]],
+  * [[persistence.CachedPersistence]] subclasses [[persistence.UnCachedPersistence]],
   * which you can use to derive DAOs for case classes that must have direct access to the database so the case classes are not cached.
   * You don't have to subclass `UnCachedPersistence` to get this behavior, but if you do then the DAOs for your cached
   * domain objects will have the same interface as the DAOs for your uncached domain objects,

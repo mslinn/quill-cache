@@ -1,7 +1,7 @@
 package model.persistence
 
 import scala.concurrent.ExecutionContext
-import scala.concurrent.ExecutionContext.Implicits.{global => defaultEC}
+import scala.concurrent.ExecutionContext.{Implicits => EC}
 import scala.io.Codec
 import scala.io.Source.fromInputStream
 
@@ -67,17 +67,17 @@ class ProcessEvolution(resourcePath: String, fallbackPath: String) {
   }
 
   /** Works with asynchronous Quill contexts.
-    * Requires an implicit [[ExecutionContext]], uses `concurrent.ExecutionContext.Implicits.global` if none found. */
+    * Looks for an implicit [[concurrent.ExecutionContext]], uses [[concurrent.ExecutionContext.Implicits.global]] if none found. */
   def ups(selectedCtx: AsyncCtxLike)
-         (implicit ec: ExecutionContext = defaultEC): Unit = {
+         (implicit ec: ExecutionContext = EC.global): Unit = {
       selectedCtx.ctx.executeAction(ups(resourcePath, fallbackPath))
     ()
   }
 
   /** Works with asynchronous Quill contexts.
-    * Requires an implicit [[ExecutionContext]], uses `concurrent.ExecutionContext.Implicits.global` if none found. */
+    * Looks for an implicit [[concurrent.ExecutionContext]], uses [[concurrent.ExecutionContext.Implicits.global]] if none found. */
   def downs(selectedCtx: AsyncCtxLike)
-           (implicit ec: ExecutionContext = defaultEC): Unit = {
+           (implicit ec: ExecutionContext = EC.global): Unit = {
       selectedCtx.ctx.executeAction(downs(resourcePath, fallbackPath))
     ()
   }

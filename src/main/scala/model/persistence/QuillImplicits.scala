@@ -75,5 +75,5 @@ trait QuillImplicits extends IdImplicitLike with CtxLike {
 
   implicit val encodeOptionURL: MappedEncoding[Option[URL], String] = MappedEncoding[Option[URL], String](_.mkString)
   implicit val decodeOptionURL: MappedEncoding[String, Option[URL]] =
-    MappedEncoding[String, Option[URL]](x => Option(new URL(x)))
+    MappedEncoding[String, Option[URL]](x => if (x.isEmpty) None else Option(new URL(x)))
 }
