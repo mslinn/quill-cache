@@ -81,7 +81,7 @@ object StrongCache {
   * required by the selected eviction algorithm. As such, when writing unit tests it is not
   * uncommon to specify `concurrencyLevel(1)` in order to achieve more deterministic eviction behavior. */
 abstract class AbstractCache[Key<:Any, Value<:Any](val concurrencyLevel: Int=4, val timeoutMinutes: Int=5)
-                                                        (implicit ec: ExecutionContext) {
+                                                  (implicit ec: ExecutionContext) {
   /** The underlying Google Guava `Cache` instance */
   def underlying: Cache[Object, Object]
 

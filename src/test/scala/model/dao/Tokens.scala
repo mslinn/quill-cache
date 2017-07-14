@@ -1,17 +1,13 @@
 package model.dao
 
 import model.Token
-import model.persistence._
 import model.persistence.Types.IdOptionLong
-import scala.concurrent.ExecutionContext
+import model.persistence._
 
 object Tokens extends UnCachedPersistence[Long, Option[Long], Token]
              with QuillImplicits
              with SelectedCtx {
   import ctx._
-
-  /** A real application would provide a dedicated `ExecutionContext` for DAOs */
-  implicit val ec: ExecutionContext = scala.concurrent.ExecutionContext.Implicits.global
 
   override val _findAll: List[Token] = run { quote { query[Token] } }
 

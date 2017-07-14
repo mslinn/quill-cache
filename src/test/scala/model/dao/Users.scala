@@ -3,16 +3,12 @@ package model.dao
 import model.User
 import model.persistence.Types.IdOptionLong
 import model.persistence._
-import scala.concurrent.ExecutionContext
 
 object Users extends CachedPersistence[Long, Option[Long], User]
              with StrongCacheLike[Long, Option[Long], User]
              with QuillImplicits
              with SelectedCtx {
   import ctx._
-
-  /** A real application would provide a dedicated `ExecutionContext` for DAOs */
-  implicit val ec: ExecutionContext = scala.concurrent.ExecutionContext.Implicits.global
 
   override val _findAll: List[User] = run { quote { query[User] } }
 

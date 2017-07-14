@@ -2,10 +2,13 @@ package model.dao
 
 import io.getquill.MappedEncoding
 import model.PaymentMechanism
-import model.persistence.EnumQuillEncoder
+import scala.concurrent.ExecutionContext
 
 /** Define `SelectedCtx` for use with all DAOs */
 trait SelectedCtx extends model.persistence.H2Ctx {
+  /** A real application would provide a dedicated `ExecutionContext` for cache and asynch DAOs instead of using the global default */
+  implicit val ec: ExecutionContext = scala.concurrent.ExecutionContext.Implicits.global
+
  // Cannot get this dang thing to work:
  // implicit val paymentMechanismEncoder = new EnumQuillEncoder[PaymentMechanism](ctx)
 
