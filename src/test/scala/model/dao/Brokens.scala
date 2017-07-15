@@ -4,14 +4,14 @@ import model.Token
 import model.persistence.Types.IdOptionLong
 import model.persistence._
 
-object Tokens extends UnCachedPersistence[Long, Option[Long], Token]
+object Brokens extends UnCachedPersistence[Long, Option[Long], Token]
      with QuillImplicits
      with SelectedCtx {
   import ctx._
 
-  @inline def _findAll: List[Token] = run { quote { query[Token] } }
+  @inline def _findAll: List[Token] = ctx.run { quote { query[Token] } }
 
-  val queryById: (IdOptionLong) => Tokens.ctx.Quoted[Tokens.ctx.EntityQuery[Token]] =
+  val queryById: (IdOptionLong) => Brokens.ctx.Quoted[Brokens.ctx.EntityQuery[Token]] =
     (id: IdOptionLong) =>
       quote { query[Token].filter(_.id == lift(id)) }
 

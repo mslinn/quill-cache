@@ -72,9 +72,6 @@ class PersistenceTest extends WordSpec with Matchers with BeforeAndAfterAll with
         paymentMechanism = PaymentMechanism.NONE,
         paymentMechanisms = List(PaymentMechanism.PAYPAL_REST, PaymentMechanism.SQUARE, PaymentMechanism.STRIPE)
       ))
-      val x = Users._findAll      // why does this not return any Users?
-      val y = Users.findAllFromDB // why does this not return any Users?
-      val z = Users.findAll       // why does this not return any Users?
       Users._findAll.size shouldBe 1
       Users.findAllFromDB.size shouldBe 1
       Users.findAll.size shouldBe 1
@@ -107,13 +104,10 @@ class PersistenceTest extends WordSpec with Matchers with BeforeAndAfterAll with
       val user: Token = Tokens.insert(Token(
         value = "value"
       ))
-      val x = Tokens._findAll      // why does this not return any Tokens?
-      val y = Tokens.findAllFromDB // why does this not return any Tokens?
-      val z = Tokens.findAll       // why does this not return any Tokens?
       Tokens._findAll.size shouldBe 1
       Tokens.findAllFromDB.size shouldBe 1
       Tokens.findAll.size shouldBe 1
-      user.id.value shouldBe Some(1L)
+      user.id.value shouldBe Some(2L)
     }
   }
 
@@ -131,7 +125,7 @@ class PersistenceTest extends WordSpec with Matchers with BeforeAndAfterAll with
         ))
       }
       val users: Seq[User] = Users.findAll
-      users.size shouldBe 299
+      users.size shouldBe 300
     }
   }
 }

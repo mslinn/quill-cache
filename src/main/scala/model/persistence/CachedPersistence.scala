@@ -47,11 +47,19 @@ abstract class CachedPersistence[Key <: Any, _IdType <: Option[Key], CaseClass <
     } yield t
   }
 
-  @inline override def update(t: CaseClass): CaseClass = {
-    cacheRemoveId(t.id)
+  @inline override def insert(t: CaseClass): CaseClass = {
     val copiedT: CaseClass = sanitize(t)
-    cacheSet(t.id, copiedT)
-    super.update(copiedT)
+    val inserted = super.insert(copiedT)
+    cacheSet(inserted.id, inserted)
+    inserted
+  }
+
+  @inline override def update(t: CaseClass): CaseClass = {
+    val copiedT: CaseClass = sanitize(t)
+    val updated = super.update(copiedT)
+    cacheRemoveId(t.id)
+    cacheSet(updated.id, updated)
+    updated
   }
 
   /** Searches by CaseClass.id, removes from cache

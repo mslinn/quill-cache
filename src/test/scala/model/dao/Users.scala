@@ -5,12 +5,12 @@ import model.persistence.Types.IdOptionLong
 import model.persistence._
 
 object Users extends CachedPersistence[Long, Option[Long], User]
-             with StrongCacheLike[Long, Option[Long], User]
-             with QuillImplicits
-             with SelectedCtx {
+     with StrongCacheLike[Long, Option[Long], User]
+     with QuillImplicits
+     with SelectedCtx {
   import ctx._
 
-  override val _findAll: List[User] = run { quote { query[User] } }
+  @inline def _findAll: List[User] = run { quote { query[User] } }
 
   val queryById: IdOptionLong => Quoted[EntityQuery[User]] =
     (id: IdOptionLong) =>

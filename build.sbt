@@ -2,7 +2,7 @@ import sbt.Keys._
 
 organization := "com.micronautics"
 name := "quill-cache"
-version := "3.2.3"
+version := "3.2.4"
 licenses +=  ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0.html"))
 scalaVersion := "2.11.11"
 crossScalaVersions := Seq("2.11.11", "2.12.2")
@@ -85,7 +85,7 @@ logLevel := Level.Warn
 logLevel in compile := Level.Warn
 
 // Level.INFO is needed to see detailed output when running tests
-logLevel in test := Level.Info
+logLevel in test := Level.Debug
 
 // define the statements initially evaluated when entering 'console', 'console-quick', but not 'console-project'
 initialCommands in console := """import java.net.URL

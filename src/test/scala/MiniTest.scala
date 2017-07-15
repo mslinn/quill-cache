@@ -33,16 +33,11 @@ class MiniTest extends WordSpec with Matchers with BeforeAndAfterAll with LocalH
       val id: Id[Option[Long]] = ctx.run { quote { query[Token].insert(lift(token0)) }.returning(_.id) }
       id.value shouldBe Some(2L)
 
-      val w: Seq[Token] = ctx.run { quote { query[Token] } } // this works and returns 2 Tokens
+      val w: Seq[Token] = ctx.run { quote { query[Token] } }
       w.size shouldBe 2
 
-      val x = Tokens._findAll      // why does this not return any Tokens?
-      val y = Tokens.findAllFromDB // why does this not return any Tokens?
-      val z = Tokens.findAll       // why does this not return any Tokens?
-
-      Tokens._findAll.size shouldBe 1
-      Tokens.findAllFromDB.size shouldBe 1
-      Tokens.findAll.size shouldBe 1
+      Brokens._findAll.size shouldBe 2
+      Tokens._findAll.size shouldBe 2
     }
   }
 }
