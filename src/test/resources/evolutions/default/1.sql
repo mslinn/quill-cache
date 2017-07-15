@@ -23,5 +23,7 @@ CREATE INDEX index_email_user ON "user" (email);
 
 # --- !Downs
 
-DROP TABLE IF EXISTS "token" CASCADE;
+DROP INDEX IF EXISTS unique_user_id_user;
+DROP INDEX IF EXISTS index_email_user;
 DROP TABLE IF EXISTS "user" CASCADE;
+DROP TABLE IF EXISTS "token" CASCADE;
