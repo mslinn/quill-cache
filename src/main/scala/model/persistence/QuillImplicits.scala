@@ -93,10 +93,31 @@ trait QuillImplicits extends IdImplicitLike with CtxLike {
     MappedEncoding(_.mkString(","))
 
 
-  implicit val encodeURL: MappedEncoding[URL, String] = MappedEncoding[URL, String](_.toString)
-  implicit val decodeURL: MappedEncoding[String, URL] = MappedEncoding[String, URL](new URL(_))
+  val urlEmpty = new URL("http://empty")
+  implicit val encodeURL: MappedEncoding[URL, String] = MappedEncoding[URL, String] { url =>
+    if (url==urlEmpty) "" else url.toString
+  }
+  implicit val decodeURL: MappedEncoding[String, URL] = MappedEncoding[String, URL] { x =>
+    val string = x.trim
+    if (string.isEmpty) urlEmpty else new URL(string)
+  }
 
-  implicit val encodeOptionURL: MappedEncoding[Option[URL], String] = MappedEncoding[Option[URL], String](_.mkString)
+  implicit val encodeOptionURL: MappedEncoding[Option[URL], String] = MappedEncoding[Option[URL], String] { maybeUrl =>
+    if (maybeUrl contains urlEmpty) "" else maybeUrl.mkString
+  }
   implicit val decodeOptionURL: MappedEncoding[String, Option[URL]] =
     MappedEncoding[String, Option[URL]](x => if (x.isEmpty) None else Option(new URL(x)))
+
+  implicit val encodeListURL: MappedEncoding[List[URL], String] = MappedEncoding[List[URL], String] { urls =>
+    if (urls.isEmpty) "" else urls.filterNot(_ == urlEmpty).mkString(",")
+  }
+  implicit val decodeListURL: MappedEncoding[String, List[URL]] =
+    MappedEncoding[String, List[URL]] { x =>
+      val string = x.trim
+      if (string.isEmpty) Nil else string
+                                     .split(",")
+                                     .map { x => new URL(x) }
+                                     .filterNot(_ == urlEmpty)
+                                     .toList
+    }
 }

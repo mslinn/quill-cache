@@ -4,6 +4,8 @@ CREATE TABLE "token" (
   id BIGSERIAL PRIMARY KEY,
   created TIMESTAMP DEFAULT now(),
   related_id BIGINT,
+  home_page VARCHAR(255),
+  favorite_sites VARCHAR(1024),
   prerequisite_ids VARCHAR(1024),
   value VARCHAR(255) NOT NULL
 );

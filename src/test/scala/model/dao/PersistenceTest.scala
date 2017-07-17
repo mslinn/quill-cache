@@ -1,5 +1,6 @@
 package model.dao
 
+import java.net.URL
 import model._
 import model.persistence._
 
@@ -133,6 +134,22 @@ class PersistenceTest extends TestSpec {
       ))
       Tokens.findById(token.id) foreach { token =>
         token.prerequisiteIds should contain (idOptionLong)
+      }
+    }
+  }
+
+  "Collections of URL" should {
+    "decode" in {
+      val homePage = Some(new URL("https://www.mslinn.com"))
+      val scalaCourses = new URL("https://www.scalacourses.com")
+      val token: Token = Tokens.upsert(Token(
+        value = "asdf",
+        homePage = homePage,
+        favoriteSites = List(scalaCourses)
+      ))
+      Tokens.findById(token.id) foreach { token =>
+        token.homePage shouldBe homePage
+        token.favoriteSites should contain (scalaCourses)
       }
     }
   }
