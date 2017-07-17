@@ -39,9 +39,9 @@ object Users extends CachedPersistence[Long, Option[Long], User]
     }
 
   val _update: User => User =
-    (user: User) => { // TODO is there any way to write this using autoincrement so `_findById` does not need to be called?
+    (user: User) => {
       run { queryById(user.id).update(lift(user)) }
-      _findById(user.id).get
+      user
     }
 
   val className = "User"
