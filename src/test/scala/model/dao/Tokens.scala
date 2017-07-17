@@ -38,9 +38,9 @@ object Tokens extends UnCachedPersistence[Long, Option[Long], Token]
     }
 
   val _update: Token => Token =
-    (token: Token) => {
-      val id: Long = run { queryById(token.id).update(lift(token)) }
-      token.setId(Id(Some(id)))
+    (token: Token) => { // TODO is there any way to write this using autoincrement so `_findById` does not need to be called?
+      run { queryById(token.id).update(lift(token)) }
+      _findById(token.id).get
     }
 
   val className = "Token"

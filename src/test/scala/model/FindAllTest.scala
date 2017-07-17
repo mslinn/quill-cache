@@ -2,7 +2,6 @@ package model
 
 import model.dao._
 import model.persistence._
-import org.scalatest._
 
 class FindAllTest extends TestSpec {
   import ctx._

@@ -2,7 +2,6 @@ package model.dao
 
 import model._
 import model.persistence._
-import org.scalatest._
 
 case class CrashTestDummy(a: String, id: Int)
 
@@ -47,9 +46,9 @@ class PersistenceTest extends TestSpec {
     }
 
     "create via insert" in {
-      val user: User = Users.insert(User(
-        userId = s"user0",
-        email = s"user0@gmail.com",
+      val user0: User = Users.insert(User(
+        userId = "user0",
+        email = "user0@gmail.com",
         firstName = s"Joe0",
         lastName = "Smith",
         password = "secret",
@@ -59,7 +58,37 @@ class PersistenceTest extends TestSpec {
       Users._findAll.size shouldBe 1
       Users.findAllFromDB.size shouldBe 1
       Users.findAll.size shouldBe 1
-      user.id.value shouldBe Some(2L)
+      user0.id.value shouldBe Some(2L)
+    }
+
+    "updated via upsert" in {
+      val user = Users.findAll.head
+      val modified = user.copy(userId = "xxx")
+      modified.id.value shouldBe user.id.value
+      modified.userId shouldBe "xxx"
+
+      val upserted: User = Users.upsert(modified)
+      Users._findAll.size shouldBe 1
+      Users.findAllFromDB.size shouldBe 1
+      Users.findAll.size shouldBe 1
+      upserted.id.value shouldBe user.id.value
+      upserted.userId shouldBe "xxx"
+    }
+
+    "inserted via upsert" in {
+      val newUser: User = Users.upsert(User(
+        userId = "user",
+        email = "user@gmail.com",
+        firstName = s"Mary",
+        lastName = "Jane",
+        password = "notTelling",
+        paymentMechanism = PaymentMechanism.NONE,
+        paymentMechanisms = Nil
+      ))
+      Users._findAll.size shouldBe 2
+      Users.findAllFromDB.size shouldBe 2
+      Users.findAll.size shouldBe 2
+      newUser.userId shouldBe "user"
     }
   }
 
@@ -109,7 +138,7 @@ class PersistenceTest extends TestSpec {
         ))
       }
       val users: Seq[User] = Users.findAll
-      users.size shouldBe 300
+      users.size shouldBe 301
     }
   }
 }

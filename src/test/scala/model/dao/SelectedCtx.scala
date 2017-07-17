@@ -24,7 +24,11 @@ trait SelectedCtx extends model.persistence.H2Ctx {
    MappedEncoding[List[PaymentMechanism], String](_.map(_.name).mkString(","))
 
  implicit val decodeListPaymentMechanism: MappedEncoding[String, List[PaymentMechanism]] =
-   MappedEncoding[String, List[PaymentMechanism]](_.split(",").toList.map(PaymentMechanism.valueOf))
+   MappedEncoding[String, List[PaymentMechanism]] { x =>
+     val string = x.trim
+     if (string.isEmpty) Nil
+     else string.split(",").toList.map(PaymentMechanism.valueOf)
+   }
 }
 
 object SelectedCtx extends SelectedCtx
