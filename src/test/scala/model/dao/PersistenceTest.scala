@@ -1,28 +1,12 @@
 package model.dao
 
+import model._
 import model.persistence._
-import model.{PaymentMechanism, Token, User}
 import org.scalatest._
 
 case class CrashTestDummy(a: String, id: Int)
 
-class PersistenceTest extends WordSpec with Matchers with BeforeAndAfterAll with SelectedCtx {
-  val resourcePath = "evolutions/default/1.sql" // for accessing evolution file as a resource from a jar
-  val fallbackPath = s"src/test/resources/$resourcePath" // for testing this project
-  val processEvolution = new ProcessEvolution(resourcePath, fallbackPath)
-  org.h2.tools.Server.createTcpServer().start() // start H2 server
-
-  override def beforeAll(): Unit = {
-    logger.warn(s"Creating H2 embedded database from $resourcePath or $fallbackPath")
-    try { processEvolution.downs(SelectedCtx) } catch { case _: Throwable => } // just in case the last session did not clean up
-    processEvolution.ups(SelectedCtx)
-    logger.warn("H2 embedded database should exist now.")
-  }
-
-  override def afterAll(): Unit = {
-    processEvolution.downs(SelectedCtx)
-  }
-
+class PersistenceTest extends TestSpec {
   "Copier" should {
     "work" in {
         val x = CrashTestDummy("hi", 123)
