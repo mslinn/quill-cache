@@ -70,6 +70,29 @@ trait QuillImplicits extends IdImplicitLike with CtxLike {
   implicit val decodeIdOptionLong: MappedEncoding[Id[Option[Long]], Long] =
     MappedEncoding(_.value.getOrElse(Id.empty[Long].value))
 
+
+  implicit val encodeOptionIdOptionLong: MappedEncoding[String, Option[Id[Option[Long]]]] =
+      MappedEncoding { x =>
+        val string = x.trim
+        if (string.isEmpty) None
+        else Option(Id(Option(string.toLong)))
+      }
+
+  implicit val decodeOptionIdOptionLong: MappedEncoding[Option[Id[Option[Long]]], String] =
+    MappedEncoding(_.mkString(","))
+
+
+  implicit val encodeListIdOptionLong: MappedEncoding[String, List[Id[Option[Long]]]] =
+    MappedEncoding { x =>
+      val string = x.trim
+      if (string.isEmpty) Nil
+      else string.split(",").map { y => Id(Option(y.toLong)) }.toList
+    }
+
+  implicit val decodeListIdOptionLong: MappedEncoding[List[Id[Option[Long]]], String] =
+    MappedEncoding(_.mkString(","))
+
+
   implicit val encodeURL: MappedEncoding[URL, String] = MappedEncoding[URL, String](_.toString)
   implicit val decodeURL: MappedEncoding[String, URL] = MappedEncoding[String, URL](new URL(_))
 

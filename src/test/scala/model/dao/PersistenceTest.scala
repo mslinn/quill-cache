@@ -124,6 +124,19 @@ class PersistenceTest extends TestSpec {
     }
   }
 
+  "List of Java Enums" should {
+    "decode" in {
+      val idOptionLong = Id(Option(1L))
+      val token: Token = Tokens.upsert(Token(
+        value = "asdf",
+        prerequisiteIds = List(idOptionLong)
+      ))
+      Tokens.findById(token.id) foreach { token =>
+        token.prerequisiteIds should contain (idOptionLong)
+      }
+    }
+  }
+
   "Connection pool" should {
     "work" in {
       (1L to 299L).foreach { i =>
