@@ -1,6 +1,6 @@
 <img src='https://github.com/mslinn/quill-cache/raw/gh-pages/images/quill_cache.jpg' align='right' width='33%'>
 
-# Cached Persistence
+# Cached Persistence for Quill
 The build fails on Travis, but runs on my machine fine!
 
 [![Build Status](https://travis-ci.org/mslinn/quill-cache.svg?branch=master)](https://travis-ci.org/mslinn/quill-cache)
