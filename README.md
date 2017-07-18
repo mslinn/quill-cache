@@ -1,3 +1,5 @@
+<img src='https://github.com/mslinn/quill-cache/raw/gh-pages/images/quill_cache.jpg' style='float: right; margin-left: 1.5 em;'>
+
 # Cached Persistence
 [![Build Status](https://travis-ci.org/mslinn/quill-cache.svg?branch=master)](https://travis-ci.org/mslinn/quill-cache)
 [![GitHub version](https://badge.fury.io/gh/mslinn%2Fquill-cache.svg)](https://badge.fury.io/gh/mslinn%2Fquill-cache)
