@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="SBT: com.github.mauricio:mysql-async_2.11:0.2.21:jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.ivy2/cache/com.github.mauricio/mysql-async_2.11/jars/mysql-async_2.11-0.2.21.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.ivy2/cache/com.github.mauricio/mysql-async_2.11/srcs/mysql-async_2.11-0.2.21-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

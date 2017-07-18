@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="SBT: org.scalamacros:resetallattrs_2.11:1.0.0:jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.ivy2/cache/org.scalamacros/resetallattrs_2.11/jars/resetallattrs_2.11-1.0.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.ivy2/cache/org.scalamacros/resetallattrs_2.11/srcs/resetallattrs_2.11-1.0.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
