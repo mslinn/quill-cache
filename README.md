@@ -38,13 +38,14 @@ A cache can be flushed by calling the DAO's
 Because `preload()` always flushes the cache before loading it you probably won't ever need to explicitly call `flushCache()`.
 
 ## Cache Types
-Two types of caches are supported by `CachedPersistence`: 
-[StrongCache](http://mslinn.github.io/scalacourses-utils/latest/api/com/micronautics/cache/StrongCache.html),
+Two types of caches are supported: 
+
+* [StrongCache](http://mslinn.github.io/scalacourses-utils/latest/api/com/micronautics/cache/StrongCache.html),
     which is locked into memory until the cache is explicitly flushed.
     Mix the [StrongCacheLike](http://mslinn.github.io/quill-cache/latest/api/#model.persistence.StrongCacheLike) 
     trait into the DAO to provide this behavior.
     This type of cache is useful when there is enough memory to hold all instances of the case class.
-[SoftCache](http://mslinn.github.io/scalacourses-utils/latest/api/com/micronautics/cache/SoftCache.html),
+* [SoftCache](http://mslinn.github.io/scalacourses-utils/latest/api/com/micronautics/cache/SoftCache.html),
      which contains "soft" values that might expire by timing out or might get bumped if memory fills up.
      Mix the [SoftCacheLike](http://mslinn.github.io/quill-cache/latest/api/#model.persistence.SoftCacheLike) 
      trait into the DAO to provide this behavior.
@@ -169,12 +170,14 @@ object Users extends CachedPersistence[Long, Option[Long], User]
 ### Asynchronous Drivers
 Asynchronous drivers are not currently supported by `quill-cache`, but there is an 
 [open issue for this enhancement](https://github.com/mslinn/quill-cache/issues/2).
-The database contexts `MysqlAsyncCtx` and `PostgresAsyncCtx` were written in anticipation of async support.
-Similarly, `MysqlAsyncConfiguration` and `PostgresAsyncConfiguration` were written.
+If you have need for this, or if you are looking for a fairly easy F/OSS Scala project to burnish your resume with,
+you might want to submit a pull request for this behavior (it would closely model the asynch code).
+The database contexts `MysqlAsyncCtx` and `PostgresAsyncCtx` have already been written in anticipation of async support.
+Similarly, `MysqlAsyncConfiguration` and `PostgresAsyncConfiguration` have already been written.
 
 ### Working with DAOs
 
-See the unit tests for examples of how to use this library.
+See the unit tests for further examples of how to use this library.
 
 ## Scaladoc
 [Here](http://mslinn.github.io/quill-cache/latest/api/#model.persistence.package)
