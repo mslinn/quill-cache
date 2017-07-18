@@ -93,16 +93,6 @@ trait SqliteCtx extends ConfigParse with CtxLike {
 }
 
 
-/** Sample object for exposing the Postgres synchronous configuration.
-  * Exposes a property called `ctx`, which is the Quill context.
-  * To use, simply import the context, like this:
-  * {{{import QuillConfiguration.ctx._}}}
-  * You can define your own object if you need to use a different database
-  * The type of `ctx` varies according to the database selected, so no type can be ascribed to `ctx`,
-  * otherwise the Quill encoders and decoders won't be recognized.
-  * @see [[http://getquill.io/#quotation-introduction The Quill docs]]. */
-object QuillConfiguration extends PostgresCtx
-
 /** Object for exposing the H2 synchronous configuration.
   * Exposes a property called `ctx`, which is the Quill context.
   * To use, simply import the context, like this:
