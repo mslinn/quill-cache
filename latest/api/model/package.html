@@ -122,23 +122,38 @@ Please see <code>src/main/scala/resources/reference.conf</code> for an example o
   h2 {
     dataSourceClassName = org.h2.jdbcx.JdbcDataSource
     dataSource {
-      url = <span class="lit">"jdbc:h2:mem:default"</span>
+      url = <span class="lit">"jdbc:h2:tcp://localhost/./h2data;DB_CLOSE_ON_EXIT=FALSE"</span>
+      url = ${?H2_URL}
+
       user = sa
+      user = ${?H2_USER}
+
       password = <span class="lit">""</span>
+      password = ${?H2_PASSWORD}
     }
   }
 
   postgres {
-    connectionTimeout = <span class="num">10000</span>
+    connectionTimeout = <span class="num">30000</span>
     dataSource {
       databaseName = ${?DB}
       password = ${?PGPASSWORD}
-      serverName = ${?PGSERVER}
+
+      portNumber = <span class="num">5432</span>
+      portNumber = ${?PGPORT}
+
+      serverName = localhost
+      serverName = ${?PGHOST}
+
       ssl = <span class="kw">true</span>
       sslfactory = <span class="lit">"org.postgresql.ssl.NonValidatingFactory"</span>
+      #url = <span class="lit">""</span>
+
+      user = postgres
       user = ${?USERID}
     }
     dataSourceClassName = <span class="lit">"org.postgresql.ds.PGSimpleDataSource"</span>
+    maximumPoolSize = <span class="num">100</span>
   }
 }</pre><p>The <code>quill-cache</code> section specifies parameters for this library:</p><ul><li>You can make up your own subsections and call them whatever you want.</li><li>The contents of the named subsections are database dependent.</li><li><a href="https://github.com/brettwooldridge/HikariCP#configuration-knobs-baby" target="_blank">Hikari</a> interprets the meaning of this section.</li></ul><p>See also <a href="https://github.com/getquill/quill/blob/master/quill-jdbc/src/test/resources/application.conf" target="_blank">the Quill test application.conf</a>,
 <a href="https://github.com/brettwooldridge/HikariCP#initialization" target="_blank">Hikari initialization</a>,
@@ -147,26 +162,39 @@ Please see <code>src/main/scala/resources/reference.conf</code> for an example o
 Each context is exposed as a Scala <code>trait</code>, and they are also available wrapped into Scala <code>object</code>s.
 Import the Quill context <code>ctx</code> from the appropriate type wherever you need to access the database.</p><p>Available traits are: <code>H2Ctx</code>, <code>MySqlCtx</code>, <code>PostgresCtx</code>, and <code>SqliteCtx</code>.
 Import the <code>ctx</code> property from the appropriate <code>trait</code> for the type of database driver you need, like this:</p><pre><span class="kw">class</span> MyClass <span class="kw">extends</span> model.persistence.H2Ctx {
-  <span class="kw">import</span> ctx._
-}</pre><p> val Logger: Logger = org.slf4j.L  val Logger: Logger = org.slf4j.LoggerFactory.getLogger(&quot;persistence&quot;)</p><p>  val Logger: Logger = org.slf4j.LoggerFactory.getLogger(&quot;persistence&quot;)</p><p>  val Logger: Logger = org.slf4j.LoggerFactory.getLogger(&quot;persistence&quot;)</p><p>oggerFactory.getLogger(&quot;persistence&quot;)</p><p>Available objects are: <code>H2Configuration</code>, <code>MysqlConfiguration</code>, <code>PostgresConfiguration</code>, and <code>SqliteConfiguration</code>.
-Import the <code>ctx</code> property from the appropriate <code>object</code> for the type of database driver you need, like this:</p><pre><span class="kw">class</span> MyClass {
-  <span class="kw">import</span> model.persistence.PostgresConfiguration.ctx._
-}</pre><p>You can make a custom context like this:</p><pre><span class="kw">lazy</span> <span class="kw">val</span> ctx = <span class="kw">new</span> PostgresJdbcContext[model.persistence.TableNameSnakeCase](<span class="lit">"quill-cache.my-section-name"</span>)</pre><h5> Best Practice </h5><p>Define a trait called <code>SelectedCtx</code>, and mix it into all your DAOs.
-<code>SelectedCtx</code> merely extends the database context used in your application.
-The <code>PersistenceTest</code> DAO in <code>test/scala/model/dao</code> follows this pattern:</p><pre><span class="kw">trait</span> SelectedCtx <span class="kw">extends</span> model.persistence.H2Ctx
-<span class="kw">object</span> SelectedCtx <span class="kw">extends</span> SelectedCtx
+    <span class="cmt">/** A real application would provide a dedicated `ExecutionContext` for cache and async DAOs instead of using the global default */</span>
+    <span class="kw">implicit</span> <span class="kw">val</span> ec: ExecutionContext = scala.concurrent.ExecutionContext.Implicits.global
 
-<span class="kw">object</span> Users <span class="kw">extends</span> CachedPersistence[<span class="std">Long</span>, <span class="std">Option</span>[<span class="std">Long</span>], User]
-             <span class="kw">with</span> SoftCacheLike[<span class="std">Long</span>, <span class="std">Option</span>[<span class="std">Long</span>], User]
-             <span class="kw">with</span> QuillImplicits
-             <span class="kw">with</span> SelectedCtx {
-  <span class="kw">import</span> ctx._
+  <span class="cmt">// define any other implicit values or conversion functions here</span>
+}</pre><h5> Best Practice </h5><p>Define a trait called <code>SelectedCtx</code>, and mix it into all your DAOs.
+<code>SelectedCtx</code> merely extends the database context used in your application.
+The <code>PersistenceTest</code> DAO in <code>test/scala/model/dao</code> follows this pattern:</p><pre><span class="kw">trait</span> SelectedCtx <span class="kw">extends</span> model.persistence.H2Ctx</pre><p>Now define your application's Quill context as a singleton, and mix in the predefined implicits for Quill-cache defined in <code>QuillCacheImplicits</code>.</p><pre><span class="kw">package</span> model
+
+<span class="kw">import</span> model.dao.SelectedCtx
+<span class="kw">import</span> persistence.QuillCacheImplicits
+
+<span class="kw">case</span> <span class="kw">object</span> Ctx <span class="kw">extends</span> SelectedCtx <span class="kw">with</span> QuillCacheImplicits</pre><p>If you have more implicits to mix in, define a trait in the same manner as <code>QuillCacheImplicits</code> and mix it in as well:</p><pre><span class="kw">trait</span> MyQuillCacheImplicits { ctx: JdbcContext[_, _] <span class="kw">=&gt;</span>
+  <span class="cmt">// define Quill Decoders, Encoders and Mappers here</span>
+}</pre><p>After adding in <code>MyQuillCacheImplicits</code>, your revised application Quill context <code>Ctx</code> is now:</p><pre><span class="kw">package</span> model
+
+<span class="kw">import</span> model.dao.SelectedCtx
+<span class="kw">import</span> persistence.QuillCacheImplicits
+
+<span class="kw">case</span> <span class="kw">object</span> Ctx <span class="kw">extends</span> SelectedCtx <span class="kw">with</span> QuillCacheImplicits <span class="kw">with</span> MyQuillCacheImplicits</pre><p>Now import the Quill context's internally defined implicits into your DAO's scope.
+Here is an example of how to do that:</p><pre><span class="kw">object</span> Users <span class="kw">extends</span> CachedPersistence[<span class="std">Long</span>, <span class="std">Option</span>[<span class="std">Long</span>], User]
+             <span class="kw">with</span> SoftCacheLike[<span class="std">Long</span>, <span class="std">Option</span>[<span class="std">Long</span>], User] {
+  <span class="kw">import</span> Ctx._
+
   <span class="cmt">// DAO code goes here</span>
 }</pre><h5> Asynchronous Drivers </h5><p>Asynchronous drivers are not currently supported by <code>quill-cache</code>, but there is an
 <a href="https://github.com/mslinn/quill-cache/issues/2" target="_blank">open issue for this enhancement</a>.
 The database contexts <code>MysqlAsyncCtx</code> and <code>PostgresAsyncCtx</code> were written in anticipation of async support,
 but are currently commented out.
-Similarly, <code>MysqlAsyncConfiguration</code> and <code>PostgresAsyncConfiguration</code> were written, but are currently commented out.</p><h4> Working with DAOs </h4><p>See the unit tests for examples of how to use this library.</p></div></div>
+Similarly, <code>MysqlAsyncConfiguration</code> and <code>PostgresAsyncConfiguration</code> were written, but are currently commented out.</p><h4> Working with DAOs </h4><p>Each DAO needs the following functions defined:</p><ol class="decimal"><li><code>_findAll</code>     &ndash; Quill query foundation - Encapsulates the Quill query that returns all instances of the case class from the database   val logger: Logger = org.slf4j.LoggerFactory.getLogger(&quot;persistence&quot;)</li><li><code><u>deleteById<code> &ndash; Encapsulates the Quill query that deletes the instance of the case class with the given </code>Id<code> from the database</code></u></code></li><li><code>_findById</code>    &ndash; Encapsulates the Quill query that optionally returns the instance of the case class from the database with the given  implicit class RichThrowable(throwable: Throwable) {
+                            <code>Id</code>, or <code>None</code> if not found.    def format(asHtml: Boolean=false, showStackTrace: Boolean = false): String =</li><li><code>_insert</code>      &ndash; Encapsulates the Quill query that inserts the given instance of the case class into the database, and returns the      new Throwables{}.format(throwable, asHtml, showStackTrace)
+                       case class as it was stored, including any auto-increment fields.  }</li><li><code>_update</code>      &ndash; Encapsulates the Quill query that updates the given instance of the case class into the database, and returns the entity.}
+                            Throws an Exception if the case class was not previously persisted.
+See the unit tests for examples of how to use this library.</li></ol></div></div>
     </li></ol>
             </div>
 
