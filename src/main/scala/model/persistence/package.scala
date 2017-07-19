@@ -185,9 +185,6 @@ import org.slf4j.Logger
   * }
   * }}}
   *
-  * Now create a singleton instance of the DAO. This is how you will access the database.
-  * {{{ object Users extends UserDAO }}}
-  *
   * <h2>Working with DAOs</h2>
   * Each DAO needs the following functions defined:
   *   1. `_findAll`     &ndash; Quill query foundation - Encapsulates the Quill query that returns all instances of the case class from the database.
