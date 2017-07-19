@@ -216,7 +216,7 @@ The database contexts `MysqlAsyncCtx` and `PostgresAsyncCtx` have already been w
 Each DAO needs the following functions defined:
   
   1. `_findAll`     &ndash; Quill query foundation - Encapsulates the Quill query that returns all instances of the case class from the database 
-  1. `__deleteById` &ndash; Encapsulates the Quill query that deletes the instance of the case class with the given `Id` from the database 
+  1. `_deleteById` &ndash; Encapsulates the Quill query that deletes the instance of the case class with the given `Id` from the database 
   1. `_findById`    &ndash; Encapsulates the Quill query that optionally returns the instance of the case class from the database with the given
                             `Id`, or `None` if not found.
   1. `_insert`      &ndash; Encapsulates the Quill query that inserts the given instance of the case class into the database, and returns the
