@@ -223,36 +223,36 @@
     </span>
       <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">target</dt><dd class="cmt"><p>must be lower case</p></dd></dl><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
     </li><li name="model.persistence.ProcessEvolution#downs" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="downs(selectedCtx:model.persistence.AsyncCtxLike)(implicitec:scala.concurrent.ExecutionContext):Unit"></a>
-      <a id="downs(AsyncCtxLike)(ExecutionContext):Unit"></a>
+      <a id="downs(ctx:io.getquill.context.async.AsyncContext[_,_,_])(implicitec:scala.concurrent.ExecutionContext):Unit"></a>
+      <a id="downs(AsyncContext[_,_,_])(ExecutionContext):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">downs</span><span class="params">(<span name="selectedCtx">selectedCtx: <a href="AsyncCtxLike.html" class="extype" name="model.persistence.AsyncCtxLike">AsyncCtxLike</a></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ec">ec: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span> = <span class="symbol">EC.global</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">downs</span><span class="params">(<span name="ctx">ctx: <span class="extype" name="io.getquill.context.async.AsyncContext">AsyncContext</span>[_, _, _]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ec">ec: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span> = <span class="symbol">EC.global</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.ProcessEvolution@downs(selectedCtx:model.persistence.AsyncCtxLike)(implicitec:scala.concurrent.ExecutionContext):Unit" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.ProcessEvolution@downs(ctx:io.getquill.context.async.AsyncContext[_,_,_])(implicitec:scala.concurrent.ExecutionContext):Unit" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <p class="shortcomment cmt">Works with asynchronous Quill contexts.</p><div class="fullcomment"><div class="comment cmt"><p>Works with asynchronous Quill contexts.
 Looks for an implicit <span class="extype" name="concurrent.ExecutionContext">concurrent.ExecutionContext</span>, uses <span class="extype" name="concurrent.ExecutionContext.Implicits.global">concurrent.ExecutionContext.Implicits.global</span> if none found.</p></div></div>
     </li><li name="model.persistence.ProcessEvolution#downs" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="downs(selectedCtx:model.persistence.CtxLike):Unit"></a>
-      <a id="downs(CtxLike):Unit"></a>
+      <a id="downs(ctx:io.getquill.context.jdbc.JdbcContext[_,_]):Unit"></a>
+      <a id="downs(JdbcContext[_,_]):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">downs</span><span class="params">(<span name="selectedCtx">selectedCtx: <a href="CtxLike.html" class="extype" name="model.persistence.CtxLike">CtxLike</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">downs</span><span class="params">(<span name="ctx">ctx: <span class="extype" name="io.getquill.context.jdbc.JdbcContext">JdbcContext</span>[_, _]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.ProcessEvolution@downs(selectedCtx:model.persistence.CtxLike):Unit" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.ProcessEvolution@downs(ctx:io.getquill.context.jdbc.JdbcContext[_,_]):Unit" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -502,36 +502,36 @@ Looks for an implicit <span class="extype" name="concurrent.ExecutionContext">co
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="model.persistence.ProcessEvolution#ups" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="ups(selectedCtx:model.persistence.AsyncCtxLike)(implicitec:scala.concurrent.ExecutionContext):Unit"></a>
-      <a id="ups(AsyncCtxLike)(ExecutionContext):Unit"></a>
+      <a id="ups(ctx:io.getquill.context.async.AsyncContext[_,_,_])(implicitec:scala.concurrent.ExecutionContext):Unit"></a>
+      <a id="ups(AsyncContext[_,_,_])(ExecutionContext):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">ups</span><span class="params">(<span name="selectedCtx">selectedCtx: <a href="AsyncCtxLike.html" class="extype" name="model.persistence.AsyncCtxLike">AsyncCtxLike</a></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ec">ec: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span> = <span class="symbol">EC.global</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">ups</span><span class="params">(<span name="ctx">ctx: <span class="extype" name="io.getquill.context.async.AsyncContext">AsyncContext</span>[_, _, _]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ec">ec: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span> = <span class="symbol">EC.global</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.ProcessEvolution@ups(selectedCtx:model.persistence.AsyncCtxLike)(implicitec:scala.concurrent.ExecutionContext):Unit" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.ProcessEvolution@ups(ctx:io.getquill.context.async.AsyncContext[_,_,_])(implicitec:scala.concurrent.ExecutionContext):Unit" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <p class="shortcomment cmt">Works with asynchronous Quill contexts.</p><div class="fullcomment"><div class="comment cmt"><p>Works with asynchronous Quill contexts.
 Looks for an implicit <span class="extype" name="concurrent.ExecutionContext">concurrent.ExecutionContext</span>, uses <span class="extype" name="concurrent.ExecutionContext.Implicits.global">concurrent.ExecutionContext.Implicits.global</span> if none found.</p></div></div>
     </li><li name="model.persistence.ProcessEvolution#ups" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="ups(selectedCtx:model.persistence.CtxLike):Unit"></a>
-      <a id="ups(CtxLike):Unit"></a>
+      <a id="ups(ctx:io.getquill.context.jdbc.JdbcContext[_,_]):Unit"></a>
+      <a id="ups(JdbcContext[_,_]):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">ups</span><span class="params">(<span name="selectedCtx">selectedCtx: <a href="CtxLike.html" class="extype" name="model.persistence.CtxLike">CtxLike</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">ups</span><span class="params">(<span name="ctx">ctx: <span class="extype" name="io.getquill.context.jdbc.JdbcContext">JdbcContext</span>[_, _]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.ProcessEvolution@ups(selectedCtx:model.persistence.CtxLike):Unit" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.ProcessEvolution@ups(ctx:io.getquill.context.jdbc.JdbcContext[_,_]):Unit" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
