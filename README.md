@@ -22,7 +22,7 @@ This could be retrofitted, however the author did not have the need, so the work
 ## DAOs
 The [data access object pattern](https://en.wikipedia.org/wiki/Data_access_object) (DAO) is common across all computer languages.
 DAOs for case classes that require database caching must extend the
-[CachedPersistence](http://github.com/mslinn/quill-cache/latest/api/#model.persistence.CachedPersistence) 
+[CachedPersistence](http://mslinn.github.io/quill-cache/latest/api/#model.persistence.CachedPersistence)
 abstract class.
 
 You are free to name DAOs anything you like; this library does not mandate any naming convention.
@@ -93,23 +93,38 @@ quill-cache {
   h2 {
     dataSourceClassName = org.h2.jdbcx.JdbcDataSource
     dataSource {
-      url = "jdbc:h2:mem:default"
+      url = "jdbc:h2:tcp://localhost/./h2data;DB_CLOSE_ON_EXIT=FALSE"
+      url = ${?H2_URL}
+
       user = sa
+      user = ${?H2_USER}
+
       password = ""
+      password = ${?H2_PASSWORD}
     }
   }
 
   postgres {
-    connectionTimeout = 10000
+    connectionTimeout = 30000
     dataSource {
       databaseName = ${?DB}
       password = ${?PGPASSWORD}
-      serverName = ${?PGSERVER}
+
+      portNumber = 5432
+      portNumber = ${?PGPORT}
+
+      serverName = localhost
+      serverName = ${?PGHOST}
+
       ssl = true
       sslfactory = "org.postgresql.ssl.NonValidatingFactory"
+      #url = ""
+
+      user = postgres
       user = ${?USERID}
     }
     dataSourceClassName = "org.postgresql.ds.PGSimpleDataSource"
+    maximumPoolSize = 100
   }
 }
 ```
@@ -135,36 +150,45 @@ Available traits are: `H2Ctx`, `MySqlCtx`, `PostgresCtx`, and `SqliteCtx`.
 Import the `ctx` property from the appropriate `trait` for the type of database driver you need, like this:
 ```
 class MyClass extends model.persistence.H2Ctx {
-  import ctx._
+    /** A real application would provide a dedicated `ExecutionContext` for cache and async DAOs instead of using the global default */
+    implicit val ec: ExecutionContext = scala.concurrent.ExecutionContext.Implicits.global
+
+  // define any other implicit values or conversion functions here
 }
 ```
-
-Available objects are: `H2Configuration`, `MysqlConfiguration`, `PostgresConfiguration`, and `SqliteConfiguration`.
-Import the `ctx` property from the appropriate `object` for the type of database driver you need, like this:
-```
-class MyClass {
-  import model.persistence.PostgresConfiguration.ctx._
-}
-```
-
-You can make a custom context like this:
-
-    lazy val ctx = new PostgresJdbcContext[model.persistence.TableNameSnakeCase]("quill-cache.my-section-name")
 
 ### Best Practice
 Define a trait called `SelectedCtx`, and mix it into all your DAOs.
 `SelectedCtx` merely extends the database context used in your application.
 The `PersistenceTest` DAO in `test/scala/model/dao` follows this pattern:
 
-```
-trait SelectedCtx extends model.persistence.H2Ctx
-object SelectedCtx extends SelectedCtx
+    trait SelectedCtx extends model.persistence.H2Ctx
 
+Now define your application's Quill context as a singleton, and mix in the predefined implicits for Quill-cache defined in `QuillCacheImplicits`.
+
+```
+package model
+
+import model.dao.SelectedCtx
+import persistence.QuillCacheImplicits
+
+case object Ctx extends SelectedCtx with QuillCacheImplicits
+```
+
+If you have more implicits to mix in, define a trait in the same manner as `QuillCacheImplicits` and mix it in as well:
+
+```
+trait MyQuillCacheImplicits{ ctx: JdbcContext[_, _] =>
+  // define Quill Decoders, Encoders and Mappers here
+}
+```
+
+Now that `Ctx` is defined, import its interally defined implicits to your DAO's scope. Here is an example:
+```
 object Users extends CachedPersistence[Long, Option[Long], User]
-             with SoftCacheLike[Long, Option[Long], User]
-             with QuillImplicits
-             with SelectedCtx {
-  import ctx._
+             with SoftCacheLike[Long, Option[Long], User] {
+  import Ctx._
+  
   // DAO code goes here
 }
 ```
@@ -175,7 +199,6 @@ Asynchronous drivers are not currently supported by `quill-cache`, but there is 
 If you have need for this, or if you are looking for a fairly easy F/OSS Scala project to burnish your resume with,
 you might want to submit a pull request for this behavior (it would closely model the asynch code).
 The database contexts `MysqlAsyncCtx` and `PostgresAsyncCtx` have already been written in anticipation of async support.
-Similarly, `MysqlAsyncConfiguration` and `PostgresAsyncConfiguration` have already been written.
 
 ### Working with DAOs
 
