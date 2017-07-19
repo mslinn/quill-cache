@@ -95,7 +95,7 @@ cached domain objects will have the same interface as the DAOs for your uncached
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="model.persistence.UnCachedPersistence#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="&lt;init&gt;():model.persistence.UnCachedPersistence[Key,_IdType,CaseClass]"></a>
+      <a id="&lt;init&gt;(className:String):model.persistence.UnCachedPersistence[Key,_IdType,CaseClass]"></a>
       <a id="&lt;init&gt;:UnCachedPersistence[Key,_IdType,CaseClass]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -103,14 +103,14 @@ cached domain objects will have the same interface as the DAOs for your uncached
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">UnCachedPersistence</span><span class="params">()</span>
+        <span class="name">UnCachedPersistence</span><span class="params">(<span name="className">className: <span class="extype" name="scala.Predef.String">String</span></span>)</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.UnCachedPersistence@&lt;init&gt;():model.persistence.UnCachedPersistence[Key,_IdType,CaseClass]" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@&lt;init&gt;(className:String):model.persistence.UnCachedPersistence[Key,_IdType,CaseClass]" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt"></p>
     </li></ol>
             </div>
 
@@ -206,23 +206,6 @@ case class as it was stored, including any auto-increment fields.</p>
     </span>
       <p class="shortcomment cmt">Encapsulates the Quill query that updates the given instance of the case class into the database, and returns the entity.</p><div class="fullcomment"><div class="comment cmt"><p>Encapsulates the Quill query that updates the given instance of the case class into the database, and returns the entity.
 Throws an Exception if the case class was not previously persisted.</p></div></div>
-    </li><li name="model.persistence.UnCachedPersistence#className" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="className:String"></a>
-      <a id="className:String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">abstract </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">className</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.UnCachedPersistence@className:String" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Human-readable name of persisted class</p>
     </li></ol>
             </div>
 
@@ -296,6 +279,23 @@ Throws an Exception if the case class was not previously persisted.</p></div></d
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="model.persistence.UnCachedPersistence#className" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="className:String"></a>
+      <a id="className:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">className</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.UnCachedPersistence@className:String" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a>
       <a id="clone():AnyRef"></a>
