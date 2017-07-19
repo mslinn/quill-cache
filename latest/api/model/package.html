@@ -170,8 +170,7 @@ Subclass the appropriate <code>abstract class</code> for the type of database dr
   <span class="cmt">// define any other implicit values or conversion functions here</span>
 }</pre><h5> Asynchronous Drivers </h5><p>Asynchronous drivers are not currently supported by <code>quill-cache</code>, but there is an
 <a href="https://github.com/mslinn/quill-cache/issues/2" target="_blank">open issue for this enhancement</a>.
-The database contexts <code>MysqlAsyncCtx</code> and <code>PostgresAsyncCtx</code> were written in anticipation of async support,
-but are currently commented out.</p><h5> Best Practice </h5><p>Define a trait called <code>SelectedCtx</code>, and mix it into all your DAOs.
+The database contexts <code>MysqlAsyncCtx</code> and <code>PostgresAsyncCtx</code> were written in anticipation of async support.</p><h5> Best Practice </h5><p>Define a trait called <code>SelectedCtx</code>, and mix it into all your DAOs.
 <code>SelectedCtx</code> merely extends the database context used in your application.
 The <code>PersistenceTest</code> DAO in <code>test/scala/model/dao</code> follows this pattern:</p><pre><span class="kw">trait</span> SelectedCtx <span class="kw">extends</span> model.persistence.H2Ctx</pre><p>Now define your application's Quill context as a singleton, and mix in the predefined implicits for Quill-cache defined in <code>QuillCacheImplicits</code>.</p><pre><span class="kw">package</span> model
 
@@ -186,7 +185,7 @@ The <code>PersistenceTest</code> DAO in <code>test/scala/model/dao</code> follow
 <span class="kw">import</span> persistence.QuillCacheImplicits
 
 <span class="kw">case</span> <span class="kw">object</span> Ctx <span class="kw">extends</span> SelectedCtx <span class="kw">with</span> QuillCacheImplicits <span class="kw">with</span> MyQuillImplicits</pre><p>Now import the Quill context's internally defined implicits into your DAO's scope.
-Here are two examples of how to do that for cached and uncached persistence.
+Here are two examples of how to do that, one for cached and one for uncached persistence.
 Notice that <code>Users</code> and <code>Tokens</code> are singletons, which makes them easy to work with:</p><pre><span class="kw">object</span> Users <span class="kw">extends</span> CachedPersistence[<span class="std">Long</span>, <span class="std">Option</span>[<span class="std">Long</span>], User]
     <span class="kw">with</span> StrongCacheLike[<span class="std">Long</span>, <span class="std">Option</span>[<span class="std">Long</span>], User] {
   <span class="kw">import</span> Ctx._
