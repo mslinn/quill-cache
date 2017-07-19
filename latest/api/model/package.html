@@ -168,31 +168,31 @@ Subclass the appropriate <code>abstract class</code> for the type of database dr
     <span class="kw">implicit</span> <span class="kw">val</span> ec: ExecutionContext = scala.concurrent.ExecutionContext.Implicits.global
 
   <span class="cmt">// define any other implicit values or conversion functions here</span>
-}</pre><h5> Best Practice </h5><p>Define a trait called <code>SelectedCtx</code>, and mix it into all your DAOs.
+}</pre><h5> Asynchronous Drivers </h5><p>Asynchronous drivers are not currently supported by <code>quill-cache</code>, but there is an
+<a href="https://github.com/mslinn/quill-cache/issues/2" target="_blank">open issue for this enhancement</a>.
+The database contexts <code>MysqlAsyncCtx</code> and <code>PostgresAsyncCtx</code> were written in anticipation of async support,
+but are currently commented out.</p><h5> Best Practice </h5><p>Define a trait called <code>SelectedCtx</code>, and mix it into all your DAOs.
 <code>SelectedCtx</code> merely extends the database context used in your application.
 The <code>PersistenceTest</code> DAO in <code>test/scala/model/dao</code> follows this pattern:</p><pre><span class="kw">trait</span> SelectedCtx <span class="kw">extends</span> model.persistence.H2Ctx</pre><p>Now define your application's Quill context as a singleton, and mix in the predefined implicits for Quill-cache defined in <code>QuillCacheImplicits</code>.</p><pre><span class="kw">package</span> model
 
 <span class="kw">import</span> model.dao.SelectedCtx
 <span class="kw">import</span> persistence.QuillCacheImplicits
 
-<span class="kw">case</span> <span class="kw">object</span> Ctx <span class="kw">extends</span> SelectedCtx <span class="kw">with</span> QuillCacheImplicits</pre><p>If you have more implicits to mix in, define a trait in the same manner as <code>QuillCacheImplicits</code> and mix it in as well:</p><pre><span class="kw">trait</span> MyQuillCacheImplicits { ctx: JdbcContext[_, _] <span class="kw">=&gt;</span>
+<span class="kw">case</span> <span class="kw">object</span> Ctx <span class="kw">extends</span> SelectedCtx <span class="kw">with</span> QuillCacheImplicits</pre><p>If you have more implicits to mix in, define a trait in the same manner as <code>QuillCacheImplicits</code> and mix it in as well:</p><pre><span class="kw">trait</span> MyQuillImplicits { ctx: JdbcContext[_, _] <span class="kw">=&gt;</span>
   <span class="cmt">// define Quill Decoders, Encoders and Mappers here</span>
-}</pre><p>After adding in <code>MyQuillCacheImplicits</code>, your revised application Quill context <code>Ctx</code> is now:</p><pre><span class="kw">package</span> model
+}</pre><p>After adding in <code>MyQuillImplicits</code>, your revised application Quill context <code>Ctx</code> is now:</p><pre><span class="kw">package</span> model
 
 <span class="kw">import</span> model.dao.SelectedCtx
 <span class="kw">import</span> persistence.QuillCacheImplicits
 
-<span class="kw">case</span> <span class="kw">object</span> Ctx <span class="kw">extends</span> SelectedCtx <span class="kw">with</span> QuillCacheImplicits <span class="kw">with</span> MyQuillCacheImplicits</pre><p>Now import the Quill context's internally defined implicits into your DAO's scope.
+<span class="kw">case</span> <span class="kw">object</span> Ctx <span class="kw">extends</span> SelectedCtx <span class="kw">with</span> QuillCacheImplicits <span class="kw">with</span> MyQuillImplicits</pre><p>Now import the Quill context's internally defined implicits into your DAO's scope.
 Here is an example of how to do that:</p><pre><span class="kw">class</span> UserDAO [U <span class="kw">&lt;:</span> User]
     <span class="kw">extends</span> CachedPersistence[<span class="std">Long</span>, <span class="std">Option</span>[<span class="std">Long</span>], User]
     <span class="kw">with</span> StrongCacheLike[<span class="std">Long</span>, <span class="std">Option</span>[<span class="std">Long</span>], User] {
   <span class="kw">import</span> Ctx._
 
   <span class="cmt">// DAO code goes here</span>
-}</pre><p>Now create a singleton instance of the DAO. This is how you will access the database.</p><pre><span class="kw">object</span> Users <span class="kw">extends</span> UserDAO</pre><h5> Asynchronous Drivers </h5><p>Asynchronous drivers are not currently supported by <code>quill-cache</code>, but there is an
-<a href="https://github.com/mslinn/quill-cache/issues/2" target="_blank">open issue for this enhancement</a>.
-The database contexts <code>MysqlAsyncCtx</code> and <code>PostgresAsyncCtx</code> were written in anticipation of async support,
-but are currently commented out.</p><h4> Working with DAOs </h4><p>Each DAO needs the following functions defined:</p><ol class="decimal"><li><code>_findAll</code>     &ndash; Quill query foundation - Encapsulates the Quill query that returns all instances of the case class from the database.</li><li><code>_deleteById</code>  &ndash; Encapsulates the Quill query that deletes the instance of the case class with the given <code>Id</code> from the database.</li><li><code>_findById</code>    &ndash; Encapsulates the Quill query that optionally returns the instance of the case class from
+}</pre><p>Now create a singleton instance of the DAO. This is how you will access the database.</p><pre><span class="kw">object</span> Users <span class="kw">extends</span> UserDAO</pre><h4> Working with DAOs </h4><p>Each DAO needs the following functions defined:</p><ol class="decimal"><li><code>_findAll</code>     &ndash; Quill query foundation - Encapsulates the Quill query that returns all instances of the case class from the database.</li><li><code>_deleteById</code>  &ndash; Encapsulates the Quill query that deletes the instance of the case class with the given <code>Id</code> from the database.</li><li><code>_findById</code>    &ndash; Encapsulates the Quill query that optionally returns the instance of the case class from
                             the database with the given <code>Id</code>, or <code>None</code> if not found.</li><li><code>_insert</code>      &ndash; Encapsulates the Quill query that inserts the given instance of the case class into the
                             database, and returns the case class as it was stored, including any auto-increment fields.</li><li><code>_update</code>      &ndash; Encapsulates the Quill query that updates the given instance of the case class into the
                             database, and returns the entity. Throws an Exception if the case class was not previously persisted.</li></ol><p>See the unit tests for examples of how to use this library.</p></div></div>
