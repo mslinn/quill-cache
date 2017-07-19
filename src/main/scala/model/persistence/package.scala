@@ -130,8 +130,7 @@ import org.slf4j.Logger
   * <h3>Asynchronous Drivers</h3>
   * Asynchronous drivers are not currently supported by `quill-cache`, but there is an
   * [[https://github.com/mslinn/quill-cache/issues/2 open issue for this enhancement]].
-  * The database contexts `MysqlAsyncCtx` and `PostgresAsyncCtx` were written in anticipation of async support,
-  * but are currently commented out.
+  * The database contexts `MysqlAsyncCtx` and `PostgresAsyncCtx` were written in anticipation of async support.
   *
   * <h3>Best Practice</h3>
   * Define a trait called `SelectedCtx`, and mix it into all your DAOs.
