@@ -1,14 +1,12 @@
 package model.dao
 
 import model.{Ctx, Token}
-import model.persistence.Types.IdOptionLong
 import model.persistence._
-
-import scala.reflect.ClassTag
+import model.persistence.Types.IdOptionLong
 
 object Tokens extends TokenDAO
 
-class TokenDAO[U <: Token : ClassTag] extends UnCachedPersistence[Long, Option[Long], Token](classOf[ClassTag[U]].getName) {
+class TokenDAO[U <: Token] extends UnCachedPersistence[Long, Option[Long], Token] {
   import Ctx._
 
   @inline def _findAll: List[Token] = run { quote { query[Token] } }

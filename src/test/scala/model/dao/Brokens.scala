@@ -1,19 +1,17 @@
 package model.dao
 
 import model.{Ctx, Token}
-import model.persistence.Types.IdOptionLong
 import model.persistence._
-
-import scala.reflect.ClassTag
+import model.persistence.Types.IdOptionLong
 
 object Brokens extends BrokenDAO
 
-class BrokenDAO[U <: Token : ClassTag] extends UnCachedPersistence[Long, Option[Long], Token](classOf[ClassTag[U]].getName) {
+class BrokenDAO[U <: Token] extends UnCachedPersistence[Long, Option[Long], Token] {
   import model.Ctx._
 
   @inline def _findAll: List[Token] = run { quote { query[Token] } }
 
-  val queryById =
+  val queryById: (IdOptionLong) => Ctx.Quoted[Ctx.EntityQuery[Token]] =
     (id: IdOptionLong) =>
       quote { query[Token].filter(_.id == lift(id)) }
 

@@ -2,7 +2,7 @@ import sbt.Keys._
 
 organization := "com.micronautics"
 name := "quill-cache"
-version := "3.2.7"
+version := "3.2.8"
 licenses +=  ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0.html"))
 scalaVersion := "2.11.11"
 crossScalaVersions := Seq("2.11.11", "2.12.2")

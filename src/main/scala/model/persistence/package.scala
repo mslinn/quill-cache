@@ -165,14 +165,18 @@ import org.slf4j.Logger
   * Now import the Quill context's internally defined implicits into your DAO's scope.
   * Here is an example of how to do that:
   * {{{
-  * object Users extends CachedPersistence[Long, Option[Long], User]
-  *              with SoftCacheLike[Long, Option[Long], User] {
+  * class UserDAO [U <: User]
+  *     extends CachedPersistence[Long, Option[Long], User]
+  *     with StrongCacheLike[Long, Option[Long], User] {
   *   import Ctx._
   *
   *   // DAO code goes here
   * }
   * }}}
-  * 
+  *
+  * Now create a singleton instance of the DAO. This is how you will access the database.
+  * {{{ object Users extends UserDAO }}}
+  *
   * <h3>Asynchronous Drivers</h3>
   * Asynchronous drivers are not currently supported by `quill-cache`, but there is an
   * [[https://github.com/mslinn/quill-cache/issues/2 open issue for this enhancement]].

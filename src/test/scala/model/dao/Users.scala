@@ -1,19 +1,16 @@
 package model.dao
 
 import model.{Ctx, User}
-import model.persistence.Types.IdOptionLong
 import model.persistence._
-
+import model.persistence.Types.IdOptionLong
 import scala.concurrent.ExecutionContext.Implicits.global
-import scala.reflect.ClassTag
 
 object Users extends UserDAO
 
-class UserDAO [U <: User : ClassTag]
-    extends CachedPersistence[Long, Option[Long], User](classOf[ClassTag[U]].getName)
+class UserDAO [U <: User]
+    extends CachedPersistence[Long, Option[Long], User]
     with StrongCacheLike[Long, Option[Long], User] {
   import Ctx._
-
 
   @inline def _findAll: List[User] = run { quote { query[User] } }
 

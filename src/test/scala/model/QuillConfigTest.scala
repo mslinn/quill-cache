@@ -8,15 +8,17 @@ import io.getquill.JdbcContextConfig
 class QuillConfigTest extends TestSpec {
   "ClassName" should {
     "correct" in {
-      val x = model.dao.Users.className
-      x shouldBe "User"
+      import model.dao._
+      Users.className   shouldBe "User"
+      Brokens.className shouldBe "Token"
+      Tokens.className  shouldBe "Token"
     }
   }
 
   "HikariCP" should {
     "be configured properly" in {
       val config: Config = ConfigFactory.load.getConfig("quill-cache.postgres")
-      assert(config.entrySet.size==12)
+      assert(config.entrySet.size==10)
 
       val jdbcContextConfig = JdbcContextConfig(config)
       val dataSource: HikariDataSource = jdbcContextConfig.dataSource

@@ -9,7 +9,15 @@ import scala.reflect.ClassTag
   * case classes are not cached. You don't have to subclass `UnCachedPersistence`, but if you do then the DAOs for your
   * cached domain objects will have the same interface as the DAOs for your uncached domain objects.
   * @param classname Human-readable name of persisted class */
-abstract class UnCachedPersistence[Key <: Any, _IdType <: Option[Key], CaseClass <: HasId[CaseClass, _IdType]](val className: String) {
+abstract class UnCachedPersistence[Key <: Any, _IdType <: Option[Key], CaseClass <: HasId[CaseClass, _IdType] : ClassTag] {
+  val className: String = {
+    import scala.reflect._
+    val typeName = classTag[CaseClass].runtimeClass.getTypeName // for example, "model.User"
+    val i = typeName.lastIndexOf(".")
+    val result = if (i>0) typeName.substring(i+1) else typeName
+    result
+  }
+
   /** Encapsulates the Quill query that returns all instances of the case class from the database */
   def _findAll: List[CaseClass]
 

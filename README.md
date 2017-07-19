@@ -70,7 +70,7 @@ Add this to your project's `build.sbt`:
 
     resolvers += "micronautics/scala on bintray" at "http://dl.bintray.com/micronautics/scala"
 
-    libraryDependencies += "com.micronautics" %% "quill-cache" % "3.2.7" withSources()
+    libraryDependencies += "com.micronautics" %% "quill-cache" % "3.2.8"
     
 You will also need to add a driver for the database you are using.
 Quill only supports H2, MySQL, Postgres and Sqlite.
@@ -196,14 +196,18 @@ case object Ctx extends SelectedCtx with QuillCacheImplicits with MyQuillCacheIm
 Now import the Quill context's internally defined implicits into your DAO's scope. 
 Here is an example of how to do that:
 ```
-object Users extends CachedPersistence[Long, Option[Long], User]
-             with SoftCacheLike[Long, Option[Long], User] {
+class UserDAO [U <: User]
+    extends CachedPersistence[Long, Option[Long], User]
+    with StrongCacheLike[Long, Option[Long], User] {
   import Ctx._
   
   // DAO code goes here
 }
 ```
-
+Now create a singleton instance of the DAO. This is how you will access the database.
+```
+object Users extends UserDAO
+```
 ### Asynchronous Drivers
 Asynchronous drivers are not currently supported by `quill-cache`, but there is an 
 [open issue for this enhancement](https://github.com/mslinn/quill-cache/issues/2).
