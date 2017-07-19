@@ -47,7 +47,8 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Scala uses case classes for modeling domain objects.
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p><img src='https://github.com/mslinn/quill-cache/raw/gh-pages/images/quill_cache.jpg' align='right' width='33%'>
+Scala uses case classes for modeling domain objects.
 <code>quill-cache</code> optimizes database access for read-mostly domain objects by providing a caching layer overtop
 <a href="https://github.com/getquill/quill" target="_blank">Quill</a>.
 This library depends on <a href="https://github.com/mslinn/has-id" target="_blank">has-id</a>, and case classes that need to be cached must extend
@@ -151,7 +152,7 @@ Here is an example of how to do that:</p><pre><span class="kw">object</span> Use
 <a href="https://github.com/mslinn/quill-cache/issues/2" target="_blank">open issue for this enhancement</a>.
 The database contexts <code>MysqlAsyncCtx</code> and <code>PostgresAsyncCtx</code> were written in anticipation of async support,
 but are currently commented out.
-Similarly, <code>MysqlAsyncConfiguration</code> and <code>PostgresAsyncConfiguration</code> were written, but are currently commented out.</p><h4> Working with DAOs </h4><p>Each DAO needs the following functions defined:</p><ol class="decimal"><li><code>_findAll</code>     &ndash; Quill query foundation - Encapsulates the Quill query that returns all instances of the case class from the database.</li><li><code>_deleteById</code> &ndash; Encapsulates the Quill query that deletes the instance of the case class with the given <code>Id</code> from the database.</li><li><code>_findById</code>    &ndash; Encapsulates the Quill query that optionally returns the instance of the case class from
+Similarly, <code>MysqlAsyncConfiguration</code> and <code>PostgresAsyncConfiguration</code> were written, but are currently commented out.</p><h4> Working with DAOs </h4><p>Each DAO needs the following functions defined:</p><ol class="decimal"><li><code>_findAll</code>     &ndash; Quill query foundation - Encapsulates the Quill query that returns all instances of the case class from the database.</li><li><code>_deleteById</code>  &ndash; Encapsulates the Quill query that deletes the instance of the case class with the given <code>Id</code> from the database.</li><li><code>_findById</code>    &ndash; Encapsulates the Quill query that optionally returns the instance of the case class from
                             the database with the given <code>Id</code>, or <code>None</code> if not found.</li><li><code>_insert</code>      &ndash; Encapsulates the Quill query that inserts the given instance of the case class into the
                             database, and returns the case class as it was stored, including any auto-increment fields.</li><li><code>_update</code>      &ndash; Encapsulates the Quill query that updates the given instance of the case class into the
                             database, and returns the entity. Throws an Exception if the case class was not previously persisted.</li></ol><p>See the unit tests for examples of how to use this library.</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/mslinn/quill-cache/tree/master/src/main/scala/model/persistence/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
