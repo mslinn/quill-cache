@@ -5,10 +5,7 @@ import model.persistence._
 import model.persistence.Types.IdOptionLong
 import scala.concurrent.ExecutionContext.Implicits.global
 
-object Users extends UserDAO
-
-class UserDAO [U <: User]
-    extends CachedPersistence[Long, Option[Long], User]
+object Users extends CachedPersistence[Long, Option[Long], User]
     with StrongCacheLike[Long, Option[Long], User] {
   import Ctx._
 

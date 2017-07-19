@@ -4,9 +4,7 @@ import model.{Ctx, Token}
 import model.persistence._
 import model.persistence.Types.IdOptionLong
 
-object Brokens extends BrokenDAO
-
-class BrokenDAO[U <: Token] extends UnCachedPersistence[Long, Option[Long], Token] {
+object Brokens extends UnCachedPersistence[Long, Option[Long], Token] {
   import model.Ctx._
 
   @inline def _findAll: List[Token] = run { quote { query[Token] } }

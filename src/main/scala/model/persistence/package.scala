@@ -169,14 +169,20 @@ import org.slf4j.Logger
   * }}}
   *
   * Now import the Quill context's internally defined implicits into your DAO's scope.
-  * Here is an example of how to do that:
+  * Here are two examples of how to do that for cached and uncached persistence.
+  * Notice that `Users` and `Tokens` are singletons, which makes them easy to work with:
   * {{{
-  * class UserDAO [U <: User]
-  *     extends CachedPersistence[Long, Option[Long], User]
+  * object Users extends CachedPersistence[Long, Option[Long], User]
   *     with StrongCacheLike[Long, Option[Long], User] {
   *   import Ctx._
   *
-  *   // DAO code goes here
+  *   // DAO code for User goes here
+  * }
+  *
+  * object Tokens extends UnCachedPersistence[Long, Option[Long], Token] {
+  *  import Ctx._
+  *
+  *  // DAO code for Token goes here
   * }
   * }}}
   *
