@@ -2,7 +2,8 @@ package model
 
 import org.slf4j.Logger
 
-/** Scala uses case classes for modeling domain objects.
+/** <img src='https://mslinn.github.io/quill-cache/raw/gh-pages/images/quill_cache.jpg' align='right' width='33%'>
+  * Scala uses case classes for modeling domain objects.
   * `quill-cache` optimizes database access for read-mostly domain objects by providing a caching layer overtop
   * [[https://github.com/getquill/quill Quill]].
   * This library depends on [[https://github.com/mslinn/has-id has-id]], and case classes that need to be cached must extend
@@ -63,23 +64,38 @@ import org.slf4j.Logger
   *   h2 {
   *     dataSourceClassName = org.h2.jdbcx.JdbcDataSource
   *     dataSource {
-  *       url = "jdbc:h2:mem:default"
+  *       url = "jdbc:h2:tcp://localhost/./h2data;DB_CLOSE_ON_EXIT=FALSE"
+  *       url = ${?H2_URL}
+  *
   *       user = sa
+  *       user = ${?H2_USER}
+  *
   *       password = ""
+  *       password = ${?H2_PASSWORD}
   *     }
   *   }
   *
   *   postgres {
-  *     connectionTimeout = 10000
+  *     connectionTimeout = 30000
   *     dataSource {
   *       databaseName = ${?DB}
   *       password = ${?PGPASSWORD}
-  *       serverName = ${?PGSERVER}
+  *
+  *       portNumber = 5432
+  *       portNumber = ${?PGPORT}
+  *
+  *       serverName = localhost
+  *       serverName = ${?PGHOST}
+  *
   *       ssl = true
   *       sslfactory = "org.postgresql.ssl.NonValidatingFactory"
+  *       #url = ""
+  *
+  *       user = postgres
   *       user = ${?USERID}
   *     }
   *     dataSourceClassName = "org.postgresql.ds.PGSimpleDataSource"
+  *     maximumPoolSize = 100
   *   }
   * }
   * }}}
@@ -104,47 +120,59 @@ import org.slf4j.Logger
   * Import the `ctx` property from the appropriate `trait` for the type of database driver you need, like this:
   * {{{
   * class MyClass extends model.persistence.H2Ctx {
-  *   import ctx._
-  * }
-  * }}}
-  *  val Logger: Logger = org.slf4j.L  val Logger: Logger = org.slf4j.LoggerFactory.getLogger("persistence")
-
-  val Logger: Logger = org.slf4j.LoggerFactory.getLogger("persistence")
-
-  val Logger: Logger = org.slf4j.LoggerFactory.getLogger("persistence")
-
-oggerFactory.getLogger("persistence")
-
-
-  * Available objects are: `H2Configuration`, `MysqlConfiguration`, `PostgresConfiguration`, and `SqliteConfiguration`.
-  * Import the `ctx` property from the appropriate `object` for the type of database driver you need, like this:
-  * {{{
-  * class MyClass {
-  *   import model.persistence.PostgresConfiguration.ctx._
-  * }
-  * }}}
+  *     /** A real application would provide a dedicated `ExecutionContext` for cache and async DAOs instead of using the global default */
+  *     implicit val ec: ExecutionContext = scala.concurrent.ExecutionContext.Implicits.global
   *
-  * You can make a custom context like this:
-  * {{{ lazy val ctx = new PostgresJdbcContext[model.persistence.TableNameSnakeCase]("quill-cache.my-section-name") }}}
+  *   // define any other implicit values or conversion functions here
+  * }
+  * }}}
   *
   * <h3>Best Practice</h3>
   * Define a trait called `SelectedCtx`, and mix it into all your DAOs.
   * `SelectedCtx` merely extends the database context used in your application.
   * The `PersistenceTest` DAO in `test/scala/model/dao` follows this pattern:
+  * {{{ trait SelectedCtx extends model.persistence.H2Ctx }}}
+  *
+  * Now define your application's Quill context as a singleton, and mix in the predefined implicits for Quill-cache defined in `QuillCacheImplicits`.
+  * {{{
+  * package model
+  *
+  * import model.dao.SelectedCtx
+  * import persistence.QuillCacheImplicits
+  *
+  * case object Ctx extends SelectedCtx with QuillCacheImplicits
+  * }}}
+  *
+  * If you have more implicits to mix in, define a trait in the same manner as `QuillCacheImplicits` and mix it in as well:
   *
   * {{{
-  * trait SelectedCtx extends model.persistence.H2Ctx
-  * object SelectedCtx extends SelectedCtx
-  *
-  * object Users extends CachedPersistence[Long, Option[Long], User]
-  *              with SoftCacheLike[Long, Option[Long], User]
-  *              with QuillImplicits
-  *              with SelectedCtx {
-  *   import ctx._
-  *   // DAO code goes here
+  * trait MyQuillCacheImplicits { ctx: JdbcContext[_, _] =>
+  *   // define Quill Decoders, Encoders and Mappers here
   * }
   * }}}
   *
+  * After adding in `MyQuillCacheImplicits`, your revised application Quill context `Ctx` is now:
+  *
+  * {{{
+  * package model
+  *
+  * import model.dao.SelectedCtx
+  * import persistence.QuillCacheImplicits
+  *
+  * case object Ctx extends SelectedCtx with QuillCacheImplicits with MyQuillCacheImplicits
+  * }}}
+  *
+  * Now import the Quill context's internally defined implicits into your DAO's scope.
+  * Here is an example of how to do that:
+  * {{{
+  * object Users extends CachedPersistence[Long, Option[Long], User]
+  *              with SoftCacheLike[Long, Option[Long], User] {
+  *   import Ctx._
+  *
+  *   // DAO code goes here
+  * }
+  * }}}
+  * 
   * <h3>Asynchronous Drivers</h3>
   * Asynchronous drivers are not currently supported by `quill-cache`, but there is an
   * [[https://github.com/mslinn/quill-cache/issues/2 open issue for this enhancement]].
@@ -153,6 +181,16 @@ oggerFactory.getLogger("persistence")
   * Similarly, `MysqlAsyncConfiguration` and `PostgresAsyncConfiguration` were written, but are currently commented out.
   *
   * <h2>Working with DAOs</h2>
+  * Each DAO needs the following functions defined:
+  *   1. `_findAll`     &ndash; Quill query foundation - Encapsulates the Quill query that returns all instances of the case class from the database.
+  *   1. `_deleteById`  &ndash; Encapsulates the Quill query that deletes the instance of the case class with the given `Id` from the database.
+  *   1. `_findById`    &ndash; Encapsulates the Quill query that optionally returns the instance of the case class from
+  *                             the database with the given `Id`, or `None` if not found.
+  *   1. `_insert`      &ndash; Encapsulates the Quill query that inserts the given instance of the case class into the
+  *                             database, and returns the case class as it was stored, including any auto-increment fields.
+  *   1. `_update`      &ndash; Encapsulates the Quill query that updates the given instance of the case class into the
+  *                             database, and returns the entity. Throws an Exception if the case class was not previously persisted.
+  *
   * See the unit tests for examples of how to use this library. */
 package object persistence {
   val logger: Logger = org.slf4j.LoggerFactory.getLogger("persistence")
