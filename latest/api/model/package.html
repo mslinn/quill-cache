@@ -161,9 +161,9 @@ Please see <code>src/main/scala/resources/reference.conf</code> for an example o
 <a href="https://github.com/brettwooldridge/HikariCP#initialization" target="_blank">Hikari initialization</a>,
 <a href="https://github.com/brettwooldridge/HikariCP/blob/master/src/main/java/com/zaxxer/hikari/HikariConfig.java#L63-L97" target="_blank">HikariConfig.java</a>, and
 <a href="https://github.com/brettwooldridge/HikariCP/wiki/About-Pool-Sizing#the-formula" target="_blank">Hikari pool sizing</a></p><h4> Working with quill-cache </h4><h5> Quill Contexts </h5><p>Quill-cache provides many flavors of Quill contexts, one for each type of supported database driver.
-Each context is exposed as a Scala <code>trait</code>, and they are also available wrapped into Scala <code>object</code>s.
-Import the Quill context <code>ctx</code> from the appropriate type wherever you need to access the database.</p><p>Available traits are: <code>H2Ctx</code>, <code>MySqlCtx</code>, <code>PostgresCtx</code>, and <code>SqliteCtx</code>.
-Import the <code>ctx</code> property from the appropriate <code>trait</code> for the type of database driver you need, like this:</p><pre><span class="kw">class</span> MyClass <span class="kw">extends</span> model.persistence.H2Ctx {
+Each context is exposed as an <code>abstract class</code>.
+Import the Quill context <code>ctx</code> from the appropriate type wherever you need to access the database.</p><p>Available abstract classes are: <code>H2Ctx</code>, <code>MySqlCtx</code>, <code>PostgresCtx</code>, and <code>SqliteCtx</code>.
+Subclass the appropriate <code>abstract class</code> for the type of database driver you need, like this:</p><pre><span class="kw">class</span> MyClass <span class="kw">extends</span> model.persistence.H2Ctx {
     <span class="cmt">/** A real application would provide a dedicated `ExecutionContext` for cache and async DAOs instead of using the global default */</span>
     <span class="kw">implicit</span> <span class="kw">val</span> ec: ExecutionContext = scala.concurrent.ExecutionContext.Implicits.global
 
