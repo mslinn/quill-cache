@@ -3,10 +3,17 @@ package model.dao
 import model.{Ctx, User}
 import model.persistence.Types.IdOptionLong
 import model.persistence._
-import scala.concurrent.ExecutionContext.Implicits.global
 
-object Users extends CachedPersistence[Long, Option[Long], User] with StrongCacheLike[Long, Option[Long], User] {
+import scala.concurrent.ExecutionContext.Implicits.global
+import scala.reflect.ClassTag
+
+object Users extends UserDAO
+
+class UserDAO [U <: User : ClassTag]
+    extends CachedPersistence[Long, Option[Long], User](classOf[ClassTag[U]].getName)
+    with StrongCacheLike[Long, Option[Long], User] {
   import Ctx._
+
 
   @inline def _findAll: List[User] = run { quote { query[User] } }
 
@@ -41,8 +48,6 @@ object Users extends CachedPersistence[Long, Option[Long], User] with StrongCach
       run { queryById(user.id).update(lift(user)) }
       user
     }
-
-  val className = "User"
 
   @inline override def findById(id: IdOptionLong): Option[User] =
     id.value.map(theCache.get).getOrElse { run { queryById(id) }.headOption }

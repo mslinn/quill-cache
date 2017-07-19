@@ -4,7 +4,11 @@ import model.{Ctx, Token}
 import model.persistence.Types.IdOptionLong
 import model.persistence._
 
-object Tokens extends UnCachedPersistence[Long, Option[Long], Token] {
+import scala.reflect.ClassTag
+
+object Tokens extends TokenDAO
+
+class TokenDAO[U <: Token : ClassTag] extends UnCachedPersistence[Long, Option[Long], Token](classOf[ClassTag[U]].getName) {
   import Ctx._
 
   @inline def _findAll: List[Token] = run { quote { query[Token] } }
@@ -40,8 +44,6 @@ object Tokens extends UnCachedPersistence[Long, Option[Long], Token] {
       run { queryById(token.id).update(lift(token)) }
       token
     }
-
-  val className = "Token"
 
   @inline override def findById(id: IdOptionLong): Option[Token] =
     run { queryById(id) }.headOption

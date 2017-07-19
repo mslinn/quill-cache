@@ -4,8 +4,9 @@ import scala.concurrent.ExecutionContext
 
 /** Overrides the Persistence methods which accesses the table so the cache is used instead.
   * All instances of the domain model are expected to fit into the cache. */
-abstract class CachedPersistence[Key <: Any, _IdType <: Option[Key], CaseClass <: HasId[CaseClass, _IdType]](implicit val ec: ExecutionContext)
-  extends UnCachedPersistence[Key, _IdType, CaseClass]
+abstract class CachedPersistence[Key <: Any, _IdType <: Option[Key], CaseClass <: HasId[CaseClass, _IdType]](override val className: String)
+                                                                                                            (implicit val ec: ExecutionContext)
+  extends UnCachedPersistence[Key, _IdType, CaseClass](className)
   with CacheLike[Key, _IdType, CaseClass] {
 
   @inline override def deleteById(id: Id[_IdType]): Unit = {

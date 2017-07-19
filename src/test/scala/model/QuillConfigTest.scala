@@ -6,6 +6,13 @@ import com.zaxxer.hikari.HikariDataSource
 import io.getquill.JdbcContextConfig
 
 class QuillConfigTest extends TestSpec {
+  "ClassName" should {
+    "correct" in {
+      val x = model.dao.Users.className
+      x shouldBe "User"
+    }
+  }
+
   "HikariCP" should {
     "be configured properly" in {
       val config: Config = ConfigFactory.load.getConfig("quill-cache.postgres")

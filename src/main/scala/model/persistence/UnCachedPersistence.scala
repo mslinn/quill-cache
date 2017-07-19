@@ -2,12 +2,14 @@ package model.persistence
 
 import io.getquill._
 import io.getquill.context.jdbc.JdbcContext
+import scala.reflect.ClassTag
 
 /** Accesses the table for each query.
   * You can use this abstract class to derive DAOs for case classes that must have direct access to the database so the
   * case classes are not cached. You don't have to subclass `UnCachedPersistence`, but if you do then the DAOs for your
-  * cached domain objects will have the same interface as the DAOs for your uncached domain objects. */
-abstract class UnCachedPersistence[Key <: Any, _IdType <: Option[Key], CaseClass <: HasId[CaseClass, _IdType]] {
+  * cached domain objects will have the same interface as the DAOs for your uncached domain objects.
+  * @param classname Human-readable name of persisted class */
+abstract class UnCachedPersistence[Key <: Any, _IdType <: Option[Key], CaseClass <: HasId[CaseClass, _IdType]](val className: String) {
   /** Encapsulates the Quill query that returns all instances of the case class from the database */
   def _findAll: List[CaseClass]
 
@@ -25,9 +27,6 @@ abstract class UnCachedPersistence[Key <: Any, _IdType <: Option[Key], CaseClass
   /** Encapsulates the Quill query that updates the given instance of the case class into the database, and returns the entity.
     * Throws an Exception if the case class was not previously persisted. */
   def _update: CaseClass => CaseClass
-
-  /** Human-readable name of persisted class */
-  def className: String
 
   lazy val tableName: String = TableNameSnakeCase.table(className)
 
