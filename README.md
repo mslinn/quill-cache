@@ -201,7 +201,7 @@ case object Ctx extends SelectedCtx with QuillCacheImplicits with MyQuillImplici
 ```
 
 Now import the Quill context's internally defined implicits into your DAO's scope. 
-Here are two examples of how to do that for cached and uncached persistence.
+Here are two examples of how to do that, one for cached and one for uncached persistence.
 Notice that `Users` and `Tokens` are singletons, which makes them easy to work with:
 ```
 object Users extends CachedPersistence[Long, Option[Long], User]
