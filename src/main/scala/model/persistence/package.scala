@@ -113,11 +113,11 @@ import org.slf4j.Logger
   * <h2>Working with quill-cache</h2>
   * <h3>Quill Contexts</h3>
   * Quill-cache provides many flavors of Quill contexts, one for each type of supported database driver.
-  * Each context is exposed as a Scala `trait`, and they are also available wrapped into Scala `object`s.
+  * Each context is exposed as an `abstract class`.
   * Import the Quill context `ctx` from the appropriate type wherever you need to access the database.
   *
-  * Available traits are: `H2Ctx`, `MySqlCtx`, `PostgresCtx`, and `SqliteCtx`.
-  * Import the `ctx` property from the appropriate `trait` for the type of database driver you need, like this:
+  * Available abstract classes are: `H2Ctx`, `MySqlCtx`, `PostgresCtx`, and `SqliteCtx`.
+  * Subclass the appropriate `abstract class` for the type of database driver you need, like this:
   * {{{
   * class MyClass extends model.persistence.H2Ctx {
   *     /** A real application would provide a dedicated `ExecutionContext` for cache and async DAOs instead of using the global default */
