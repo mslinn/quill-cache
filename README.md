@@ -156,6 +156,13 @@ class MyClass extends model.persistence.H2Ctx {
 }
 ```
 
+### Asynchronous Drivers
+Asynchronous drivers are not currently supported by `quill-cache`, but there is an 
+[open issue for this enhancement](https://github.com/mslinn/quill-cache/issues/2).
+If you have need for this, or if you are looking for a fairly easy F/OSS Scala project to burnish your resume with,
+you might want to submit a pull request for this behavior (it would closely model the asynch code).
+The database contexts `MysqlAsyncCtx` and `PostgresAsyncCtx` have already been written in anticipation of async support.
+
 ### Best Practice
 Define a trait called `SelectedCtx`, and mix it into all your DAOs.
 `SelectedCtx` merely extends the database context used in your application.
@@ -177,12 +184,12 @@ case object Ctx extends SelectedCtx with QuillCacheImplicits
 If you have more implicits to mix in, define a trait in the same manner as `QuillCacheImplicits` and mix it in as well:
 
 ```
-trait MyQuillCacheImplicits { ctx: JdbcContext[_, _] =>
+trait MyQuillImplicits { ctx: JdbcContext[_, _] =>
   // define Quill Decoders, Encoders and Mappers here
 }
 ```
 
-After adding in `MyQuillCacheImplicits`, your revised application Quill context `Ctx` is now:
+After adding in `MyQuillImplicits`, your revised application Quill context `Ctx` is now:
 
 ```
 package model
@@ -190,7 +197,7 @@ package model
 import model.dao.SelectedCtx
 import persistence.QuillCacheImplicits
 
-case object Ctx extends SelectedCtx with QuillCacheImplicits with MyQuillCacheImplicits
+case object Ctx extends SelectedCtx with QuillCacheImplicits with MyQuillImplicits
 ```
 
 Now import the Quill context's internally defined implicits into your DAO's scope. 
@@ -204,19 +211,13 @@ class UserDAO [U <: User]
   // DAO code goes here
 }
 ```
+
 Now create a singleton instance of the DAO. This is how you will access the database.
 ```
 object Users extends UserDAO
 ```
-### Asynchronous Drivers
-Asynchronous drivers are not currently supported by `quill-cache`, but there is an 
-[open issue for this enhancement](https://github.com/mslinn/quill-cache/issues/2).
-If you have need for this, or if you are looking for a fairly easy F/OSS Scala project to burnish your resume with,
-you might want to submit a pull request for this behavior (it would closely model the asynch code).
-The database contexts `MysqlAsyncCtx` and `PostgresAsyncCtx` have already been written in anticipation of async support.
 
 ### Working with DAOs
-
 Each DAO needs the following functions defined:
   
   1. `_findAll`     &ndash; Quill query foundation - Encapsulates the Quill query that returns all instances of the case class from the database 
