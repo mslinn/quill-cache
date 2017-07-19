@@ -1,4 +1,4 @@
-<img src='https://github.com/mslinn/quill-cache/raw/gh-pages/images/quill_cache.jpg' align='right' width='33%'>
+<img src='https://raw.githubusercontent.com/mslinn/quill-cache/media/quill-cache.jpg' align='right' width='33%'>
 
 # Cached Persistence for Quill
 The build fails on Travis, but runs on my machine fine!

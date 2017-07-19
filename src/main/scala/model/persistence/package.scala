@@ -2,7 +2,7 @@ package model
 
 import org.slf4j.Logger
 
-/** <img src='https://mslinn.github.io/quill-cache/raw/gh-pages/images/quill_cache.jpg' align='right' width='33%'>
+/** <img src='https://raw.githubusercontent.com/mslinn/quill-cache/media/quill-cache.jpg' align='right' width='33%'>
   * Scala uses case classes for modeling domain objects.
   * `quill-cache` optimizes database access for read-mostly domain objects by providing a caching layer overtop
   * [[https://github.com/getquill/quill Quill]].
