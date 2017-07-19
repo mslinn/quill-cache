@@ -1,8 +1,10 @@
 package model.persistence
 
+import scala.concurrent.ExecutionContext
+
 /** Overrides the Persistence methods which accesses the table so the cache is used instead.
   * All instances of the domain model are expected to fit into the cache. */
-abstract class CachedPersistence[Key <: Any, _IdType <: Option[Key], CaseClass <: HasId[CaseClass, _IdType]]
+abstract class CachedPersistence[Key <: Any, _IdType <: Option[Key], CaseClass <: HasId[CaseClass, _IdType]](implicit val ec: ExecutionContext)
   extends UnCachedPersistence[Key, _IdType, CaseClass]
   with CacheLike[Key, _IdType, CaseClass] {
 

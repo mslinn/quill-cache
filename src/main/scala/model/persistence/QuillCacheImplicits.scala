@@ -24,7 +24,7 @@ class EnumQuillEncoder[E <: Enum[E] : ClassTag](val ctx: JdbcContext[_, _]) {
     )
 }
 
-trait QuillImplicits extends IdImplicitLike with CtxLike {
+trait QuillCacheImplicits extends IdImplicitLike { ctx: JdbcContext[_, _] =>
   import ctx._
 
   implicit val dateTimeDecoder: Decoder[DateTime] =
@@ -54,7 +54,6 @@ trait QuillImplicits extends IdImplicitLike with CtxLike {
       })
 
   /** @see [[https://github.com/getquill/quill/issues/805#issuecomment-309304298]] */
-  import io.getquill.MappedEncoding
 
   implicit val encodeIdUUID: MappedEncoding[UUID, Id[UUID]] = MappedEncoding(Id.apply(_))
   implicit val decodeIdUUID: MappedEncoding[Id[UUID], UUID] = MappedEncoding(_.value)

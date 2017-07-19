@@ -1,12 +1,11 @@
 package model.dao
 
-import io.getquill.MappedEncoding
 import model.PaymentMechanism
 import scala.concurrent.ExecutionContext
 
-/** Define `SelectedCtx` for use with all DAOs */
-trait SelectedCtx extends model.persistence.H2Ctx {
-  /** A real application would provide a dedicated `ExecutionContext` for cache and asynch DAOs instead of using the global default */
+/** Define `SelectedCtx` for use with all DAOs; it could provide all implicit Decoder/Encoder/Mappers */
+class SelectedCtx extends model.persistence.H2Ctx {
+  /** A real application would provide a dedicated `ExecutionContext` for cache and async DAOs instead of using the global default */
   implicit val ec: ExecutionContext = scala.concurrent.ExecutionContext.Implicits.global
 
  // Cannot get this dang thing to work:
@@ -30,5 +29,3 @@ trait SelectedCtx extends model.persistence.H2Ctx {
      else string.split(",").toList.map(PaymentMechanism.valueOf)
    }
 }
-
-object SelectedCtx extends SelectedCtx

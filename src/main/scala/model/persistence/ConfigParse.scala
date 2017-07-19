@@ -8,3 +8,5 @@ trait ConfigParse {
 
   def configPrefix(dbType: String): String = s"quill-cache.$dbType"
 }
+
+object ConfigParse extends ConfigParse

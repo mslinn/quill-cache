@@ -1,17 +1,15 @@
 package model.dao
 
-import model.Token
+import model.{Ctx, Token}
 import model.persistence.Types.IdOptionLong
 import model.persistence._
 
-object Tokens extends UnCachedPersistence[Long, Option[Long], Token]
-     with QuillImplicits
-     with SelectedCtx {
-  import ctx._
+object Tokens extends UnCachedPersistence[Long, Option[Long], Token] {
+  import Ctx._
 
   @inline def _findAll: List[Token] = run { quote { query[Token] } }
 
-  val queryById: (IdOptionLong) => Tokens.ctx.Quoted[Tokens.ctx.EntityQuery[Token]] =
+  val queryById: (IdOptionLong) => Ctx.Quoted[Ctx.EntityQuery[Token]] =
     (id: IdOptionLong) =>
       quote { query[Token].filter(_.id == lift(id)) }
 

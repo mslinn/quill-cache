@@ -2,18 +2,6 @@ package model.persistence
 
 import io.getquill._
 
-trait CtxLike {
-  import io.getquill.context.jdbc.JdbcContext
-
-  val ctx: JdbcContext[_, _]
-}
-
-trait AsyncCtxLike {
-  import io.getquill.context.async.AsyncContext
-
-  val ctx: AsyncContext[_, _, _]
-}
-
 /** Mix this trait into any class that needs to access the H2 synchronous configuration.
   * Exposes a property called `ctx`, which is the Quill context.
   * To use, simply import the context, like this:
@@ -23,9 +11,7 @@ trait AsyncCtxLike {
   * }
   * }}}
   * The [[H2Configuration]] object mixes in this trait and provides an alternative mechanism. */
-trait H2Ctx extends ConfigParse with CtxLike {
-  lazy val ctx = new H2JdbcContext[TableNameSnakeCase](configPrefix("h2"))
-}
+abstract class H2Ctx extends H2JdbcContext[TableNameSnakeCase](ConfigParse.configPrefix("h2"))
 
 /** Mix this trait into any class that needs to access the MySQL synchronous configuration.
   * Exposes a property called `ctx`, which is the Quill context.
@@ -36,9 +22,7 @@ trait H2Ctx extends ConfigParse with CtxLike {
   * }
   * }}}
   * The [[MysqlConfiguration]] object mixes in this trait and provides an alternative mechanism. */
-trait MySqlCtx extends ConfigParse with CtxLike {
-  lazy val ctx = new MysqlJdbcContext[TableNameSnakeCase](configPrefix("mysql"))
-}
+abstract class MySqlCtx extends MysqlJdbcContext[TableNameSnakeCase](ConfigParse.configPrefix("mysql"))
 
 /** Mix this trait into any class that needs to access the MySQL asynchronous configuration.
   * Exposes a property called `ctx`, which is the Quill context.
@@ -49,9 +33,7 @@ trait MySqlCtx extends ConfigParse with CtxLike {
   * }
   * }}}
   * The [[MysqlAsyncConfiguration]] object mixes in this trait and provides an alternative mechanism. */
-trait MysqlAsyncCtx extends ConfigParse with AsyncCtxLike {
-  lazy val ctx = new MysqlAsyncContext[TableNameSnakeCase](configPrefix("mysql-async"))
-}
+abstract class MysqlAsyncCtx extends MysqlAsyncContext[TableNameSnakeCase](ConfigParse.configPrefix("mysql-async"))
 
 /** Mix this trait into any class that needs to access the Postgres synchronous configuration.
   * Exposes a property called `ctx`, which is the Quill context.
@@ -62,9 +44,7 @@ trait MysqlAsyncCtx extends ConfigParse with AsyncCtxLike {
   * }
   * }}}
   * The [[PostgresConfiguration]] object mixes in this trait and provides an alternative mechanism. */
-trait PostgresCtx extends ConfigParse with CtxLike {
-  lazy val ctx = new PostgresJdbcContext[TableNameSnakeCase](configPrefix("postgres"))
-}
+abstract class PostgresCtx extends PostgresJdbcContext[TableNameSnakeCase](ConfigParse.configPrefix("postgres"))
 
 /** Mix this trait into any class that needs to access the Postgres asynchronous configuration.
   * Exposes a property called `ctx`, which is the Quill context.
@@ -75,9 +55,7 @@ trait PostgresCtx extends ConfigParse with CtxLike {
   * }
   * }}}
   * The [[PostgresAsyncConfiguration]] object mixes in this trait and provides an alternative mechanism. */
-trait PostgresAsyncCtx extends ConfigParse with AsyncCtxLike {
-  lazy val ctx = new PostgresAsyncContext[TableNameSnakeCase](configPrefix("postgres-async"))
-}
+abstract class PostgresAsyncCtx extends PostgresAsyncContext[TableNameSnakeCase](ConfigParse.configPrefix("postgres-async"))
 
 /** Mix this trait into any class that needs to access the Sqlite synchronous configuration.
   * Exposes a property called `ctx`, which is the Quill context.
@@ -88,9 +66,7 @@ trait PostgresAsyncCtx extends ConfigParse with AsyncCtxLike {
   * }
   * }}}
   * The [[SqliteConfiguration]] object mixes in this trait and provides an alternative mechanism. */
-trait SqliteCtx extends ConfigParse with CtxLike {
-  lazy val ctx = new SqliteJdbcContext[TableNameSnakeCase](configPrefix("sqlite"))
-}
+abstract class SqliteCtx extends SqliteJdbcContext[TableNameSnakeCase](ConfigParse.configPrefix("sqlite"))
 
 
 /** Object for exposing the H2 synchronous configuration.

@@ -1,13 +1,13 @@
 package model.persistence
 
 import io.getquill._
+import io.getquill.context.jdbc.JdbcContext
 
 /** Accesses the table for each query.
   * You can use this abstract class to derive DAOs for case classes that must have direct access to the database so the
   * case classes are not cached. You don't have to subclass `UnCachedPersistence`, but if you do then the DAOs for your
   * cached domain objects will have the same interface as the DAOs for your uncached domain objects. */
-abstract class UnCachedPersistence[Key <: Any, _IdType <: Option[Key], CaseClass <: HasId[CaseClass, _IdType]]
-  extends QuillImplicits with IdImplicitLike with CtxLike {
+abstract class UnCachedPersistence[Key <: Any, _IdType <: Option[Key], CaseClass <: HasId[CaseClass, _IdType]] {
   /** Encapsulates the Quill query that returns all instances of the case class from the database */
   def _findAll: List[CaseClass]
 
@@ -93,7 +93,7 @@ abstract class UnCachedPersistence[Key <: Any, _IdType <: Option[Key], CaseClass
     * because it does not do anything unless the database is Postgres.
     * @see [[https://stackoverflow.com/a/244265/553865]]
     * List sequences with {{{\ds}}} */
-  @inline def setAutoInc(): Unit = if (ctx.isInstanceOf[PostgresJdbcContext[_]]) try {
+  @inline def setAutoInc(implicit ctx: JdbcContext[_, _]): Unit = if (isInstanceOf[PostgresJdbcContext[_]]) try {
     val selectStmt = s"SELECT max(id) FROM $tableName"
     logger.info(s"About to find highest index for $tableName with '$selectStmt'")
     val maxId: Long = ctx.executeQuerySingle(selectStmt, extractor = _.getLong(1))

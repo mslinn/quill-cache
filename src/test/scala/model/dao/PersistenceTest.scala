@@ -2,7 +2,7 @@ package model.dao
 
 import java.net.URL
 import model._
-import model.persistence._
+import persistence._
 
 case class CrashTestDummy(a: String, id: Int)
 
@@ -17,7 +17,7 @@ class PersistenceTest extends TestSpec {
 
   "Cached instances" should  {
     "pass autoinc" in {
-      Users.setAutoInc()
+      Users.setAutoInc(Ctx)
     }
 
     "create via upsert" in {
@@ -95,7 +95,7 @@ class PersistenceTest extends TestSpec {
 
   "Uncached instances" should  {
     "pass autoinc" in {
-      Tokens.setAutoInc()
+      Tokens.setAutoInc(Ctx)
     }
 
     "create via upsert" in {

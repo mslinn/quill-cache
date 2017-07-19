@@ -1,5 +1,7 @@
 package model.persistence
 
+import io.getquill.context.async.AsyncContext
+import io.getquill.context.jdbc.JdbcContext
 import scala.concurrent.ExecutionContext
 import scala.concurrent.ExecutionContext.{Implicits => EC}
 import scala.io.Codec
@@ -55,30 +57,30 @@ class ProcessEvolution(resourcePath: String, fallbackPath: String) {
   }
 
   /** Works with synchronous Quill contexts */
-  def ups(selectedCtx: CtxLike): Unit = {
-    selectedCtx.ctx.executeAction(ups(resourcePath, fallbackPath))
+  def ups(ctx: JdbcContext[_, _]): Unit = {
+    ctx.executeAction(ups(resourcePath, fallbackPath))
     ()
   }
 
   /** Works with synchronous Quill contexts */
-  def downs(selectedCtx: CtxLike): Unit = {
-    selectedCtx.ctx.executeAction(downs(resourcePath, fallbackPath))
+  def downs(ctx: JdbcContext[_, _]): Unit = {
+    ctx.executeAction(downs(resourcePath, fallbackPath))
     ()
   }
 
   /** Works with asynchronous Quill contexts.
     * Looks for an implicit [[concurrent.ExecutionContext]], uses [[concurrent.ExecutionContext.Implicits.global]] if none found. */
-  def ups(selectedCtx: AsyncCtxLike)
+  def ups(ctx: AsyncContext[_, _, _])
          (implicit ec: ExecutionContext = EC.global): Unit = {
-      selectedCtx.ctx.executeAction(ups(resourcePath, fallbackPath))
+      ctx.executeAction(ups(resourcePath, fallbackPath))
     ()
   }
 
   /** Works with asynchronous Quill contexts.
     * Looks for an implicit [[concurrent.ExecutionContext]], uses [[concurrent.ExecutionContext.Implicits.global]] if none found. */
-  def downs(selectedCtx: AsyncCtxLike)
+  def downs(ctx: AsyncContext[_, _, _])
            (implicit ec: ExecutionContext = EC.global): Unit = {
-      selectedCtx.ctx.executeAction(downs(resourcePath, fallbackPath))
+      ctx.executeAction(downs(resourcePath, fallbackPath))
     ()
   }
 }

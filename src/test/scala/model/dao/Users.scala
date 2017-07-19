@@ -1,14 +1,12 @@
 package model.dao
 
-import model.User
+import model.{Ctx, User}
 import model.persistence.Types.IdOptionLong
 import model.persistence._
+import scala.concurrent.ExecutionContext.Implicits.global
 
-object Users extends CachedPersistence[Long, Option[Long], User]
-     with StrongCacheLike[Long, Option[Long], User]
-     with QuillImplicits
-     with SelectedCtx {
-  import ctx._
+object Users extends CachedPersistence[Long, Option[Long], User] with StrongCacheLike[Long, Option[Long], User] {
+  import Ctx._
 
   @inline def _findAll: List[User] = run { quote { query[User] } }
 
