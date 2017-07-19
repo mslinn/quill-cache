@@ -90,7 +90,7 @@ All instances of the domain model are expected to fit into the cache.</p></div><
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="model.persistence.CachedPersistence#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="&lt;init&gt;(className:String)(implicitec:scala.concurrent.ExecutionContext):model.persistence.CachedPersistence[Key,_IdType,CaseClass]"></a>
+      <a id="&lt;init&gt;()(implicitevidence$1:scala.reflect.ClassTag[CaseClass],implicitec:scala.concurrent.ExecutionContext):model.persistence.CachedPersistence[Key,_IdType,CaseClass]"></a>
       <a id="&lt;init&gt;:CachedPersistence[Key,_IdType,CaseClass]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -98,10 +98,10 @@ All instances of the domain model are expected to fit into the cache.</p></div><
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">CachedPersistence</span><span class="params">(<span name="className">className: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ec">ec: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>)</span>
+        <span class="name">CachedPersistence</span><span class="params">()</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="model.persistence.CachedPersistence.CaseClass">CaseClass</span>]</span>, <span name="ec">ec: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>)</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.CachedPersistence@&lt;init&gt;(className:String)(implicitec:scala.concurrent.ExecutionContext):model.persistence.CachedPersistence[Key,_IdType,CaseClass]" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.CachedPersistence@&lt;init&gt;()(implicitevidence$1:scala.reflect.ClassTag[CaseClass],implicitec:scala.concurrent.ExecutionContext):model.persistence.CachedPersistence[Key,_IdType,CaseClass]" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -333,7 +333,7 @@ Throws an Exception if the case class was not previously persisted.</p></div><dl
                 <span class="name">@inline</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="model.persistence.CachedPersistence#className" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="model.persistence.UnCachedPersistence#className" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="className:String"></a>
       <a id="className:String"></a>
       <h4 class="signature">
@@ -349,7 +349,7 @@ Throws an Exception if the case class was not previously persisted.</p></div><dl
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Human-readable name of persisted class</p><div class="fullcomment"><div class="comment cmt"><p>Human-readable name of persisted class</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="model.persistence.CachedPersistence">CachedPersistence</a> → <a href="CacheLike.html" class="extype" name="model.persistence.CacheLike">CacheLike</a> → <a href="UnCachedPersistence.html" class="extype" name="model.persistence.UnCachedPersistence">UnCachedPersistence</a></dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="UnCachedPersistence.html" class="extype" name="model.persistence.UnCachedPersistence">UnCachedPersistence</a></dd></dl></div>
     </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a>
       <a id="clone():AnyRef"></a>
