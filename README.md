@@ -5,7 +5,8 @@
 [![GitHub version](https://badge.fury.io/gh/mslinn%2Fquill-cache.svg)](https://badge.fury.io/gh/mslinn%2Fquill-cache)
 
 ## Features
-  * Database-independent CRUD API (`insert`, `deleteById`, `remove`, `update`, `upsert`, `zap`, `findAll`, `findById` plus application-specific finders) 
+  * Database-independent CRUD API (`insert`, `deleteById`, `remove`, `update`, `upsert`, `zap`, `findAll`, `findById`, 
+    plus application-specific finders) 
   * Multiple databases can be configured, with configurations for development, testing, production, etc.
   * Choice of caching strategy (strong vs. soft)
   * Very little boilerplate (convention over configuration)
@@ -140,7 +141,7 @@ The `quill-cache` section of the configuration file specifies parameters for thi
 You can make up your own subsections and call them whatever you want.
     The supplied `reference.conf` file also has sample MySQL sections for sync and async, plus an async Postgres section.
 The contents of the named subsections are database-dependent.
-[Hikari](https://github.com/brettwooldridge/HikariCP#configuration-knobs-baby) interprets the meaning of `datSource` sections.
+[Hikari](https://github.com/brettwooldridge/HikariCP#configuration-knobs-baby) interprets the meaning of the `dataSource` sections.
 
 See also the [Quill application.conf](https://github.com/getquill/quill/blob/master/quill-jdbc/src/test/resources/application.conf),
 [HikariCP initialization docs](https://github.com/brettwooldridge/HikariCP#initialization),

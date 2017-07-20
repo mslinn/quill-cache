@@ -4,7 +4,8 @@ import org.slf4j.Logger
 
 /** <img src='https://raw.githubusercontent.com/mslinn/quill-cache/media/quill-cache.jpg' align='right' width='33%'>
   * <h2>Features</h2>
-  *   - Database-independent CRUD API (`insert`, `deleteById`, `remove`, `update`, `upsert`, `zap`, `findAll`, `findById` plus application-specific finders)
+  *   - Database-independent CRUD API (`insert`, `deleteById`, `remove`, `update`, `upsert`, `zap`, `findAll`,
+  *     `findById`, plus application-specific finders)
   *   - Multiple databases can be configured, with configurations for development, testing, production, etc.
   *   - Choice of caching strategy (strong vs. soft)
   *   - Very little boilerplate (convention over configuration)
@@ -114,7 +115,7 @@ import org.slf4j.Logger
   * The `quill-cache` section of the configuration file specifies parameters for this library:
   *   - You can make up your own subsections and call them whatever you want.
   *   - The contents of the named subsections are database dependent.
-  *   - [[https://github.com/brettwooldridge/HikariCP#configuration-knobs-baby Hikari]] interprets the meaning of this section.
+  *   - [[https://github.com/brettwooldridge/HikariCP#configuration-knobs-baby Hikari]] interprets the meaning of the `dataSource` sections.
   *
   * See also [[https://github.com/getquill/quill/blob/master/quill-jdbc/src/test/resources/application.conf the Quill test application.conf]],
   * [[https://github.com/brettwooldridge/HikariCP#initialization Hikari initialization]],
