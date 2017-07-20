@@ -5,7 +5,7 @@ import org.slf4j.Logger
 /** <img src='https://raw.githubusercontent.com/mslinn/quill-cache/media/quill-cache.jpg' align='right' width='33%'>
   * <h2>Features and Benefits</h2>
   *   - Dramatically reduces time to fetch results from read-mostly database tables
-  *   - Database-independent [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) API (`insert`, `deleteById`, `remove`, `update`, `upsert`, `zap`, `findAll`,
+  *   - Database-independent [[CRUD https://en.wikipedia.org/wiki/Create,_read,_update_and_delete]] API (`insert`, `deleteById`, `remove`, `update`, `upsert`, `zap`, `findAll`,
   *     `findById`, plus application-specific finders)
   *   - Thin, light type-safe API
   *   - Provides compatible interface to read-write database tables

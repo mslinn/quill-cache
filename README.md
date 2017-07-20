@@ -6,7 +6,7 @@
 
 ## Features and Benefits
   * Dramatically reduces time to fetch results from read-mostly database tables
-  * Database-independent [[CRUD https://en.wikipedia.org/wiki/Create,_read,_update_and_delete]] API (`insert`, `deleteById`, `remove`, `update`, `upsert`, `zap`, `findAll`, `findById`, 
+  * Database-independent [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) API (`insert`, `deleteById`, `remove`, `update`, `upsert`, `zap`, `findAll`, `findById`, 
     plus application-specific finders) 
   * Thin, light type-safe API
   * Provides compatible interface to read-write database tables
