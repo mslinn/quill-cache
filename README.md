@@ -16,6 +16,7 @@
   * Switching databases only requires changing one word in a program
   * Play Framework evolution format support
   * ScalaTest unit test setup
+  * [DAO code generator available](https://github.com/mslinn/quill-gen)
 
 ## Background
 Scala uses case classes for modeling domain objects.

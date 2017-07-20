@@ -15,6 +15,7 @@ import org.slf4j.Logger
   *   - Switching databases only requires changing one word in a program
   *   - Play Framework evolution format support
   *   - ScalaTest unit test setup
+  *   - [[https://github.com/mslinn/quill-gen DAO code generator available]]
   *
   * <h2>Background</h2>
   *  Scala uses case classes for modeling domain objects.
