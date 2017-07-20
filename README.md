@@ -5,10 +5,10 @@
 [![GitHub version](https://badge.fury.io/gh/mslinn%2Fquill-cache.svg)](https://badge.fury.io/gh/mslinn%2Fquill-cache)
 
 ## Features and Benefits
-  * Dramatically reduces time to fetch results from read-mostly databases
-  * Database-independent CRUD API (`insert`, `deleteById`, `remove`, `update`, `upsert`, `zap`, `findAll`, `findById`, 
+  * Dramatically reduces time to fetch results from read-mostly database tables
+  * Database-independent [[CRUD https://en.wikipedia.org/wiki/Create,_read,_update_and_delete]] API (`insert`, `deleteById`, `remove`, `update`, `upsert`, `zap`, `findAll`, `findById`, 
     plus application-specific finders) 
-  * Thin, light type safe API
+  * Thin, light type-safe API
   * Provides compatible interface to read-write database tables
   * Multiple databases can be configured, with configurations for development, testing, production, etc.
   * Choice of caching strategy (strong, soft or none)
