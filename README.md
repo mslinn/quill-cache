@@ -1,13 +1,19 @@
 <img src='https://raw.githubusercontent.com/mslinn/quill-cache/media/quill-cache.jpg' align='right' width='33%'>
 
 # Cached Persistence for Quill
-The build fails on Travis, but runs on my machine fine!
-Want an easy introduction to becoming a F/OSS contributor?
-Fix the Travis CI script (probably needs a permission, or enabling a feature switch), then submit a PR!
-
 [![Build Status](https://travis-ci.org/mslinn/quill-cache.svg?branch=master)](https://travis-ci.org/mslinn/quill-cache)
 [![GitHub version](https://badge.fury.io/gh/mslinn%2Fquill-cache.svg)](https://badge.fury.io/gh/mslinn%2Fquill-cache)
 
+## Features
+  * Database-independent CRUD API (`insert`, `deleteById`, `upsert`, `findById` plus application-specific finders) 
+  * Multiple databases can be configured, with configurations for development, testing, production, etc.
+  * Choice of caching strategy (strong vs. soft)
+  * Very little boilerplate (convention over configuration)
+  * Very thin, light API
+  * Play Framework evolution format support
+  * ScalaTest unit test setup
+
+## Background
 Scala uses case classes for modeling domain objects.
 `quill-cache` optimizes database access for read-mostly domain objects by providing a caching layer overtop 
 [Quill](https://github.com/getquill/quill).
@@ -27,11 +33,11 @@ abstract class.
 
 You are free to name DAOs anything you like; this library does not mandate any naming convention.
 Scala DAOs are often given the same name as the class that they persist, but with a suffix indicating plurality.
-For example, if a case class named `Point` needs to be persisted, the DAO is usually called `Points`.
+For example, if a case class named `Point` needs to be persisted, the DAO might be called `Points`.
 Unlike some other persistence libraries for Scala, Quill allows you to define your DAO in the case class's companion object,
 so you also have that option when using this library.
 
-This library provides each DAO with its own cache.
+This library can provide each DAO with its own cache.
 DAOs that extend `CachedPersistence` have a method called
 [preload()](http://mslinn.github.io/quill-cache/latest/api/index.html#model.persistence.CacheLike@preload:List[CaseClass])
 which your application's initialization must invoke in order to fill that DAO's cache.
@@ -83,10 +89,11 @@ You will need a logging framework. Logback is a good choice:
     libraryDependencies += "ch.qos.logback" % "logback-classic" % "1.2.3"
 
 ## Configuration
-Your database configuration is specified by a file called `application.conf` on the classpath.
+Your database configuration is specified by a HOCON file called `application.conf` on the classpath.
 Please see `src/main/scala/resources/reference.conf` for an example of how to set that up. 
 
-Here is an excerpt:
+Here is an excerpt showing configuration for H2 and Postgres databases.
+Only one of these databases can be active per database context:
 
 ```
 quill-cache {
@@ -129,7 +136,7 @@ quill-cache {
 }
 ```
 
-The `quill-cache` section specifies parameters for this library:
+The `quill-cache` section of the configuration file specifies parameters for this library:
 You can make up your own subsections and call them whatever you want.
     The supplied `reference.conf` file also has sample MySQL sections for sync and async, plus an async Postgres section.
 The contents of the named subsections are database-dependent.
@@ -147,14 +154,7 @@ Each context is exposed as an `abstract class`.
 Available abstract classes are: `H2Ctx`, `MySqlCtx`, `PostgresCtx`, and `SqliteCtx`.
 Subclass the appropriate `abstract class` for the type of database driver you need, like this:
 
-```
-class MyClass extends model.persistence.H2Ctx {
-    /** A real application would provide a dedicated `ExecutionContext` for cache and async DAOs instead of using the global default */
-    implicit val ec: ExecutionContext = scala.concurrent.ExecutionContext.Implicits.global
-
-  // define any other implicit values or conversion functions here
-}
-```
+    class MyClass extends model.persistence.H2Ctx
 
 ### Asynchronous Drivers
 Asynchronous drivers are not currently supported by `quill-cache`, but there is an 
@@ -168,7 +168,10 @@ Define a trait called `SelectedCtx`, and mix it into all your DAOs.
 `SelectedCtx` merely extends the database context used in your application.
 The `PersistenceTest` DAO in `test/scala/model/dao` follows this pattern:
 
-    trait SelectedCtx extends model.persistence.H2Ctx
+    trait SelectedCtx extends model.persistence.H2Ctx {
+      /** A real application would provide a dedicated `ExecutionContext` for cache and async DAOs instead of using the global default */
+      implicit val ec: ExecutionContext = scala.concurrent.ExecutionContext.Implicits.global
+    }
 
 Now define your application's Quill context as a singleton, and mix in the predefined implicits for Quill-cache defined in `QuillCacheImplicits`.
 
@@ -219,18 +222,22 @@ object Tokens extends UnCachedPersistence[Long, Option[Long], Token] {
 ```
 
 ### Working with DAOs
+`Quill-cache` automatically defines a read-only property for each DAO, called `className`. 
+This property is derived from the unqualified name of the case class persisted by the DAO.
+For example, if `model.User` is being persisted, `className` will be `User`.
+
 Each DAO needs the following functions defined:
   
   1. `_findAll`     &ndash; Quill query foundation - Encapsulates the Quill query that returns all instances of the case class from the database 
-  1. `_deleteById` &ndash; Encapsulates the Quill query that deletes the instance of the case class with the given `Id` from the database 
+  1. `_deleteById`  &ndash; Encapsulates the Quill query that deletes the instance of the case class with the given `Id` from the database 
   1. `_findById`    &ndash; Encapsulates the Quill query that optionally returns the instance of the case class from the database with the given
                             `Id`, or `None` if not found.
   1. `_insert`      &ndash; Encapsulates the Quill query that inserts the given instance of the case class into the database, and returns the
-                       case class as it was stored, including any auto-increment fields.
+                            case class as it was stored, including any auto-increment fields.
   1. `_update`      &ndash; Encapsulates the Quill query that updates the given instance of the case class into the database, and returns the entity.
                             Throws an Exception if the case class was not previously persisted.
 
-See the unit tests for further examples of how to use this library.
+See the unit tests for examples of how to use this library.
 
 ## Scaladoc
 [Here](http://mslinn.github.io/quill-cache/latest/api/#model.persistence.package)

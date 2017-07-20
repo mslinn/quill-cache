@@ -3,7 +3,17 @@ package model
 import org.slf4j.Logger
 
 /** <img src='https://raw.githubusercontent.com/mslinn/quill-cache/media/quill-cache.jpg' align='right' width='33%'>
-  * Scala uses case classes for modeling domain objects.
+  * <h2>Features</h2>
+  *   - Database-independent CRUD API (`insert`, `deleteById`, `upsert`, `findById` plus application-specific finders)
+  *   - Multiple databases can be configured, with configurations for development, testing, production, etc.
+  *   - Choice of caching strategy (strong vs. soft)
+  *   - Very little boilerplate (convention over configuration)
+  *   - Very thin, light API
+  *   - Play Framework evolution format support
+  *   - ScalaTest unit test setup
+  *
+  * <h2>Background</h2>
+  *  Scala uses case classes for modeling domain objects.
   * `quill-cache` optimizes database access for read-mostly domain objects by providing a caching layer overtop
   * [[https://github.com/getquill/quill Quill]].
   * This library depends on [[https://github.com/mslinn/has-id has-id]], and case classes that need to be cached must extend
@@ -54,10 +64,11 @@ import org.slf4j.Logger
   * and your code's structure will be more consistent.
   *
   * <h2>Configuration</h2>
-  * Your database configuration is specified by a file called `application.conf` on the classpath.
+  * Your database configuration is specified by a HOCON file called `application.conf` on the classpath.
   * Please see `src/main/scala/resources/reference.conf` for an example of how to set that up.
   *
-  * Here is an excerpt:
+  * Here is an excerpt showing configuration for H2 and Postgres databases.
+  * Only one of these databases can be active per database context:
   *
   * {{{
   * quill-cache {
@@ -100,7 +111,7 @@ import org.slf4j.Logger
   * }
   * }}}
   *
-  * The `quill-cache` section specifies parameters for this library:
+  * The `quill-cache` section of the configuration file specifies parameters for this library:
   *   - You can make up your own subsections and call them whatever you want.
   *   - The contents of the named subsections are database dependent.
   *   - [[https://github.com/brettwooldridge/HikariCP#configuration-knobs-baby Hikari]] interprets the meaning of this section.
@@ -118,14 +129,7 @@ import org.slf4j.Logger
   *
   * Available abstract classes are: `H2Ctx`, `MySqlCtx`, `PostgresCtx`, and `SqliteCtx`.
   * Subclass the appropriate `abstract class` for the type of database driver you need, like this:
-  * {{{
-  * class MyClass extends model.persistence.H2Ctx {
-  *     /** A real application would provide a dedicated `ExecutionContext` for cache and async DAOs instead of using the global default */
-  *     implicit val ec: ExecutionContext = scala.concurrent.ExecutionContext.Implicits.global
-  *
-  *   // define any other implicit values or conversion functions here
-  * }
-  * }}}
+  * {{{ class MyClass extends model.persistence.H2Ctx }}}
   *
   * <h3>Asynchronous Drivers</h3>
   * Asynchronous drivers are not currently supported by `quill-cache`, but there is an
@@ -136,7 +140,12 @@ import org.slf4j.Logger
   * Define a trait called `SelectedCtx`, and mix it into all your DAOs.
   * `SelectedCtx` merely extends the database context used in your application.
   * The `PersistenceTest` DAO in `test/scala/model/dao` follows this pattern:
-  * {{{ trait SelectedCtx extends model.persistence.H2Ctx }}}
+  * {{{
+  * trait SelectedCtx extends model.persistence.H2Ctx{
+  *   /** A real application would provide a dedicated `ExecutionContext` for cache and async DAOs instead of using the global default */
+  *   implicit val ec: ExecutionContext = scala.concurrent.ExecutionContext.Implicits.global
+  * }
+  * }}}
   *
   * Now define your application's Quill context as a singleton, and mix in the predefined implicits for Quill-cache defined in `QuillCacheImplicits`.
   * {{{
@@ -186,6 +195,10 @@ import org.slf4j.Logger
   * }}}
   *
   * <h2>Working with DAOs</h2>
+  * `Quill-cache` automatically defines a read-only property for each DAO, called `className`.
+  * This property is derived from the unqualified name of the case class persisted by the DAO.
+  * For example, if `model.User` is being persisted, `className` will be `User`.
+  *
   * Each DAO needs the following functions defined:
   *   1. `_findAll`     &ndash; Quill query foundation - Encapsulates the Quill query that returns all instances of the case class from the database.
   *   1. `_deleteById`  &ndash; Encapsulates the Quill query that deletes the instance of the case class with the given `Id` from the database.
