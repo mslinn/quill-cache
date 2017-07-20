@@ -226,7 +226,7 @@ object Tokens extends UnCachedPersistence[Long, Option[Long], Token] {
 This property is derived from the unqualified name of the case class persisted by the DAO.
 For example, if `model.User` is being persisted, `className` will be `User`.
 
-Each DAO needs the following functions defined:
+Each DAO needs the following CRUD-related functions defined:
   
   1. `_findAll`     &ndash; Quill query foundation - Encapsulates the Quill query that returns all instances of the case class from the database 
   1. `_deleteById`  &ndash; Encapsulates the Quill query that deletes the instance of the case class with the given `Id` from the database 
@@ -236,6 +236,56 @@ Each DAO needs the following functions defined:
                             case class as it was stored, including any auto-increment fields.
   1. `_update`      &ndash; Encapsulates the Quill query that updates the given instance of the case class into the database, and returns the entity.
                             Throws an Exception if the case class was not previously persisted.
+### DAO CRUD
+Here is an example of the CRUD-related functions, implemented in the DAO for `model.User` in the `quill-cache` unit test suite.
+```
+  @inline def _findAll: List[User] = run { quote { query[User] } }
+
+  val queryById: IdOptionLong => Quoted[EntityQuery[User]] =
+    (id: IdOptionLong) =>
+      quote { query[User].filter(_.id == lift(id)) }
+
+  val _deleteById: (IdOptionLong) => Unit =
+    (id: IdOptionLong) => {
+      run { quote { queryById(id).delete } }
+      ()
+    }
+
+  val _findById: IdOptionLong => Option[User] =
+    (id: Id[Option[Long]]) =>
+      run { quote { queryById(id) } }.headOption
+
+  val _insert: User => User =
+    (user: User) => {
+      val id: Id[Option[Long]] = try {
+        run { quote { query[User].insert(lift(user)) }.returning(_.id) }
+      } catch {
+        case e: Throwable =>
+          logger.error(e.getMessage)
+          throw e
+      }
+      user.setId(id)
+    }
+
+  val _update: User => User =
+    (user: User) => {
+      run { queryById(user.id).update(lift(user)) }
+      user
+    }
+```
+
+With the above defined, `quill-cache` automatically provides the following CRUD-related methods for each DAO:
+Only finders can take advantage of a cache, if present:
+```
+@inline def deleteById(id: Id[_IdType]): Unit
+@inline override def findAll: List[User]
+def findById(id: Id[_IdType]): Option[User]
+@inline def insert(user: User): User
+@inline def update(user: User): User
+@inline def remove(user: User): Unit
+@inline def upsert(user: User): User
+@inline def zap(): Unit
+```
 
 See the unit tests for examples of how to use this library.
 

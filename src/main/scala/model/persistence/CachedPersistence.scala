@@ -51,17 +51,17 @@ abstract class CachedPersistence[Key <: Any, _IdType <: Option[Key], CaseClass <
     } yield t
   }
 
-  @inline override def insert(t: CaseClass): CaseClass = {
-    val copiedT: CaseClass = sanitize(t)
+  @inline override def insert(caseClass: CaseClass): CaseClass = {
+    val copiedT: CaseClass = sanitize(caseClass)
     val inserted = super.insert(copiedT)
     cacheSet(inserted.id, inserted)
     inserted
   }
 
-  @inline override def update(t: CaseClass): CaseClass = {
-    val copiedT: CaseClass = sanitize(t)
+  @inline override def update(caseClass: CaseClass): CaseClass = {
+    val copiedT: CaseClass = sanitize(caseClass)
     val updated = super.update(copiedT)
-    cacheRemoveId(t.id)
+    cacheRemoveId(caseClass.id)
     cacheSet(updated.id, updated)
     updated
   }
@@ -73,8 +73,8 @@ abstract class CachedPersistence[Key <: Any, _IdType <: Option[Key], CaseClass <
     super.remove(caseClass)
   }
 
-  @inline override def upsert(t: CaseClass): CaseClass = {
-    val upserted = super.upsert(t)
+  @inline override def upsert(caseClass: CaseClass): CaseClass = {
+    val upserted = super.upsert(caseClass)
     upserted.id.value.foreach(key => theCache.put(key, upserted) )
     upserted
   }

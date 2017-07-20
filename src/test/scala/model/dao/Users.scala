@@ -21,9 +21,9 @@ object Users extends CachedPersistence[Long, Option[Long], User]
       ()
     }
 
-  val _findById: IdOptionLong => Option[User] =
+  /*val _findById: IdOptionLong => Option[User] =
     (id: Id[Option[Long]]) =>
-      run { quote { queryById(id) } }.headOption
+    */  run { quote { queryById(id) } }.headOption
 
   val _insert: User => User =
     (user: User) => {
