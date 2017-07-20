@@ -5,7 +5,7 @@
 [![GitHub version](https://badge.fury.io/gh/mslinn%2Fquill-cache.svg)](https://badge.fury.io/gh/mslinn%2Fquill-cache)
 
 ## Features
-  * Database-independent CRUD API (`insert`, `deleteById`, `upsert`, `findById` plus application-specific finders) 
+  * Database-independent CRUD API (`insert`, `deleteById`, `remove`, `update`, `upsert`, `zap`, `findAll`, `findById` plus application-specific finders) 
   * Multiple databases can be configured, with configurations for development, testing, production, etc.
   * Choice of caching strategy (strong vs. soft)
   * Very little boilerplate (convention over configuration)

@@ -4,7 +4,7 @@ import org.slf4j.Logger
 
 /** <img src='https://raw.githubusercontent.com/mslinn/quill-cache/media/quill-cache.jpg' align='right' width='33%'>
   * <h2>Features</h2>
-  *   - Database-independent CRUD API (`insert`, `deleteById`, `upsert`, `findById` plus application-specific finders)
+  *   - Database-independent CRUD API (`insert`, `deleteById`, `remove`, `update`, `upsert`, `zap`, `findAll`, `findById` plus application-specific finders)
   *   - Multiple databases can be configured, with configurations for development, testing, production, etc.
   *   - Choice of caching strategy (strong vs. soft)
   *   - Very little boilerplate (convention over configuration)
