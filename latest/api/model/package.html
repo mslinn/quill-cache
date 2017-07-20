@@ -199,7 +199,47 @@ This property is derived from the unqualified name of the case class persisted b
 For example, if <code>model.User</code> is being persisted, <code>className</code> will be <code>User</code>.</p><p>Each DAO needs the following functions defined:</p><ol class="decimal"><li><code>_findAll</code>     &ndash; Quill query foundation - Encapsulates the Quill query that returns all instances of the case class from the database.</li><li><code>_deleteById</code>  &ndash; Encapsulates the Quill query that deletes the instance of the case class with the given <code>Id</code> from the database.</li><li><code>_findById</code>    &ndash; Encapsulates the Quill query that optionally returns the instance of the case class from
                             the database with the given <code>Id</code>, or <code>None</code> if not found.</li><li><code>_insert</code>      &ndash; Encapsulates the Quill query that inserts the given instance of the case class into the
                             database, and returns the case class as it was stored, including any auto-increment fields.</li><li><code>_update</code>      &ndash; Encapsulates the Quill query that updates the given instance of the case class into the
-                            database, and returns the entity. Throws an Exception if the case class was not previously persisted.</li></ol><p>See the unit tests for examples of how to use this library.</p></div></div>
+                            database, and returns the entity. Throws an Exception if the case class was not previously persisted.</li></ol><h4> DAO CRUD </h4><p>Here is an example of the CRUD-related functions, implemented in the DAO for <code>model.User</code> in the <code>quill-cache</code> unit test suite.</p><pre><span class="ano">@inline</span> <span class="kw">def</span> _findAll: <span class="std">List</span>[User] = run { quote { query[User] } }
+
+<span class="kw">val</span> queryById: IdOptionLong <span class="kw">=&gt;</span> Quoted[EntityQuery[User]] =
+  (id: IdOptionLong) <span class="kw">=&gt;</span>
+    quote { query[User].filter(_.id == lift(id)) }
+
+<span class="kw">val</span> _deleteById: (IdOptionLong) <span class="kw">=&gt;</span> <span class="std">Unit</span> =
+  (id: IdOptionLong) <span class="kw">=&gt;</span> {
+    run { quote { queryById(id).delete } }
+    ()
+  }
+
+<span class="kw">val</span> _findById: IdOptionLong <span class="kw">=&gt;</span> <span class="std">Option</span>[User] =
+  (id: Id[<span class="std">Option</span>[<span class="std">Long</span>]]) <span class="kw">=&gt;</span>
+    run { quote { queryById(id) } }.headOption
+
+<span class="kw">val</span> _insert: User <span class="kw">=&gt;</span> User =
+  (user: User) <span class="kw">=&gt;</span> {
+    <span class="kw">val</span> id: Id[<span class="std">Option</span>[<span class="std">Long</span>]] = <span class="kw">try</span> {
+      run { quote { query[User].insert(lift(user)) }.returning(_.id) }
+    } <span class="kw">catch</span> {
+      <span class="kw">case</span> e: Throwable <span class="kw">=&gt;</span>
+        logger.error(e.getMessage)
+        <span class="kw">throw</span> e
+    }
+    user.setId(id)
+  }
+
+<span class="kw">val</span> _update: User <span class="kw">=&gt;</span> User =
+  (user: User) <span class="kw">=&gt;</span> {
+    run { queryById(user.id).update(lift(user)) }
+    user
+  }</pre><p>With the above defined, <code>quill-cache</code> automatically provides the following CRUD-related methods for each DAO.
+Only finders can take advantage of a cache, if present:</p><pre><span class="ano">@inline</span> <span class="kw">def</span> deleteById(id: Id[_IdType]): <span class="std">Unit</span>
+<span class="ano">@inline</span> <span class="kw">override</span> <span class="kw">def</span> findAll: <span class="std">List</span>[User]
+<span class="kw">def</span> findById(id: Id[_IdType]): <span class="std">Option</span>[User]
+<span class="ano">@inline</span> <span class="kw">def</span> insert(user: User): User
+<span class="ano">@inline</span> <span class="kw">def</span> update(user: User): User
+<span class="ano">@inline</span> <span class="kw">def</span> remove(user: User): <span class="std">Unit</span>
+<span class="ano">@inline</span> <span class="kw">def</span> upsert(user: User): User
+<span class="ano">@inline</span> <span class="kw">def</span> zap(): <span class="std">Unit</span></pre><p>See the unit tests for examples of how to use this library.</p></div></div>
     </li></ol>
             </div>
 
