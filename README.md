@@ -4,13 +4,16 @@
 [![Build Status](https://travis-ci.org/mslinn/quill-cache.svg?branch=master)](https://travis-ci.org/mslinn/quill-cache)
 [![GitHub version](https://badge.fury.io/gh/mslinn%2Fquill-cache.svg)](https://badge.fury.io/gh/mslinn%2Fquill-cache)
 
-## Features
+## Features and Benefits
+  * Dramatically reduces time to fetch results from read-mostly databases
   * Database-independent CRUD API (`insert`, `deleteById`, `remove`, `update`, `upsert`, `zap`, `findAll`, `findById`, 
     plus application-specific finders) 
+  * Thin, light type safe API
+  * Provides compatible interface to read-write databases
   * Multiple databases can be configured, with configurations for development, testing, production, etc.
-  * Choice of caching strategy (strong vs. soft)
+  * Choice of caching strategy (strong, soft or none)
   * Very little boilerplate (convention over configuration)
-  * Very thin, light API
+  * Switching databases only requires changing one word in a program
   * Play Framework evolution format support
   * ScalaTest unit test setup
 

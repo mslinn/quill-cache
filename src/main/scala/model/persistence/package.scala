@@ -3,13 +3,16 @@ package model
 import org.slf4j.Logger
 
 /** <img src='https://raw.githubusercontent.com/mslinn/quill-cache/media/quill-cache.jpg' align='right' width='33%'>
-  * <h2>Features</h2>
+  * <h2>Features and Benefits</h2>
+  *   - Dramatically reduces time to fetch results from read-mostly databases
   *   - Database-independent CRUD API (`insert`, `deleteById`, `remove`, `update`, `upsert`, `zap`, `findAll`,
   *     `findById`, plus application-specific finders)
+  *   - Thin, light type safe API
+  *   - Provides compatible interface to read-write databases
   *   - Multiple databases can be configured, with configurations for development, testing, production, etc.
-  *   - Choice of caching strategy (strong vs. soft)
+  *   - Choice of caching strategy (strong, soft or none)
   *   - Very little boilerplate (convention over configuration)
-  *   - Very thin, light API
+  *   - Switching databases only requires changing one word in a program
   *   - Play Framework evolution format support
   *   - ScalaTest unit test setup
   *
