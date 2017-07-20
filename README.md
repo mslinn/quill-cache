@@ -9,7 +9,7 @@
   * Database-independent CRUD API (`insert`, `deleteById`, `remove`, `update`, `upsert`, `zap`, `findAll`, `findById`, 
     plus application-specific finders) 
   * Thin, light type safe API
-  * Provides compatible interface to read-write databases
+  * Provides compatible interface to read-write database tables
   * Multiple databases can be configured, with configurations for development, testing, production, etc.
   * Choice of caching strategy (strong, soft or none)
   * Very little boilerplate (convention over configuration)
