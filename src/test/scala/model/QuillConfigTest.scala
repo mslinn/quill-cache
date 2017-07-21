@@ -4,7 +4,10 @@ import java.util.Properties
 import com.typesafe.config.{Config, ConfigFactory}
 import com.zaxxer.hikari.HikariDataSource
 import io.getquill.JdbcContextConfig
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 
+@RunWith(classOf[JUnitRunner])
 class QuillConfigTest extends TestSpec {
   "ClassName" should {
     "correct" in {

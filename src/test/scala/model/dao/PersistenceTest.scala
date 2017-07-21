@@ -2,10 +2,13 @@ package model.dao
 
 import java.net.URL
 import model._
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 import persistence._
 
 case class CrashTestDummy(a: String, id: Int)
 
+@RunWith(classOf[JUnitRunner])
 class PersistenceTest extends TestSpec {
   "Copier" should {
     "work" in {

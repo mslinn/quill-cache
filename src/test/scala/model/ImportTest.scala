@@ -1,5 +1,7 @@
 package model
 
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 import org.scalatest.{Matchers, WordSpec}
 
 class Klass {
@@ -20,6 +22,7 @@ case object CaseObject {
 
 case object ContainerSingleton extends Container(new Klass)
 
+@RunWith(classOf[JUnitRunner])
 class ImportTest extends WordSpec with Matchers {
   "Scala imports" should {
     "be provided by a class" in {

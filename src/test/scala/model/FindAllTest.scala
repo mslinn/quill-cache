@@ -1,8 +1,11 @@
 package model
 
 import dao._
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 import persistence._
 
+@RunWith(classOf[JUnitRunner])
 class FindAllTest extends TestSpec {
   "Tokens" should {
     import Ctx.{run=>qRun, _}
