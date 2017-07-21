@@ -61,6 +61,18 @@ import org.slf4j.Logger
   *      Because of this, `SoftCacheLike` finders run more slowly than `StrongCacheLike` finders when the cache does not contain the desired value.
   *      This trait is experimental, do not use in production.
   *
+  * Caches require an [[http://www.scala-lang.org/api/current/scala/concurrent/ExecutionContext.html ExecutionContext]],
+  * and the unit tests provide one:
+  * {{{
+  * package model.dao
+  *
+  * import scala.concurrent.ExecutionContext
+  *
+  * object TestExecutionContext {
+  *  // Define any execution context you desire; here we merely use the Scala default
+  *  implicit lazy val executionContext: ExecutionContext = scala.concurrent.ExecutionContext.global
+  * }
+  * }}}
   * <h2>Consistent APIs for Cached and Uncached DAOs</h2>
   * [[persistence.CachedPersistence]] subclasses [[persistence.UnCachedPersistence]],
   * which you can use to derive DAOs for case classes that must have direct access to the database so the case classes are not cached.
@@ -146,10 +158,7 @@ import org.slf4j.Logger
   * `SelectedCtx` merely extends the database context used in your application.
   * The `PersistenceTest` DAO in `test/scala/model/dao` follows this pattern:
   * {{{
-  * trait SelectedCtx extends model.persistence.H2Ctx{
-  *   /** A real application would provide a dedicated `ExecutionContext` for cache and async DAOs instead of using the global default */
-  *   implicit val ec: ExecutionContext = scala.concurrent.ExecutionContext.Implicits.global
-  * }
+  * trait SelectedCtx extends model.persistence.H2Ctx
   * }}}
   *
   * Now define your application's Quill context as a singleton, and mix in the predefined implicits for Quill-cache defined in `QuillCacheImplicits`.
@@ -183,14 +192,25 @@ import org.slf4j.Logger
   *
   * Now import the Quill context's internally defined implicits into your DAO's scope.
   * Here are two examples of how to do that, one for cached and one for uncached persistence.
-  * Notice that `Users` and `Tokens` are singletons, which makes them easy to work with:
+  * Notice that `Users` and `Tokens` are singletons, which makes them easy to work with.
+  * Here is `Users`, a DAO with a strong cache, which means it needs an `ExecutionContext` like `TestExecutionContext`:
   * {{{
+  * import model.{Ctx, User}
+  * import model.persistence._
+  * import model.dao.TestExecutionContext.executionContext
+  *
   * object Users extends CachedPersistence[Long, Option[Long], User]
   *     with StrongCacheLike[Long, Option[Long], User] {
   *   import Ctx._
   *
   *   // DAO code for User goes here
   * }
+  * }}}
+  *
+  * Here is `Tokens`, a DAO without any cache, which means it does not need an `ExecutionContext`:
+  * {{{
+  * import model.{Ctx, Token}
+  * import model.persistence._
   *
   * object Tokens extends UnCachedPersistence[Long, Option[Long], Token] {
   *  import Ctx._

@@ -68,6 +68,19 @@ Two types of caches are supported:
      `SoftCacheLike` finders that return a list of items must always query the database.
      This trait is experimental, do not use in production.
 
+Caches require an [ExecutionContext](http://www.scala-lang.org/api/current/scala/concurrent/ExecutionContext.html), 
+and the unit tests provide one:
+```
+package model.dao
+
+import scala.concurrent.ExecutionContext
+
+object TestExecutionContext {
+  // Define any execution context you desire; here we merely use the Scala default
+  implicit lazy val executionContext: ExecutionContext = scala.concurrent.ExecutionContext.global
+}
+```
+
 ## Consistent APIs for Cached and Uncached DAOs
 `CachedPersistence` subclasses 
 [UnCachedPersistence](http://mslinn.github.io/quill-cache/latest/api/#model.persistence.UnCachedPersistence),
@@ -81,7 +94,7 @@ Add this to your project's `build.sbt`:
 
     resolvers += "micronautics/scala on bintray" at "http://dl.bintray.com/micronautics/scala"
 
-    libraryDependencies += "com.micronautics" %% "quill-cache" % "3.2.8"
+    libraryDependencies += "com.micronautics" %% "quill-cache" % "3.2.9"
     
 You will also need to add a driver for the database you are using.
 Quill only supports H2, MySQL, Postgres and Sqlite.
@@ -173,10 +186,7 @@ Define a trait called `SelectedCtx`, and mix it into all your DAOs.
 `SelectedCtx` merely extends the database context used in your application.
 The `PersistenceTest` DAO in `test/scala/model/dao` follows this pattern:
 
-    trait SelectedCtx extends model.persistence.H2Ctx {
-      /** A real application would provide a dedicated `ExecutionContext` for cache and async DAOs instead of using the global default */
-      implicit val ec: ExecutionContext = scala.concurrent.ExecutionContext.Implicits.global
-    }
+    trait SelectedCtx extends model.persistence.H2Ctx
 
 Now define your application's Quill context as a singleton, and mix in the predefined implicits for Quill-cache defined in `QuillCacheImplicits`.
 
@@ -210,14 +220,25 @@ case object Ctx extends SelectedCtx with QuillCacheImplicits with MyQuillImplici
 
 Now import the Quill context's internally defined implicits into your DAO's scope. 
 Here are two examples of how to do that, one for cached and one for uncached persistence.
-Notice that `Users` and `Tokens` are singletons, which makes them easy to work with:
+Notice that `Users` and `Tokens` are singletons, which makes them easy to work with.
+Here is `Users`, a DAO with a strong cache, which means it needs an `ExecutionContext` like `TestExecutionContext`:
 ```
+import model.{Ctx, User}
+import model.persistence._
+import model.dao.TestExecutionContext.executionContext
+
 object Users extends CachedPersistence[Long, Option[Long], User]
     with StrongCacheLike[Long, Option[Long], User] {
   import Ctx._
   
   // DAO code for User goes here
 }
+```
+
+Here is `Tokens`, a DAO without any cache, which means it does not need an `ExecutionContext`:
+```
+import model.{Ctx, Token}
+import model.persistence._
 
 object Tokens extends UnCachedPersistence[Long, Option[Long], Token] {
   import Ctx._

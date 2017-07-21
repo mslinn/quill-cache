@@ -3,7 +3,7 @@ package model.dao
 import model.{Ctx, User}
 import model.persistence._
 import model.persistence.Types.IdOptionLong
-import scala.concurrent.ExecutionContext.Implicits.global
+import model.dao.TestExecutionContext.executionContext
 
 object Users extends CachedPersistence[Long, Option[Long], User]
     with StrongCacheLike[Long, Option[Long], User] {
