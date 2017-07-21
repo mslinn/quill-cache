@@ -91,7 +91,7 @@
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="model.persistence.StrongCache#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="&lt;init&gt;(concurrencyLevel:Int,timeoutMinutes:Int)(implicitec:scala.concurrent.ExecutionContext):model.persistence.StrongCache[Key,Value]"></a>
+      <a id="&lt;init&gt;(concurrencyLevel:Int,timeoutMinutes:Int)(implicitexecutionContext:model.persistence.CacheExecutionContext):model.persistence.StrongCache[Key,Value]"></a>
       <a id="&lt;init&gt;:StrongCache[Key,Value]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -99,10 +99,10 @@
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">StrongCache</span><span class="params">(<span name="concurrencyLevel">concurrencyLevel: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">4</span></span>, <span name="timeoutMinutes">timeoutMinutes: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">0</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ec">ec: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>)</span>
+        <span class="name">StrongCache</span><span class="params">(<span name="concurrencyLevel">concurrencyLevel: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">4</span></span>, <span name="timeoutMinutes">timeoutMinutes: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">0</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="executionContext">executionContext: <a href="CacheExecutionContext.html" class="extype" name="model.persistence.CacheExecutionContext">CacheExecutionContext</a></span>)</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.StrongCache@&lt;init&gt;(concurrencyLevel:Int,timeoutMinutes:Int)(implicitec:scala.concurrent.ExecutionContext):model.persistence.StrongCache[Key,Value]" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.StrongCache@&lt;init&gt;(concurrencyLevel:Int,timeoutMinutes:Int)(implicitexecutionContext:model.persistence.CacheExecutionContext):model.persistence.StrongCache[Key,Value]" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -258,6 +258,23 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="model.persistence.StrongCache#executionContext" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="executionContext:model.persistence.CacheExecutionContext"></a>
+      <a id="executionContext:CacheExecutionContext"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">executionContext</span><span class="result">: <a href="CacheExecutionContext.html" class="extype" name="model.persistence.CacheExecutionContext">CacheExecutionContext</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.StrongCache@executionContext:model.persistence.CacheExecutionContext" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="model.persistence.StrongCache">StrongCache</a> → <a href="AbstractCache.html" class="extype" name="model.persistence.AbstractCache">AbstractCache</a></dd></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <a id="finalize():Unit"></a>

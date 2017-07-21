@@ -117,11 +117,15 @@ Because <code>preload()</code> always flushes the cache before loading it you pr
      This trait is experimental, do not use in production.</li></ul><p>Caches require an <a href="http://www.scala-lang.org/api/current/scala/concurrent/ExecutionContext.html" target="_blank">ExecutionContext</a>,
 and the unit tests provide one:</p><pre><span class="kw">package</span> model.dao
 
-<span class="kw">import</span> scala.concurrent.ExecutionContext
+<span class="kw">import</span> model.persistence.CacheExecutionContext
+<span class="kw">import</span> scala.concurrent.{ExecutionContext, ExecutionContextExecutor}
 
-<span class="kw">object</span> TestExecutionContext {
- <span class="cmt">// Define any execution context you desire; here we merely use the Scala default</span>
- <span class="kw">implicit</span> <span class="kw">lazy</span> <span class="kw">val</span> executionContext: ExecutionContext = scala.concurrent.ExecutionContext.global
+<span class="cmt">/** Just delegates to standard Scala ExecutionContext, you can make this do whatever you want */</span>
+<span class="kw">object</span> TestExecutionContext <span class="kw">extends</span> CacheExecutionContext {
+  <span class="kw">protected</span> <span class="kw">val</span> ec: ExecutionContextExecutor = ExecutionContext.Implicits.global
+  <span class="kw">override</span> <span class="kw">def</span> execute(runnable: Runnable): <span class="std">Unit</span> = ec.execute(runnable)
+
+  <span class="kw">override</span> <span class="kw">def</span> reportFailure(cause: Throwable): <span class="std">Unit</span> = ec.reportFailure(cause)
 }</pre><h4> Consistent APIs for Cached and Uncached DAOs </h4><p><a href="persistence/CachedPersistence.html" class="extype" name="model.persistence.CachedPersistence">persistence.CachedPersistence</a> subclasses <a href="persistence/UnCachedPersistence.html" class="extype" name="model.persistence.UnCachedPersistence">persistence.UnCachedPersistence</a>,
 which you can use to derive DAOs for case classes that must have direct access to the database so the case classes are not cached.
 You don't have to subclass <code>UnCachedPersistence</code> to get this behavior, but if you do then the DAOs for your cached
@@ -190,9 +194,9 @@ The <code>PersistenceTest</code> DAO in <code>test/scala/model/dao</code> follow
 <span class="kw">case</span> <span class="kw">object</span> Ctx <span class="kw">extends</span> SelectedCtx <span class="kw">with</span> QuillCacheImplicits <span class="kw">with</span> MyQuillImplicits</pre><p>Now import the Quill context's internally defined implicits into your DAO's scope.
 Here are two examples of how to do that, one for cached and one for uncached persistence.
 Notice that <code>Users</code> and <code>Tokens</code> are singletons, which makes them easy to work with.
-Here is <code>Users</code>, a DAO with a strong cache, which means it needs an <code>ExecutionContext</code> like <code>TestExecutionContext</code>:</p><pre><span class="kw">import</span> model.{Ctx, User}
+Here is <code>Users</code>, a DAO with a strong cache, which means it needs an <code>ExecutionContext</code> like <code>TestExecutionContext</code>,
+which is in scope because it resides in the same package:</p><pre><span class="kw">import</span> model.{Ctx, User}
 <span class="kw">import</span> model.persistence._
-<span class="kw">import</span> model.dao.TestExecutionContext.executionContext
 
 <span class="kw">object</span> Users <span class="kw">extends</span> CachedPersistence[<span class="std">Long</span>, <span class="std">Option</span>[<span class="std">Long</span>], User]
     <span class="kw">with</span> StrongCacheLike[<span class="std">Long</span>, <span class="std">Option</span>[<span class="std">Long</span>], User] {
