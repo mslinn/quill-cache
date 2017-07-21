@@ -19,6 +19,10 @@ CREATE TABLE "user" (
   password varchar(255) NOT NULL,
   payment_mechanism varchar(255),
   payment_mechanisms varchar(1024),
+  wrong_answer_map VARCHAR(2048),
+  question_ids VARCHAR(1024),
+  correct_answer_ids VARCHAR(1024),
+  written_score INTEGER,
   user_id varchar(255) NOT NULL
 );
 

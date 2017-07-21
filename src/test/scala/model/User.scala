@@ -1,6 +1,7 @@
 package model
 
 import model.persistence._
+import model.persistence.Types.IdOptionLong
 
 case class User(
   userId: String,
@@ -9,6 +10,10 @@ case class User(
   lastName: String,
   paymentMechanism: PaymentMechanism,
   paymentMechanisms: List[PaymentMechanism],
+  wrongAnswerMap: Map[IdOptionLong, List[Int]] = Map.empty,
+  questionIds: Vector[IdOptionLong] = Vector.empty,
+  correctAnswerIds: List[IdOptionLong] = Nil,
+  writtenScore: Option[Int] = None,
   password: String,
   activated: Boolean = false,
   override val id: Id[Option[Long]] = Id.empty

@@ -93,6 +93,17 @@ trait QuillCacheImplicits extends IdImplicitLike { ctx: JdbcContext[_, _] =>
     MappedEncoding { _.mkString(",") }
 
 
+  implicit val encodeVectorIdOptionLong: MappedEncoding[String, Vector[Id[Option[Long]]]] =
+    MappedEncoding { x =>
+      val string = x.trim
+      if (string.isEmpty) Vector.empty
+      else string.split(",").map { y => Id(Option(y.toLong)) }.toVector
+    }
+
+  implicit val decodeVectorIdOptionLong: MappedEncoding[Vector[Id[Option[Long]]], String] =
+    MappedEncoding { _.mkString(",") }
+
+
   /** Retrieves map from "key1->3,4,5;key2->1,2,3" */
   implicit val encodeMapIdOptionLongListInt: MappedEncoding[String, Map[IdOptionLong, List[Int]]] =
     MappedEncoding { x =>
