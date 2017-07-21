@@ -75,7 +75,15 @@ Because <code>preload()</code> always flushes the cache before loading it you pr
      DAOs that mix in <code>SoftCacheLike</code> do not assume that all instances of the case class can fit into memory.
      <code>SoftCacheLike</code> finders query the database after every cache miss.
      Because of this, <code>SoftCacheLike</code> finders run more slowly than <code>StrongCacheLike</code> finders when the cache does not contain the desired value.
-     This trait is experimental, do not use in production.</li></ul><h4> Consistent APIs for Cached and Uncached DAOs </h4><p><a href="CachedPersistence.html" class="extype" name="model.persistence.CachedPersistence">persistence.CachedPersistence</a> subclasses <a href="UnCachedPersistence.html" class="extype" name="model.persistence.UnCachedPersistence">persistence.UnCachedPersistence</a>,
+     This trait is experimental, do not use in production.</li></ul><p>Caches require an <a href="http://www.scala-lang.org/api/current/scala/concurrent/ExecutionContext.html" target="_blank">ExecutionContext</a>,
+and the unit tests provide one:</p><pre><span class="kw">package</span> model.dao
+
+<span class="kw">import</span> scala.concurrent.ExecutionContext
+
+<span class="kw">object</span> TestExecutionContext {
+ <span class="cmt">// Define any execution context you desire; here we merely use the Scala default</span>
+ <span class="kw">implicit</span> <span class="kw">lazy</span> <span class="kw">val</span> executionContext: ExecutionContext = scala.concurrent.ExecutionContext.global
+}</pre><h4> Consistent APIs for Cached and Uncached DAOs </h4><p><a href="CachedPersistence.html" class="extype" name="model.persistence.CachedPersistence">persistence.CachedPersistence</a> subclasses <a href="UnCachedPersistence.html" class="extype" name="model.persistence.UnCachedPersistence">persistence.UnCachedPersistence</a>,
 which you can use to derive DAOs for case classes that must have direct access to the database so the case classes are not cached.
 You don't have to subclass <code>UnCachedPersistence</code> to get this behavior, but if you do then the DAOs for your cached
 domain objects will have the same interface as the DAOs for your uncached domain objects,
@@ -128,10 +136,7 @@ Subclass the appropriate <code>abstract class</code> for the type of database dr
 <a href="https://github.com/mslinn/quill-cache/issues/2" target="_blank">open issue for this enhancement</a>.
 The database contexts <code>MysqlAsyncCtx</code> and <code>PostgresAsyncCtx</code> were written in anticipation of async support.</p><h5> Best Practice </h5><p>Define a trait called <code>SelectedCtx</code>, and mix it into all your DAOs.
 <code>SelectedCtx</code> merely extends the database context used in your application.
-The <code>PersistenceTest</code> DAO in <code>test/scala/model/dao</code> follows this pattern:</p><pre><span class="kw">trait</span> SelectedCtx <span class="kw">extends</span> model.persistence.H2Ctx{
-  <span class="cmt">/** A real application would provide a dedicated `ExecutionContext` for cache and async DAOs instead of using the global default */</span>
-  <span class="kw">implicit</span> <span class="kw">val</span> ec: ExecutionContext = scala.concurrent.ExecutionContext.Implicits.global
-}</pre><p>Now define your application's Quill context as a singleton, and mix in the predefined implicits for Quill-cache defined in <code>QuillCacheImplicits</code>.</p><pre><span class="kw">package</span> model
+The <code>PersistenceTest</code> DAO in <code>test/scala/model/dao</code> follows this pattern:</p><pre><span class="kw">trait</span> SelectedCtx <span class="kw">extends</span> model.persistence.H2Ctx</pre><p>Now define your application's Quill context as a singleton, and mix in the predefined implicits for Quill-cache defined in <code>QuillCacheImplicits</code>.</p><pre><span class="kw">package</span> model
 
 <span class="kw">import</span> model.dao.SelectedCtx
 <span class="kw">import</span> persistence.QuillCacheImplicits
@@ -145,12 +150,18 @@ The <code>PersistenceTest</code> DAO in <code>test/scala/model/dao</code> follow
 
 <span class="kw">case</span> <span class="kw">object</span> Ctx <span class="kw">extends</span> SelectedCtx <span class="kw">with</span> QuillCacheImplicits <span class="kw">with</span> MyQuillImplicits</pre><p>Now import the Quill context's internally defined implicits into your DAO's scope.
 Here are two examples of how to do that, one for cached and one for uncached persistence.
-Notice that <code>Users</code> and <code>Tokens</code> are singletons, which makes them easy to work with:</p><pre><span class="kw">object</span> Users <span class="kw">extends</span> CachedPersistence[<span class="std">Long</span>, <span class="std">Option</span>[<span class="std">Long</span>], User]
+Notice that <code>Users</code> and <code>Tokens</code> are singletons, which makes them easy to work with.
+Here is <code>Users</code>, a DAO with a strong cache, which means it needs an <code>ExecutionContext</code> like <code>TestExecutionContext</code>:</p><pre><span class="kw">import</span> model.{Ctx, User}
+<span class="kw">import</span> model.persistence._
+<span class="kw">import</span> model.dao.TestExecutionContext.executionContext
+
+<span class="kw">object</span> Users <span class="kw">extends</span> CachedPersistence[<span class="std">Long</span>, <span class="std">Option</span>[<span class="std">Long</span>], User]
     <span class="kw">with</span> StrongCacheLike[<span class="std">Long</span>, <span class="std">Option</span>[<span class="std">Long</span>], User] {
   <span class="kw">import</span> Ctx._
 
   <span class="cmt">// DAO code for User goes here</span>
-}
+}</pre><p>Here is <code>Tokens</code>, a DAO without any cache, which means it does not need an <code>ExecutionContext</code>:</p><pre><span class="kw">import</span> model.{Ctx, Token}
+<span class="kw">import</span> model.persistence._
 
 <span class="kw">object</span> Tokens <span class="kw">extends</span> UnCachedPersistence[<span class="std">Long</span>, <span class="std">Option</span>[<span class="std">Long</span>], Token] {
  <span class="kw">import</span> Ctx._
