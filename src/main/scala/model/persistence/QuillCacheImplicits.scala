@@ -54,6 +54,30 @@ trait QuillCacheImplicits extends IdImplicitLike { ctx: JdbcContext[_, _] =>
         case None    => row.setNull(index, java.sql.Types.BIGINT)
       })
 
+
+  /** Retrieves map as "key1->3,4,5;key2->1,2,3" */
+  implicit val mapIdOptionLongListIntDecoder: Decoder[Map[IdOptionLong, List[Int]]] =
+    decoder(java.sql.Types.VARCHAR, (index, row) => {
+      val map: String = row.getString(index)
+      if (map.isEmpty) Map.empty else {
+        val arrayOfTuples: Array[(Id[Option[Long]], List[Index])] = for {
+          token <- map.split(";")
+          Array(key, values) =  token.split("->")
+        } yield Id(Option(key.toLong)) -> values.split(",").map(_.toInt).toList
+        arrayOfTuples.toMap
+      }
+    })
+
+  /** Stores map to "key1->3,4,5;key2->1,2,3" */
+  implicit val mapIdOptionLongListIntEncoder: Encoder[Map[IdOptionLong, List[Int]]] =
+    encoder(java.sql.Types.VARCHAR, (index, value, row) => {
+      val string = value
+                     .map { case (key, values) => s"$key->${ values.mkString(",") }" }
+                     .mkString(";")
+      row.setString(index, string)
+    })
+
+
   /** @see [[https://github.com/getquill/quill/issues/805#issuecomment-309304298]] */
 
   implicit val encodeIdUUID: MappedEncoding[UUID, Id[UUID]] = MappedEncoding(Id.apply(_))
