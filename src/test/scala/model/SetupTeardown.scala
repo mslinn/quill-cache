@@ -2,10 +2,10 @@ package model
 
 import H2ServerStatus._
 import com.typesafe.config.Config
+import model.dao.Ctx
 import persistence._
 import org.h2.tools.Server
 import org.scalatest.{BeforeAndAfterAll, Matchers, WordSpec}
-import model.{Ctx => ctx}
 
 abstract class TestSpec
   extends WordSpec
@@ -40,7 +40,7 @@ case object H2Server extends ConfigParse {
       logger.warn("H2 stop request ignored because it does not work right.")
       if (state == RUNNING) {
         logger.warn(s"Deleting H2 database tables")
-        processEvolution.downs(ctx)
+        processEvolution.downs(Ctx)
       }
     } else if (state == RUNNING) {
       logger.warn("Stopping H2 server")
@@ -66,11 +66,11 @@ trait SetupTeardown extends BeforeAndAfterAll { this: WordSpec with LocalH2Serve
 
     try { // In case the last session did not clean up
       logger.warn(s"Creating H2 database tables from $resourcePath or $fallbackPath")
-      processEvolution.downs(ctx)
+      processEvolution.downs(Ctx)
     } catch { case e: Throwable =>
       logger.warn(e.getMessage)
     }
-    processEvolution.ups(ctx)
+    processEvolution.ups(Ctx)
     logger.warn("H2 database tables should exist now.")
   }
 

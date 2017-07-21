@@ -4,6 +4,7 @@ import java.net.URL
 import java.util.UUID
 import com.github.nscala_time.time.Imports._
 import io.getquill.context.jdbc.JdbcContext
+import model.persistence.Types.IdOptionLong
 import scala.reflect.ClassTag
 
 class EnumQuillEncoder[E <: Enum[E] : ClassTag](val ctx: JdbcContext[_, _]) {
@@ -89,7 +90,30 @@ trait QuillCacheImplicits extends IdImplicitLike { ctx: JdbcContext[_, _] =>
     }
 
   implicit val decodeListIdOptionLong: MappedEncoding[List[Id[Option[Long]]], String] =
-    MappedEncoding(_.mkString(","))
+    MappedEncoding { _.mkString(",") }
+
+
+  /** Retrieves map from "key1->3,4,5;key2->1,2,3" */
+  implicit val encodeMapIdOptionLongListInt: MappedEncoding[String, Map[IdOptionLong, List[Int]]] =
+    MappedEncoding { x =>
+      val string = x.trim
+      if (string.isEmpty) Map.empty
+      else {
+        val x: Array[(Id[Option[Long]], List[Index])] = for {
+          token              <- string.split(";")
+          Array(key, values) =  token.split("->")
+        } yield Id(Option(key.toLong)) -> values.split(",").map(_.toInt).toList
+        val result: Map[Id[Option[Long]], List[Index]] = x.toMap
+        result
+      }
+    }
+
+  /** Stores map s "key1->3,4,5;key2->1,2,3" */
+  implicit val decodeMapIdOptionLongListInt: MappedEncoding[Map[IdOptionLong, List[Int]], String] =
+    MappedEncoding(_
+      .iterator
+      .map { case (key, values) => s"$key->${ values.mkString(",") }" }
+      .mkString(";"))
 
 
   val urlEmpty = new URL("http://empty")

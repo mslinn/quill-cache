@@ -1,6 +1,6 @@
 package model.dao
 
-import model.{Ctx, Token}
+import model.Token
 import model.persistence._
 import model.persistence.Types.IdOptionLong
 

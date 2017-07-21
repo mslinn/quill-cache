@@ -2,10 +2,11 @@ package model
 
 import dao._
 import persistence._
-import model.Ctx.{run => qRun, _}
 
 class FindAllTest extends TestSpec {
   "Tokens" should {
+    import Ctx.{run=>qRun, _}
+
     "be created via insert" in {
       val token0: Token = Tokens.insert(Token(
         value = "value"
