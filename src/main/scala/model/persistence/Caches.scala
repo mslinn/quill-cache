@@ -2,11 +2,11 @@ package model.persistence
 
 import java.util.concurrent.{Callable, TimeUnit}
 import com.google.common.cache.{Cache, CacheBuilder}
-import scala.concurrent.{ExecutionContext, Future}
+import scala.concurrent.Future
 
 /** Features soft values that might expire */
 class SoftCache[Key<:Any, Value<:Any](override val concurrencyLevel: Int=4, override val timeoutMinutes: Int=5)
-                                     (implicit ec: ExecutionContext)
+                                     (implicit override val executionContext: CacheExecutionContext)
   extends AbstractCache[Key, Value](concurrencyLevel, timeoutMinutes) {
 
   lazy val underlying: Cache[Object, Object] = if (timeoutMinutes==0)
@@ -28,13 +28,13 @@ class SoftCache[Key<:Any, Value<:Any](override val concurrencyLevel: Int=4, over
 
 object SoftCache {
   @inline def apply[Key<:Any, Value<:Any](concurrencyLevel: Int=4, timeoutMinutes: Int=5)
-                                         (implicit ec: ExecutionContext): SoftCache[Key, Value] =
-    new SoftCache[Key, Value](concurrencyLevel, timeoutMinutes){}
+                                         (implicit executionContext: CacheExecutionContext): SoftCache[Key, Value] =
+    new SoftCache[Key, Value](concurrencyLevel, timeoutMinutes) {}
 }
 
 
 class StrongCache[Key<:Any, Value<:Any](override val concurrencyLevel: Int=4, timeoutMinutes: Int=0)
-                                       (implicit ec: ExecutionContext)
+                                       (implicit override val executionContext: CacheExecutionContext)
   extends AbstractCache[Key, Value](concurrencyLevel, timeoutMinutes) {
 
   lazy val underlying: Cache[Object, Object] = if (timeoutMinutes==0)
@@ -52,7 +52,7 @@ class StrongCache[Key<:Any, Value<:Any](override val concurrencyLevel: Int=4, ti
 
 object StrongCache {
   @inline def apply[Key<:Any, Value<:Any](concurrencyLevel: Int=4, timeoutMinutes: Int=0)
-                                         (implicit ec: ExecutionContext): StrongCache[Key, Value] =
+                                         (implicit executionContext: CacheExecutionContext): StrongCache[Key, Value] =
     new StrongCache[Key, Value](concurrencyLevel, timeoutMinutes){}
 }
 
@@ -81,7 +81,7 @@ object StrongCache {
   * required by the selected eviction algorithm. As such, when writing unit tests it is not
   * uncommon to specify `concurrencyLevel(1)` in order to achieve more deterministic eviction behavior. */
 abstract class AbstractCache[Key<:Any, Value<:Any](val concurrencyLevel: Int=4, val timeoutMinutes: Int=5)
-                                                  (implicit ec: ExecutionContext) {
+                                                  (implicit val executionContext: CacheExecutionContext) {
   /** The underlying Google Guava `Cache` instance */
   def underlying: Cache[Object, Object]
 

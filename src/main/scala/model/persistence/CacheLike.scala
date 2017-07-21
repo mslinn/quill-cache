@@ -1,8 +1,11 @@
 package model.persistence
 
+import scala.concurrent.ExecutionContext
+
+trait CacheExecutionContext extends ExecutionContext
+
 trait CacheLike[Key <: Any, _IdType <: Option[Key], CaseClass <: HasId[CaseClass, _IdType]] {
   protected val theCache: AbstractCache[Key, CaseClass]
-  protected implicit val ec: scala.concurrent.ExecutionContext
 
   @inline def cacheRemoveId(id: Id[_IdType]): Unit = {
     logger.debug(s"Removing $id from $className cache")
@@ -50,8 +53,8 @@ trait CacheLike[Key <: Any, _IdType <: Option[Key], CaseClass <: HasId[CaseClass
   * This trait is experimental, do not use in production. */
   // TODO implement the [[https://google.github.io/guava/releases/16.0/api/docs/com/google/common/cache/CacheBuilder.html#removalListener(com.google.common.cache.RemovalListener) com.google.common.cache.CacheBuilder.removalListener]] callback to detect when a cache has been partially flushed due to timeout or memory pressure.
 trait SoftCacheLike[Key <: Any, _IdType <: Option[Key], CaseClass <: HasId[CaseClass, _IdType]]
-  extends CacheLike[Key, _IdType, CaseClass] { cp: CachedPersistence[Key, _IdType, CaseClass] =>
-
+    extends CacheLike[Key, _IdType, CaseClass] { cp: CachedPersistence[Key, _IdType, CaseClass] =>
+  implicit val cacheExecutionContext: CacheExecutionContext = implicitly[CacheExecutionContext]
   protected val theCache: SoftCache[Key, CaseClass] = SoftCache[Key, CaseClass]()
 
   /** Cannot assume all values are cached, so always get them from the database */
@@ -66,7 +69,7 @@ trait SoftCacheLike[Key <: Any, _IdType <: Option[Key], CaseClass <: HasId[CaseC
   * This trait overrides the default finder implementations. */
 trait StrongCacheLike[Key <: Any, _IdType <: Option[Key], CaseClass <: HasId[CaseClass, _IdType]]
     extends CacheLike[Key, _IdType, CaseClass] { cp: CachedPersistence[Key, _IdType, CaseClass] =>
-
+  implicit val cacheExecutionContext: CacheExecutionContext = implicitly[CacheExecutionContext]
   protected val theCache: StrongCache[Key, CaseClass] = StrongCache[Key, CaseClass]()
 
   @inline override def findAll: List[CaseClass] =

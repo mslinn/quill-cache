@@ -66,11 +66,15 @@ import org.slf4j.Logger
   * {{{
   * package model.dao
   *
-  * import scala.concurrent.ExecutionContext
+  * import model.persistence.CacheExecutionContext
+  * import scala.concurrent.{ExecutionContext, ExecutionContextExecutor}
   *
-  * object TestExecutionContext {
-  *  // Define any execution context you desire; here we merely use the Scala default
-  *  implicit lazy val executionContext: ExecutionContext = scala.concurrent.ExecutionContext.global
+  * /** Just delegates to standard Scala ExecutionContext, you can make this do whatever you want */
+  * object TestExecutionContext extends CacheExecutionContext {
+  *   protected val ec: ExecutionContextExecutor = ExecutionContext.Implicits.global
+  *   override def execute(runnable: Runnable): Unit = ec.execute(runnable)
+  *
+  *   override def reportFailure(cause: Throwable): Unit = ec.reportFailure(cause)
   * }
   * }}}
   * <h2>Consistent APIs for Cached and Uncached DAOs</h2>
@@ -193,11 +197,11 @@ import org.slf4j.Logger
   * Now import the Quill context's internally defined implicits into your DAO's scope.
   * Here are two examples of how to do that, one for cached and one for uncached persistence.
   * Notice that `Users` and `Tokens` are singletons, which makes them easy to work with.
-  * Here is `Users`, a DAO with a strong cache, which means it needs an `ExecutionContext` like `TestExecutionContext`:
+  * Here is `Users`, a DAO with a strong cache, which means it needs an `ExecutionContext` like `TestExecutionContext`,
+  * which is in scope because it resides in the same package:
   * {{{
   * import model.{Ctx, User}
   * import model.persistence._
-  * import model.dao.TestExecutionContext.executionContext
   *
   * object Users extends CachedPersistence[Long, Option[Long], User]
   *     with StrongCacheLike[Long, Option[Long], User] {

@@ -3,7 +3,6 @@ package model.dao
 import model.{Ctx, User}
 import model.persistence._
 import model.persistence.Types.IdOptionLong
-import model.dao.TestExecutionContext.executionContext
 
 object Users extends CachedPersistence[Long, Option[Long], User]
     with StrongCacheLike[Long, Option[Long], User] {
