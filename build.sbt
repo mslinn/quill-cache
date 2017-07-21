@@ -73,7 +73,7 @@ libraryDependencies ++= Seq(
   "junit"                  %  "junit"                % "4.12"     % Test,
   "org.postgresql"         %  "postgresql"           % "42.1.1"   % Test,
   "org.xerial"             %  "sqlite-jdbc"          % "3.8.11.2" % Test withSources(),
-  "org.scalatest"          %% "scalatest"            % "3.0.1"    % Test withSources()
+  "org.scalatest"          %% "scalatest"            % "3.0.3"    % Test withSources()
 )
 
 publishArtifact in (Compile, packageSrc) := false
