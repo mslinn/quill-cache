@@ -1154,7 +1154,7 @@ To use, simply import the context, like this:</p><pre><span class="kw">import</s
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ArrayEncoders → ArrayEncoding</dd></dl></div>
     </li><li name="io.getquill.context.async.ArrayDecoders#arrayLocalDateJodaDecoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="arrayLocalDateJodaDecoder[Col&lt;:&lt;?&gt;](implicitbf:&lt;?&gt;):ArrayDecoders.this.Decoder[Col]"></a>
+      <a id="arrayLocalDateJodaDecoder[Col&lt;:Seq[org.joda.time.LocalDate]](implicitbf:ArrayDecoders.this.CBF[org.joda.time.LocalDate,Col]):ArrayDecoders.this.Decoder[Col]"></a>
       <a id="arrayLocalDateJodaDecoder[Col&lt;:Seq[LocalDate]](CBF[LocalDate,Col]):Decoder[Col]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1171,7 +1171,7 @@ To use, simply import the context, like this:</p><pre><span class="kw">import</s
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ArrayDecoders</dd></dl></div>
     </li><li name="io.getquill.context.async.ArrayEncoders#arrayLocalDateJodaEncoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="arrayLocalDateJodaEncoder[Col&lt;:&lt;?&gt;]:ArrayEncoders.this.Encoder[Col]"></a>
+      <a id="arrayLocalDateJodaEncoder[Col&lt;:Seq[org.joda.time.LocalDate]]:ArrayEncoders.this.Encoder[Col]"></a>
       <a id="arrayLocalDateJodaEncoder[Col&lt;:Seq[LocalDate]]:Encoder[Col]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1188,7 +1188,7 @@ To use, simply import the context, like this:</p><pre><span class="kw">import</s
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ArrayEncoders</dd></dl></div>
     </li><li name="io.getquill.context.async.ArrayDecoders#arrayLocalDateTimeJodaDecoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="arrayLocalDateTimeJodaDecoder[Col&lt;:&lt;?&gt;](implicitbf:&lt;?&gt;):ArrayDecoders.this.Decoder[Col]"></a>
+      <a id="arrayLocalDateTimeJodaDecoder[Col&lt;:Seq[org.joda.time.LocalDateTime]](implicitbf:ArrayDecoders.this.CBF[org.joda.time.LocalDateTime,Col]):ArrayDecoders.this.Decoder[Col]"></a>
       <a id="arrayLocalDateTimeJodaDecoder[Col&lt;:Seq[LocalDateTime]](CBF[LocalDateTime,Col]):Decoder[Col]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1205,7 +1205,7 @@ To use, simply import the context, like this:</p><pre><span class="kw">import</s
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ArrayDecoders</dd></dl></div>
     </li><li name="io.getquill.context.async.ArrayEncoders#arrayLocalDateTimeJodaEncoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="arrayLocalDateTimeJodaEncoder[Col&lt;:&lt;?&gt;]:ArrayEncoders.this.Encoder[Col]"></a>
+      <a id="arrayLocalDateTimeJodaEncoder[Col&lt;:Seq[org.joda.time.LocalDateTime]]:ArrayEncoders.this.Encoder[Col]"></a>
       <a id="arrayLocalDateTimeJodaEncoder[Col&lt;:Seq[LocalDateTime]]:Encoder[Col]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1256,7 +1256,7 @@ To use, simply import the context, like this:</p><pre><span class="kw">import</s
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ArrayEncoders → ArrayEncoding</dd></dl></div>
     </li><li name="io.getquill.context.sql.encoding.ArrayEncoding#arrayMappedDecoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="arrayMappedDecoder[I&lt;:&lt;?&gt;,O&lt;:&lt;?&gt;,Col&lt;:&lt;?&gt;](implicitmapped:&lt;?&gt;,implicitd:&lt;?&gt;,implicitbf:&lt;?&gt;):ArrayEncoding.this.Decoder[Col[O]]"></a>
+      <a id="arrayMappedDecoder[I,O,Col[_]&lt;:Seq[O]](implicitmapped:ArrayEncoding.this.MappedEncoding[I,O],implicitd:ArrayEncoding.this.Decoder[Seq[I]],implicitbf:scala.collection.generic.CanBuildFrom[Nothing,O,Col[O]]):ArrayEncoding.this.Decoder[Col[O]]"></a>
       <a id="arrayMappedDecoder[I,O,Col[_]&lt;:Seq[O]](MappedEncoding[I,O],Decoder[Seq[I]],CanBuildFrom[Nothing,O,Col[O]]):Decoder[Col[O]]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1273,7 +1273,7 @@ To use, simply import the context, like this:</p><pre><span class="kw">import</s
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ArrayEncoding</dd></dl></div>
     </li><li name="io.getquill.context.sql.encoding.ArrayEncoding#arrayMappedEncoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="arrayMappedEncoder[I&lt;:&lt;?&gt;,O&lt;:&lt;?&gt;,Col&lt;:&lt;?&gt;](implicitmapped:&lt;?&gt;,implicite:&lt;?&gt;,implicitbf:&lt;?&gt;):ArrayEncoding.this.Encoder[Col[I]]"></a>
+      <a id="arrayMappedEncoder[I,O,Col[_]&lt;:Seq[I]](implicitmapped:ArrayEncoding.this.MappedEncoding[I,O],implicite:ArrayEncoding.this.Encoder[Seq[O]],implicitbf:scala.collection.generic.CanBuildFrom[Nothing,I,Col[I]]):ArrayEncoding.this.Encoder[Col[I]]"></a>
       <a id="arrayMappedEncoder[I,O,Col[_]&lt;:Seq[I]](MappedEncoding[I,O],Encoder[Seq[O]],CanBuildFrom[Nothing,I,Col[I]]):Encoder[Col[I]]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1584,6 +1584,23 @@ To use, simply import the context, like this:</p><pre><span class="kw">import</s
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AsyncContext → Closeable → AutoCloseable</dd></dl></div>
+    </li><li name="model.persistence.PostgresAsyncCtx#dataSource" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="dataSource:javax.sql.DataSourcewithjava.io.Closeable"></a>
+      <a id="dataSource:DataSourcewithCloseable"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">dataSource</span><span class="result">: <span class="extype" name="javax.sql.DataSource">DataSource</span> with <span class="extype" name="java.io.Closeable">Closeable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.PostgresAsyncConfiguration$@dataSource:javax.sql.DataSourcewithjava.io.Closeable" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="PostgresAsyncCtx.html" class="extype" name="model.persistence.PostgresAsyncCtx">PostgresAsyncCtx</a></dd></dl></div>
     </li><li name="io.getquill.context.async.Decoders#dateDecoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="dateDecoder:Decoders.this.Decoder[java.util.Date]"></a>
       <a id="dateDecoder:Decoder[Date]"></a>
