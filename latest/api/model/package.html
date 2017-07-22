@@ -213,7 +213,14 @@ which is in scope because it resides in the same package:</p><pre><span class="k
 }</pre><h4> Multiple Database Contexts </h4><p>For circumstances where more than one database contexts need to share the same HikariCP pool, first construct a context,
 then other contexts can be created from the first context's <code>dataSource</code>. In the following example, a context for an H2 database
 is created using <code>Ctx.dataSource</code>:</p><pre><span class="kw">case</span> <span class="kw">object</span> Ctx2 <span class="kw">extends</span> H2Ctx(Ctx.dataSource) <span class="kw">with</span> MySpecialImplicits</pre><p>Note that the new context need not have the same implicit decoders, encoders or mappers as the original context.
-See the <code>ContextTest</code> unit test for a working example.</p><h4> Working with DAOs </h4><p><code>Quill-cache</code> automatically defines a read-only property for each DAO, called <code>className</code>.
+See the <code>ContextTest</code> unit test for a working example.</p><p>Here is another way to set this up:</p><pre><span class="cmt">/** This causes a new Hikari pool to be created */</span>
+<span class="kw">object</span> AuthCtx <span class="kw">extends</span> PostgresCtx <span class="kw">with</span> QuillCacheImplicits <span class="kw">with</span> IdImplicitLike
+
+<span class="kw">abstract</span> <span class="kw">class</span> DerivedCtx(dataSource: DataSource <span class="kw">with</span> Closeable)
+  <span class="kw">extends</span> PostgresCtx(dataSource) <span class="kw">with</span> QuillCacheImplicits <span class="kw">with</span> IdImplicitLike
+
+<span class="cmt">/** Reuse the HikariCP pool from [[AuthCtx]] */</span>
+<span class="kw">object</span> Ctx <span class="kw">extends</span> DerivedCtx(AuthCtx.dataSource) <span class="kw">with</span> MySpecialImplicits</pre><h4> Working with DAOs </h4><p><code>Quill-cache</code> automatically defines a read-only property for each DAO, called <code>className</code>.
 This property is derived from the unqualified name of the case class persisted by the DAO.
 For example, if <code>model.User</code> is being persisted, <code>className</code> will be <code>User</code>.</p><p>Each DAO needs the following functions defined:</p><ol class="decimal"><li><code>_findAll</code>     &ndash; Quill query foundation - Encapsulates the Quill query that returns all instances of the case class from the database.</li><li><code>_deleteById</code>  &ndash; Encapsulates the Quill query that deletes the instance of the case class with the given <code>Id</code> from the database.</li><li><code>_findById</code>    &ndash; Encapsulates the Quill query that optionally returns the instance of the case class from
                             the database with the given <code>Id</code>, or <code>None</code> if not found.</li><li><code>_insert</code>      &ndash; Encapsulates the Quill query that inserts the given instance of the case class into the
