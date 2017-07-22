@@ -261,7 +261,7 @@ is created using the `Ctx.dataSource`:
 Note that the new context need not have the same implicit decoders, encoders or mappers as the original context.
 See the `ContextTest` unit test for a working example.
 
-Here is another way to set this up:
+Here is another variation:
 ```
 /** This causes a new Hikari pool to be created */
 object AuthCtx extends PostgresCtx with QuillCacheImplicits with IdImplicitLike
