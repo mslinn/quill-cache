@@ -235,6 +235,18 @@ import org.slf4j.Logger
   * Note that the new context need not have the same implicit decoders, encoders or mappers as the original context.
   * See the `ContextTest` unit test for a working example.
   *
+  * Here is another way to set this up:
+  * {{{
+  * /** This causes a new Hikari pool to be created */
+  * object AuthCtx extends PostgresCtx with QuillCacheImplicits with IdImplicitLike
+  *
+  * abstract class DerivedCtx(dataSource: DataSource with Closeable)
+  *   extends PostgresCtx(dataSource) with QuillCacheImplicits with IdImplicitLike
+  *
+  * /** Reuse the HikariCP pool from [[AuthCtx]] */
+  * object Ctx extends DerivedCtx(AuthCtx.dataSource) with MySpecialImplicits
+  * }}}
+  *
   * <h2>Working with DAOs</h2>
   * `Quill-cache` automatically defines a read-only property for each DAO, called `className`.
   * This property is derived from the unqualified name of the case class persisted by the DAO.
