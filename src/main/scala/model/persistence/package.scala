@@ -223,6 +223,18 @@ import org.slf4j.Logger
   * }
   * }}}
   *
+  * <h2>Multiple Database Contexts</h2>
+  * For circumstances where more than one database contexts need to share the same HikariCP pool, first construct a context,
+  * then other contexts can be created from the first context's `dataSource`. In the following example, a context for an H2 database
+  * is created using `Ctx.dataSource`:
+  *
+  * {{{
+  *     case object Ctx2 extends H2Ctx(Ctx.dataSource) with MySpecialImplicits
+  * }}}
+  *
+  * Note that the new context need not have the same implicit decoders, encoders or mappers as the original context.
+  * See the `ContextTest` unit test for a working example.
+  *
   * <h2>Working with DAOs</h2>
   * `Quill-cache` automatically defines a read-only property for each DAO, called `className`.
   * This property is derived from the unqualified name of the case class persisted by the DAO.

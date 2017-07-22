@@ -1,6 +1,10 @@
 package model.persistence
 
+import java.io.Closeable
+import javax.sql.DataSource
+import com.typesafe.config.Config
 import io.getquill._
+import io.getquill.util.LoadConfig
 
 /** Mix this trait into any class that needs to access the H2 synchronous configuration.
   * Exposes a property called `ctx`, which is the Quill context.
@@ -11,7 +15,13 @@ import io.getquill._
   * }
   * }}}
   * The [[H2Configuration]] object mixes in this trait and provides an alternative mechanism. */
-abstract class H2Ctx extends H2JdbcContext[TableNameSnakeCase](ConfigParse.configPrefix("h2"))
+abstract class H2Ctx(val dataSource: DataSource with Closeable)
+  extends H2JdbcContext[TableNameSnakeCase](dataSource) {
+
+  def this(config: JdbcContextConfig) = this(config.dataSource)
+  def this(config: Config) = this(JdbcContextConfig(config))
+  def this() = this(LoadConfig(ConfigParse.configPrefix("h2")))
+}
 
 /** Mix this trait into any class that needs to access the MySQL synchronous configuration.
   * Exposes a property called `ctx`, which is the Quill context.
@@ -22,7 +32,13 @@ abstract class H2Ctx extends H2JdbcContext[TableNameSnakeCase](ConfigParse.confi
   * }
   * }}}
   * The [[MysqlConfiguration]] object mixes in this trait and provides an alternative mechanism. */
-abstract class MySqlCtx extends MysqlJdbcContext[TableNameSnakeCase](ConfigParse.configPrefix("mysql"))
+abstract class MySqlCtx(val dataSource: DataSource with Closeable)
+  extends MysqlJdbcContext[TableNameSnakeCase](ConfigParse.configPrefix("mysql")) {
+
+  def this(config: JdbcContextConfig) = this(config.dataSource)
+  def this(config: Config) = this(JdbcContextConfig(config))
+  def this() = this(LoadConfig(ConfigParse.configPrefix("mysql")))
+}
 
 /** Mix this trait into any class that needs to access the MySQL asynchronous configuration.
   * Exposes a property called `ctx`, which is the Quill context.
@@ -33,7 +49,13 @@ abstract class MySqlCtx extends MysqlJdbcContext[TableNameSnakeCase](ConfigParse
   * }
   * }}}
   * The [[MysqlAsyncConfiguration]] object mixes in this trait and provides an alternative mechanism. */
-abstract class MysqlAsyncCtx extends MysqlAsyncContext[TableNameSnakeCase](ConfigParse.configPrefix("mysql-async"))
+abstract class MysqlAsyncCtx(val dataSource: DataSource with Closeable)
+  extends MysqlAsyncContext[TableNameSnakeCase](ConfigParse.configPrefix("mysql-async")) {
+
+  def this(config: JdbcContextConfig) = this(config.dataSource)
+  def this(config: Config) = this(JdbcContextConfig(config))
+  def this() = this(LoadConfig(ConfigParse.configPrefix("mysql-async")))
+}
 
 /** Mix this trait into any class that needs to access the Postgres synchronous configuration.
   * Exposes a property called `ctx`, which is the Quill context.
@@ -44,7 +66,12 @@ abstract class MysqlAsyncCtx extends MysqlAsyncContext[TableNameSnakeCase](Confi
   * }
   * }}}
   * The [[PostgresConfiguration]] object mixes in this trait and provides an alternative mechanism. */
-abstract class PostgresCtx extends PostgresJdbcContext[TableNameSnakeCase](ConfigParse.configPrefix("postgres"))
+abstract class PostgresCtx(val dataSource: DataSource with Closeable)
+  extends PostgresJdbcContext[TableNameSnakeCase](ConfigParse.configPrefix("postgres")) {
+
+  def this(config: JdbcContextConfig) = this(config.dataSource)
+  def this(config: Config) = this(JdbcContextConfig(config))
+  def this() = this(LoadConfig(ConfigParse.configPrefix("postgres")))}
 
 /** Mix this trait into any class that needs to access the Postgres asynchronous configuration.
   * Exposes a property called `ctx`, which is the Quill context.
@@ -55,7 +82,12 @@ abstract class PostgresCtx extends PostgresJdbcContext[TableNameSnakeCase](Confi
   * }
   * }}}
   * The [[PostgresAsyncConfiguration]] object mixes in this trait and provides an alternative mechanism. */
-abstract class PostgresAsyncCtx extends PostgresAsyncContext[TableNameSnakeCase](ConfigParse.configPrefix("postgres-async"))
+abstract class PostgresAsyncCtx(val dataSource: DataSource with Closeable)
+  extends PostgresAsyncContext[TableNameSnakeCase](ConfigParse.configPrefix("postgres-async")) {
+
+  def this(config: JdbcContextConfig) = this(config.dataSource)
+  def this(config: Config) = this(JdbcContextConfig(config))
+  def this() = this(LoadConfig(ConfigParse.configPrefix("postgres-async")))}
 
 /** Mix this trait into any class that needs to access the Sqlite synchronous configuration.
   * Exposes a property called `ctx`, which is the Quill context.
@@ -66,7 +98,12 @@ abstract class PostgresAsyncCtx extends PostgresAsyncContext[TableNameSnakeCase]
   * }
   * }}}
   * The [[SqliteConfiguration]] object mixes in this trait and provides an alternative mechanism. */
-abstract class SqliteCtx extends SqliteJdbcContext[TableNameSnakeCase](ConfigParse.configPrefix("sqlite"))
+abstract class SqliteCtx(val dataSource: DataSource with Closeable)
+  extends SqliteJdbcContext[TableNameSnakeCase](ConfigParse.configPrefix("sqlite")) {
+
+  def this(config: JdbcContextConfig) = this(config.dataSource)
+  def this(config: Config) = this(JdbcContextConfig(config))
+  def this() = this(LoadConfig(ConfigParse.configPrefix("sqlite")))}
 
 
 /** Object for exposing the H2 synchronous configuration.
