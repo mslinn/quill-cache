@@ -10,23 +10,12 @@ case object Ctx2 extends H2Ctx(Ctx.dataSource) with QuillCacheImplicits
 
 @RunWith(classOf[JUnitRunner])
 class ContextTest extends TestSpec {
-  implicitly[Ctx.JdbcDecoder[Seq[Array[Byte]]]] // should this work?
-  /* Error:(13, 13) could not find implicit value for parameter e: model.dao.Ctx.JdbcDecoder[Seq[Array[Byte]]]
-    implicitly[Ctx.JdbcDecoder[Seq[Array[Byte]]]]
-  Error:(13, 13) not enough arguments for method implicitly: (implicit e: model.dao.Ctx.JdbcDecoder[Seq[Array[Byte]]])model.dao.Ctx.JdbcDecoder[Seq[Array[Byte]]].
-  Unspecified value parameter e.
-    implicitly[Ctx.JdbcDecoder[Seq[Array[Byte]]]] */
-
-  implicitly[Ctx2.JdbcDecoder[Seq[Array[Byte]]]] // should this work?
-  /* Error:(20, 13) could not find implicit value for parameter e: model.Ctx2.JdbcDecoder[Seq[Array[Byte]]]
-    implicitly[Ctx2.JdbcDecoder[Seq[Array[Byte]]]] // should this work?
-  Error:(20, 13) not enough arguments for method implicitly: (implicit e: model.Ctx2.JdbcDecoder[Seq[Array[Byte]]])model.Ctx2.JdbcDecoder[Seq[Array[Byte]]].
-  Unspecified value parameter e.
-    implicitly[Ctx2.JdbcDecoder[Seq[Array[Byte]]]] // should this work? */
-
   "Tokens" should {
     "be created via insert" in {
       import model.dao.Ctx.{run => qRun, _}
+
+      implicitly[Ctx.JdbcDecoder[Seq[Array[Byte]]]]
+
       val token0: Token = Tokens.insert(Token(
         value = "value"
       ))
@@ -44,6 +33,9 @@ class ContextTest extends TestSpec {
   "Another context" should {
     "work" in {
       import Ctx2.{run => qRun, _}
+
+      implicitly[Ctx2.JdbcDecoder[Seq[Array[Byte]]]]
+
       val token0: Token = Tokens.insert(Token(
         value = "value"
       ))
