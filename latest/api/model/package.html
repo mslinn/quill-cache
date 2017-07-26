@@ -213,7 +213,7 @@ which is in scope because it resides in the same package:</p><pre><span class="k
 }</pre><h4> Multiple Database Contexts </h4><p>For circumstances where more than one database contexts need to share the same HikariCP pool, first construct a context,
 then other contexts can be created from the first context's <code>dataSource</code>. In the following example, a context for an H2 database
 is created using <code>Ctx.dataSource</code>:</p><pre><span class="kw">case</span> <span class="kw">object</span> Ctx2 <span class="kw">extends</span> H2Ctx(Ctx.dataSource) <span class="kw">with</span> MySpecialImplicits</pre><p>Note that the new context need not have the same implicit decoders, encoders or mappers as the original context.
-See the <code>ContextTest</code> unit test for a working example.</p><p>Here is another way to set this up:</p><pre><span class="cmt">/** This causes a new Hikari pool to be created */</span>
+See the <code>ContextTest</code> unit test for a working example.</p><p>Here is another variation:</p><pre><span class="cmt">/** This causes a new Hikari pool to be created */</span>
 <span class="kw">object</span> AuthCtx <span class="kw">extends</span> PostgresCtx <span class="kw">with</span> QuillCacheImplicits <span class="kw">with</span> IdImplicitLike
 
 <span class="kw">abstract</span> <span class="kw">class</span> DerivedCtx(dataSource: DataSource <span class="kw">with</span> Closeable)
