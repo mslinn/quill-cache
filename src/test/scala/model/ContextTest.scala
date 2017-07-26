@@ -14,8 +14,6 @@ class ContextTest extends TestSpec {
     "be created via insert" in {
       import model.dao.Ctx.{run => qRun, _}
 
-      implicitly[Ctx.JdbcDecoder[Seq[Array[Byte]]]]
-
       val token0: Token = Tokens.insert(Token(
         value = "value"
       ))
@@ -33,8 +31,6 @@ class ContextTest extends TestSpec {
   "Another context" should {
     "work" in {
       import Ctx2.{run => qRun, _}
-
-      implicitly[Ctx2.JdbcDecoder[Seq[Array[Byte]]]]
 
       val token0: Token = Tokens.insert(Token(
         value = "value"
