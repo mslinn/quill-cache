@@ -5,7 +5,7 @@ name := "quill-cache"
 version := "3.2.16"
 licenses +=  ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0.html"))
 scalaVersion := "2.11.11"
-crossScalaVersions := Seq("2.11.11", "2.12.2")
+crossScalaVersions := Seq("2.11.11", "2.12.3")
 
 scalacOptions ++=
   scalaVersion {
