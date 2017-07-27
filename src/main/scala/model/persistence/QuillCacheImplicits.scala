@@ -114,26 +114,26 @@ trait QuillCacheImplicits extends IdImplicitLike { ctx: JdbcContext[_, _] =>
 
 
   /** Retrieves map as type `Seq[Array[Byte]]` with typical values "key1->3,4,5;key2->1,2,3" */
-  implicit val mapIdOptionLongListIntDecoderArray: Decoder[Map[IdOptionLong, List[Int]]] =
-    decoder(java.sql.Types.VARBINARY, (index, row) => {
-      val map: String = toString(row.getBytes(index))
-      if (map.isEmpty) Map.empty else {
-        val arrayOfTuples: Array[(Id[Option[Long]], List[Index])] = for {
-          token <- map.split(";")
-          Array(key, values) =  token.split("->")
-        } yield Id(Option(key.toLong)) -> values.split(",").map(_.toInt).toList
-        arrayOfTuples.toMap
-      }
-    })
-
-  /** Stores map to "key1->3,4,5;key2->1,2,3" into `Array[Byte]` */
-  implicit val mapIdOptionLongListIntEncoderArray: Encoder[Map[IdOptionLong, List[Int]]] =
-    encoder(java.sql.Types.VARBINARY, (index, value, row) => {
-      val string = value
-                     .map { case (key, values) => s"$key->${ values.mkString(",") }" }
-                     .mkString(";")
-      row.setBytes(index, toByteArray(string))
-    })
+//  implicit val mapIdOptionLongListIntDecoderArray: Decoder[Map[IdOptionLong, List[Int]]] =
+//    decoder(java.sql.Types.VARBINARY, (index, row) => {
+//      val map: String = toString(row.getBytes(index))
+//      if (map.isEmpty) Map.empty else {
+//        val arrayOfTuples: Array[(Id[Option[Long]], List[Index])] = for {
+//          token <- map.split(";")
+//          Array(key, values) =  token.split("->")
+//        } yield Id(Option(key.toLong)) -> values.split(",").map(_.toInt).toList
+//        arrayOfTuples.toMap
+//      }
+//    })
+//
+//  /** Stores map to "key1->3,4,5;key2->1,2,3" into `Array[Byte]` */
+//  implicit val mapIdOptionLongListIntEncoderArray: Encoder[Map[IdOptionLong, List[Int]]] =
+//    encoder(java.sql.Types.VARBINARY, (index, value, row) => {
+//      val string = value
+//                     .map { case (key, values) => s"$key->${ values.mkString(",") }" }
+//                     .mkString(";")
+//      row.setBytes(index, toByteArray(string))
+//    })
 
 
   /** @see [[https://github.com/getquill/quill/issues/805#issuecomment-309304298]] */

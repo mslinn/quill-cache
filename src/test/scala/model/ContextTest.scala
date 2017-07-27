@@ -1,6 +1,7 @@
 package model
 
 import model.dao._
+import model.persistence.Types.IdOptionLong
 import model.persistence._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
@@ -13,6 +14,8 @@ class ContextTest extends TestSpec {
   "Tokens" should {
     "be created via insert" in {
       import model.dao.Ctx.{run => qRun, _}
+
+      implicitly[Decoder[Map[IdOptionLong,List[Int]]]]
 
       val token0: Token = Tokens.insert(Token(
         value = "value"
@@ -31,6 +34,8 @@ class ContextTest extends TestSpec {
   "Another context" should {
     "work" in {
       import Ctx2.{run => qRun, _}
+
+      implicitly[Decoder[Map[IdOptionLong,List[Int]]]]
 
       val token0: Token = Tokens.insert(Token(
         value = "value"
