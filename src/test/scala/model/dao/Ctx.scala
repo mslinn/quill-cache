@@ -1,7 +1,8 @@
 package model.dao
 
 import model.PaymentMechanism
-import model.persistence.{H2Ctx, QuillCacheImplicits}
+import model.persistence.Types.{IdOptionLong, OptionLong}
+import model.persistence.{H2Ctx, Id, QuillCacheImplicits}
 
 /** Define `Ctx` for use with all DAOs; it could provide all implicit Decoder/Encoder/Mappers */
 case object Ctx extends H2Ctx with QuillCacheImplicits {
@@ -25,4 +26,44 @@ case object Ctx extends H2Ctx with QuillCacheImplicits {
      if (string.isEmpty) Nil
      else string.split(",").toList.map(PaymentMechanism.valueOf)
    }
+
+
+  type OptionLongToListInt = Map[OptionLong, List[Int]]
+  type IdOptionLongToListInt = Map[IdOptionLong, List[Int]]
+
+
+  implicit val encodeIdOptionLongToListIntString: MappedEncoding[IdOptionLongToListInt, String] =
+    MappedEncoding[IdOptionLongToListInt, String] {
+      _.map { case (key, values) => s"$key->${ values.mkString(",") }" }
+       .mkString(";")
+    }
+
+  implicit val decodeIdOptionLongToListIntString: MappedEncoding[String, IdOptionLongToListInt] =
+    MappedEncoding[String, IdOptionLongToListInt] { map =>
+      if (map.isEmpty) Map.empty else {
+        val arrayOfTuples: Array[(Id[Option[Long]], List[Index])] = for {
+          token <- map.split(";")
+          Array(key, values) = token.split("->")
+        } yield Id(Option(key.toLong)) -> values.split(",").map(_.toInt).toList
+        arrayOfTuples.toMap
+      }
+    }
+
+
+  implicit val encodeIdOptionLongToListIntToArrayByte: MappedEncoding[IdOptionLongToListInt, Array[Byte]] =
+    MappedEncoding[IdOptionLongToListInt, Array[Byte]] {
+      _.map { case (key, values) => s"$key->${ values.mkString(",") }" }
+       .mkString(";")
+    }
+
+  implicit val decodeIdOptionLongToListIntToArrayByte: MappedEncoding[Array[Byte], IdOptionLongToListInt] =
+    MappedEncoding[Array[Byte], IdOptionLongToListInt] { map =>
+      if (map.length==0) Map.empty else {
+        val arrayOfTuples: Array[(Id[Option[Long]], List[Index])] = for {
+          token <- map.split(";")
+          Array(key, values) = token.split("->")
+        } yield Id(Option(key.toLong)) -> values.split(",").map(_.toInt).toList
+        arrayOfTuples.toMap
+      }
+    }
 }
