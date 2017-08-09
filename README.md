@@ -1,13 +1,14 @@
 <img src='https://raw.githubusercontent.com/mslinn/quill-cache/media/quill-cache.jpg' align='right' width='33%'>
 
 # Cached Persistence for Quill
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Build Status](https://travis-ci.org/mslinn/quill-cache.svg?branch=master)](https://travis-ci.org/mslinn/quill-cache)
 [![GitHub version](https://badge.fury.io/gh/mslinn%2Fquill-cache.svg)](https://badge.fury.io/gh/mslinn%2Fquill-cache)
 
 ## Features and Benefits
   * Dramatically reduces time to fetch results from read-mostly database tables
-  * Database-independent [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) API (`insert`, `deleteById`, `remove`, `update`, `upsert`, `zap`, `findAll`, `findById`, 
-    plus application-specific finders) 
+  * Database-independent [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) API (`insert`, `deleteById`, `remove`, `update`, `upsert`, `zap`, `findAll`, `findById`,
+    plus application-specific finders)
   * Thin, light type-safe API
   * Provides compatible interface to read-write database tables
   * Multiple databases can be configured, with configurations for development, testing, production, etc.
@@ -20,11 +21,11 @@
 
 ## Background
 Scala uses case classes for modeling domain objects.
-`quill-cache` optimizes database access for read-mostly domain objects by providing a caching layer overtop 
+`quill-cache` optimizes database access for read-mostly domain objects by providing a caching layer overtop
 [Quill](https://github.com/getquill/quill).
-This library depends on [has-id](https://github.com/mslinn/has-id), and case classes that need to be cached must extend 
+This library depends on [has-id](https://github.com/mslinn/has-id), and case classes that need to be cached must extend
 [HasId](http://mslinn.github.io/has-id/latest/api/#model.persistence.HasId).
-`HasId` is generic and quite flexible, so you are encouraged to subclass all your domain objects from `HasId`, 
+`HasId` is generic and quite flexible, so you are encouraged to subclass all your domain objects from `HasId`,
 even if they do not require database caching.
 
 The current version of this library has no provision for distributed caches.
@@ -46,21 +47,21 @@ This library can provide each DAO with its own cache.
 DAOs that extend `CachedPersistence` have a method called
 [preload()](http://mslinn.github.io/quill-cache/latest/api/index.html#model.persistence.CacheLike@preload:List[CaseClass])
 which your application's initialization must invoke in order to fill that DAO's cache.
-A cache can be flushed by calling the DAO's 
+A cache can be flushed by calling the DAO's
 [flushCache()](http://blog.mslinn.com/quill-cache/latest/api/index.html#model.persistence.CacheLike@flushCache():Unit) method.
 Because `preload()` always flushes the cache before loading it you probably won't ever need to explicitly call `flushCache()`.
 
 ## Cache Types
-Two types of caches are supported: 
+Two types of caches are supported:
 
 * [StrongCache](http://mslinn.github.io/scalacourses-utils/latest/api/com/micronautics/cache/StrongCache.html),
     which is locked into memory until the cache is explicitly flushed.
-    Mix the [StrongCacheLike](http://mslinn.github.io/quill-cache/latest/api/#model.persistence.StrongCacheLike) 
+    Mix the [StrongCacheLike](http://mslinn.github.io/quill-cache/latest/api/#model.persistence.StrongCacheLike)
     trait into the DAO to provide this behavior.
     This type of cache is useful when there is enough memory to hold all instances of the case class.
 * [SoftCache](http://mslinn.github.io/scalacourses-utils/latest/api/com/micronautics/cache/SoftCache.html),
      which contains "soft" values that might expire by timing out or might get bumped if memory fills up.
-     Mix the [SoftCacheLike](http://mslinn.github.io/quill-cache/latest/api/#model.persistence.SoftCacheLike) 
+     Mix the [SoftCacheLike](http://mslinn.github.io/quill-cache/latest/api/#model.persistence.SoftCacheLike)
      trait into the DAO to provide this behavior.
      DAOs that mix in `SoftCacheLike` do not assume that all instances of the case class can fit into memory.
      `SoftCacheLike` finders that return at most one item from a query the database after every cache miss.
@@ -68,7 +69,7 @@ Two types of caches are supported:
      `SoftCacheLike` finders that return a list of items must always query the database.
      This trait is experimental, do not use in production.
 
-Caches require an [ExecutionContext](http://www.scala-lang.org/api/current/scala/concurrent/ExecutionContext.html), 
+Caches require an [ExecutionContext](http://www.scala-lang.org/api/current/scala/concurrent/ExecutionContext.html),
 and the unit tests provide one:
 ```
 package model.dao
@@ -86,11 +87,11 @@ object TestExecutionContext extends CacheExecutionContext {
 ```
 
 ## Consistent APIs for Cached and Uncached DAOs
-`CachedPersistence` subclasses 
+`CachedPersistence` subclasses
 [UnCachedPersistence](http://mslinn.github.io/quill-cache/latest/api/#model.persistence.UnCachedPersistence),
 which you can use to derive DAOs for case classes that must have direct access to the database so the case classes are not cached.
-You don't have to subclass `UnCachedPersistence` to get this behavior, but if you do then the DAOs for your cached 
-domain objects will have the same interface as the DAOs for your uncached domain objects, 
+You don't have to subclass `UnCachedPersistence` to get this behavior, but if you do then the DAOs for your cached
+domain objects will have the same interface as the DAOs for your uncached domain objects,
 and your code's structure will be more consistent.
 
 ## Installation
@@ -99,7 +100,7 @@ Add this to your project's `build.sbt`:
     resolvers += "micronautics/scala on bintray" at "http://dl.bintray.com/micronautics/scala"
 
     libraryDependencies += "com.micronautics" %% "quill-cache" % "3.2.16"
-    
+
 You will also need to add a driver for the database you are using.
 Quill only supports H2, MySQL, Postgres and Sqlite.
 For example, for Postgres, add:
@@ -112,7 +113,7 @@ You will need a logging framework. Logback is a good choice:
 
 ## Configuration
 Your database configuration is specified by a HOCON file called `application.conf` on the classpath.
-Please see `src/main/scala/resources/reference.conf` for an example of how to set that up. 
+Please see `src/main/scala/resources/reference.conf` for an example of how to set that up.
 
 Here is an excerpt showing configuration for H2 and Postgres databases.
 Only one of these databases can be active per database context:
@@ -179,7 +180,7 @@ Subclass the appropriate `abstract class` for the type of database driver you ne
     class MyClass extends model.persistence.H2Ctx
 
 ### Asynchronous Drivers
-Asynchronous drivers are not currently supported by `quill-cache`, but there is an 
+Asynchronous drivers are not currently supported by `quill-cache`, but there is an
 [open issue for this enhancement](https://github.com/mslinn/quill-cache/issues/2).
 If you have need for this, or if you are looking for a fairly easy F/OSS Scala project to burnish your resume with,
 you might want to submit a pull request for this behavior (it would closely model the asynch code).
@@ -222,10 +223,10 @@ import persistence.QuillCacheImplicits
 case object Ctx extends SelectedCtx with QuillCacheImplicits with MyQuillImplicits
 ```
 
-Now import the Quill context's internally defined implicits into your DAO's scope. 
+Now import the Quill context's internally defined implicits into your DAO's scope.
 Here are two examples of how to do that, one for cached and one for uncached persistence.
 Notice that `Users` and `Tokens` are singletons, which makes them easy to work with.
-Here is `Users`, a DAO with a strong cache, which means it needs an `ExecutionContext` like `TestExecutionContext`, 
+Here is `Users`, a DAO with a strong cache, which means it needs an `ExecutionContext` like `TestExecutionContext`,
 which is in scope because it resides in the same package:
 ```
 import model.{Ctx, User}
@@ -234,7 +235,7 @@ import model.persistence._
 object Users extends CachedPersistence[Long, Option[Long], User]
     with StrongCacheLike[Long, Option[Long], User] {
   import Ctx._
-  
+
   // DAO code for User goes here
 }
 ```
@@ -257,7 +258,7 @@ then other contexts can be created from the first context's `dataSource`. In the
 is created using the `Ctx.dataSource`:
 
     case object Ctx2 extends H2Ctx(Ctx.dataSource) with MySpecialImplicits
-    
+
 Note that the new context need not have the same implicit decoders, encoders or mappers as the original context.
 See the `ContextTest` unit test for a working example.
 
@@ -274,14 +275,14 @@ object Ctx extends DerivedCtx(AuthCtx.dataSource) with MySpecialImplicits
 ```
 
 ### Working with DAOs
-`Quill-cache` automatically defines a read-only property for each DAO, called `className`. 
+`Quill-cache` automatically defines a read-only property for each DAO, called `className`.
 This property is derived from the unqualified name of the case class persisted by the DAO.
 For example, if `model.User` is being persisted, `className` will be `User`.
 
 Each DAO needs the following CRUD-related functions defined:
-  
-  1. `_findAll`     &ndash; Quill query foundation - Encapsulates the Quill query that returns all instances of the case class from the database 
-  1. `_deleteById`  &ndash; Encapsulates the Quill query that deletes the instance of the case class with the given `Id` from the database 
+
+  1. `_findAll`     &ndash; Quill query foundation - Encapsulates the Quill query that returns all instances of the case class from the database
+  1. `_deleteById`  &ndash; Encapsulates the Quill query that deletes the instance of the case class with the given `Id` from the database
   1. `_findById`    &ndash; Encapsulates the Quill query that optionally returns the instance of the case class from the database with the given
                             `Id`, or `None` if not found.
   1. `_insert`      &ndash; Encapsulates the Quill query that inserts the given instance of the case class into the database, and returns the
