@@ -389,6 +389,23 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>QueryDsl</dd></dl></div>
+    </li><li name="io.getquill.context.Context.Extractor" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="Extractor[T]=Context.this.ResultRow=&gt;T"></a>
+      <a id="Extractor[T]:Extractor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">type</span>
+      </span>
+      <span class="symbol">
+        <span class="name">Extractor</span><span class="tparams">[<span name="T">T</span>]</span><span class="result"> = (<a href="#ResultRow=java.sql.ResultSet" class="extmbr" name="model.persistence.PostgresCtx.ResultRow">ResultRow</a>) ⇒ <span class="extype" name="io.getquill.context.Context.Extractor.T">T</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.PostgresCtx@Extractor[T]=Context.this.ResultRow=&gt;T" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Context</dd></dl></div>
     </li><li name="io.getquill.dsl.EncodingDsl.Index" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="Index=Int"></a>
       <a id="Index:Index"></a>
@@ -559,6 +576,23 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>OrdDsl</dd></dl></div>
+    </li><li name="io.getquill.context.Context.Prepare" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="Prepare=Context.this.PrepareRow=&gt;(List[Any],Context.this.PrepareRow)"></a>
+      <a id="Prepare:Prepare"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">type</span>
+      </span>
+      <span class="symbol">
+        <span class="name">Prepare</span><span class="result"> = (<a href="#PrepareRow=java.sql.PreparedStatement" class="extmbr" name="model.persistence.PostgresCtx.PrepareRow">PrepareRow</a>) ⇒ (<span class="extype" name="scala.List">List</span>[<span class="extype" name="scala.Any">Any</span>], <a href="#PrepareRow=java.sql.PreparedStatement" class="extmbr" name="model.persistence.PostgresCtx.PrepareRow">PrepareRow</a>)</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.PostgresCtx@Prepare=Context.this.PrepareRow=&gt;(List[Any],Context.this.PrepareRow)" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Context</dd></dl></div>
     </li><li name="io.getquill.context.jdbc.JdbcContext.PrepareRow" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="PrepareRow=java.sql.PreparedStatement"></a>
       <a id="PrepareRow:PrepareRow"></a>
@@ -868,6 +902,74 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
       </span>
       </h4><span class="permalink">
       <a href="../../index.html#model.persistence.PostgresCtx@MappedEncoding:io.getquill.MappedEncoding.type" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>EncodingDsl</dd></dl></div>
+    </li><li name="io.getquill.dsl.LowPriorityImplicits#anyValDecoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="anyValDecoder[T&lt;:AnyVal]:LowPriorityImplicits.this.Decoder[T]"></a>
+      <a id="anyValDecoder[T&lt;:AnyVal]:Decoder[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">anyValDecoder</span><span class="tparams">[<span name="T">T &lt;: <span class="extype" name="scala.AnyVal">AnyVal</span></span>]</span><span class="result">: <a href="#Decoder[T]=Decoders.this.JdbcDecoder[T]" class="extmbr" name="model.persistence.PostgresCtx.Decoder">Decoder</a>[<span class="extype" name="io.getquill.dsl.LowPriorityImplicits.anyValDecoder.T">T</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.PostgresCtx@anyValDecoder[T&lt;:AnyVal]:LowPriorityImplicits.this.Decoder[T]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>LowPriorityImplicits</dd></dl></div>
+    </li><li name="io.getquill.dsl.LowPriorityImplicits#anyValEncoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="anyValEncoder[T&lt;:AnyVal]:LowPriorityImplicits.this.Encoder[T]"></a>
+      <a id="anyValEncoder[T&lt;:AnyVal]:Encoder[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">anyValEncoder</span><span class="tparams">[<span name="T">T &lt;: <span class="extype" name="scala.AnyVal">AnyVal</span></span>]</span><span class="result">: <a href="#Encoder[T]=Encoders.this.JdbcEncoder[T]" class="extmbr" name="model.persistence.PostgresCtx.Encoder">Encoder</a>[<span class="extype" name="io.getquill.dsl.LowPriorityImplicits.anyValEncoder.T">T</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.PostgresCtx@anyValEncoder[T&lt;:AnyVal]:LowPriorityImplicits.this.Encoder[T]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>LowPriorityImplicits</dd></dl></div>
+    </li><li name="io.getquill.dsl.EncodingDsl#anyValMappedDecoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="anyValMappedDecoder[I,O&lt;:AnyVal](implicitmapped:EncodingDsl.this.MappedEncoding[I,O],implicitdecoder:EncodingDsl.this.Decoder[I]):EncodingDsl.this.Decoder[O]"></a>
+      <a id="anyValMappedDecoder[I,O&lt;:AnyVal](MappedEncoding[I,O],Decoder[I]):Decoder[O]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">anyValMappedDecoder</span><span class="tparams">[<span name="I">I</span>, <span name="O">O &lt;: <span class="extype" name="scala.AnyVal">AnyVal</span></span>]</span><span class="params">(<span class="implicit">implicit </span><span name="mapped">mapped: <a href="#MappedEncoding[I,O]=io.getquill.MappedEncoding[I,O]" class="extmbr" name="model.persistence.PostgresCtx.MappedEncoding">MappedEncoding</a>[<span class="extype" name="io.getquill.dsl.EncodingDsl.anyValMappedDecoder.I">I</span>, <span class="extype" name="io.getquill.dsl.EncodingDsl.anyValMappedDecoder.O">O</span>]</span>, <span name="decoder">decoder: <a href="#Decoder[T]=Decoders.this.JdbcDecoder[T]" class="extmbr" name="model.persistence.PostgresCtx.Decoder">Decoder</a>[<span class="extype" name="io.getquill.dsl.EncodingDsl.anyValMappedDecoder.I">I</span>]</span>)</span><span class="result">: <a href="#Decoder[T]=Decoders.this.JdbcDecoder[T]" class="extmbr" name="model.persistence.PostgresCtx.Decoder">Decoder</a>[<span class="extype" name="io.getquill.dsl.EncodingDsl.anyValMappedDecoder.O">O</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.PostgresCtx@anyValMappedDecoder[I,O&lt;:AnyVal](implicitmapped:EncodingDsl.this.MappedEncoding[I,O],implicitdecoder:EncodingDsl.this.Decoder[I]):EncodingDsl.this.Decoder[O]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>EncodingDsl</dd></dl></div>
+    </li><li name="io.getquill.dsl.EncodingDsl#anyValMappedEncoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="anyValMappedEncoder[I&lt;:AnyVal,O](implicitmapped:EncodingDsl.this.MappedEncoding[I,O],implicitencoder:EncodingDsl.this.Encoder[O]):EncodingDsl.this.Encoder[I]"></a>
+      <a id="anyValMappedEncoder[I&lt;:AnyVal,O](MappedEncoding[I,O],Encoder[O]):Encoder[I]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">anyValMappedEncoder</span><span class="tparams">[<span name="I">I &lt;: <span class="extype" name="scala.AnyVal">AnyVal</span></span>, <span name="O">O</span>]</span><span class="params">(<span class="implicit">implicit </span><span name="mapped">mapped: <a href="#MappedEncoding[I,O]=io.getquill.MappedEncoding[I,O]" class="extmbr" name="model.persistence.PostgresCtx.MappedEncoding">MappedEncoding</a>[<span class="extype" name="io.getquill.dsl.EncodingDsl.anyValMappedEncoder.I">I</span>, <span class="extype" name="io.getquill.dsl.EncodingDsl.anyValMappedEncoder.O">O</span>]</span>, <span name="encoder">encoder: <a href="#Encoder[T]=Encoders.this.JdbcEncoder[T]" class="extmbr" name="model.persistence.PostgresCtx.Encoder">Encoder</a>[<span class="extype" name="io.getquill.dsl.EncodingDsl.anyValMappedEncoder.O">O</span>]</span>)</span><span class="result">: <a href="#Encoder[T]=Encoders.this.JdbcEncoder[T]" class="extmbr" name="model.persistence.PostgresCtx.Encoder">Encoder</a>[<span class="extype" name="io.getquill.dsl.EncodingDsl.anyValMappedEncoder.I">I</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.PostgresCtx@anyValMappedEncoder[I&lt;:AnyVal,O](implicitmapped:EncodingDsl.this.MappedEncoding[I,O],implicitencoder:EncodingDsl.this.Encoder[O]):EncodingDsl.this.Encoder[I]" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -1678,35 +1780,35 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Encoders</dd></dl></div>
     </li><li name="io.getquill.context.jdbc.Decoders#decoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="decoder[T](sqlType:Int,f:Decoders.this.ResultRow=&gt;(Decoders.this.Index=&gt;T)):Decoders.this.Decoder[T]"></a>
-      <a id="decoder[T](Int,(ResultRow)⇒(Index)⇒T):Decoder[T]"></a>
+      <a id="decoder[T](f:Decoders.this.ResultRow=&gt;(Decoders.this.Index=&gt;T)):Decoders.this.Decoder[T]"></a>
+      <a id="decoder[T]((ResultRow)⇒(Index)⇒T):Decoder[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">decoder</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="sqlType">sqlType: <span class="extype" name="scala.Int">Int</span></span>, <span name="f">f: (<a href="#ResultRow=java.sql.ResultSet" class="extmbr" name="model.persistence.PostgresCtx.ResultRow">ResultRow</a>) ⇒ (<a href="#Index=Int" class="extmbr" name="model.persistence.PostgresCtx.Index">Index</a>) ⇒ <span class="extype" name="io.getquill.context.jdbc.Decoders.decoder.T">T</span></span>)</span><span class="result">: <a href="#Decoder[T]=Decoders.this.JdbcDecoder[T]" class="extmbr" name="model.persistence.PostgresCtx.Decoder">Decoder</a>[<span class="extype" name="io.getquill.context.jdbc.Decoders.decoder.T">T</span>]</span>
+        <span class="name">decoder</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="f">f: (<a href="#ResultRow=java.sql.ResultSet" class="extmbr" name="model.persistence.PostgresCtx.ResultRow">ResultRow</a>) ⇒ (<a href="#Index=Int" class="extmbr" name="model.persistence.PostgresCtx.Index">Index</a>) ⇒ <span class="extype" name="io.getquill.context.jdbc.Decoders.decoder.T">T</span></span>)</span><span class="result">: <a href="#Decoder[T]=Decoders.this.JdbcDecoder[T]" class="extmbr" name="model.persistence.PostgresCtx.Decoder">Decoder</a>[<span class="extype" name="io.getquill.context.jdbc.Decoders.decoder.T">T</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.PostgresCtx@decoder[T](sqlType:Int,f:Decoders.this.ResultRow=&gt;(Decoders.this.Index=&gt;T)):Decoders.this.Decoder[T]" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.PostgresCtx@decoder[T](f:Decoders.this.ResultRow=&gt;(Decoders.this.Index=&gt;T)):Decoders.this.Decoder[T]" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Decoders</dd></dl></div>
     </li><li name="io.getquill.context.jdbc.Decoders#decoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="decoder[T](sqlType:Int,d:Decoders.this.BaseDecoder[T]):Decoders.this.Decoder[T]"></a>
-      <a id="decoder[T](Int,BaseDecoder[T]):Decoder[T]"></a>
+      <a id="decoder[T](d:Decoders.this.BaseDecoder[T]):Decoders.this.Decoder[T]"></a>
+      <a id="decoder[T](BaseDecoder[T]):Decoder[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">decoder</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="sqlType">sqlType: <span class="extype" name="scala.Int">Int</span></span>, <span name="d">d: <a href="#BaseDecoder[T]=(EncodingDsl.this.Index,EncodingDsl.this.ResultRow)=&gt;T" class="extmbr" name="model.persistence.PostgresCtx.BaseDecoder">BaseDecoder</a>[<span class="extype" name="io.getquill.context.jdbc.Decoders.decoder.T">T</span>]</span>)</span><span class="result">: <a href="#Decoder[T]=Decoders.this.JdbcDecoder[T]" class="extmbr" name="model.persistence.PostgresCtx.Decoder">Decoder</a>[<span class="extype" name="io.getquill.context.jdbc.Decoders.decoder.T">T</span>]</span>
+        <span class="name">decoder</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="d">d: <a href="#BaseDecoder[T]=(EncodingDsl.this.Index,EncodingDsl.this.ResultRow)=&gt;T" class="extmbr" name="model.persistence.PostgresCtx.BaseDecoder">BaseDecoder</a>[<span class="extype" name="io.getquill.context.jdbc.Decoders.decoder.T">T</span>]</span>)</span><span class="result">: <a href="#Decoder[T]=Decoders.this.JdbcDecoder[T]" class="extmbr" name="model.persistence.PostgresCtx.Decoder">Decoder</a>[<span class="extype" name="io.getquill.context.jdbc.Decoders.decoder.T">T</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.PostgresCtx@decoder[T](sqlType:Int,d:Decoders.this.BaseDecoder[T]):Decoders.this.Decoder[T]" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.PostgresCtx@decoder[T](d:Decoders.this.BaseDecoder[T]):Decoders.this.Decoder[T]" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -1814,35 +1916,35 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="io.getquill.context.jdbc.JdbcContext#executeAction" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="executeAction[T](sql:String,prepare:java.sql.PreparedStatement=&gt;(List[Any],java.sql.PreparedStatement)):Long"></a>
-      <a id="executeAction[T](String,(PreparedStatement)⇒(List[Any],PreparedStatement)):Long"></a>
+      <a id="executeAction[T](sql:String,prepare:JdbcContext.this.Prepare):Long"></a>
+      <a id="executeAction[T](String,Prepare):Long"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">executeAction</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="sql">sql: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="prepare">prepare: (<span class="extype" name="java.sql.PreparedStatement">PreparedStatement</span>) ⇒ (<span class="extype" name="scala.List">List</span>[<span class="extype" name="scala.Any">Any</span>], <span class="extype" name="java.sql.PreparedStatement">PreparedStatement</span>)</span>)</span><span class="result">: <span class="extype" name="scala.Long">Long</span></span>
+        <span class="name">executeAction</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="sql">sql: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="prepare">prepare: <a href="#Prepare=Context.this.PrepareRow=&gt;(List[Any],Context.this.PrepareRow)" class="extmbr" name="model.persistence.PostgresCtx.Prepare">Prepare</a></span>)</span><span class="result">: <span class="extype" name="scala.Long">Long</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.PostgresCtx@executeAction[T](sql:String,prepare:java.sql.PreparedStatement=&gt;(List[Any],java.sql.PreparedStatement)):Long" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.PostgresCtx@executeAction[T](sql:String,prepare:JdbcContext.this.Prepare):Long" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>JdbcContext</dd></dl></div>
     </li><li name="io.getquill.context.jdbc.JdbcContext#executeActionReturning" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="executeActionReturning[O](sql:String,prepare:java.sql.PreparedStatement=&gt;(List[Any],java.sql.PreparedStatement),extractor:java.sql.ResultSet=&gt;O,returningColumn:String):O"></a>
-      <a id="executeActionReturning[O](String,(PreparedStatement)⇒(List[Any],PreparedStatement),(ResultSet)⇒O,String):O"></a>
+      <a id="executeActionReturning[O](sql:String,prepare:JdbcContext.this.Prepare,extractor:JdbcContext.this.Extractor[O],returningColumn:String):O"></a>
+      <a id="executeActionReturning[O](String,Prepare,Extractor[O],String):O"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">executeActionReturning</span><span class="tparams">[<span name="O">O</span>]</span><span class="params">(<span name="sql">sql: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="prepare">prepare: (<span class="extype" name="java.sql.PreparedStatement">PreparedStatement</span>) ⇒ (<span class="extype" name="scala.List">List</span>[<span class="extype" name="scala.Any">Any</span>], <span class="extype" name="java.sql.PreparedStatement">PreparedStatement</span>)</span>, <span name="extractor">extractor: (<span class="extype" name="java.sql.ResultSet">ResultSet</span>) ⇒ <span class="extype" name="io.getquill.context.jdbc.JdbcContext.executeActionReturning.O">O</span></span>, <span name="returningColumn">returningColumn: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="io.getquill.context.jdbc.JdbcContext.executeActionReturning.O">O</span></span>
+        <span class="name">executeActionReturning</span><span class="tparams">[<span name="O">O</span>]</span><span class="params">(<span name="sql">sql: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="prepare">prepare: <a href="#Prepare=Context.this.PrepareRow=&gt;(List[Any],Context.this.PrepareRow)" class="extmbr" name="model.persistence.PostgresCtx.Prepare">Prepare</a></span>, <span name="extractor">extractor: <a href="#Extractor[T]=Context.this.ResultRow=&gt;T" class="extmbr" name="model.persistence.PostgresCtx.Extractor">Extractor</a>[<span class="extype" name="io.getquill.context.jdbc.JdbcContext.executeActionReturning.O">O</span>]</span>, <span name="returningColumn">returningColumn: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="io.getquill.context.jdbc.JdbcContext.executeActionReturning.O">O</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.PostgresCtx@executeActionReturning[O](sql:String,prepare:java.sql.PreparedStatement=&gt;(List[Any],java.sql.PreparedStatement),extractor:java.sql.ResultSet=&gt;O,returningColumn:String):O" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.PostgresCtx@executeActionReturning[O](sql:String,prepare:JdbcContext.this.Prepare,extractor:JdbcContext.this.Extractor[O],returningColumn:String):O" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -1865,52 +1967,52 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>JdbcContext</dd></dl></div>
     </li><li name="io.getquill.context.jdbc.JdbcContext#executeBatchActionReturning" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="executeBatchActionReturning[T](groups:List[JdbcContext.this.BatchGroupReturning],extractor:java.sql.ResultSet=&gt;T):List[T]"></a>
-      <a id="executeBatchActionReturning[T](List[BatchGroupReturning],(ResultSet)⇒T):List[T]"></a>
+      <a id="executeBatchActionReturning[T](groups:List[JdbcContext.this.BatchGroupReturning],extractor:JdbcContext.this.Extractor[T]):List[T]"></a>
+      <a id="executeBatchActionReturning[T](List[BatchGroupReturning],Extractor[T]):List[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">executeBatchActionReturning</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="groups">groups: <span class="extype" name="scala.List">List</span>[<a href="#BatchGroupReturningextendsProductwithSerializable" class="extmbr" name="model.persistence.PostgresCtx.BatchGroupReturning">BatchGroupReturning</a>]</span>, <span name="extractor">extractor: (<span class="extype" name="java.sql.ResultSet">ResultSet</span>) ⇒ <span class="extype" name="io.getquill.context.jdbc.JdbcContext.executeBatchActionReturning.T">T</span></span>)</span><span class="result">: <span class="extype" name="scala.List">List</span>[<span class="extype" name="io.getquill.context.jdbc.JdbcContext.executeBatchActionReturning.T">T</span>]</span>
+        <span class="name">executeBatchActionReturning</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="groups">groups: <span class="extype" name="scala.List">List</span>[<a href="#BatchGroupReturningextendsProductwithSerializable" class="extmbr" name="model.persistence.PostgresCtx.BatchGroupReturning">BatchGroupReturning</a>]</span>, <span name="extractor">extractor: <a href="#Extractor[T]=Context.this.ResultRow=&gt;T" class="extmbr" name="model.persistence.PostgresCtx.Extractor">Extractor</a>[<span class="extype" name="io.getquill.context.jdbc.JdbcContext.executeBatchActionReturning.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="scala.List">List</span>[<span class="extype" name="io.getquill.context.jdbc.JdbcContext.executeBatchActionReturning.T">T</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.PostgresCtx@executeBatchActionReturning[T](groups:List[JdbcContext.this.BatchGroupReturning],extractor:java.sql.ResultSet=&gt;T):List[T]" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.PostgresCtx@executeBatchActionReturning[T](groups:List[JdbcContext.this.BatchGroupReturning],extractor:JdbcContext.this.Extractor[T]):List[T]" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>JdbcContext</dd></dl></div>
     </li><li name="io.getquill.context.jdbc.JdbcContext#executeQuery" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="executeQuery[T](sql:String,prepare:java.sql.PreparedStatement=&gt;(List[Any],java.sql.PreparedStatement),extractor:java.sql.ResultSet=&gt;T):List[T]"></a>
-      <a id="executeQuery[T](String,(PreparedStatement)⇒(List[Any],PreparedStatement),(ResultSet)⇒T):List[T]"></a>
+      <a id="executeQuery[T](sql:String,prepare:JdbcContext.this.Prepare,extractor:JdbcContext.this.Extractor[T]):List[T]"></a>
+      <a id="executeQuery[T](String,Prepare,Extractor[T]):List[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">executeQuery</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="sql">sql: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="prepare">prepare: (<span class="extype" name="java.sql.PreparedStatement">PreparedStatement</span>) ⇒ (<span class="extype" name="scala.List">List</span>[<span class="extype" name="scala.Any">Any</span>], <span class="extype" name="java.sql.PreparedStatement">PreparedStatement</span>)</span>, <span name="extractor">extractor: (<span class="extype" name="java.sql.ResultSet">ResultSet</span>) ⇒ <span class="extype" name="io.getquill.context.jdbc.JdbcContext.executeQuery.T">T</span></span>)</span><span class="result">: <span class="extype" name="scala.List">List</span>[<span class="extype" name="io.getquill.context.jdbc.JdbcContext.executeQuery.T">T</span>]</span>
+        <span class="name">executeQuery</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="sql">sql: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="prepare">prepare: <a href="#Prepare=Context.this.PrepareRow=&gt;(List[Any],Context.this.PrepareRow)" class="extmbr" name="model.persistence.PostgresCtx.Prepare">Prepare</a></span>, <span name="extractor">extractor: <a href="#Extractor[T]=Context.this.ResultRow=&gt;T" class="extmbr" name="model.persistence.PostgresCtx.Extractor">Extractor</a>[<span class="extype" name="io.getquill.context.jdbc.JdbcContext.executeQuery.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="scala.List">List</span>[<span class="extype" name="io.getquill.context.jdbc.JdbcContext.executeQuery.T">T</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.PostgresCtx@executeQuery[T](sql:String,prepare:java.sql.PreparedStatement=&gt;(List[Any],java.sql.PreparedStatement),extractor:java.sql.ResultSet=&gt;T):List[T]" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.PostgresCtx@executeQuery[T](sql:String,prepare:JdbcContext.this.Prepare,extractor:JdbcContext.this.Extractor[T]):List[T]" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>JdbcContext</dd></dl></div>
     </li><li name="io.getquill.context.jdbc.JdbcContext#executeQuerySingle" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="executeQuerySingle[T](sql:String,prepare:java.sql.PreparedStatement=&gt;(List[Any],java.sql.PreparedStatement),extractor:java.sql.ResultSet=&gt;T):T"></a>
-      <a id="executeQuerySingle[T](String,(PreparedStatement)⇒(List[Any],PreparedStatement),(ResultSet)⇒T):T"></a>
+      <a id="executeQuerySingle[T](sql:String,prepare:JdbcContext.this.Prepare,extractor:JdbcContext.this.Extractor[T]):T"></a>
+      <a id="executeQuerySingle[T](String,Prepare,Extractor[T]):T"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">executeQuerySingle</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="sql">sql: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="prepare">prepare: (<span class="extype" name="java.sql.PreparedStatement">PreparedStatement</span>) ⇒ (<span class="extype" name="scala.List">List</span>[<span class="extype" name="scala.Any">Any</span>], <span class="extype" name="java.sql.PreparedStatement">PreparedStatement</span>)</span>, <span name="extractor">extractor: (<span class="extype" name="java.sql.ResultSet">ResultSet</span>) ⇒ <span class="extype" name="io.getquill.context.jdbc.JdbcContext.executeQuerySingle.T">T</span></span>)</span><span class="result">: <span class="extype" name="io.getquill.context.jdbc.JdbcContext.executeQuerySingle.T">T</span></span>
+        <span class="name">executeQuerySingle</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="sql">sql: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="prepare">prepare: <a href="#Prepare=Context.this.PrepareRow=&gt;(List[Any],Context.this.PrepareRow)" class="extmbr" name="model.persistence.PostgresCtx.Prepare">Prepare</a></span>, <span name="extractor">extractor: <a href="#Extractor[T]=Context.this.ResultRow=&gt;T" class="extmbr" name="model.persistence.PostgresCtx.Extractor">Extractor</a>[<span class="extype" name="io.getquill.context.jdbc.JdbcContext.executeQuerySingle.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="io.getquill.context.jdbc.JdbcContext.executeQuerySingle.T">T</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.PostgresCtx@executeQuerySingle[T](sql:String,prepare:java.sql.PreparedStatement=&gt;(List[Any],java.sql.PreparedStatement),extractor:java.sql.ResultSet=&gt;T):T" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.PostgresCtx@executeQuerySingle[T](sql:String,prepare:JdbcContext.this.Prepare,extractor:JdbcContext.this.Extractor[T]):T" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -2023,6 +2125,40 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="io.getquill.context.Context#identityExtractor" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="identityExtractor:Context.this.ResultRow=&gt;Context.this.ResultRow"></a>
+      <a id="identityExtractor:(ResultRow)⇒ResultRow"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">identityExtractor</span><span class="result">: (<a href="#ResultRow=java.sql.ResultSet" class="extmbr" name="model.persistence.PostgresCtx.ResultRow">ResultRow</a>) ⇒ <a href="#ResultRow=java.sql.ResultSet" class="extmbr" name="model.persistence.PostgresCtx.ResultRow">ResultRow</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.PostgresCtx@identityExtractor:Context.this.ResultRow=&gt;Context.this.ResultRow" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Context</dd></dl></div>
+    </li><li name="io.getquill.context.Context#identityPrepare" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="identityPrepare:Context.this.Prepare"></a>
+      <a id="identityPrepare:Prepare"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">identityPrepare</span><span class="result">: <a href="#Prepare=Context.this.PrepareRow=&gt;(List[Any],Context.this.PrepareRow)" class="extmbr" name="model.persistence.PostgresCtx.Prepare">Prepare</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.PostgresCtx@identityPrepare:Context.this.Prepare" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Context</dd></dl></div>
     </li><li name="io.getquill.dsl.OrdDsl#implicitOrd" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="implicitOrd[T]:OrdDsl.this.Ord[T]"></a>
       <a id="implicitOrd[T]:Ord[T]"></a>
@@ -2410,40 +2546,6 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Encoders</dd></dl></div>
-    </li><li name="io.getquill.dsl.LowPriorityImplicits#materializeDecoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="materializeDecoder[T&lt;:AnyVal]:LowPriorityImplicits.this.Decoder[T]"></a>
-      <a id="materializeDecoder[T&lt;:AnyVal]:Decoder[T]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">implicit macro </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">materializeDecoder</span><span class="tparams">[<span name="T">T &lt;: <span class="extype" name="scala.AnyVal">AnyVal</span></span>]</span><span class="result">: <a href="#Decoder[T]=Decoders.this.JdbcDecoder[T]" class="extmbr" name="model.persistence.PostgresCtx.Decoder">Decoder</a>[<span class="extype" name="io.getquill.dsl.LowPriorityImplicits.materializeDecoder.T">T</span>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.PostgresCtx@materializeDecoder[T&lt;:AnyVal]:LowPriorityImplicits.this.Decoder[T]" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>LowPriorityImplicits</dd></dl></div>
-    </li><li name="io.getquill.dsl.LowPriorityImplicits#materializeEncoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="materializeEncoder[T&lt;:AnyVal]:LowPriorityImplicits.this.Encoder[T]"></a>
-      <a id="materializeEncoder[T&lt;:AnyVal]:Encoder[T]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">implicit macro </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">materializeEncoder</span><span class="tparams">[<span name="T">T &lt;: <span class="extype" name="scala.AnyVal">AnyVal</span></span>]</span><span class="result">: <a href="#Encoder[T]=Encoders.this.JdbcEncoder[T]" class="extmbr" name="model.persistence.PostgresCtx.Encoder">Encoder</a>[<span class="extype" name="io.getquill.dsl.LowPriorityImplicits.materializeEncoder.T">T</span>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.PostgresCtx@materializeEncoder[T&lt;:AnyVal]:LowPriorityImplicits.this.Encoder[T]" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>LowPriorityImplicits</dd></dl></div>
     </li><li name="io.getquill.dsl.MetaDslLowPriorityImplicits#materializeInsertMeta" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="materializeInsertMeta[T]:MetaDslLowPriorityImplicits.this.InsertMeta[T]"></a>
       <a id="materializeInsertMeta[T]:InsertMeta[T]"></a>

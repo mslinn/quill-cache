@@ -440,6 +440,23 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>QueryDsl</dd></dl></div>
+    </li><li name="io.getquill.context.Context.Extractor" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="Extractor[T]=Context.this.ResultRow=&gt;T"></a>
+      <a id="Extractor[T]:Extractor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">type</span>
+      </span>
+      <span class="symbol">
+        <span class="name">Extractor</span><span class="tparams">[<span name="T">T</span>]</span><span class="result"> = (<a href="#ResultRow=com.github.mauricio.async.db.RowData" class="extmbr" name="model.persistence.MysqlAsyncCtx.ResultRow">ResultRow</a>) ⇒ <span class="extype" name="io.getquill.context.Context.Extractor.T">T</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.MysqlAsyncCtx@Extractor[T]=Context.this.ResultRow=&gt;T" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Context</dd></dl></div>
     </li><li name="io.getquill.dsl.EncodingDsl.Index" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="Index=Int"></a>
       <a id="Index:Index"></a>
@@ -593,6 +610,23 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>OrdDsl</dd></dl></div>
+    </li><li name="io.getquill.context.Context.Prepare" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="Prepare=Context.this.PrepareRow=&gt;(List[Any],Context.this.PrepareRow)"></a>
+      <a id="Prepare:Prepare"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">type</span>
+      </span>
+      <span class="symbol">
+        <span class="name">Prepare</span><span class="result"> = (<a href="#PrepareRow=List[Any]" class="extmbr" name="model.persistence.MysqlAsyncCtx.PrepareRow">PrepareRow</a>) ⇒ (<span class="extype" name="scala.List">List</span>[<span class="extype" name="scala.Any">Any</span>], <a href="#PrepareRow=List[Any]" class="extmbr" name="model.persistence.MysqlAsyncCtx.PrepareRow">PrepareRow</a>)</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.MysqlAsyncCtx@Prepare=Context.this.PrepareRow=&gt;(List[Any],Context.this.PrepareRow)" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Context</dd></dl></div>
     </li><li name="io.getquill.context.async.AsyncContext.PrepareRow" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="PrepareRow=List[Any]"></a>
       <a id="PrepareRow:PrepareRow"></a>
@@ -906,6 +940,74 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>EncodingDsl</dd></dl></div>
+    </li><li name="io.getquill.dsl.LowPriorityImplicits#anyValDecoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="anyValDecoder[T&lt;:AnyVal]:LowPriorityImplicits.this.Decoder[T]"></a>
+      <a id="anyValDecoder[T&lt;:AnyVal]:Decoder[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">anyValDecoder</span><span class="tparams">[<span name="T">T &lt;: <span class="extype" name="scala.AnyVal">AnyVal</span></span>]</span><span class="result">: <a href="#Decoder[T]=Decoders.this.AsyncDecoder[T]" class="extmbr" name="model.persistence.MysqlAsyncCtx.Decoder">Decoder</a>[<span class="extype" name="io.getquill.dsl.LowPriorityImplicits.anyValDecoder.T">T</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.MysqlAsyncCtx@anyValDecoder[T&lt;:AnyVal]:LowPriorityImplicits.this.Decoder[T]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>LowPriorityImplicits</dd></dl></div>
+    </li><li name="io.getquill.dsl.LowPriorityImplicits#anyValEncoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="anyValEncoder[T&lt;:AnyVal]:LowPriorityImplicits.this.Encoder[T]"></a>
+      <a id="anyValEncoder[T&lt;:AnyVal]:Encoder[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">anyValEncoder</span><span class="tparams">[<span name="T">T &lt;: <span class="extype" name="scala.AnyVal">AnyVal</span></span>]</span><span class="result">: <a href="#Encoder[T]=Encoders.this.AsyncEncoder[T]" class="extmbr" name="model.persistence.MysqlAsyncCtx.Encoder">Encoder</a>[<span class="extype" name="io.getquill.dsl.LowPriorityImplicits.anyValEncoder.T">T</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.MysqlAsyncCtx@anyValEncoder[T&lt;:AnyVal]:LowPriorityImplicits.this.Encoder[T]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>LowPriorityImplicits</dd></dl></div>
+    </li><li name="io.getquill.dsl.EncodingDsl#anyValMappedDecoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="anyValMappedDecoder[I,O&lt;:AnyVal](implicitmapped:EncodingDsl.this.MappedEncoding[I,O],implicitdecoder:EncodingDsl.this.Decoder[I]):EncodingDsl.this.Decoder[O]"></a>
+      <a id="anyValMappedDecoder[I,O&lt;:AnyVal](MappedEncoding[I,O],Decoder[I]):Decoder[O]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">anyValMappedDecoder</span><span class="tparams">[<span name="I">I</span>, <span name="O">O &lt;: <span class="extype" name="scala.AnyVal">AnyVal</span></span>]</span><span class="params">(<span class="implicit">implicit </span><span name="mapped">mapped: <a href="#MappedEncoding[I,O]=io.getquill.MappedEncoding[I,O]" class="extmbr" name="model.persistence.MysqlAsyncCtx.MappedEncoding">MappedEncoding</a>[<span class="extype" name="io.getquill.dsl.EncodingDsl.anyValMappedDecoder.I">I</span>, <span class="extype" name="io.getquill.dsl.EncodingDsl.anyValMappedDecoder.O">O</span>]</span>, <span name="decoder">decoder: <a href="#Decoder[T]=Decoders.this.AsyncDecoder[T]" class="extmbr" name="model.persistence.MysqlAsyncCtx.Decoder">Decoder</a>[<span class="extype" name="io.getquill.dsl.EncodingDsl.anyValMappedDecoder.I">I</span>]</span>)</span><span class="result">: <a href="#Decoder[T]=Decoders.this.AsyncDecoder[T]" class="extmbr" name="model.persistence.MysqlAsyncCtx.Decoder">Decoder</a>[<span class="extype" name="io.getquill.dsl.EncodingDsl.anyValMappedDecoder.O">O</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.MysqlAsyncCtx@anyValMappedDecoder[I,O&lt;:AnyVal](implicitmapped:EncodingDsl.this.MappedEncoding[I,O],implicitdecoder:EncodingDsl.this.Decoder[I]):EncodingDsl.this.Decoder[O]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>EncodingDsl</dd></dl></div>
+    </li><li name="io.getquill.dsl.EncodingDsl#anyValMappedEncoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="anyValMappedEncoder[I&lt;:AnyVal,O](implicitmapped:EncodingDsl.this.MappedEncoding[I,O],implicitencoder:EncodingDsl.this.Encoder[O]):EncodingDsl.this.Encoder[I]"></a>
+      <a id="anyValMappedEncoder[I&lt;:AnyVal,O](MappedEncoding[I,O],Encoder[O]):Encoder[I]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">anyValMappedEncoder</span><span class="tparams">[<span name="I">I &lt;: <span class="extype" name="scala.AnyVal">AnyVal</span></span>, <span name="O">O</span>]</span><span class="params">(<span class="implicit">implicit </span><span name="mapped">mapped: <a href="#MappedEncoding[I,O]=io.getquill.MappedEncoding[I,O]" class="extmbr" name="model.persistence.MysqlAsyncCtx.MappedEncoding">MappedEncoding</a>[<span class="extype" name="io.getquill.dsl.EncodingDsl.anyValMappedEncoder.I">I</span>, <span class="extype" name="io.getquill.dsl.EncodingDsl.anyValMappedEncoder.O">O</span>]</span>, <span name="encoder">encoder: <a href="#Encoder[T]=Encoders.this.AsyncEncoder[T]" class="extmbr" name="model.persistence.MysqlAsyncCtx.Encoder">Encoder</a>[<span class="extype" name="io.getquill.dsl.EncodingDsl.anyValMappedEncoder.O">O</span>]</span>)</span><span class="result">: <a href="#Encoder[T]=Encoders.this.AsyncEncoder[T]" class="extmbr" name="model.persistence.MysqlAsyncCtx.Encoder">Encoder</a>[<span class="extype" name="io.getquill.dsl.EncodingDsl.anyValMappedEncoder.I">I</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.MysqlAsyncCtx@anyValMappedEncoder[I&lt;:AnyVal,O](implicitmapped:EncodingDsl.this.MappedEncoding[I,O],implicitencoder:EncodingDsl.this.Encoder[O]):EncodingDsl.this.Encoder[I]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>EncodingDsl</dd></dl></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <a id="asInstanceOf[T0]:T0"></a>
@@ -1150,6 +1252,40 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Encoders</dd></dl></div>
+    </li><li name="io.getquill.context.async.Decoders#decodeLocalDate" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="decodeLocalDate:Decoders.this.MappedEncoding[org.joda.time.LocalDate,java.time.LocalDate]"></a>
+      <a id="decodeLocalDate:MappedEncoding[LocalDate,LocalDate]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">decodeLocalDate</span><span class="result">: <a href="#MappedEncoding[I,O]=io.getquill.MappedEncoding[I,O]" class="extmbr" name="model.persistence.MysqlAsyncCtx.MappedEncoding">MappedEncoding</a>[<span class="extype" name="org.joda.time.LocalDate">LocalDate</span>, <span class="extype" name="java.time.LocalDate">LocalDate</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.MysqlAsyncCtx@decodeLocalDate:Decoders.this.MappedEncoding[org.joda.time.LocalDate,java.time.LocalDate]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Decoders</dd></dl></div>
+    </li><li name="io.getquill.context.async.Decoders#decodeLocalDateTime" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="decodeLocalDateTime:Decoders.this.MappedEncoding[org.joda.time.LocalDateTime,java.time.LocalDateTime]"></a>
+      <a id="decodeLocalDateTime:MappedEncoding[LocalDateTime,LocalDateTime]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">decodeLocalDateTime</span><span class="result">: <a href="#MappedEncoding[I,O]=io.getquill.MappedEncoding[I,O]" class="extmbr" name="model.persistence.MysqlAsyncCtx.MappedEncoding">MappedEncoding</a>[<span class="extype" name="org.joda.time.LocalDateTime">LocalDateTime</span>, <span class="extype" name="java.time.LocalDateTime">LocalDateTime</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.MysqlAsyncCtx@decodeLocalDateTime:Decoders.this.MappedEncoding[org.joda.time.LocalDateTime,java.time.LocalDateTime]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Decoders</dd></dl></div>
     </li><li name="io.getquill.context.async.Decoders#decoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="decoder[T](f:PartialFunction[Any,T],sqlType:Decoders.this.DecoderSqlType)(implicitevidence$1:scala.reflect.ClassTag[T]):Decoders.this.Decoder[T]"></a>
       <a id="decoder[T](PartialFunction[Any,T],DecoderSqlType)(ClassTag[T]):Decoder[T]"></a>
@@ -1197,6 +1333,40 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
       </span>
       </h4><span class="permalink">
       <a href="../../index.html#model.persistence.MysqlAsyncCtx@doubleEncoder:Encoders.this.Encoder[Double]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Encoders</dd></dl></div>
+    </li><li name="io.getquill.context.async.Encoders#encodeLocalDate" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="encodeLocalDate:Encoders.this.MappedEncoding[java.time.LocalDate,org.joda.time.LocalDate]"></a>
+      <a id="encodeLocalDate:MappedEncoding[LocalDate,LocalDate]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">encodeLocalDate</span><span class="result">: <a href="#MappedEncoding[I,O]=io.getquill.MappedEncoding[I,O]" class="extmbr" name="model.persistence.MysqlAsyncCtx.MappedEncoding">MappedEncoding</a>[<span class="extype" name="java.time.LocalDate">LocalDate</span>, <span class="extype" name="org.joda.time.LocalDate">LocalDate</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.MysqlAsyncCtx@encodeLocalDate:Encoders.this.MappedEncoding[java.time.LocalDate,org.joda.time.LocalDate]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Encoders</dd></dl></div>
+    </li><li name="io.getquill.context.async.Encoders#encodeLocalDateTime" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="encodeLocalDateTime:Encoders.this.MappedEncoding[java.time.LocalDateTime,org.joda.time.LocalDateTime]"></a>
+      <a id="encodeLocalDateTime:MappedEncoding[LocalDateTime,LocalDateTime]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">encodeLocalDateTime</span><span class="result">: <a href="#MappedEncoding[I,O]=io.getquill.MappedEncoding[I,O]" class="extmbr" name="model.persistence.MysqlAsyncCtx.MappedEncoding">MappedEncoding</a>[<span class="extype" name="java.time.LocalDateTime">LocalDateTime</span>, <span class="extype" name="org.joda.time.LocalDateTime">LocalDateTime</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.MysqlAsyncCtx@encodeLocalDateTime:Encoders.this.MappedEncoding[java.time.LocalDateTime,org.joda.time.LocalDateTime]" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -1270,35 +1440,35 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="io.getquill.context.async.AsyncContext#executeAction" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="executeAction[T](sql:String,prepare:List[Any]=&gt;(List[Any],List[Any]))(implicitec:scala.concurrent.ExecutionContext):scala.concurrent.Future[Long]"></a>
-      <a id="executeAction[T](String,(List[Any])⇒(List[Any],List[Any]))(ExecutionContext):Future[Long]"></a>
+      <a id="executeAction[T](sql:String,prepare:AsyncContext.this.Prepare)(implicitec:scala.concurrent.ExecutionContext):scala.concurrent.Future[Long]"></a>
+      <a id="executeAction[T](String,Prepare)(ExecutionContext):Future[Long]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">executeAction</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="sql">sql: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="prepare">prepare: (<span class="extype" name="scala.List">List</span>[<span class="extype" name="scala.Any">Any</span>]) ⇒ (<span class="extype" name="scala.List">List</span>[<span class="extype" name="scala.Any">Any</span>], <span class="extype" name="scala.List">List</span>[<span class="extype" name="scala.Any">Any</span>])</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ec">ec: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="scala.Long">Long</span>]</span>
+        <span class="name">executeAction</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="sql">sql: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="prepare">prepare: <a href="#Prepare=Context.this.PrepareRow=&gt;(List[Any],Context.this.PrepareRow)" class="extmbr" name="model.persistence.MysqlAsyncCtx.Prepare">Prepare</a></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ec">ec: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="scala.Long">Long</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.MysqlAsyncCtx@executeAction[T](sql:String,prepare:List[Any]=&gt;(List[Any],List[Any]))(implicitec:scala.concurrent.ExecutionContext):scala.concurrent.Future[Long]" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.MysqlAsyncCtx@executeAction[T](sql:String,prepare:AsyncContext.this.Prepare)(implicitec:scala.concurrent.ExecutionContext):scala.concurrent.Future[Long]" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AsyncContext</dd></dl></div>
     </li><li name="io.getquill.context.async.AsyncContext#executeActionReturning" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="executeActionReturning[T](sql:String,prepare:List[Any]=&gt;(List[Any],List[Any]),extractor:com.github.mauricio.async.db.RowData=&gt;T,returningColumn:String)(implicitec:scala.concurrent.ExecutionContext):scala.concurrent.Future[T]"></a>
-      <a id="executeActionReturning[T](String,(List[Any])⇒(List[Any],List[Any]),(RowData)⇒T,String)(ExecutionContext):Future[T]"></a>
+      <a id="executeActionReturning[T](sql:String,prepare:AsyncContext.this.Prepare,extractor:AsyncContext.this.Extractor[T],returningColumn:String)(implicitec:scala.concurrent.ExecutionContext):scala.concurrent.Future[T]"></a>
+      <a id="executeActionReturning[T](String,Prepare,Extractor[T],String)(ExecutionContext):Future[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">executeActionReturning</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="sql">sql: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="prepare">prepare: (<span class="extype" name="scala.List">List</span>[<span class="extype" name="scala.Any">Any</span>]) ⇒ (<span class="extype" name="scala.List">List</span>[<span class="extype" name="scala.Any">Any</span>], <span class="extype" name="scala.List">List</span>[<span class="extype" name="scala.Any">Any</span>])</span>, <span name="extractor">extractor: (<span class="extype" name="com.github.mauricio.async.db.RowData">RowData</span>) ⇒ <span class="extype" name="io.getquill.context.async.AsyncContext.executeActionReturning.T">T</span></span>, <span name="returningColumn">returningColumn: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ec">ec: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="io.getquill.context.async.AsyncContext.executeActionReturning.T">T</span>]</span>
+        <span class="name">executeActionReturning</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="sql">sql: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="prepare">prepare: <a href="#Prepare=Context.this.PrepareRow=&gt;(List[Any],Context.this.PrepareRow)" class="extmbr" name="model.persistence.MysqlAsyncCtx.Prepare">Prepare</a></span>, <span name="extractor">extractor: <a href="#Extractor[T]=Context.this.ResultRow=&gt;T" class="extmbr" name="model.persistence.MysqlAsyncCtx.Extractor">Extractor</a>[<span class="extype" name="io.getquill.context.async.AsyncContext.executeActionReturning.T">T</span>]</span>, <span name="returningColumn">returningColumn: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ec">ec: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="io.getquill.context.async.AsyncContext.executeActionReturning.T">T</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.MysqlAsyncCtx@executeActionReturning[T](sql:String,prepare:List[Any]=&gt;(List[Any],List[Any]),extractor:com.github.mauricio.async.db.RowData=&gt;T,returningColumn:String)(implicitec:scala.concurrent.ExecutionContext):scala.concurrent.Future[T]" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.MysqlAsyncCtx@executeActionReturning[T](sql:String,prepare:AsyncContext.this.Prepare,extractor:AsyncContext.this.Extractor[T],returningColumn:String)(implicitec:scala.concurrent.ExecutionContext):scala.concurrent.Future[T]" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -1321,52 +1491,52 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AsyncContext</dd></dl></div>
     </li><li name="io.getquill.context.async.AsyncContext#executeBatchActionReturning" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="executeBatchActionReturning[T](groups:List[AsyncContext.this.BatchGroupReturning],extractor:com.github.mauricio.async.db.RowData=&gt;T)(implicitec:scala.concurrent.ExecutionContext):scala.concurrent.Future[List[T]]"></a>
-      <a id="executeBatchActionReturning[T](List[BatchGroupReturning],(RowData)⇒T)(ExecutionContext):Future[List[T]]"></a>
+      <a id="executeBatchActionReturning[T](groups:List[AsyncContext.this.BatchGroupReturning],extractor:AsyncContext.this.Extractor[T])(implicitec:scala.concurrent.ExecutionContext):scala.concurrent.Future[List[T]]"></a>
+      <a id="executeBatchActionReturning[T](List[BatchGroupReturning],Extractor[T])(ExecutionContext):Future[List[T]]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">executeBatchActionReturning</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="groups">groups: <span class="extype" name="scala.List">List</span>[<a href="#BatchGroupReturningextendsProductwithSerializable" class="extmbr" name="model.persistence.MysqlAsyncCtx.BatchGroupReturning">BatchGroupReturning</a>]</span>, <span name="extractor">extractor: (<span class="extype" name="com.github.mauricio.async.db.RowData">RowData</span>) ⇒ <span class="extype" name="io.getquill.context.async.AsyncContext.executeBatchActionReturning.T">T</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ec">ec: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="scala.List">List</span>[<span class="extype" name="io.getquill.context.async.AsyncContext.executeBatchActionReturning.T">T</span>]]</span>
+        <span class="name">executeBatchActionReturning</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="groups">groups: <span class="extype" name="scala.List">List</span>[<a href="#BatchGroupReturningextendsProductwithSerializable" class="extmbr" name="model.persistence.MysqlAsyncCtx.BatchGroupReturning">BatchGroupReturning</a>]</span>, <span name="extractor">extractor: <a href="#Extractor[T]=Context.this.ResultRow=&gt;T" class="extmbr" name="model.persistence.MysqlAsyncCtx.Extractor">Extractor</a>[<span class="extype" name="io.getquill.context.async.AsyncContext.executeBatchActionReturning.T">T</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ec">ec: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="scala.List">List</span>[<span class="extype" name="io.getquill.context.async.AsyncContext.executeBatchActionReturning.T">T</span>]]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.MysqlAsyncCtx@executeBatchActionReturning[T](groups:List[AsyncContext.this.BatchGroupReturning],extractor:com.github.mauricio.async.db.RowData=&gt;T)(implicitec:scala.concurrent.ExecutionContext):scala.concurrent.Future[List[T]]" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.MysqlAsyncCtx@executeBatchActionReturning[T](groups:List[AsyncContext.this.BatchGroupReturning],extractor:AsyncContext.this.Extractor[T])(implicitec:scala.concurrent.ExecutionContext):scala.concurrent.Future[List[T]]" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AsyncContext</dd></dl></div>
     </li><li name="io.getquill.context.async.AsyncContext#executeQuery" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="executeQuery[T](sql:String,prepare:List[Any]=&gt;(List[Any],List[Any]),extractor:com.github.mauricio.async.db.RowData=&gt;T)(implicitec:scala.concurrent.ExecutionContext):scala.concurrent.Future[List[T]]"></a>
-      <a id="executeQuery[T](String,(List[Any])⇒(List[Any],List[Any]),(RowData)⇒T)(ExecutionContext):Future[List[T]]"></a>
+      <a id="executeQuery[T](sql:String,prepare:AsyncContext.this.Prepare,extractor:AsyncContext.this.Extractor[T])(implicitec:scala.concurrent.ExecutionContext):scala.concurrent.Future[List[T]]"></a>
+      <a id="executeQuery[T](String,Prepare,Extractor[T])(ExecutionContext):Future[List[T]]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">executeQuery</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="sql">sql: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="prepare">prepare: (<span class="extype" name="scala.List">List</span>[<span class="extype" name="scala.Any">Any</span>]) ⇒ (<span class="extype" name="scala.List">List</span>[<span class="extype" name="scala.Any">Any</span>], <span class="extype" name="scala.List">List</span>[<span class="extype" name="scala.Any">Any</span>])</span>, <span name="extractor">extractor: (<span class="extype" name="com.github.mauricio.async.db.RowData">RowData</span>) ⇒ <span class="extype" name="io.getquill.context.async.AsyncContext.executeQuery.T">T</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ec">ec: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="scala.List">List</span>[<span class="extype" name="io.getquill.context.async.AsyncContext.executeQuery.T">T</span>]]</span>
+        <span class="name">executeQuery</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="sql">sql: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="prepare">prepare: <a href="#Prepare=Context.this.PrepareRow=&gt;(List[Any],Context.this.PrepareRow)" class="extmbr" name="model.persistence.MysqlAsyncCtx.Prepare">Prepare</a></span>, <span name="extractor">extractor: <a href="#Extractor[T]=Context.this.ResultRow=&gt;T" class="extmbr" name="model.persistence.MysqlAsyncCtx.Extractor">Extractor</a>[<span class="extype" name="io.getquill.context.async.AsyncContext.executeQuery.T">T</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ec">ec: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="scala.List">List</span>[<span class="extype" name="io.getquill.context.async.AsyncContext.executeQuery.T">T</span>]]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.MysqlAsyncCtx@executeQuery[T](sql:String,prepare:List[Any]=&gt;(List[Any],List[Any]),extractor:com.github.mauricio.async.db.RowData=&gt;T)(implicitec:scala.concurrent.ExecutionContext):scala.concurrent.Future[List[T]]" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.MysqlAsyncCtx@executeQuery[T](sql:String,prepare:AsyncContext.this.Prepare,extractor:AsyncContext.this.Extractor[T])(implicitec:scala.concurrent.ExecutionContext):scala.concurrent.Future[List[T]]" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AsyncContext</dd></dl></div>
     </li><li name="io.getquill.context.async.AsyncContext#executeQuerySingle" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="executeQuerySingle[T](sql:String,prepare:List[Any]=&gt;(List[Any],List[Any]),extractor:com.github.mauricio.async.db.RowData=&gt;T)(implicitec:scala.concurrent.ExecutionContext):scala.concurrent.Future[T]"></a>
-      <a id="executeQuerySingle[T](String,(List[Any])⇒(List[Any],List[Any]),(RowData)⇒T)(ExecutionContext):Future[T]"></a>
+      <a id="executeQuerySingle[T](sql:String,prepare:AsyncContext.this.Prepare,extractor:AsyncContext.this.Extractor[T])(implicitec:scala.concurrent.ExecutionContext):scala.concurrent.Future[T]"></a>
+      <a id="executeQuerySingle[T](String,Prepare,Extractor[T])(ExecutionContext):Future[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">executeQuerySingle</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="sql">sql: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="prepare">prepare: (<span class="extype" name="scala.List">List</span>[<span class="extype" name="scala.Any">Any</span>]) ⇒ (<span class="extype" name="scala.List">List</span>[<span class="extype" name="scala.Any">Any</span>], <span class="extype" name="scala.List">List</span>[<span class="extype" name="scala.Any">Any</span>])</span>, <span name="extractor">extractor: (<span class="extype" name="com.github.mauricio.async.db.RowData">RowData</span>) ⇒ <span class="extype" name="io.getquill.context.async.AsyncContext.executeQuerySingle.T">T</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ec">ec: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="io.getquill.context.async.AsyncContext.executeQuerySingle.T">T</span>]</span>
+        <span class="name">executeQuerySingle</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="sql">sql: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="prepare">prepare: <a href="#Prepare=Context.this.PrepareRow=&gt;(List[Any],Context.this.PrepareRow)" class="extmbr" name="model.persistence.MysqlAsyncCtx.Prepare">Prepare</a></span>, <span name="extractor">extractor: <a href="#Extractor[T]=Context.this.ResultRow=&gt;T" class="extmbr" name="model.persistence.MysqlAsyncCtx.Extractor">Extractor</a>[<span class="extype" name="io.getquill.context.async.AsyncContext.executeQuerySingle.T">T</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ec">ec: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="io.getquill.context.async.AsyncContext.executeQuerySingle.T">T</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.MysqlAsyncCtx@executeQuerySingle[T](sql:String,prepare:List[Any]=&gt;(List[Any],List[Any]),extractor:com.github.mauricio.async.db.RowData=&gt;T)(implicitec:scala.concurrent.ExecutionContext):scala.concurrent.Future[T]" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.MysqlAsyncCtx@executeQuerySingle[T](sql:String,prepare:AsyncContext.this.Prepare,extractor:AsyncContext.this.Extractor[T])(implicitec:scala.concurrent.ExecutionContext):scala.concurrent.Future[T]" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -1389,18 +1559,18 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>AsyncContext</dd></dl></div>
     </li><li name="io.getquill.MysqlAsyncContext#extractActionResult" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="extractActionResult[O](returningColumn:String,returningExtractor:com.github.mauricio.async.db.RowData=&gt;O)(result:com.github.mauricio.async.db.QueryResult):O"></a>
-      <a id="extractActionResult[O](String,(RowData)⇒O)(QueryResult):O"></a>
+      <a id="extractActionResult[O](returningColumn:String,returningExtractor:MysqlAsyncContext.this.Extractor[O])(result:com.github.mauricio.async.db.QueryResult):O"></a>
+      <a id="extractActionResult[O](String,Extractor[O])(QueryResult):O"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">extractActionResult</span><span class="tparams">[<span name="O">O</span>]</span><span class="params">(<span name="returningColumn">returningColumn: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="returningExtractor">returningExtractor: (<span class="extype" name="com.github.mauricio.async.db.RowData">RowData</span>) ⇒ <span class="extype" name="io.getquill.MysqlAsyncContext.extractActionResult.O">O</span></span>)</span><span class="params">(<span name="result">result: <span class="extype" name="com.github.mauricio.async.db.QueryResult">QueryResult</span></span>)</span><span class="result">: <span class="extype" name="io.getquill.MysqlAsyncContext.extractActionResult.O">O</span></span>
+        <span class="name">extractActionResult</span><span class="tparams">[<span name="O">O</span>]</span><span class="params">(<span name="returningColumn">returningColumn: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="returningExtractor">returningExtractor: <a href="#Extractor[T]=Context.this.ResultRow=&gt;T" class="extmbr" name="model.persistence.MysqlAsyncCtx.Extractor">Extractor</a>[<span class="extype" name="io.getquill.MysqlAsyncContext.extractActionResult.O">O</span>]</span>)</span><span class="params">(<span name="result">result: <span class="extype" name="com.github.mauricio.async.db.QueryResult">QueryResult</span></span>)</span><span class="result">: <span class="extype" name="io.getquill.MysqlAsyncContext.extractActionResult.O">O</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.MysqlAsyncCtx@extractActionResult[O](returningColumn:String,returningExtractor:com.github.mauricio.async.db.RowData=&gt;O)(result:com.github.mauricio.async.db.QueryResult):O" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.MysqlAsyncCtx@extractActionResult[O](returningColumn:String,returningExtractor:MysqlAsyncContext.this.Extractor[O])(result:com.github.mauricio.async.db.QueryResult):O" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -1513,6 +1683,40 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="io.getquill.context.Context#identityExtractor" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="identityExtractor:Context.this.ResultRow=&gt;Context.this.ResultRow"></a>
+      <a id="identityExtractor:(ResultRow)⇒ResultRow"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">identityExtractor</span><span class="result">: (<a href="#ResultRow=com.github.mauricio.async.db.RowData" class="extmbr" name="model.persistence.MysqlAsyncCtx.ResultRow">ResultRow</a>) ⇒ <a href="#ResultRow=com.github.mauricio.async.db.RowData" class="extmbr" name="model.persistence.MysqlAsyncCtx.ResultRow">ResultRow</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.MysqlAsyncCtx@identityExtractor:Context.this.ResultRow=&gt;Context.this.ResultRow" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Context</dd></dl></div>
+    </li><li name="io.getquill.context.Context#identityPrepare" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="identityPrepare:Context.this.Prepare"></a>
+      <a id="identityPrepare:Prepare"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">identityPrepare</span><span class="result">: <a href="#Prepare=Context.this.PrepareRow=&gt;(List[Any],Context.this.PrepareRow)" class="extmbr" name="model.persistence.MysqlAsyncCtx.Prepare">Prepare</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.MysqlAsyncCtx@identityPrepare:Context.this.Prepare" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Context</dd></dl></div>
     </li><li name="io.getquill.dsl.OrdDsl#implicitOrd" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="implicitOrd[T]:OrdDsl.this.Ord[T]"></a>
       <a id="implicitOrd[T]:Ord[T]"></a>
@@ -1604,6 +1808,74 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="io.getquill.context.async.Decoders#jodaLocalDateDecoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="jodaLocalDateDecoder:Decoders.this.Decoder[org.joda.time.LocalDate]"></a>
+      <a id="jodaLocalDateDecoder:Decoder[LocalDate]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">jodaLocalDateDecoder</span><span class="result">: <a href="#Decoder[T]=Decoders.this.AsyncDecoder[T]" class="extmbr" name="model.persistence.MysqlAsyncCtx.Decoder">Decoder</a>[<span class="extype" name="org.joda.time.LocalDate">LocalDate</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.MysqlAsyncCtx@jodaLocalDateDecoder:Decoders.this.Decoder[org.joda.time.LocalDate]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Decoders</dd></dl></div>
+    </li><li name="io.getquill.context.async.Encoders#jodaLocalDateEncoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="jodaLocalDateEncoder:Encoders.this.Encoder[org.joda.time.LocalDate]"></a>
+      <a id="jodaLocalDateEncoder:Encoder[LocalDate]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">jodaLocalDateEncoder</span><span class="result">: <a href="#Encoder[T]=Encoders.this.AsyncEncoder[T]" class="extmbr" name="model.persistence.MysqlAsyncCtx.Encoder">Encoder</a>[<span class="extype" name="org.joda.time.LocalDate">LocalDate</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.MysqlAsyncCtx@jodaLocalDateEncoder:Encoders.this.Encoder[org.joda.time.LocalDate]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Encoders</dd></dl></div>
+    </li><li name="io.getquill.context.async.Decoders#jodaLocalDateTimeDecoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="jodaLocalDateTimeDecoder:Decoders.this.Decoder[org.joda.time.LocalDateTime]"></a>
+      <a id="jodaLocalDateTimeDecoder:Decoder[LocalDateTime]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">jodaLocalDateTimeDecoder</span><span class="result">: <a href="#Decoder[T]=Decoders.this.AsyncDecoder[T]" class="extmbr" name="model.persistence.MysqlAsyncCtx.Decoder">Decoder</a>[<span class="extype" name="org.joda.time.LocalDateTime">LocalDateTime</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.MysqlAsyncCtx@jodaLocalDateTimeDecoder:Decoders.this.Decoder[org.joda.time.LocalDateTime]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Decoders</dd></dl></div>
+    </li><li name="io.getquill.context.async.Encoders#jodaLocalDateTimeEncoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="jodaLocalDateTimeEncoder:Encoders.this.Encoder[org.joda.time.LocalDateTime]"></a>
+      <a id="jodaLocalDateTimeEncoder:Encoder[LocalDateTime]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">jodaLocalDateTimeEncoder</span><span class="result">: <a href="#Encoder[T]=Encoders.this.AsyncEncoder[T]" class="extmbr" name="model.persistence.MysqlAsyncCtx.Encoder">Encoder</a>[<span class="extype" name="org.joda.time.LocalDateTime">LocalDateTime</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.MysqlAsyncCtx@jodaLocalDateTimeEncoder:Encoders.this.Encoder[org.joda.time.LocalDateTime]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Encoders</dd></dl></div>
     </li><li name="io.getquill.dsl.EncodingDsl#lift" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="lift[T](v:T):T"></a>
       <a id="lift[T](T):T"></a>
@@ -1764,40 +2036,6 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Encoders</dd></dl></div>
-    </li><li name="io.getquill.context.async.Decoders#localDateTimeDecoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="localDateTimeDecoder:Decoders.this.Decoder[java.time.LocalDateTime]"></a>
-      <a id="localDateTimeDecoder:Decoder[LocalDateTime]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">implicit </span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">localDateTimeDecoder</span><span class="result">: <a href="#Decoder[T]=Decoders.this.AsyncDecoder[T]" class="extmbr" name="model.persistence.MysqlAsyncCtx.Decoder">Decoder</a>[<span class="extype" name="java.time.LocalDateTime">LocalDateTime</span>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.MysqlAsyncCtx@localDateTimeDecoder:Decoders.this.Decoder[java.time.LocalDateTime]" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Decoders</dd></dl></div>
-    </li><li name="io.getquill.context.async.Encoders#localDateTimeEncoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="localDateTimeEncoder:Encoders.this.Encoder[java.time.LocalDateTime]"></a>
-      <a id="localDateTimeEncoder:Encoder[LocalDateTime]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">implicit </span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">localDateTimeEncoder</span><span class="result">: <a href="#Encoder[T]=Encoders.this.AsyncEncoder[T]" class="extmbr" name="model.persistence.MysqlAsyncCtx.Encoder">Encoder</a>[<span class="extype" name="java.time.LocalDateTime">LocalDateTime</span>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.MysqlAsyncCtx@localDateTimeEncoder:Encoders.this.Encoder[java.time.LocalDateTime]" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Encoders</dd></dl></div>
     </li><li name="io.getquill.context.async.Decoders#longDecoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="longDecoder:Decoders.this.Decoder[Long]"></a>
       <a id="longDecoder:Decoder[Long]"></a>
@@ -1900,40 +2138,6 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Encoders</dd></dl></div>
-    </li><li name="io.getquill.dsl.LowPriorityImplicits#materializeDecoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="materializeDecoder[T&lt;:AnyVal]:LowPriorityImplicits.this.Decoder[T]"></a>
-      <a id="materializeDecoder[T&lt;:AnyVal]:Decoder[T]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">implicit macro </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">materializeDecoder</span><span class="tparams">[<span name="T">T &lt;: <span class="extype" name="scala.AnyVal">AnyVal</span></span>]</span><span class="result">: <a href="#Decoder[T]=Decoders.this.AsyncDecoder[T]" class="extmbr" name="model.persistence.MysqlAsyncCtx.Decoder">Decoder</a>[<span class="extype" name="io.getquill.dsl.LowPriorityImplicits.materializeDecoder.T">T</span>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.MysqlAsyncCtx@materializeDecoder[T&lt;:AnyVal]:LowPriorityImplicits.this.Decoder[T]" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>LowPriorityImplicits</dd></dl></div>
-    </li><li name="io.getquill.dsl.LowPriorityImplicits#materializeEncoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="materializeEncoder[T&lt;:AnyVal]:LowPriorityImplicits.this.Encoder[T]"></a>
-      <a id="materializeEncoder[T&lt;:AnyVal]:Encoder[T]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">implicit macro </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">materializeEncoder</span><span class="tparams">[<span name="T">T &lt;: <span class="extype" name="scala.AnyVal">AnyVal</span></span>]</span><span class="result">: <a href="#Encoder[T]=Encoders.this.AsyncEncoder[T]" class="extmbr" name="model.persistence.MysqlAsyncCtx.Encoder">Encoder</a>[<span class="extype" name="io.getquill.dsl.LowPriorityImplicits.materializeEncoder.T">T</span>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.MysqlAsyncCtx@materializeEncoder[T&lt;:AnyVal]:LowPriorityImplicits.this.Encoder[T]" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>LowPriorityImplicits</dd></dl></div>
     </li><li name="io.getquill.dsl.MetaDslLowPriorityImplicits#materializeInsertMeta" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="materializeInsertMeta[T]:MetaDslLowPriorityImplicits.this.InsertMeta[T]"></a>
       <a id="materializeInsertMeta[T]:InsertMeta[T]"></a>
