@@ -1,8 +1,10 @@
 import sbt.Keys._
 
+val useQuillSnapshot = true
+
 organization := "com.micronautics"
 name := "quill-cache"
-version := "3.2.16"
+version := "3.2.17-SNAPSHOT"  // use sbt publishM2 to publish to ~/.m2/local; sbt publish-local cannot publish maven style
 licenses +=  ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0.html"))
 scalaVersion := "2.11.11"
 crossScalaVersions := Seq("2.11.11", "2.12.3")
@@ -58,15 +60,20 @@ resolvers ++= Seq(
   "micronautics/scala on bintray" at "http://dl.bintray.com/micronautics/scala"
 )
 
-val quillVer = "1.3.0"
+val latestQuillRelease = "1.3.0"
+val quillSnapshot = "1.3.1-SNAPSHOT"
+resolvers += Resolver.sonatypeRepo("snapshots")
+val quillVer: String = if (useQuillSnapshot) {
+  quillSnapshot
+} else latestQuillRelease
 libraryDependencies ++= Seq(
-  "com.github.nscala-time" %% "nscala-time"          % "2.16.0"   withSources(),
-  "com.google.guava"       %  "guava"                % "19.0"     withSources(),
-  "com.micronautics"       %% "has-id"               % "1.2.8"    withSources(),
-  "io.getquill"            %% "quill-async-mysql"    % quillVer   withSources(),
-  "io.getquill"            %% "quill-async-postgres" % quillVer   withSources(),
-  "io.getquill"            %% "quill-jdbc"           % quillVer   withSources(),
-  "net.codingwell"         %% "scala-guice"          % "4.1.0"    withSources(),
+  "com.github.nscala-time" %% "nscala-time"          % "2.16.0"  withSources(),
+  "com.google.guava"       %  "guava"                % "19.0"    withSources(),
+  "com.micronautics"       %% "has-id"               % "1.2.8"   withSources(),
+  "io.getquill"            %% "quill-async-mysql"    % quillVer  withSources(),
+  "io.getquill"            %% "quill-async-postgres" % quillVer  withSources(),
+  "io.getquill"            %% "quill-jdbc"           % quillVer  withSources(),
+  "net.codingwell"         %% "scala-guice"          % "4.1.0"   withSources(),
   "ch.qos.logback"         %  "logback-classic"      % "1.2.3",
   //
   "com.h2database"         %  "h2"                   % "1.4.196"  % Test withSources(),

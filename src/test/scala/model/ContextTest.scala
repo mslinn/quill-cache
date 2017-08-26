@@ -15,7 +15,7 @@ class ContextTest extends TestSpec {
     "be created via insert" in {
       import model.dao.Ctx.{run => qRun, _}
 
-      implicitly[Decoder[Map[IdOptionLong,List[Int]]]]
+      implicitly[Decoder[Map[IdOptionLong, List[Int]]]]
 
       val token0: Token = Tokens.insert(Token(
         value = "value"

@@ -1,15 +1,15 @@
 package model.persistence
 
 import java.net.URL
+import java.sql.Timestamp
 import java.util.UUID
-import com.github.nscala_time.time.Imports._
+import io.getquill._
 import io.getquill.context.jdbc.JdbcContext
-import model.persistence.Types.IdOptionLong
-import scala.collection.{immutable, mutable}
+import model.persistence.Types.{IdLong, IdOptionLong}
+import org.joda.time.DateTime
 import scala.language.implicitConversions
-import scala.reflect.ClassTag
 
-class EnumQuillEncoder[E <: Enum[E] : ClassTag](val ctx: JdbcContext[_, _]) {
+/*class EnumQuillEncoder[E <: Enum[E] : ClassTag](val ctx: JdbcContext[_, _]) {
   import ctx._
 
   implicit val enumDecoder: Decoder[E] = decoder(java.sql.Types.VARCHAR,
@@ -25,36 +25,25 @@ class EnumQuillEncoder[E <: Enum[E] : ClassTag](val ctx: JdbcContext[_, _]) {
       java.sql.Types.VARCHAR,
       (index, value, row) => row.setString(index, value.name)
     )
-}
+}*/
 
 trait QuillCacheImplicits extends IdImplicitLike { ctx: JdbcContext[_, _] =>
   import ctx._
 
-  implicit val dateTimeDecoder: Decoder[DateTime] =
-    decoder(java.sql.Types.TIMESTAMP, (index, row) => new DateTime(row.getTimestamp(index).getTime))
+  implicit val dateTimeEncoder: MappedEncoding[DateTime, Timestamp] =
+    MappedEncoding[DateTime, Timestamp](x => new Timestamp(x.getMillis))
+  implicit val dateTimeDecoder: MappedEncoding[Timestamp, DateTime] =
+    MappedEncoding[Timestamp, DateTime](new DateTime(_))
 
-  implicit val dateTimeEncoder: Encoder[DateTime] =
-    encoder(
-      java.sql.Types.TIMESTAMP,
-      (index, value, row) => row.setTimestamp(index, new java.sql.Timestamp(value.getMillis))
-    )
+  implicit val idLongEncoder: MappedEncoding[IdLong, Long] =
+    MappedEncoding[IdLong, Long](_.value)
+  implicit val idLongDecoder: MappedEncoding[Long, IdLong] =
+    MappedEncoding[Long, IdLong](new Id(_))
 
-  implicit val idLongDecoder: Decoder[Id[Long]] =
-    decoder(java.sql.Types.BIGINT, (index, row) => Id(row.getLong(index)))
-
-  implicit val idLongEncoder: Encoder[Id[Long]] =
-    encoder(java.sql.Types.BIGINT, (index, value, row) => row.setLong(index, value.value))
-
-
-  implicit val idOptionLongDecoder: Decoder[Id[Option[Long]]] =
-    decoder(java.sql.Types.BIGINT, (index, row) => Id(Some(row.getLong(index))))
-
-  implicit val idOptionLongEncoder: Encoder[Id[Option[Long]]] =
-    encoder(java.sql.Types.BIGINT, (index, value, row) =>
-      value.value match {
-        case Some(v) => row.setLong(index, v)
-        case None    => row.setNull(index, java.sql.Types.BIGINT)
-      })
+  implicit val idOptionLongEncoder: MappedEncoding[IdOptionLong, Long] =
+    MappedEncoding[IdOptionLong, Long](_.value.getOrElse(Id.empty[Long].value))
+  implicit val idOptionLongDecoder: MappedEncoding[Long, IdOptionLong] =
+    MappedEncoding[Long, IdOptionLong](x => new Id(Option(x)))
 
 
   @inline implicit def toByteArray(string: String): Array[Byte] =
@@ -64,6 +53,11 @@ trait QuillCacheImplicits extends IdImplicitLike { ctx: JdbcContext[_, _] =>
 
   @inline implicit def toString(byteArray: Array[Byte]): String = new String(byteArray)
 
+
+  implicit val mapIdOptionLongListIntEncoder: MappedEncoding[Map[IdOptionLong, List[Int]], String] =
+    MappedEncoding[Map[IdOptionLong, List[Int]], String](_.value.getOrElse(Id.empty[Long].value))
+  implicit val mapIdOptionLongListIntDecoder: MappedEncoding[String, Map[IdOptionLong, List[Int]]] =
+    MappedEncoding[String, Map[IdOptionLong, List[Int]]](x => new Id(Option(x)))
 
   // Map[OptionLong, List[Int]] to Array[Byte]
   /** Retrieves map as "key1->3,4,5;key2->1,2,3" */
