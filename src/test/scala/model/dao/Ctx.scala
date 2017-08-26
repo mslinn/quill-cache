@@ -28,29 +28,7 @@ case object Ctx extends H2Ctx with QuillCacheImplicits {
    }
 
 
-  type OptionLongToListInt = Map[OptionLong, List[Int]]
-  type IdOptionLongToListInt = Map[IdOptionLong, List[Int]]
-
-
-  implicit val encodeIdOptionLongToListIntString: MappedEncoding[IdOptionLongToListInt, String] =
-    MappedEncoding[IdOptionLongToListInt, String] {
-      _.map { case (key, values) => s"$key->${ values.mkString(",") }" }
-       .mkString(";")
-    }
-
-  implicit val decodeIdOptionLongToListIntString: MappedEncoding[String, IdOptionLongToListInt] =
-    MappedEncoding[String, IdOptionLongToListInt] { map =>
-      if (map.isEmpty) Map.empty else {
-        val arrayOfTuples: Array[(Id[Option[Long]], List[Index])] = for {
-          token <- map.split(";")
-          Array(key, values) = token.split("->")
-        } yield Id(Option(key.toLong)) -> values.split(",").map(_.toInt).toList
-        arrayOfTuples.toMap
-      }
-    }
-
-
-  implicit val encodeIdOptionLongToListIntToArrayByte: MappedEncoding[IdOptionLongToListInt, Array[Byte]] =
+  /*implicit val encodeIdOptionLongToListIntToArrayByte: MappedEncoding[IdOptionLongToListInt, Array[Byte]] =
     MappedEncoding[IdOptionLongToListInt, Array[Byte]] {
       _.map { case (key, values) => s"$key->${ values.mkString(",") }" }
        .mkString(";")
@@ -65,5 +43,5 @@ case object Ctx extends H2Ctx with QuillCacheImplicits {
         } yield Id(Option(key.toLong)) -> values.split(",").map(_.toInt).toList
         arrayOfTuples.toMap
       }
-    }
+    }*/
 }

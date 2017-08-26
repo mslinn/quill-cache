@@ -2,6 +2,7 @@ package model.persistence
 
 import io.getquill._
 import io.getquill.context.jdbc.JdbcContext
+import org.slf4j.Logger
 import scala.reflect.ClassTag
 
 /** Accesses the table for each query.
@@ -16,6 +17,8 @@ abstract class UnCachedPersistence[Key <: Any, _IdType <: Option[Key], CaseClass
     val result = if (i>0) typeName.substring(i+1) else typeName
     result
   }
+
+  val logger: Logger = org.slf4j.LoggerFactory.getLogger("persistence")
 
   /** Encapsulates the Quill query that returns all instances of the case class from the database */
   def _findAll: List[CaseClass]

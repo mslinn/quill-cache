@@ -4,7 +4,7 @@ val useQuillSnapshot = true
 
 organization := "com.micronautics"
 name := "quill-cache"
-version := "3.2.17-SNAPSHOT"  // use sbt publishM2 to publish to ~/.m2/local; sbt publish-local cannot publish maven style
+version := "3.2.17"  // use sbt publishM2 to publish to ~/.m2/local; sbt publish-local cannot publish maven style
 licenses +=  ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0.html"))
 scalaVersion := "2.11.11"
 crossScalaVersions := Seq("2.11.11", "2.12.3")
@@ -24,6 +24,8 @@ scalacOptions ++=
     "-encoding", "UTF-8",
     "-feature",
     "-unchecked",
+//    "-Xlog-implicits",     // verbose but useful when quill mappings are at issue
+//    "-Xlog-implicit-conversions",
     "-Ywarn-adapted-args",
     "-Ywarn-dead-code",
     "-Ywarn-numeric-widen",
@@ -63,9 +65,7 @@ resolvers ++= Seq(
 val latestQuillRelease = "1.3.0"
 val quillSnapshot = "1.3.1-SNAPSHOT"
 resolvers += Resolver.sonatypeRepo("snapshots")
-val quillVer: String = if (useQuillSnapshot) {
-  quillSnapshot
-} else latestQuillRelease
+val quillVer: String = if (useQuillSnapshot) quillSnapshot else latestQuillRelease
 libraryDependencies ++= Seq(
   "com.github.nscala-time" %% "nscala-time"          % "2.16.0"  withSources(),
   "com.google.guava"       %  "guava"                % "19.0"    withSources(),
@@ -80,7 +80,7 @@ libraryDependencies ++= Seq(
   "junit"                  %  "junit"                % "4.12"     % Test,
   "org.postgresql"         %  "postgresql"           % "42.1.1"   % Test,
   "org.xerial"             %  "sqlite-jdbc"          % "3.8.11.2" % Test withSources(),
-  "org.scalatest"          %% "scalatest"            % "3.0.3"    % Test withSources()
+  "org.scalatest"          %% "scalatest"            % "3.0.4"    % Test withSources()
 )
 
 publishArtifact in (Compile, packageSrc) := false
@@ -94,13 +94,22 @@ logLevel in compile := Level.Warn
 // Level.INFO is needed to see detailed output when running tests
 logLevel in test := Level.Debug
 
+val commonInitialCommands =
+  """import java.net.URL
+    |import java.util.UUID
+    |import com.github.nscala_time.time.Imports._
+    |import io.getquill._
+    |import io.getquill.context.jdbc.JdbcContext
+    |import scala.reflect.ClassTag
+    |import model._
+    |""".stripMargin
+
 // define the statements initially evaluated when entering 'console', 'console-quick', but not 'console-project'
-initialCommands in console := """import java.net.URL
-                                |import java.util.UUID
-                                |import com.github.nscala_time.time.Imports._
-                                |import io.getquill.context.jdbc.JdbcContext
-                                |import scala.reflect.ClassTag
-                                |import model._
-                                |""".stripMargin
+initialCommands in console := commonInitialCommands
+
+// define the statements initially evaluated when entering 'test:console', 'test:console-quick', but not 'test:console-project'
+initialCommands in Test in console := commonInitialCommands +
+  """import model.dao.Ctx.{run => qRun, _}
+    |""".stripMargin
 
 cancelable := true

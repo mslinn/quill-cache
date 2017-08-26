@@ -2,10 +2,9 @@ package model
 
 import io.getquill._
 import java.net.URL
-import java.sql.Timestamp
 import java.util.UUID
 import model.dao._
-import model.persistence.Types.{IdLong, IdOptionLong}
+import model.persistence.Types._
 import model.persistence._
 import org.joda.time.DateTime
 import org.junit.runner.RunWith
@@ -38,44 +37,62 @@ class ContextTest extends TestSpec {
     "work" in {
       import model.dao.Ctx.{run => qRun, _}
 
-      implicitly[Decoder[Map[IdOptionLong, List[Int]]]]
-      implicitly[Encoder[Map[IdOptionLong, List[Int]]]]
-
-      implicitly[Decoder[Map[IdOptionLong, List[Long]]]]
-      implicitly[Encoder[Map[IdOptionLong, List[Long]]]]
-
-      implicitly[Decoder[DateTime]]
-      implicitly[Encoder[DateTime]]
-
-      implicitly[Decoder[IdLong]]
-      implicitly[Encoder[IdLong]]
-
-      implicitly[Decoder[IdOptionLong]]
-      implicitly[Encoder[IdOptionLong]]
-
-      implicitly[Decoder[Map[IdOptionLong, List[Int]]]]
-      implicitly[Encoder[Map[IdOptionLong, List[Int]]]]
-
-      implicitly[Decoder[Id[UUID]]]
-      implicitly[Encoder[Id[UUID]]]
-
-      implicitly[Decoder[Id[Option[UUID]]]]
-      implicitly[Encoder[Id[Option[UUID]]]]
-
-      implicitly[Decoder[Option[IdOptionLong]]]
-      implicitly[Encoder[Option[IdOptionLong]]]
-
-      implicitly[Decoder[Map[IdOptionLong, List[Int]]]]
-      implicitly[Encoder[Map[IdOptionLong, List[Int]]]]
-
-      implicitly[Decoder[URL]]
-      implicitly[Encoder[URL]]
-
-      implicitly[Decoder[Option[URL]]]
-      implicitly[Encoder[Option[URL]]]
-
-      implicitly[Decoder[List[URL]]]
-      implicitly[Encoder[List[URL]]]
+      {
+        implicitly[Decoder[java.util.Date]]
+        implicitly[Encoder[java.util.Date]]
+      }
+      {
+        implicitly[Decoder[DateTime]]
+        implicitly[Encoder[DateTime]]
+      }
+      {
+        implicitly[Decoder[Map[IdOptionLong, List[Int]]]]
+        implicitly[Encoder[Map[IdOptionLong, List[Int]]]]
+      }
+      {
+        implicitly[Decoder[Map[IdOptionLong, List[Long]]]]
+        implicitly[Encoder[Map[IdOptionLong, List[Long]]]]
+      }
+      {
+        implicitly[Decoder[IdLong]]
+        implicitly[Encoder[IdLong]]
+      }
+      {
+        implicitly[Decoder[IdOptionLong]]
+        implicitly[Encoder[IdOptionLong]]
+      }
+      {
+        implicitly[Decoder[Map[IdOptionLong, List[Int]]]]
+        implicitly[Encoder[Map[IdOptionLong, List[Int]]]]
+      }
+      {
+        implicitly[Decoder[Id[UUID]]]
+        implicitly[Encoder[Id[UUID]]]
+      }
+      {
+        implicitly[Decoder[Id[Option[UUID]]]]
+        implicitly[Encoder[Id[Option[UUID]]]]
+      }
+      {
+        implicitly[Decoder[Option[IdOptionLong]]]
+        implicitly[Encoder[Option[IdOptionLong]]]
+      }
+      {
+        implicitly[Decoder[Map[IdOptionLong, List[Int]]]]
+        implicitly[Encoder[Map[IdOptionLong, List[Int]]]]
+      }
+      {
+        implicitly[Decoder[URL]]
+        implicitly[Encoder[URL]]
+      }
+      {
+        implicitly[Decoder[Option[URL]]]
+        implicitly[Encoder[Option[URL]]]
+      }
+      {
+        implicitly[Decoder[List[URL]]]
+        implicitly[Encoder[List[URL]]]
+      }
     }
   }
 
