@@ -9,24 +9,6 @@ import model.persistence.Types.{IdLong, IdOptionLong}
 import org.joda.time.DateTime
 import scala.language.implicitConversions
 
-/*class EnumQuillEncoder[E <: Enum[E] : ClassTag](val ctx: JdbcContext[_, _]) {
-  import ctx._
-
-  implicit val enumDecoder: Decoder[E] = decoder(java.sql.Types.VARCHAR,
-    (index, row) => {
-      val klass = classOf[ClassTag[E]]
-      val method = klass.getDeclaredMethod("valueOf", classOf[String])
-      val result = method.invoke(klass, row.getString(index))
-      result.asInstanceOf[E]
-    })
-
-  implicit val enumEncoder: Encoder[E] =
-    encoder(
-      java.sql.Types.VARCHAR,
-      (index, value, row) => row.setString(index, value.name)
-    )
-}*/
-
 trait QuillCacheImplicits extends IdImplicitLike { ctx: JdbcContext[_, _] =>
   import ctx._
 
@@ -54,80 +36,23 @@ trait QuillCacheImplicits extends IdImplicitLike { ctx: JdbcContext[_, _] =>
   @inline implicit def toString(byteArray: Array[Byte]): String = new String(byteArray)
 
 
-  implicit val mapIdOptionLongListIntEncoder: MappedEncoding[Map[IdOptionLong, List[Int]], String] =
-    MappedEncoding[Map[IdOptionLong, List[Int]], String](_.value.getOrElse(Id.empty[Long].value))
-  implicit val mapIdOptionLongListIntDecoder: MappedEncoding[String, Map[IdOptionLong, List[Int]]] =
-    MappedEncoding[String, Map[IdOptionLong, List[Int]]](x => new Id(Option(x)))
-
-  // Map[OptionLong, List[Int]] to Array[Byte]
-  /** Retrieves map as "key1->3,4,5;key2->1,2,3" */
-  implicit val mapIdOptionLongListIntDecoder: Decoder[Map[IdOptionLong, List[Int]]] =
-    decoder(java.sql.Types.VARBINARY, (index, row) => {
-      val map: String = row.getString(index)
-      if (map.isEmpty) Map.empty else {
-        val arrayOfTuples: Array[(Id[Option[Long]], List[Index])] = for {
-          token <- map.split(";")
-          Array(key, values) = token.split("->")
-        } yield Id(Option(key.toLong)) -> values.split(",").map(_.toInt).toList
-        arrayOfTuples.toMap
-      }
-    })
-
   /** Stores map to "key1->3,4,5;key2->1,2,3" */
-  implicit val mapIdOptionLongListIntEncoder: Encoder[Map[IdOptionLong, List[Int]]] =
-    encoder(java.sql.Types.VARCHAR, (index, value, row) => {
-      val string = value
-                     .map { case (key, values) => s"$key->${ values.mkString(",") }" }
-                     .mkString(";")
-      row.setString(index, string)
-    })
+  implicit val mapIdOptionLongListIntEncoder: MappedEncoding[Map[IdOptionLong, List[Int]], String] =
+    MappedEncoding[Map[IdOptionLong, List[Int]], String] { inputMap =>
+        inputMap.map { case (key, value) =>
+          s"$key->${ value.mkString(",") }"
+        }.mkString(";")
+      }
 
-
-  // Map[OptionLong, List[Int]] to Array[Byte]
-//  /** Retrieves map as "key1->3,4,5;key2->1,2,3" */
-//  implicit val mapIdOptionLongListIntDecoder: Decoder[Map[IdOptionLong, List[Int]]] =
-//    decoder(java.sql.Types.VARCHAR, (index, row) => {
-//      val map: String = row.getString(index)
-//      if (map.isEmpty) Map.empty else {
-//        val arrayOfTuples: Array[(Id[Option[Long]], List[Index])] = for {
-//          token <- map.split(";")
-//          Array(key, values) =  token.split("->")
-//        } yield Id(Option(key.toLong)) -> values.split(",").map(_.toInt).toList
-//        arrayOfTuples.toMap
-//      }
-//    })
-//
-//  /** Stores map as type `Seq[Array[Byte]]` with typical values "key1->3,4,5;key2->1,2,3" */
-//  implicit val mapIdOptionLongListIntEncoder: Encoder[Map[IdOptionLong, List[Int]]] =
-//    encoder(java.sql.Types.VARCHAR, (index, value, row) => {
-//      val string: Array[Byte] = value
-//                     .map { case (key, values) => s"$key->${ values.mkString("", ",", ";") }" }
-//                     .map { _.toCharArray.toBuffer[Byte].toArray[Byte] }
-//      row.setBytes(index, string)
-//    })
-
-
-  /** Retrieves map as type `Seq[Array[Byte]]` with typical values "key1->3,4,5;key2->1,2,3" */
-//  implicit val mapIdOptionLongListIntDecoderArray: Decoder[Map[IdOptionLong, List[Int]]] =
-//    decoder(java.sql.Types.VARBINARY, (index, row) => {
-//      val map: String = toString(row.getBytes(index))
-//      if (map.isEmpty) Map.empty else {
-//        val arrayOfTuples: Array[(Id[Option[Long]], List[Index])] = for {
-//          token <- map.split(";")
-//          Array(key, values) =  token.split("->")
-//        } yield Id(Option(key.toLong)) -> values.split(",").map(_.toInt).toList
-//        arrayOfTuples.toMap
-//      }
-//    })
-//
-//  /** Stores map to "key1->3,4,5;key2->1,2,3" into `Array[Byte]` */
-//  implicit val mapIdOptionLongListIntEncoderArray: Encoder[Map[IdOptionLong, List[Int]]] =
-//    encoder(java.sql.Types.VARBINARY, (index, value, row) => {
-//      val string = value
-//                     .map { case (key, values) => s"$key->${ values.mkString(",") }" }
-//                     .mkString(";")
-//      row.setBytes(index, toByteArray(string))
-//    })
+  /** Retrieves map as "key1->3,4,5;key2->1,2,3" */
+  implicit val mapIdOptionLongListIntDecoder: MappedEncoding[String, Map[IdOptionLong, List[Int]]] =
+    MappedEncoding[String, Map[IdOptionLong, List[Int]]] { inputString =>
+      val arrayOfTuples: Array[(Id[Option[Long]], List[Index])] = for {
+        token <- inputString.split(";")
+        Array(key, values) = token.split("->")
+      } yield Id(Option(key.toLong)) -> values.split(",").map(_.toInt).toList
+      arrayOfTuples.toMap
+    }
 
 
   /** @see [[https://github.com/getquill/quill/issues/805#issuecomment-309304298]] */
