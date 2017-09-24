@@ -99,13 +99,13 @@ Add this to your project's `build.sbt`:
 
     resolvers += "micronautics/scala on bintray" at "http://dl.bintray.com/micronautics/scala"
 
-    libraryDependencies += "com.micronautics" %% "quill-cache" % "3.2.17"
+    libraryDependencies += "com.micronautics" %% "quill-cache" % "3.3.0"
 
 You will also need to add a driver for the database you are using.
 Quill only supports H2, MySQL, Postgres and Sqlite.
 For example, for Postgres, add:
 
-    libraryDependencies += "org.postgresql" % "postgresql" % "42.1.1"
+    libraryDependencies += "org.postgresql" % "postgresql" % "42.1.4"
 
 You will need a logging framework. Logback is a good choice:
 

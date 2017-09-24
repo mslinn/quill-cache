@@ -1,10 +1,10 @@
 import sbt.Keys._
 
-val useQuillSnapshot = true
+val useQuillSnapshot = false
 
 organization := "com.micronautics"
 name := "quill-cache"
-version := "3.2.17"  // use sbt publishM2 to publish to ~/.m2/local; sbt publish-local cannot publish maven style
+version := "3.3.0"  // use sbt publishM2 to publish to ~/.m2/local; sbt publish-local cannot publish maven style
 licenses +=  ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0.html"))
 scalaVersion := "2.11.11"
 crossScalaVersions := Seq("2.11.11", "2.12.3")
@@ -62,8 +62,8 @@ resolvers ++= Seq(
   "micronautics/scala on bintray" at "http://dl.bintray.com/micronautics/scala"
 )
 
-val latestQuillRelease = "1.3.0"
-val quillSnapshot = "1.3.1-SNAPSHOT"
+val latestQuillRelease = "1.4.0"
+val quillSnapshot = "1.4.1-SNAPSHOT"
 resolvers += Resolver.sonatypeRepo("snapshots")
 val quillVer: String = if (useQuillSnapshot) quillSnapshot else latestQuillRelease
 libraryDependencies ++= Seq(
@@ -78,8 +78,8 @@ libraryDependencies ++= Seq(
   //
   "com.h2database"         %  "h2"                   % "1.4.196"  % Test withSources(),
   "junit"                  %  "junit"                % "4.12"     % Test,
-  "org.postgresql"         %  "postgresql"           % "42.1.1"   % Test,
-  "org.xerial"             %  "sqlite-jdbc"          % "3.8.11.2" % Test withSources(),
+  "org.postgresql"         %  "postgresql"           % "42.1.4"   % Test,
+  "org.xerial"             %  "sqlite-jdbc"          % "3.20.0"   % Test withSources(),
   "org.scalatest"          %% "scalatest"            % "3.0.4"    % Test withSources()
 )
 

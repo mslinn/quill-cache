@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# Performs the following, in order, until an error is encountered:
+#   1) Creates and uploads Scaladoc
+#   2) Parses version number from build.sbt
+#   3) Publishes new version to bintray; dies if version is already defined
+#   4) Commits published version, complete with a new tag
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/.."
+cd "$DIR"
+
+# Scan build.sbt for an SBT setting
+function findValue {
+  echo "$( grep "$1 :=" build.sbt | cut -d' ' -f 3 | tr -d \" )"
+}
+
+VERSION="$( findValue version )"
+
+echo "Creating and uploading Scaladoc"
+sbt "; doc; ghpagesPushSite"
+
+if [ $? == 0 ]; then
+  echo "Publishing version $VERSION"
+  sbt "+publish"
+
+  if [ $? == 0 ]; then
+    echo "Committing tag $VERSION"
+    git commit -a "$VERSION" -m "Version $VERSION"
+  else
+    echo "Non-zero return code from SBT, so git commit not performed"
+  fi
+else
+  echo "Non-zero return code from SBT ghpagesPushSite, so sbt +publish not performed"
+fi
