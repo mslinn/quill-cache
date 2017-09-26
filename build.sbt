@@ -1,10 +1,12 @@
 import sbt.Keys._
 
+// Maintainers: Use sbt publishM2 to publish to ~/.m2/local; sbt publish-local cannot publish maven style
+
 val useQuillSnapshot = false
 
 organization := "com.micronautics"
 name := "quill-cache"
-version := "3.3.1"  // use sbt publishM2 to publish to ~/.m2/local; sbt publish-local cannot publish maven style
+version := "3.3.1"
 licenses +=  ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0.html"))
 scalaVersion := "2.11.11"
 crossScalaVersions := Seq("2.11.11", "2.12.3")
@@ -62,10 +64,11 @@ resolvers ++= Seq(
   "micronautics/scala on bintray" at "http://dl.bintray.com/micronautics/scala"
 )
 
-val latestQuillRelease = "1.4.0"
-val quillSnapshot = "1.4.1-SNAPSHOT"
-resolvers += Resolver.sonatypeRepo("snapshots")
-val quillVer: String = if (useQuillSnapshot) quillSnapshot else latestQuillRelease
+val quillVer: String = if (useQuillSnapshot) {
+  resolvers += Resolver.sonatypeRepo("snapshots")
+  "1.4.1-SNAPSHOT"
+} else "1.4.0"
+
 libraryDependencies ++= Seq(
   "com.github.nscala-time" %% "nscala-time"          % "2.16.0"  withSources(),
   "com.google.guava"       %  "guava"                % "22.0"    withSources(),
