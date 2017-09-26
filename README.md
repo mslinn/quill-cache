@@ -7,8 +7,8 @@
 
 ## Features and Benefits
   * Dramatically reduces time to fetch results from read-mostly database tables
-  * Database-independent [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) API (`insert`, `deleteById`, `remove`, `update`, `upsert`, `zap`, `findAll`, `findById`,
-    plus application-specific finders)
+  * Database-independent [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) API 
+    (`insert`, `deleteById`, `remove`, `update`, `upsert`, `zap`, `findAll`, `findById`, plus application-specific finders)
   * Thin, light type-safe API
   * Provides compatible interface to read-write database tables
   * Multiple databases can be configured, with configurations for development, testing, production, etc.
@@ -99,7 +99,7 @@ Add this to your project's `build.sbt`:
 
     resolvers += "micronautics/scala on bintray" at "http://dl.bintray.com/micronautics/scala"
 
-    libraryDependencies += "com.micronautics" %% "quill-cache" % "3.3.0"
+    libraryDependencies += "com.micronautics" %% "quill-cache" % "3.3.1"
 
 You will also need to add a driver for the database you are using.
 Quill only supports H2, MySQL, Postgres and Sqlite.
