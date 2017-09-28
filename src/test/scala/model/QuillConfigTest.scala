@@ -20,9 +20,7 @@ class QuillConfigTest extends TestSpec {
 
   "HikariCP" should {
     "be configured properly" in {
-      val config: Config = ConfigFactory.load.getConfig("quill-cache.postgres")
-      config.getInt("maximumPoolSize") shouldBe 100
-
+      val config: Config = ConfigFactory.load.getConfig("quill-cache.h2")
       val jdbcContextConfig = JdbcContextConfig(config)
       val dataSource: HikariDataSource = jdbcContextConfig.dataSource
       val properties: Properties = dataSource.getDataSourceProperties

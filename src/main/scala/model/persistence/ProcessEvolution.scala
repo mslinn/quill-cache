@@ -7,14 +7,34 @@ import scala.concurrent.ExecutionContext.{Implicits => EC}
 import scala.io.Codec
 import scala.io.Source.fromInputStream
 
-class Blah
+object ProcessEvolution {
+  def ups(sourceFileName: String, allSql: List[String]): String = {
+    val upsLines: Seq[String] = allSql
+      .dropWhile(!contains(_, "# --- !Ups".toLowerCase))
+      .drop(1)
+      .takeWhile(!contains(_, "# --- !Downs".toLowerCase))
+    val ups = upsLines.mkString("\n")
+    logger.warn(s"Got ${ upsLines.length } up lines from $sourceFileName:]\n$ups")
+    ups
+  }
 
-/** Extract the Up portion of a Play evolution file and execute SQL statements, including DDL */
-class ProcessEvolution(resourcePath: String, fallbackPath: String) {
+  def downs(sourceFileName: String, allSql: List[String]): String = {
+    val downsLines: Seq[String] = allSql
+      .dropWhile(!contains(_, "# --- !Downs".toLowerCase))
+      .drop(1)
+    val downs = downsLines.mkString("\n")
+    logger.warn(s"Got ${ downsLines.length } down lines from $sourceFileName:]\n$downs")
+    downs
+  }
+
   /** @param target must be lower case */
   protected def contains(line: String, target: String): Boolean =
     line.toLowerCase.replaceAll("\\s+", " ") contains target
+}
 
+/** Extract the Up portion of a Play evolution file and execute SQL statements, including DDL */
+class ProcessEvolution(resourcePath: String, fallbackPath: String) {
+  /** @return lines from a file in a jar */
   protected def getLines(classLoader: ClassLoader, resource: String): Option[(String, List[String])] =
     try {
       val stream = classLoader.getResourceAsStream(resource)
@@ -30,30 +50,19 @@ class ProcessEvolution(resourcePath: String, fallbackPath: String) {
   /** Tries to load the resource 3 ways */
   protected def fromResource(resourcePath: String, fallbackPath: String)
                             (implicit codec: Codec): (String, List[String]) = {
-    getLines(classOf[Blah].getClassLoader, resourcePath)
+    getLines(getClass.getClassLoader, resourcePath)
       .orElse(getLines(Thread.currentThread.getContextClassLoader, resourcePath))
       .getOrElse(fallbackPath -> scala.io.Source.fromFile(fallbackPath).getLines.toList)
   }
 
   protected def downs(resourcePath: String, fallbackPath: String): String = {
     val (source, allSql) = fromResource(resourcePath, fallbackPath)
-    val downsLines: Seq[String] = allSql
-      .dropWhile(!contains(_, "# --- !Downs".toLowerCase))
-      .drop(1)
-    val downs = downsLines.mkString("\n")
-    logger.warn(s"Got ${ downsLines.length } down lines from $source:]\n$downs")
-    downs
+    ProcessEvolution.downs(source, allSql)
   }
 
   protected def ups(resourcePath: String, fallbackPath: String): String = {
     val (source, allSql) = fromResource(resourcePath, fallbackPath)
-    val upsLines: Seq[String] = allSql
-      .dropWhile(!contains(_, "# --- !Ups".toLowerCase))
-      .drop(1)
-      .takeWhile(!contains(_, "# --- !Downs".toLowerCase))
-    val ups = upsLines.mkString("\n")
-    logger.warn(s"Got ${ upsLines.length } up lines from $source:]\n$ups")
-    ups
+    ProcessEvolution.ups(source, allSql)
   }
 
   /** Works with synchronous Quill contexts */

@@ -26,22 +26,4 @@ case object Ctx extends H2Ctx with QuillCacheImplicits {
      if (string.isEmpty) Nil
      else string.split(",").toList.map(PaymentMechanism.valueOf)
    }
-
-
-  /*implicit val encodeIdOptionLongToListIntToArrayByte: MappedEncoding[IdOptionLongToListInt, Array[Byte]] =
-    MappedEncoding[IdOptionLongToListInt, Array[Byte]] {
-      _.map { case (key, values) => s"$key->${ values.mkString(",") }" }
-       .mkString(";")
-    }
-
-  implicit val decodeIdOptionLongToListIntToArrayByte: MappedEncoding[Array[Byte], IdOptionLongToListInt] =
-    MappedEncoding[Array[Byte], IdOptionLongToListInt] { map =>
-      if (map.length==0) Map.empty else {
-        val arrayOfTuples: Array[(Id[Option[Long]], List[Index])] = for {
-          token <- map.split(";")
-          Array(key, values) = token.split("->")
-        } yield Id(Option(key.toLong)) -> values.split(",").map(_.toInt).toList
-        arrayOfTuples.toMap
-      }
-    }*/
 }

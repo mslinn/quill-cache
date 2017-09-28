@@ -20,7 +20,7 @@ case object H2Server extends ConfigParse {
   protected val dataSource: Config = h2Config.getConfig("dataSource")
   protected val url: String = dataSource.getString("url")
   protected val h2Server: Server = org.h2.tools.Server.createTcpServer("-baseDir", "./h2data")
-  var state = CREATED
+  var state: H2ServerStatus = CREATED
 
   def start(): Unit = if (state==CREATED) {
     try {
@@ -68,7 +68,7 @@ trait SetupTeardown extends BeforeAndAfterAll { this: WordSpec with LocalH2Serve
       logger.warn(s"Creating H2 database tables from $resourcePath or $fallbackPath")
       processEvolution.downs(Ctx)
     } catch { case e: Throwable =>
-      logger.warn(e.getMessage)
+      logger.warn("Error processing downs: " + e.getMessage)
     }
     processEvolution.ups(Ctx)
     logger.warn("H2 database tables should exist now.")
