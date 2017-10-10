@@ -16,7 +16,7 @@ import io.getquill.util.LoadConfig
   * }}}
   * The [[H2Configuration]] object mixes in this trait and provides an alternative mechanism. */
 abstract class H2Ctx(val dataSource: DataSource with Closeable)
-  extends H2JdbcContext[TableNameSnakeCase](dataSource) {
+  extends H2JdbcContext(TableNameSnakeCase, dataSource) {
 
   def this(config: JdbcContextConfig) = this(config.dataSource)
   def this(config: Config) = this(JdbcContextConfig(config))
@@ -33,7 +33,7 @@ abstract class H2Ctx(val dataSource: DataSource with Closeable)
   * }}}
   * The [[MysqlConfiguration]] object mixes in this trait and provides an alternative mechanism. */
 abstract class MySqlCtx(val dataSource: DataSource with Closeable)
-  extends MysqlJdbcContext[TableNameSnakeCase](ConfigParse.configPrefix("mysql")) {
+  extends MysqlJdbcContext(TableNameSnakeCase, ConfigParse.configPrefix("mysql")) {
 
   def this(config: JdbcContextConfig) = this(config.dataSource)
   def this(config: Config) = this(JdbcContextConfig(config))
@@ -50,7 +50,7 @@ abstract class MySqlCtx(val dataSource: DataSource with Closeable)
   * }}}
   * The [[MysqlAsyncConfiguration]] object mixes in this trait and provides an alternative mechanism. */
 abstract class MysqlAsyncCtx(val dataSource: DataSource with Closeable)
-  extends MysqlAsyncContext[TableNameSnakeCase](ConfigParse.configPrefix("mysql-async")) {
+  extends MysqlAsyncContext(TableNameSnakeCase, ConfigParse.configPrefix("mysql-async")) {
 
   def this(config: JdbcContextConfig) = this(config.dataSource)
   def this(config: Config) = this(JdbcContextConfig(config))
@@ -67,7 +67,7 @@ abstract class MysqlAsyncCtx(val dataSource: DataSource with Closeable)
   * }}}
   * The [[PostgresConfiguration]] object mixes in this trait and provides an alternative mechanism. */
 abstract class PostgresCtx(val dataSource: DataSource with Closeable)
-  extends PostgresJdbcContext[TableNameSnakeCase](ConfigParse.configPrefix("postgres")) {
+  extends PostgresJdbcContext(TableNameSnakeCase, ConfigParse.configPrefix("postgres")) {
 
   def this(config: JdbcContextConfig) = this(config.dataSource)
   def this(config: Config) = this(JdbcContextConfig(config))
@@ -83,7 +83,7 @@ abstract class PostgresCtx(val dataSource: DataSource with Closeable)
   * }}}
   * The [[PostgresAsyncConfiguration]] object mixes in this trait and provides an alternative mechanism. */
 abstract class PostgresAsyncCtx(val dataSource: DataSource with Closeable)
-  extends PostgresAsyncContext[TableNameSnakeCase](ConfigParse.configPrefix("postgres-async")) {
+  extends PostgresAsyncContext(TableNameSnakeCase, ConfigParse.configPrefix("postgres-async")) {
 
   def this(config: JdbcContextConfig) = this(config.dataSource)
   def this(config: Config) = this(JdbcContextConfig(config))
@@ -99,7 +99,7 @@ abstract class PostgresAsyncCtx(val dataSource: DataSource with Closeable)
   * }}}
   * The [[SqliteConfiguration]] object mixes in this trait and provides an alternative mechanism. */
 abstract class SqliteCtx(val dataSource: DataSource with Closeable)
-  extends SqliteJdbcContext[TableNameSnakeCase](ConfigParse.configPrefix("sqlite")) {
+  extends SqliteJdbcContext(TableNameSnakeCase, ConfigParse.configPrefix("sqlite")) {
 
   def this(config: JdbcContextConfig) = this(config.dataSource)
   def this(config: Config) = this(JdbcContextConfig(config))

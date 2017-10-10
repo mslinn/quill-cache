@@ -6,7 +6,7 @@ val useQuillSnapshot = false
 
 organization := "com.micronautics"
 name := "quill-cache"
-version := "3.3.2"
+version := "3.4.0"
 licenses +=  ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0.html"))
 scalaVersion := "2.11.11"
 crossScalaVersions := Seq("2.11.11", "2.12.3")
@@ -66,23 +66,23 @@ resolvers ++= Seq(
 
 val quillVer: String = if (useQuillSnapshot) {
   resolvers += Resolver.sonatypeRepo("snapshots")
-  "1.4.1-SNAPSHOT"
-} else "1.4.0"
+  "2.0.1-SNAPSHOT"
+} else "2.0.0"
 
 libraryDependencies ++= Seq(
-  "com.github.nscala-time" %% "nscala-time"          % "2.16.0"  withSources(),
-  "com.google.guava"       %  "guava"                % "22.0"    withSources(),
-  "com.micronautics"       %% "has-id"               % "1.2.8"   withSources(),
-  "io.getquill"            %% "quill-async-mysql"    % quillVer  withSources(),
-  "io.getquill"            %% "quill-async-postgres" % quillVer  withSources(),
-  "io.getquill"            %% "quill-jdbc"           % quillVer  withSources(),
-  "net.codingwell"         %% "scala-guice"          % "4.1.0"   withSources(),
+  "com.github.nscala-time" %% "nscala-time"          % "2.16.0"   withSources(),
+  "com.google.guava"       %  "guava"                % "23.1-jre" withSources(),
+  "com.micronautics"       %% "has-id"               % "1.2.8"    withSources(),
+  "io.getquill"            %% "quill-async-mysql"    % quillVer   withSources(),
+  "io.getquill"            %% "quill-async-postgres" % quillVer   withSources(),
+  "io.getquill"            %% "quill-jdbc"           % quillVer   withSources(),
+  "net.codingwell"         %% "scala-guice"          % "4.1.0"    withSources(),
   "ch.qos.logback"         %  "logback-classic"      % "1.2.3",
   //
   "com.h2database"         %  "h2"                   % "1.4.196"  % Test withSources(),
   "junit"                  %  "junit"                % "4.12"     % Test,
   "org.postgresql"         %  "postgresql"           % "42.1.4"   % Test,
-  "org.xerial"             %  "sqlite-jdbc"          % "3.20.0"   % Test withSources(),
+  "org.xerial"             %  "sqlite-jdbc"          % "3.20.1"   % Test withSources(),
   "org.scalatest"          %% "scalatest"            % "3.0.4"    % Test withSources()
 )
 
