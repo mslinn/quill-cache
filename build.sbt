@@ -86,8 +86,6 @@ libraryDependencies ++= Seq(
   "org.scalatest"          %% "scalatest"            % "3.0.4"    % Test withSources()
 )
 
-publishArtifact in (Compile, packageSrc) := false
-
 logLevel := Level.Warn
 
 // Only show warnings and errors on the screen for compilations.
