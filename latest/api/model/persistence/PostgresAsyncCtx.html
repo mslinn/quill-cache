@@ -45,7 +45,7 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <span class="name">PostgresAsyncCtx</span><span class="result"> extends <span class="extype" name="io.getquill.PostgresAsyncContext">PostgresAsyncContext</span>[<a href="TableNameSnakeCase.html" class="extype" name="model.persistence.TableNameSnakeCase">TableNameSnakeCase</a>]</span>
+        <span class="name">PostgresAsyncCtx</span><span class="result"> extends <span class="extype" name="io.getquill.PostgresAsyncContext">PostgresAsyncContext</span>[<a href="TableNameSnakeCase$.html" class="extype" name="model.persistence.TableNameSnakeCase">TableNameSnakeCase</a>.type]</span>
       </span>
       </h4>
       
@@ -55,7 +55,7 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
   <span class="kw">import</span> ctx._
 }</pre><p>The <a href="PostgresAsyncConfiguration$.html" class="extype" name="model.persistence.PostgresAsyncConfiguration">PostgresAsyncConfiguration</a> object mixes in this trait and provides an alternative mechanism.</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/mslinn/quill-cache/tree/master/src/main/scala/model/persistence/QuillContexts.scala" target="_blank">QuillContexts.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><span class="extype" name="io.getquill.PostgresAsyncContext">PostgresAsyncContext</span>[<a href="TableNameSnakeCase.html" class="extype" name="model.persistence.TableNameSnakeCase">TableNameSnakeCase</a>], <span class="extype" name="io.getquill.context.async.UUIDObjectEncoding">UUIDObjectEncoding</span>, <span class="extype" name="io.getquill.context.async.ArrayDecoders">ArrayDecoders</span>, <span class="extype" name="io.getquill.context.async.ArrayEncoders">ArrayEncoders</span>, <span class="extype" name="io.getquill.context.sql.encoding.ArrayEncoding">ArrayEncoding</span>, <span class="extype" name="io.getquill.context.async.AsyncContext">AsyncContext</span>[<span class="extype" name="io.getquill.PostgresDialect">PostgresDialect</span>, <a href="TableNameSnakeCase.html" class="extype" name="model.persistence.TableNameSnakeCase">TableNameSnakeCase</a>, <span class="extype" name="com.github.mauricio.async.db.postgresql.PostgreSQLConnection">PostgreSQLConnection</span>], <span class="extype" name="io.getquill.context.async.Encoders">Encoders</span>, <span class="extype" name="io.getquill.context.async.Decoders">Decoders</span>, <span class="extype" name="io.getquill.context.sql.SqlContext">SqlContext</span>[<span class="extype" name="io.getquill.PostgresDialect">PostgresDialect</span>, <a href="TableNameSnakeCase.html" class="extype" name="model.persistence.TableNameSnakeCase">TableNameSnakeCase</a>], <span class="extype" name="io.getquill.context.sql.dsl.SqlDsl">SqlDsl</span>, <span class="extype" name="io.getquill.context.Context">Context</span>[<span class="extype" name="io.getquill.PostgresDialect">PostgresDialect</span>, <a href="TableNameSnakeCase.html" class="extype" name="model.persistence.TableNameSnakeCase">TableNameSnakeCase</a>], <span class="extype" name="io.getquill.dsl.CoreDsl">CoreDsl</span>, <span class="extype" name="io.getquill.dsl.MetaDsl">MetaDsl</span>, <span class="extype" name="io.getquill.dsl.MetaDslLowPriorityImplicits">MetaDslLowPriorityImplicits</span>, <span class="extype" name="io.getquill.dsl.EncodingDsl">EncodingDsl</span>, <span class="extype" name="io.getquill.dsl.LowPriorityImplicits">LowPriorityImplicits</span>, <span class="extype" name="io.getquill.dsl.QuotationDsl">QuotationDsl</span>, <span class="extype" name="io.getquill.dsl.QueryDsl">QueryDsl</span>, <span class="extype" name="io.getquill.dsl.OrdDsl">OrdDsl</span>, <span class="extype" name="io.getquill.dsl.InfixDsl">InfixDsl</span>, <span class="extype" name="java.io.Closeable">Closeable</span>, <span class="extype" name="java.lang.AutoCloseable">AutoCloseable</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><span class="extype" name="io.getquill.PostgresAsyncContext">PostgresAsyncContext</span>[<a href="TableNameSnakeCase$.html" class="extype" name="model.persistence.TableNameSnakeCase">TableNameSnakeCase</a>.type], <span class="extype" name="io.getquill.context.async.UUIDObjectEncoding">UUIDObjectEncoding</span>, <span class="extype" name="io.getquill.context.async.ArrayDecoders">ArrayDecoders</span>, <span class="extype" name="io.getquill.context.async.ArrayEncoders">ArrayEncoders</span>, <span class="extype" name="io.getquill.context.sql.encoding.ArrayEncoding">ArrayEncoding</span>, <span class="extype" name="io.getquill.context.async.AsyncContext">AsyncContext</span>[<span class="extype" name="io.getquill.PostgresDialect">PostgresDialect</span>.type, <a href="TableNameSnakeCase$.html" class="extype" name="model.persistence.TableNameSnakeCase">TableNameSnakeCase</a>.type, <span class="extype" name="com.github.mauricio.async.db.postgresql.PostgreSQLConnection">PostgreSQLConnection</span>], <span class="extype" name="io.getquill.monad.ScalaFutureIOMonad">ScalaFutureIOMonad</span>, <span class="extype" name="io.getquill.monad.IOMonad">IOMonad</span>, <span class="extype" name="io.getquill.context.async.Encoders">Encoders</span>, <span class="extype" name="io.getquill.context.async.Decoders">Decoders</span>, <span class="extype" name="io.getquill.context.sql.SqlContext">SqlContext</span>[<span class="extype" name="io.getquill.PostgresDialect">PostgresDialect</span>.type, <a href="TableNameSnakeCase$.html" class="extype" name="model.persistence.TableNameSnakeCase">TableNameSnakeCase</a>.type], <span class="extype" name="io.getquill.context.sql.dsl.SqlDsl">SqlDsl</span>, <span class="extype" name="io.getquill.context.Context">Context</span>[<span class="extype" name="io.getquill.PostgresDialect">PostgresDialect</span>.type, <a href="TableNameSnakeCase$.html" class="extype" name="model.persistence.TableNameSnakeCase">TableNameSnakeCase</a>.type], <span class="extype" name="io.getquill.dsl.CoreDsl">CoreDsl</span>, <span class="extype" name="io.getquill.dsl.MetaDsl">MetaDsl</span>, <span class="extype" name="io.getquill.dsl.MetaDslLowPriorityImplicits">MetaDslLowPriorityImplicits</span>, <span class="extype" name="io.getquill.dsl.EncodingDsl">EncodingDsl</span>, <span class="extype" name="io.getquill.dsl.LowPriorityImplicits">LowPriorityImplicits</span>, <span class="extype" name="io.getquill.dsl.QuotationDsl">QuotationDsl</span>, <span class="extype" name="io.getquill.dsl.QueryDsl">QueryDsl</span>, <span class="extype" name="io.getquill.dsl.OrdDsl">OrdDsl</span>, <span class="extype" name="io.getquill.dsl.InfixDsl">InfixDsl</span>, <span class="extype" name="java.io.Closeable">Closeable</span>, <span class="extype" name="java.lang.AutoCloseable">AutoCloseable</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div><div class="toggleContainer block">
             <span class="toggle">Known Subclasses</span>
             <div class="subClasses hiddenContent"><a href="PostgresAsyncConfiguration$.html" class="extype" name="model.persistence.PostgresAsyncConfiguration">PostgresAsyncConfiguration</a></div>
@@ -76,7 +76,7 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="model.persistence.PostgresAsyncCtx"><span>PostgresAsyncCtx</span></li><li class="in" name="io.getquill.PostgresAsyncContext"><span>PostgresAsyncContext</span></li><li class="in" name="io.getquill.context.async.UUIDObjectEncoding"><span>UUIDObjectEncoding</span></li><li class="in" name="io.getquill.context.async.ArrayDecoders"><span>ArrayDecoders</span></li><li class="in" name="io.getquill.context.async.ArrayEncoders"><span>ArrayEncoders</span></li><li class="in" name="io.getquill.context.sql.encoding.ArrayEncoding"><span>ArrayEncoding</span></li><li class="in" name="io.getquill.context.async.AsyncContext"><span>AsyncContext</span></li><li class="in" name="io.getquill.context.async.Encoders"><span>Encoders</span></li><li class="in" name="io.getquill.context.async.Decoders"><span>Decoders</span></li><li class="in" name="io.getquill.context.sql.SqlContext"><span>SqlContext</span></li><li class="in" name="io.getquill.context.sql.dsl.SqlDsl"><span>SqlDsl</span></li><li class="in" name="io.getquill.context.Context"><span>Context</span></li><li class="in" name="io.getquill.dsl.CoreDsl"><span>CoreDsl</span></li><li class="in" name="io.getquill.dsl.MetaDsl"><span>MetaDsl</span></li><li class="in" name="io.getquill.dsl.MetaDslLowPriorityImplicits"><span>MetaDslLowPriorityImplicits</span></li><li class="in" name="io.getquill.dsl.EncodingDsl"><span>EncodingDsl</span></li><li class="in" name="io.getquill.dsl.LowPriorityImplicits"><span>LowPriorityImplicits</span></li><li class="in" name="io.getquill.dsl.QuotationDsl"><span>QuotationDsl</span></li><li class="in" name="io.getquill.dsl.QueryDsl"><span>QueryDsl</span></li><li class="in" name="io.getquill.dsl.OrdDsl"><span>OrdDsl</span></li><li class="in" name="io.getquill.dsl.InfixDsl"><span>InfixDsl</span></li><li class="in" name="java.io.Closeable"><span>Closeable</span></li><li class="in" name="java.lang.AutoCloseable"><span>AutoCloseable</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="model.persistence.PostgresAsyncCtx"><span>PostgresAsyncCtx</span></li><li class="in" name="io.getquill.PostgresAsyncContext"><span>PostgresAsyncContext</span></li><li class="in" name="io.getquill.context.async.UUIDObjectEncoding"><span>UUIDObjectEncoding</span></li><li class="in" name="io.getquill.context.async.ArrayDecoders"><span>ArrayDecoders</span></li><li class="in" name="io.getquill.context.async.ArrayEncoders"><span>ArrayEncoders</span></li><li class="in" name="io.getquill.context.sql.encoding.ArrayEncoding"><span>ArrayEncoding</span></li><li class="in" name="io.getquill.context.async.AsyncContext"><span>AsyncContext</span></li><li class="in" name="io.getquill.monad.ScalaFutureIOMonad"><span>ScalaFutureIOMonad</span></li><li class="in" name="io.getquill.monad.IOMonad"><span>IOMonad</span></li><li class="in" name="io.getquill.context.async.Encoders"><span>Encoders</span></li><li class="in" name="io.getquill.context.async.Decoders"><span>Decoders</span></li><li class="in" name="io.getquill.context.sql.SqlContext"><span>SqlContext</span></li><li class="in" name="io.getquill.context.sql.dsl.SqlDsl"><span>SqlDsl</span></li><li class="in" name="io.getquill.context.Context"><span>Context</span></li><li class="in" name="io.getquill.dsl.CoreDsl"><span>CoreDsl</span></li><li class="in" name="io.getquill.dsl.MetaDsl"><span>MetaDsl</span></li><li class="in" name="io.getquill.dsl.MetaDslLowPriorityImplicits"><span>MetaDslLowPriorityImplicits</span></li><li class="in" name="io.getquill.dsl.EncodingDsl"><span>EncodingDsl</span></li><li class="in" name="io.getquill.dsl.LowPriorityImplicits"><span>LowPriorityImplicits</span></li><li class="in" name="io.getquill.dsl.QuotationDsl"><span>QuotationDsl</span></li><li class="in" name="io.getquill.dsl.QueryDsl"><span>QueryDsl</span></li><li class="in" name="io.getquill.dsl.OrdDsl"><span>OrdDsl</span></li><li class="in" name="io.getquill.dsl.InfixDsl"><span>InfixDsl</span></li><li class="in" name="java.io.Closeable"><span>Closeable</span></li><li class="in" name="java.lang.AutoCloseable"><span>AutoCloseable</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -389,6 +389,23 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>QueryDsl</dd></dl></div>
+    </li><li name="io.getquill.monad.IOMonad.Effect" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="Effect=io.getquill.monad.Effect"></a>
+      <a id="Effect:Effect"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">type</span>
+      </span>
+      <span class="symbol">
+        <span class="name">Effect</span><span class="result"> = <span class="extype" name="io.getquill.monad.Effect">io.getquill.monad.Effect</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.PostgresAsyncCtx@Effect=io.getquill.monad.Effect" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>IOMonad</dd></dl></div>
     </li><li name="io.getquill.dsl.MetaDsl.Embedded" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="Embedded=io.getquill.Embedded"></a>
       <a id="Embedded:Embedded"></a>
@@ -474,6 +491,40 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Context</dd></dl></div>
+    </li><li name="io.getquill.monad.IOMonad.FromTry" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="FromTry[T]extendsIOMonad.this.IO[T,IOMonad.this.Effect]withProductwithSerializable"></a>
+      <a id="FromTry[T]:(IOMonad.this)#FromTry[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <span class="name">FromTry</span><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends (<span class="extype" name="io.getquill.monad.IOMonad">IOMonad</span>.this)#<span class="extype" name="io.getquill.monad.IOMonad.IO">IO</span>[<span class="extype" name="io.getquill.monad.IOMonad.FromTry.T">T</span>, (<span class="extype" name="io.getquill.monad.IOMonad">IOMonad</span>.this)#<span class="extype" name="io.getquill.monad.IOMonad.Effect">Effect</span>] with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.PostgresAsyncCtx@FromTry[T]extendsIOMonad.this.IO[T,IOMonad.this.Effect]withProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>IOMonad</dd></dl></div>
+    </li><li name="io.getquill.monad.IOMonad.IO" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="IO[+T,-E&lt;:IOMonad.this.Effect]extendsAnyRef"></a>
+      <a id="IO[+T,-E&lt;:(IOMonad.this)#Effect]:(IOMonad.this)#IO[T,E]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">sealed </span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <span class="name">IO</span><span class="tparams">[<span name="T">+T</span>, <span name="E">-E &lt;: (<span class="extype" name="io.getquill.monad.IOMonad">IOMonad</span>.this)#<span class="extype" name="io.getquill.monad.IOMonad.Effect">Effect</span></span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.PostgresAsyncCtx@IO[+T,-E&lt;:IOMonad.this.Effect]extendsAnyRef" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>IOMonad</dd></dl></div>
     </li><li name="io.getquill.dsl.EncodingDsl.Index" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="Index=Int"></a>
       <a id="Index:Index"></a>
@@ -712,6 +763,23 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>QuotationDsl</dd></dl></div>
+    </li><li name="io.getquill.context.async.AsyncContext.Result" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="Result[T]=scala.concurrent.Future[T]"></a>
+      <a id="Result[T]:Result[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">type</span>
+      </span>
+      <span class="symbol">
+        <span class="name">Result</span><span class="tparams">[<span name="T">T</span>]</span><span class="result"> = <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="io.getquill.context.async.AsyncContext.Result.T">T</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.PostgresAsyncCtx@Result[T]=scala.concurrent.Future[T]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AsyncContext → ScalaFutureIOMonad → Context</dd></dl></div>
     </li><li name="io.getquill.context.async.AsyncContext.ResultRow" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ResultRow=com.github.mauricio.async.db.RowData"></a>
       <a id="ResultRow:ResultRow"></a>
@@ -729,8 +797,25 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AsyncContext → EncodingDsl</dd></dl></div>
+    </li><li name="io.getquill.monad.IOMonad.Run" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="Run[T,E&lt;:IOMonad.this.Effect]extendsIOMonad.this.IO[T,E]withProductwithSerializable"></a>
+      <a id="Run[T,E&lt;:(IOMonad.this)#Effect]:(IOMonad.this)#Run[T,E]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <span class="name">Run</span><span class="tparams">[<span name="T">T</span>, <span name="E">E &lt;: (<span class="extype" name="io.getquill.monad.IOMonad">IOMonad</span>.this)#<span class="extype" name="io.getquill.monad.IOMonad.Effect">Effect</span></span>]</span><span class="result"> extends (<span class="extype" name="io.getquill.monad.IOMonad">IOMonad</span>.this)#<span class="extype" name="io.getquill.monad.IOMonad.IO">IO</span>[<span class="extype" name="io.getquill.monad.IOMonad.Run.T">T</span>, <span class="extype" name="io.getquill.monad.IOMonad.Run.E">E</span>] with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.PostgresAsyncCtx@Run[T,E&lt;:IOMonad.this.Effect]extendsIOMonad.this.IO[T,E]withProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>IOMonad</dd></dl></div>
     </li><li name="io.getquill.context.async.AsyncContext.RunActionResult" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="RunActionResult=scala.concurrent.Future[Long]"></a>
+      <a id="RunActionResult=Long"></a>
       <a id="RunActionResult:RunActionResult"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -738,16 +823,16 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
         <span class="kind">type</span>
       </span>
       <span class="symbol">
-        <span class="name">RunActionResult</span><span class="result"> = <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="scala.Long">Long</span>]</span>
+        <span class="name">RunActionResult</span><span class="result"> = <span class="extype" name="scala.Long">Long</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.PostgresAsyncCtx@RunActionResult=scala.concurrent.Future[Long]" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.PostgresAsyncCtx@RunActionResult=Long" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AsyncContext → Context</dd></dl></div>
     </li><li name="io.getquill.context.async.AsyncContext.RunActionReturningResult" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="RunActionReturningResult[T]=scala.concurrent.Future[T]"></a>
+      <a id="RunActionReturningResult[T]=T"></a>
       <a id="RunActionReturningResult[T]:RunActionReturningResult[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -755,16 +840,16 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
         <span class="kind">type</span>
       </span>
       <span class="symbol">
-        <span class="name">RunActionReturningResult</span><span class="tparams">[<span name="T">T</span>]</span><span class="result"> = <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="io.getquill.context.async.AsyncContext.RunActionReturningResult.T">T</span>]</span>
+        <span class="name">RunActionReturningResult</span><span class="tparams">[<span name="T">T</span>]</span><span class="result"> = <span class="extype" name="io.getquill.context.async.AsyncContext.RunActionReturningResult.T">T</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.PostgresAsyncCtx@RunActionReturningResult[T]=scala.concurrent.Future[T]" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.PostgresAsyncCtx@RunActionReturningResult[T]=T" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AsyncContext → Context</dd></dl></div>
     </li><li name="io.getquill.context.async.AsyncContext.RunBatchActionResult" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="RunBatchActionResult=scala.concurrent.Future[List[Long]]"></a>
+      <a id="RunBatchActionResult=List[Long]"></a>
       <a id="RunBatchActionResult:RunBatchActionResult"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -772,16 +857,16 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
         <span class="kind">type</span>
       </span>
       <span class="symbol">
-        <span class="name">RunBatchActionResult</span><span class="result"> = <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="scala.List">List</span>[<span class="extype" name="scala.Long">Long</span>]]</span>
+        <span class="name">RunBatchActionResult</span><span class="result"> = <span class="extype" name="scala.collection.immutable.List">List</span>[<span class="extype" name="scala.Long">Long</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.PostgresAsyncCtx@RunBatchActionResult=scala.concurrent.Future[List[Long]]" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.PostgresAsyncCtx@RunBatchActionResult=List[Long]" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AsyncContext → Context</dd></dl></div>
     </li><li name="io.getquill.context.async.AsyncContext.RunBatchActionReturningResult" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="RunBatchActionReturningResult[T]=scala.concurrent.Future[List[T]]"></a>
+      <a id="RunBatchActionReturningResult[T]=List[T]"></a>
       <a id="RunBatchActionReturningResult[T]:RunBatchActionReturningResult[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -789,16 +874,16 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
         <span class="kind">type</span>
       </span>
       <span class="symbol">
-        <span class="name">RunBatchActionReturningResult</span><span class="tparams">[<span name="T">T</span>]</span><span class="result"> = <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="scala.List">List</span>[<span class="extype" name="io.getquill.context.async.AsyncContext.RunBatchActionReturningResult.T">T</span>]]</span>
+        <span class="name">RunBatchActionReturningResult</span><span class="tparams">[<span name="T">T</span>]</span><span class="result"> = <span class="extype" name="scala.collection.immutable.List">List</span>[<span class="extype" name="io.getquill.context.async.AsyncContext.RunBatchActionReturningResult.T">T</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.PostgresAsyncCtx@RunBatchActionReturningResult[T]=scala.concurrent.Future[List[T]]" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.PostgresAsyncCtx@RunBatchActionReturningResult[T]=List[T]" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AsyncContext → Context</dd></dl></div>
     </li><li name="io.getquill.context.async.AsyncContext.RunQueryResult" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="RunQueryResult[T]=scala.concurrent.Future[List[T]]"></a>
+      <a id="RunQueryResult[T]=List[T]"></a>
       <a id="RunQueryResult[T]:RunQueryResult[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -806,16 +891,16 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
         <span class="kind">type</span>
       </span>
       <span class="symbol">
-        <span class="name">RunQueryResult</span><span class="tparams">[<span name="T">T</span>]</span><span class="result"> = <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="scala.List">List</span>[<span class="extype" name="io.getquill.context.async.AsyncContext.RunQueryResult.T">T</span>]]</span>
+        <span class="name">RunQueryResult</span><span class="tparams">[<span name="T">T</span>]</span><span class="result"> = <span class="extype" name="scala.collection.immutable.List">List</span>[<span class="extype" name="io.getquill.context.async.AsyncContext.RunQueryResult.T">T</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.PostgresAsyncCtx@RunQueryResult[T]=scala.concurrent.Future[List[T]]" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.PostgresAsyncCtx@RunQueryResult[T]=List[T]" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AsyncContext → Context</dd></dl></div>
     </li><li name="io.getquill.context.async.AsyncContext.RunQuerySingleResult" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="RunQuerySingleResult[T]=scala.concurrent.Future[T]"></a>
+      <a id="RunQuerySingleResult[T]=T"></a>
       <a id="RunQuerySingleResult[T]:RunQuerySingleResult[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -823,10 +908,10 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
         <span class="kind">type</span>
       </span>
       <span class="symbol">
-        <span class="name">RunQuerySingleResult</span><span class="tparams">[<span name="T">T</span>]</span><span class="result"> = <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="io.getquill.context.async.AsyncContext.RunQuerySingleResult.T">T</span>]</span>
+        <span class="name">RunQuerySingleResult</span><span class="tparams">[<span name="T">T</span>]</span><span class="result"> = <span class="extype" name="io.getquill.context.async.AsyncContext.RunQuerySingleResult.T">T</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.PostgresAsyncCtx@RunQuerySingleResult[T]=scala.concurrent.Future[T]" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.PostgresAsyncCtx@RunQuerySingleResult[T]=T" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -848,6 +933,57 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>MetaDsl</dd></dl></div>
+    </li><li name="io.getquill.monad.IOMonad.Sequence" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="Sequence[A,M[X]&lt;:TraversableOnce[X],E&lt;:IOMonad.this.Effect]extendsIOMonad.this.IO[M[A],E]withProductwithSerializable"></a>
+      <a id="Sequence[A,M[X]&lt;:TraversableOnce[X],E&lt;:(IOMonad.this)#Effect]:(IOMonad.this)#Sequence[A,M,E]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <span class="name">Sequence</span><span class="tparams">[<span name="A">A</span>, <span name="M">M<span class="tparams">[<span name="X">X</span>]</span> &lt;: <span class="extype" name="scala.TraversableOnce">TraversableOnce</span>[<span class="extype" name="io.getquill.monad.IOMonad.Sequence.M.X">X</span>]</span>, <span name="E">E &lt;: (<span class="extype" name="io.getquill.monad.IOMonad">IOMonad</span>.this)#<span class="extype" name="io.getquill.monad.IOMonad.Effect">Effect</span></span>]</span><span class="result"> extends (<span class="extype" name="io.getquill.monad.IOMonad">IOMonad</span>.this)#<span class="extype" name="io.getquill.monad.IOMonad.IO">IO</span>[<span class="extype" name="io.getquill.monad.IOMonad.Sequence.M">M</span>[<span class="extype" name="io.getquill.monad.IOMonad.Sequence.A">A</span>], <span class="extype" name="io.getquill.monad.IOMonad.Sequence.E">E</span>] with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.PostgresAsyncCtx@Sequence[A,M[X]&lt;:TraversableOnce[X],E&lt;:IOMonad.this.Effect]extendsIOMonad.this.IO[M[A],E]withProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>IOMonad</dd></dl></div>
+    </li><li name="io.getquill.monad.IOMonad.Transactional" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="Transactional[T,E&lt;:IOMonad.this.Effect]extendsIOMonad.this.IO[T,EwithIOMonad.this.Effect.Transaction]withProductwithSerializable"></a>
+      <a id="Transactional[T,E&lt;:(IOMonad.this)#Effect]:(IOMonad.this)#Transactional[T,E]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <span class="name">Transactional</span><span class="tparams">[<span name="T">T</span>, <span name="E">E &lt;: (<span class="extype" name="io.getquill.monad.IOMonad">IOMonad</span>.this)#<span class="extype" name="io.getquill.monad.IOMonad.Effect">Effect</span></span>]</span><span class="result"> extends (<span class="extype" name="io.getquill.monad.IOMonad">IOMonad</span>.this)#<span class="extype" name="io.getquill.monad.IOMonad.IO">IO</span>[<span class="extype" name="io.getquill.monad.IOMonad.Transactional.T">T</span>, <span class="extype" name="io.getquill.monad.IOMonad.Transactional.E">E</span> with <span class="extype" name="io.getquill.monad.Effect.Transaction">Transaction</span>] with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.PostgresAsyncCtx@Transactional[T,E&lt;:IOMonad.this.Effect]extendsIOMonad.this.IO[T,EwithIOMonad.this.Effect.Transaction]withProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>IOMonad</dd></dl></div>
+    </li><li name="io.getquill.monad.IOMonad.TransformWith" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="TransformWith[T,S,E1&lt;:IOMonad.this.Effect,E2&lt;:IOMonad.this.Effect]extendsIOMonad.this.IO[S,E1withE2]withProductwithSerializable"></a>
+      <a id="TransformWith[T,S,E1&lt;:(IOMonad.this)#Effect,E2&lt;:(IOMonad.this)#Effect]:(IOMonad.this)#TransformWith[T,S,E1,E2]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <span class="name">TransformWith</span><span class="tparams">[<span name="T">T</span>, <span name="S">S</span>, <span name="E1">E1 &lt;: (<span class="extype" name="io.getquill.monad.IOMonad">IOMonad</span>.this)#<span class="extype" name="io.getquill.monad.IOMonad.Effect">Effect</span></span>, <span name="E2">E2 &lt;: (<span class="extype" name="io.getquill.monad.IOMonad">IOMonad</span>.this)#<span class="extype" name="io.getquill.monad.IOMonad.Effect">Effect</span></span>]</span><span class="result"> extends (<span class="extype" name="io.getquill.monad.IOMonad">IOMonad</span>.this)#<span class="extype" name="io.getquill.monad.IOMonad.IO">IO</span>[<span class="extype" name="io.getquill.monad.IOMonad.TransformWith.S">S</span>, <span class="extype" name="io.getquill.monad.IOMonad.TransformWith.E1">E1</span> with <span class="extype" name="io.getquill.monad.IOMonad.TransformWith.E2">E2</span>] with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.PostgresAsyncCtx@TransformWith[T,S,E1&lt;:IOMonad.this.Effect,E2&lt;:IOMonad.this.Effect]extendsIOMonad.this.IO[S,E1withE2]withProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>IOMonad</dd></dl></div>
     </li><li name="io.getquill.dsl.QueryDsl.Update" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="Update[E]extendsQueryDsl.this.Action[E]"></a>
       <a id="Update[E]:io.getquill.dsl.CoreDsl.Update[E]"></a>
@@ -940,6 +1076,23 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="io.getquill.monad.IOMonad#Effect" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="Effect:io.getquill.monad.Effect.type"></a>
+      <a id="Effect:io.getquill.monad.Effect.type"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">Effect</span><span class="result">: <span class="extype" name="io.getquill.monad.Effect">io.getquill.monad.Effect</span>.type</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.PostgresAsyncCtx@Effect:io.getquill.monad.Effect.type" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>IOMonad</dd></dl></div>
     </li><li name="io.getquill.dsl.EncodingDsl#MappedEncoding" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="MappedEncoding:io.getquill.MappedEncoding.type"></a>
       <a id="MappedEncoding:io.getquill.MappedEncoding.type"></a>
@@ -1297,6 +1450,108 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ArrayEncoders → ArrayEncoding</dd></dl></div>
+    </li><li name="io.getquill.context.async.ArrayDecoders#arrayJodaDateTimeDecoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="arrayJodaDateTimeDecoder[Col&lt;:Seq[org.joda.time.DateTime]](implicitbf:ArrayDecoders.this.CBF[org.joda.time.DateTime,Col]):ArrayDecoders.this.Decoder[Col]"></a>
+      <a id="arrayJodaDateTimeDecoder[Col&lt;:Seq[DateTime]](CBF[DateTime,Col]):Decoder[Col]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">arrayJodaDateTimeDecoder</span><span class="tparams">[<span name="Col">Col &lt;: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.joda.time.DateTime">DateTime</span>]</span>]</span><span class="params">(<span class="implicit">implicit </span><span name="bf">bf: <a href="#CBF[T,Col]=scala.collection.generic.CanBuildFrom[Nothing,T,Col]" class="extmbr" name="model.persistence.PostgresAsyncCtx.CBF">CBF</a>[<span class="extype" name="org.joda.time.DateTime">DateTime</span>, <span class="extype" name="io.getquill.context.async.ArrayDecoders.arrayJodaDateTimeDecoder.Col">Col</span>]</span>)</span><span class="result">: <a href="#Decoder[T]=Decoders.this.AsyncDecoder[T]" class="extmbr" name="model.persistence.PostgresAsyncCtx.Decoder">Decoder</a>[<span class="extype" name="io.getquill.context.async.ArrayDecoders.arrayJodaDateTimeDecoder.Col">Col</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.PostgresAsyncCtx@arrayJodaDateTimeDecoder[Col&lt;:Seq[org.joda.time.DateTime]](implicitbf:ArrayDecoders.this.CBF[org.joda.time.DateTime,Col]):ArrayDecoders.this.Decoder[Col]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ArrayDecoders</dd></dl></div>
+    </li><li name="io.getquill.context.async.ArrayEncoders#arrayJodaDateTimeEncoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="arrayJodaDateTimeEncoder[Col&lt;:Seq[org.joda.time.DateTime]]:ArrayEncoders.this.Encoder[Col]"></a>
+      <a id="arrayJodaDateTimeEncoder[Col&lt;:Seq[DateTime]]:Encoder[Col]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">arrayJodaDateTimeEncoder</span><span class="tparams">[<span name="Col">Col &lt;: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.joda.time.DateTime">DateTime</span>]</span>]</span><span class="result">: <a href="#Encoder[T]=Encoders.this.AsyncEncoder[T]" class="extmbr" name="model.persistence.PostgresAsyncCtx.Encoder">Encoder</a>[<span class="extype" name="io.getquill.context.async.ArrayEncoders.arrayJodaDateTimeEncoder.Col">Col</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.PostgresAsyncCtx@arrayJodaDateTimeEncoder[Col&lt;:Seq[org.joda.time.DateTime]]:ArrayEncoders.this.Encoder[Col]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ArrayEncoders</dd></dl></div>
+    </li><li name="io.getquill.context.async.ArrayDecoders#arrayJodaLocalDateDecoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="arrayJodaLocalDateDecoder[Col&lt;:Seq[org.joda.time.LocalDate]](implicitbf:ArrayDecoders.this.CBF[org.joda.time.LocalDate,Col]):ArrayDecoders.this.Decoder[Col]"></a>
+      <a id="arrayJodaLocalDateDecoder[Col&lt;:Seq[LocalDate]](CBF[LocalDate,Col]):Decoder[Col]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">arrayJodaLocalDateDecoder</span><span class="tparams">[<span name="Col">Col &lt;: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.joda.time.LocalDate">LocalDate</span>]</span>]</span><span class="params">(<span class="implicit">implicit </span><span name="bf">bf: <a href="#CBF[T,Col]=scala.collection.generic.CanBuildFrom[Nothing,T,Col]" class="extmbr" name="model.persistence.PostgresAsyncCtx.CBF">CBF</a>[<span class="extype" name="org.joda.time.LocalDate">LocalDate</span>, <span class="extype" name="io.getquill.context.async.ArrayDecoders.arrayJodaLocalDateDecoder.Col">Col</span>]</span>)</span><span class="result">: <a href="#Decoder[T]=Decoders.this.AsyncDecoder[T]" class="extmbr" name="model.persistence.PostgresAsyncCtx.Decoder">Decoder</a>[<span class="extype" name="io.getquill.context.async.ArrayDecoders.arrayJodaLocalDateDecoder.Col">Col</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.PostgresAsyncCtx@arrayJodaLocalDateDecoder[Col&lt;:Seq[org.joda.time.LocalDate]](implicitbf:ArrayDecoders.this.CBF[org.joda.time.LocalDate,Col]):ArrayDecoders.this.Decoder[Col]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ArrayDecoders</dd></dl></div>
+    </li><li name="io.getquill.context.async.ArrayEncoders#arrayJodaLocalDateEncoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="arrayJodaLocalDateEncoder[Col&lt;:Seq[org.joda.time.LocalDate]]:ArrayEncoders.this.Encoder[Col]"></a>
+      <a id="arrayJodaLocalDateEncoder[Col&lt;:Seq[LocalDate]]:Encoder[Col]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">arrayJodaLocalDateEncoder</span><span class="tparams">[<span name="Col">Col &lt;: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.joda.time.LocalDate">LocalDate</span>]</span>]</span><span class="result">: <a href="#Encoder[T]=Encoders.this.AsyncEncoder[T]" class="extmbr" name="model.persistence.PostgresAsyncCtx.Encoder">Encoder</a>[<span class="extype" name="io.getquill.context.async.ArrayEncoders.arrayJodaLocalDateEncoder.Col">Col</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.PostgresAsyncCtx@arrayJodaLocalDateEncoder[Col&lt;:Seq[org.joda.time.LocalDate]]:ArrayEncoders.this.Encoder[Col]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ArrayEncoders</dd></dl></div>
+    </li><li name="io.getquill.context.async.ArrayDecoders#arrayJodaLocalDateTimeDecoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="arrayJodaLocalDateTimeDecoder[Col&lt;:Seq[org.joda.time.LocalDateTime]](implicitbf:ArrayDecoders.this.CBF[org.joda.time.LocalDateTime,Col]):ArrayDecoders.this.Decoder[Col]"></a>
+      <a id="arrayJodaLocalDateTimeDecoder[Col&lt;:Seq[LocalDateTime]](CBF[LocalDateTime,Col]):Decoder[Col]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">arrayJodaLocalDateTimeDecoder</span><span class="tparams">[<span name="Col">Col &lt;: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.joda.time.LocalDateTime">LocalDateTime</span>]</span>]</span><span class="params">(<span class="implicit">implicit </span><span name="bf">bf: <a href="#CBF[T,Col]=scala.collection.generic.CanBuildFrom[Nothing,T,Col]" class="extmbr" name="model.persistence.PostgresAsyncCtx.CBF">CBF</a>[<span class="extype" name="org.joda.time.LocalDateTime">LocalDateTime</span>, <span class="extype" name="io.getquill.context.async.ArrayDecoders.arrayJodaLocalDateTimeDecoder.Col">Col</span>]</span>)</span><span class="result">: <a href="#Decoder[T]=Decoders.this.AsyncDecoder[T]" class="extmbr" name="model.persistence.PostgresAsyncCtx.Decoder">Decoder</a>[<span class="extype" name="io.getquill.context.async.ArrayDecoders.arrayJodaLocalDateTimeDecoder.Col">Col</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.PostgresAsyncCtx@arrayJodaLocalDateTimeDecoder[Col&lt;:Seq[org.joda.time.LocalDateTime]](implicitbf:ArrayDecoders.this.CBF[org.joda.time.LocalDateTime,Col]):ArrayDecoders.this.Decoder[Col]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ArrayDecoders</dd></dl></div>
+    </li><li name="io.getquill.context.async.ArrayEncoders#arrayJodaLocalDateTimeEncoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="arrayJodaLocalDateTimeEncoder[Col&lt;:Seq[org.joda.time.LocalDateTime]]:ArrayEncoders.this.Encoder[Col]"></a>
+      <a id="arrayJodaLocalDateTimeEncoder[Col&lt;:Seq[LocalDateTime]]:Encoder[Col]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">arrayJodaLocalDateTimeEncoder</span><span class="tparams">[<span name="Col">Col &lt;: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.joda.time.LocalDateTime">LocalDateTime</span>]</span>]</span><span class="result">: <a href="#Encoder[T]=Encoders.this.AsyncEncoder[T]" class="extmbr" name="model.persistence.PostgresAsyncCtx.Encoder">Encoder</a>[<span class="extype" name="io.getquill.context.async.ArrayEncoders.arrayJodaLocalDateTimeEncoder.Col">Col</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.PostgresAsyncCtx@arrayJodaLocalDateTimeEncoder[Col&lt;:Seq[org.joda.time.LocalDateTime]]:ArrayEncoders.this.Encoder[Col]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ArrayEncoders</dd></dl></div>
     </li><li name="io.getquill.context.async.ArrayDecoders#arrayLocalDateDecoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="arrayLocalDateDecoder[Col&lt;:Seq[java.time.LocalDate]](implicitbf:ArrayDecoders.this.CBF[java.time.LocalDate,Col]):ArrayDecoders.this.Decoder[Col]"></a>
       <a id="arrayLocalDateDecoder[Col&lt;:Seq[LocalDate]](CBF[LocalDate,Col]):Decoder[Col]"></a>
@@ -1331,74 +1586,6 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ArrayEncoders → ArrayEncoding</dd></dl></div>
-    </li><li name="io.getquill.context.async.ArrayDecoders#arrayLocalDateJodaDecoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="arrayLocalDateJodaDecoder[Col&lt;:Seq[org.joda.time.LocalDate]](implicitbf:ArrayDecoders.this.CBF[org.joda.time.LocalDate,Col]):ArrayDecoders.this.Decoder[Col]"></a>
-      <a id="arrayLocalDateJodaDecoder[Col&lt;:Seq[LocalDate]](CBF[LocalDate,Col]):Decoder[Col]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">implicit </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">arrayLocalDateJodaDecoder</span><span class="tparams">[<span name="Col">Col &lt;: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.joda.time.LocalDate">LocalDate</span>]</span>]</span><span class="params">(<span class="implicit">implicit </span><span name="bf">bf: <a href="#CBF[T,Col]=scala.collection.generic.CanBuildFrom[Nothing,T,Col]" class="extmbr" name="model.persistence.PostgresAsyncCtx.CBF">CBF</a>[<span class="extype" name="org.joda.time.LocalDate">LocalDate</span>, <span class="extype" name="io.getquill.context.async.ArrayDecoders.arrayLocalDateJodaDecoder.Col">Col</span>]</span>)</span><span class="result">: <a href="#Decoder[T]=Decoders.this.AsyncDecoder[T]" class="extmbr" name="model.persistence.PostgresAsyncCtx.Decoder">Decoder</a>[<span class="extype" name="io.getquill.context.async.ArrayDecoders.arrayLocalDateJodaDecoder.Col">Col</span>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.PostgresAsyncCtx@arrayLocalDateJodaDecoder[Col&lt;:Seq[org.joda.time.LocalDate]](implicitbf:ArrayDecoders.this.CBF[org.joda.time.LocalDate,Col]):ArrayDecoders.this.Decoder[Col]" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ArrayDecoders</dd></dl></div>
-    </li><li name="io.getquill.context.async.ArrayEncoders#arrayLocalDateJodaEncoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="arrayLocalDateJodaEncoder[Col&lt;:Seq[org.joda.time.LocalDate]]:ArrayEncoders.this.Encoder[Col]"></a>
-      <a id="arrayLocalDateJodaEncoder[Col&lt;:Seq[LocalDate]]:Encoder[Col]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">implicit </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">arrayLocalDateJodaEncoder</span><span class="tparams">[<span name="Col">Col &lt;: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.joda.time.LocalDate">LocalDate</span>]</span>]</span><span class="result">: <a href="#Encoder[T]=Encoders.this.AsyncEncoder[T]" class="extmbr" name="model.persistence.PostgresAsyncCtx.Encoder">Encoder</a>[<span class="extype" name="io.getquill.context.async.ArrayEncoders.arrayLocalDateJodaEncoder.Col">Col</span>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.PostgresAsyncCtx@arrayLocalDateJodaEncoder[Col&lt;:Seq[org.joda.time.LocalDate]]:ArrayEncoders.this.Encoder[Col]" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ArrayEncoders</dd></dl></div>
-    </li><li name="io.getquill.context.async.ArrayDecoders#arrayLocalDateTimeJodaDecoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="arrayLocalDateTimeJodaDecoder[Col&lt;:Seq[org.joda.time.LocalDateTime]](implicitbf:ArrayDecoders.this.CBF[org.joda.time.LocalDateTime,Col]):ArrayDecoders.this.Decoder[Col]"></a>
-      <a id="arrayLocalDateTimeJodaDecoder[Col&lt;:Seq[LocalDateTime]](CBF[LocalDateTime,Col]):Decoder[Col]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">implicit </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">arrayLocalDateTimeJodaDecoder</span><span class="tparams">[<span name="Col">Col &lt;: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.joda.time.LocalDateTime">LocalDateTime</span>]</span>]</span><span class="params">(<span class="implicit">implicit </span><span name="bf">bf: <a href="#CBF[T,Col]=scala.collection.generic.CanBuildFrom[Nothing,T,Col]" class="extmbr" name="model.persistence.PostgresAsyncCtx.CBF">CBF</a>[<span class="extype" name="org.joda.time.LocalDateTime">LocalDateTime</span>, <span class="extype" name="io.getquill.context.async.ArrayDecoders.arrayLocalDateTimeJodaDecoder.Col">Col</span>]</span>)</span><span class="result">: <a href="#Decoder[T]=Decoders.this.AsyncDecoder[T]" class="extmbr" name="model.persistence.PostgresAsyncCtx.Decoder">Decoder</a>[<span class="extype" name="io.getquill.context.async.ArrayDecoders.arrayLocalDateTimeJodaDecoder.Col">Col</span>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.PostgresAsyncCtx@arrayLocalDateTimeJodaDecoder[Col&lt;:Seq[org.joda.time.LocalDateTime]](implicitbf:ArrayDecoders.this.CBF[org.joda.time.LocalDateTime,Col]):ArrayDecoders.this.Decoder[Col]" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ArrayDecoders</dd></dl></div>
-    </li><li name="io.getquill.context.async.ArrayEncoders#arrayLocalDateTimeJodaEncoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="arrayLocalDateTimeJodaEncoder[Col&lt;:Seq[org.joda.time.LocalDateTime]]:ArrayEncoders.this.Encoder[Col]"></a>
-      <a id="arrayLocalDateTimeJodaEncoder[Col&lt;:Seq[LocalDateTime]]:Encoder[Col]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">implicit </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">arrayLocalDateTimeJodaEncoder</span><span class="tparams">[<span name="Col">Col &lt;: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.joda.time.LocalDateTime">LocalDateTime</span>]</span>]</span><span class="result">: <a href="#Encoder[T]=Encoders.this.AsyncEncoder[T]" class="extmbr" name="model.persistence.PostgresAsyncCtx.Encoder">Encoder</a>[<span class="extype" name="io.getquill.context.async.ArrayEncoders.arrayLocalDateTimeJodaEncoder.Col">Col</span>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.PostgresAsyncCtx@arrayLocalDateTimeJodaEncoder[Col&lt;:Seq[org.joda.time.LocalDateTime]]:ArrayEncoders.this.Encoder[Col]" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ArrayEncoders</dd></dl></div>
     </li><li name="io.getquill.context.async.ArrayDecoders#arrayLongDecoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="arrayLongDecoder[Col&lt;:Seq[Long]](implicitbf:ArrayDecoders.this.CBF[Long,Col]):ArrayDecoders.this.Decoder[Col]"></a>
       <a id="arrayLongDecoder[Col&lt;:Seq[Long]](CBF[Long,Col]):Decoder[Col]"></a>
@@ -1739,8 +1926,6 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@HotSpotIntrinsicCandidate</span><span class="args">()</span>
-              
                 <span class="name">@throws</span><span class="args">(<span>
       
       <span class="defval" name="classOf[java.lang.CloneNotSupportedException]">...</span>
@@ -1849,6 +2034,23 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Decoders</dd></dl></div>
+    </li><li name="io.getquill.context.async.Decoders#decodeZonedDateTime" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="decodeZonedDateTime:Decoders.this.MappedEncoding[org.joda.time.DateTime,java.time.ZonedDateTime]"></a>
+      <a id="decodeZonedDateTime:MappedEncoding[DateTime,ZonedDateTime]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">decodeZonedDateTime</span><span class="result">: <a href="#MappedEncoding[I,O]=io.getquill.MappedEncoding[I,O]" class="extmbr" name="model.persistence.PostgresAsyncCtx.MappedEncoding">MappedEncoding</a>[<span class="extype" name="org.joda.time.DateTime">DateTime</span>, <span class="extype" name="java.time.ZonedDateTime">ZonedDateTime</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.PostgresAsyncCtx@decodeZonedDateTime:Decoders.this.MappedEncoding[org.joda.time.DateTime,java.time.ZonedDateTime]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Decoders</dd></dl></div>
     </li><li name="io.getquill.context.async.Decoders#decoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="decoder[T](f:PartialFunction[Any,T],sqlType:Decoders.this.DecoderSqlType)(implicitevidence$1:scala.reflect.ClassTag[T]):Decoders.this.Decoder[T]"></a>
       <a id="decoder[T](PartialFunction[Any,T],DecoderSqlType)(ClassTag[T]):Decoder[T]"></a>
@@ -1930,6 +2132,23 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
       </span>
       </h4><span class="permalink">
       <a href="../../index.html#model.persistence.PostgresAsyncCtx@encodeLocalDateTime:Encoders.this.MappedEncoding[java.time.LocalDateTime,org.joda.time.LocalDateTime]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Encoders</dd></dl></div>
+    </li><li name="io.getquill.context.async.Encoders#encodeZonedDateTime" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="encodeZonedDateTime:Encoders.this.MappedEncoding[java.time.ZonedDateTime,org.joda.time.DateTime]"></a>
+      <a id="encodeZonedDateTime:MappedEncoding[ZonedDateTime,DateTime]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">encodeZonedDateTime</span><span class="result">: <a href="#MappedEncoding[I,O]=io.getquill.MappedEncoding[I,O]" class="extmbr" name="model.persistence.PostgresAsyncCtx.MappedEncoding">MappedEncoding</a>[<span class="extype" name="java.time.ZonedDateTime">ZonedDateTime</span>, <span class="extype" name="org.joda.time.DateTime">DateTime</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.PostgresAsyncCtx@encodeZonedDateTime:Encoders.this.MappedEncoding[java.time.ZonedDateTime,org.joda.time.DateTime]" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -2138,6 +2357,29 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>PostgresAsyncContext → AsyncContext</dd></dl></div>
+    </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="finalize():Unit"></a>
+      <a id="finalize():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.PostgresAsyncCtx@finalize():Unit" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="symbol">classOf[java.lang.Throwable]</span>
+    </span>)</span>
+              
+        </dd></dl></div>
     </li><li name="io.getquill.context.async.Decoders#floatDecoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="floatDecoder:Decoders.this.Decoder[Float]"></a>
       <a id="floatDecoder:Decoder[Float]"></a>
@@ -2188,10 +2430,7 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd><dt>Annotations</dt><dd>
-                <span class="name">@HotSpotIntrinsicCandidate</span><span class="args">()</span>
-              
-        </dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="io.getquill.context.Context#handleSingleResult" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="handleSingleResult[T](list:List[T]):T"></a>
       <a id="handleSingleResult[T](List[T]):T"></a>
@@ -2225,10 +2464,7 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd><dt>Annotations</dt><dd>
-                <span class="name">@HotSpotIntrinsicCandidate</span><span class="args">()</span>
-              
-        </dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="io.getquill.context.Context#identityExtractor" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="identityExtractor:Context.this.ResultRow=&gt;Context.this.ResultRow"></a>
       <a id="identityExtractor:(ResultRow)⇒ResultRow"></a>
@@ -2263,6 +2499,23 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Context</dd></dl></div>
+    </li><li name="io.getquill.context.async.AsyncContext#idiom" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="idiom:D"></a>
+      <a id="idiom:PostgresDialect.type"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">idiom</span><span class="result">: <span class="extype" name="io.getquill.PostgresDialect">PostgresDialect</span>.type</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.PostgresAsyncCtx@idiom:D" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AsyncContext → Context</dd></dl></div>
     </li><li name="io.getquill.dsl.OrdDsl#implicitOrd" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="implicitOrd[T]:OrdDsl.this.Ord[T]"></a>
       <a id="implicitOrd[T]:Ord[T]"></a>
@@ -2354,6 +2607,40 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="io.getquill.context.async.Decoders#jodaDateTimeDecoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="jodaDateTimeDecoder:Decoders.this.Decoder[org.joda.time.DateTime]"></a>
+      <a id="jodaDateTimeDecoder:Decoder[DateTime]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">jodaDateTimeDecoder</span><span class="result">: <a href="#Decoder[T]=Decoders.this.AsyncDecoder[T]" class="extmbr" name="model.persistence.PostgresAsyncCtx.Decoder">Decoder</a>[<span class="extype" name="org.joda.time.DateTime">DateTime</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.PostgresAsyncCtx@jodaDateTimeDecoder:Decoders.this.Decoder[org.joda.time.DateTime]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Decoders</dd></dl></div>
+    </li><li name="io.getquill.context.async.Encoders#jodaDateTimeEncoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="jodaDateTimeEncoder:Encoders.this.Encoder[org.joda.time.DateTime]"></a>
+      <a id="jodaDateTimeEncoder:Encoder[DateTime]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">jodaDateTimeEncoder</span><span class="result">: <a href="#Encoder[T]=Encoders.this.AsyncEncoder[T]" class="extmbr" name="model.persistence.PostgresAsyncCtx.Encoder">Encoder</a>[<span class="extype" name="org.joda.time.DateTime">DateTime</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.PostgresAsyncCtx@jodaDateTimeEncoder:Encoders.this.Encoder[org.joda.time.DateTime]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Encoders</dd></dl></div>
     </li><li name="io.getquill.context.async.Decoders#jodaLocalDateDecoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="jodaLocalDateDecoder:Decoders.this.Decoder[org.joda.time.LocalDate]"></a>
       <a id="jodaLocalDateDecoder:Decoder[LocalDate]"></a>
@@ -2752,6 +3039,23 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>MetaDslLowPriorityImplicits</dd></dl></div>
+    </li><li name="io.getquill.context.async.AsyncContext#naming" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="naming:N"></a>
+      <a id="naming:TableNameSnakeCase.type"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">naming</span><span class="result">: <a href="TableNameSnakeCase$.html" class="extype" name="model.persistence.TableNameSnakeCase">TableNameSnakeCase</a>.type</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.PostgresAsyncCtx@naming:N" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AsyncContext → Context</dd></dl></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a>
       <a id="ne(AnyRef):Boolean"></a>
@@ -2785,10 +3089,7 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@HotSpotIntrinsicCandidate</span><span class="args">()</span>
-              
-        </dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="scala.AnyRef#notifyAll" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notifyAll():Unit"></a>
       <a id="notifyAll():Unit"></a>
@@ -2805,10 +3106,7 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@HotSpotIntrinsicCandidate</span><span class="args">()</span>
-              
-        </dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="io.getquill.context.async.Decoders#optionDecoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="optionDecoder[T](implicitd:Decoders.this.Decoder[T]):Decoders.this.Decoder[Option[T]]"></a>
       <a id="optionDecoder[T](Decoder[T]):Decoder[Option[T]]"></a>
@@ -2843,6 +3141,23 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Encoders</dd></dl></div>
+    </li><li name="io.getquill.context.async.AsyncContext#performIO" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="performIO[T](io:AsyncContext.this.IO[T,_],transactional:Boolean)(implicitec:scala.concurrent.ExecutionContext):AsyncContext.this.Result[T]"></a>
+      <a id="performIO[T](IO[T,_],Boolean)(ExecutionContext):Result[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">performIO</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="io">io: <a href="#IO[+T,-E&lt;:IOMonad.this.Effect]extendsAnyRef" class="extmbr" name="model.persistence.PostgresAsyncCtx.IO">IO</a>[<span class="extype" name="io.getquill.context.async.AsyncContext.performIO.T">T</span>, _]</span>, <span name="transactional">transactional: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ec">ec: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>)</span><span class="result">: <a href="#Result[T]=scala.concurrent.Future[T]" class="extmbr" name="model.persistence.PostgresAsyncCtx.Result">Result</a>[<span class="extype" name="io.getquill.context.async.AsyncContext.performIO.T">T</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.PostgresAsyncCtx@performIO[T](io:AsyncContext.this.IO[T,_],transactional:Boolean)(implicitec:scala.concurrent.ExecutionContext):AsyncContext.this.Result[T]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AsyncContext → ScalaFutureIOMonad</dd></dl></div>
     </li><li name="io.getquill.context.async.AsyncContext#probe" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="probe(sql:String):scala.util.Try[com.github.mauricio.async.db.QueryResult]"></a>
       <a id="probe(String):Try[QueryResult]"></a>
@@ -3122,107 +3437,209 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>QuotationDsl</dd></dl></div>
     </li><li name="io.getquill.context.Context#run" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="run[T](quoted:Context.this.Quoted[Context.this.BatchAction[Context.this.ActionReturning[_,T]]]):Context.this.RunBatchActionReturningResult[T]"></a>
-      <a id="run[T](Quoted[BatchAction[ActionReturning[_,T]]]):RunBatchActionReturningResult[T]"></a>
+      <a id="run[T](quoted:Context.this.Quoted[Context.this.BatchAction[Context.this.ActionReturning[_,T]]]):Context.this.Result[Context.this.RunBatchActionReturningResult[T]]"></a>
+      <a id="run[T](Quoted[BatchAction[ActionReturning[_,T]]]):Result[RunBatchActionReturningResult[T]]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">macro </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">run</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="quoted">quoted: <a href="#Quoted[+T]extendsAnyRef" class="extmbr" name="model.persistence.PostgresAsyncCtx.Quoted">Quoted</a>[<a href="#BatchAction[+A&lt;:QueryDsl.this.Action[_]]extendsAnyRef" class="extmbr" name="model.persistence.PostgresAsyncCtx.BatchAction">BatchAction</a>[<a href="#ActionReturning[E,Output]extendsQueryDsl.this.Action[E]" class="extmbr" name="model.persistence.PostgresAsyncCtx.ActionReturning">ActionReturning</a>[_, <span class="extype" name="io.getquill.context.Context.run.T">T</span>]]]</span>)</span><span class="result">: <a href="#RunBatchActionReturningResult[T]=scala.concurrent.Future[List[T]]" class="extmbr" name="model.persistence.PostgresAsyncCtx.RunBatchActionReturningResult">RunBatchActionReturningResult</a>[<span class="extype" name="io.getquill.context.Context.run.T">T</span>]</span>
+        <span class="name">run</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="quoted">quoted: <a href="#Quoted[+T]extendsAnyRef" class="extmbr" name="model.persistence.PostgresAsyncCtx.Quoted">Quoted</a>[<a href="#BatchAction[+A&lt;:QueryDsl.this.Action[_]]extendsAnyRef" class="extmbr" name="model.persistence.PostgresAsyncCtx.BatchAction">BatchAction</a>[<a href="#ActionReturning[E,Output]extendsQueryDsl.this.Action[E]" class="extmbr" name="model.persistence.PostgresAsyncCtx.ActionReturning">ActionReturning</a>[_, <span class="extype" name="io.getquill.context.Context.run.T">T</span>]]]</span>)</span><span class="result">: <a href="#Result[T]=scala.concurrent.Future[T]" class="extmbr" name="model.persistence.PostgresAsyncCtx.Result">Result</a>[<a href="#RunBatchActionReturningResult[T]=List[T]" class="extmbr" name="model.persistence.PostgresAsyncCtx.RunBatchActionReturningResult">RunBatchActionReturningResult</a>[<span class="extype" name="io.getquill.context.Context.run.T">T</span>]]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.PostgresAsyncCtx@run[T](quoted:Context.this.Quoted[Context.this.BatchAction[Context.this.ActionReturning[_,T]]]):Context.this.RunBatchActionReturningResult[T]" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.PostgresAsyncCtx@run[T](quoted:Context.this.Quoted[Context.this.BatchAction[Context.this.ActionReturning[_,T]]]):Context.this.Result[Context.this.RunBatchActionReturningResult[T]]" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Context</dd></dl></div>
     </li><li name="io.getquill.context.Context#run" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="run(quoted:Context.this.Quoted[Context.this.BatchAction[Context.this.Action[_]]]):Context.this.RunBatchActionResult"></a>
-      <a id="run(Quoted[BatchAction[Action[_]]]):RunBatchActionResult"></a>
+      <a id="run(quoted:Context.this.Quoted[Context.this.BatchAction[Context.this.Action[_]]]):Context.this.Result[Context.this.RunBatchActionResult]"></a>
+      <a id="run(Quoted[BatchAction[Action[_]]]):Result[RunBatchActionResult]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">macro </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">run</span><span class="params">(<span name="quoted">quoted: <a href="#Quoted[+T]extendsAnyRef" class="extmbr" name="model.persistence.PostgresAsyncCtx.Quoted">Quoted</a>[<a href="#BatchAction[+A&lt;:QueryDsl.this.Action[_]]extendsAnyRef" class="extmbr" name="model.persistence.PostgresAsyncCtx.BatchAction">BatchAction</a>[<a href="#Action[E]extendsAnyRef" class="extmbr" name="model.persistence.PostgresAsyncCtx.Action">Action</a>[_]]]</span>)</span><span class="result">: <a href="#RunBatchActionResult=scala.concurrent.Future[List[Long]]" class="extmbr" name="model.persistence.PostgresAsyncCtx.RunBatchActionResult">RunBatchActionResult</a></span>
+        <span class="name">run</span><span class="params">(<span name="quoted">quoted: <a href="#Quoted[+T]extendsAnyRef" class="extmbr" name="model.persistence.PostgresAsyncCtx.Quoted">Quoted</a>[<a href="#BatchAction[+A&lt;:QueryDsl.this.Action[_]]extendsAnyRef" class="extmbr" name="model.persistence.PostgresAsyncCtx.BatchAction">BatchAction</a>[<a href="#Action[E]extendsAnyRef" class="extmbr" name="model.persistence.PostgresAsyncCtx.Action">Action</a>[_]]]</span>)</span><span class="result">: <a href="#Result[T]=scala.concurrent.Future[T]" class="extmbr" name="model.persistence.PostgresAsyncCtx.Result">Result</a>[<a href="#RunBatchActionResult=List[Long]" class="extmbr" name="model.persistence.PostgresAsyncCtx.RunBatchActionResult">RunBatchActionResult</a>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.PostgresAsyncCtx@run(quoted:Context.this.Quoted[Context.this.BatchAction[Context.this.Action[_]]]):Context.this.RunBatchActionResult" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.PostgresAsyncCtx@run(quoted:Context.this.Quoted[Context.this.BatchAction[Context.this.Action[_]]]):Context.this.Result[Context.this.RunBatchActionResult]" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Context</dd></dl></div>
     </li><li name="io.getquill.context.Context#run" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="run[T](quoted:Context.this.Quoted[Context.this.ActionReturning[_,T]]):Context.this.RunActionReturningResult[T]"></a>
-      <a id="run[T](Quoted[ActionReturning[_,T]]):RunActionReturningResult[T]"></a>
+      <a id="run[T](quoted:Context.this.Quoted[Context.this.ActionReturning[_,T]]):Context.this.Result[Context.this.RunActionReturningResult[T]]"></a>
+      <a id="run[T](Quoted[ActionReturning[_,T]]):Result[RunActionReturningResult[T]]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">macro </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">run</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="quoted">quoted: <a href="#Quoted[+T]extendsAnyRef" class="extmbr" name="model.persistence.PostgresAsyncCtx.Quoted">Quoted</a>[<a href="#ActionReturning[E,Output]extendsQueryDsl.this.Action[E]" class="extmbr" name="model.persistence.PostgresAsyncCtx.ActionReturning">ActionReturning</a>[_, <span class="extype" name="io.getquill.context.Context.run.T">T</span>]]</span>)</span><span class="result">: <a href="#RunActionReturningResult[T]=scala.concurrent.Future[T]" class="extmbr" name="model.persistence.PostgresAsyncCtx.RunActionReturningResult">RunActionReturningResult</a>[<span class="extype" name="io.getquill.context.Context.run.T">T</span>]</span>
+        <span class="name">run</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="quoted">quoted: <a href="#Quoted[+T]extendsAnyRef" class="extmbr" name="model.persistence.PostgresAsyncCtx.Quoted">Quoted</a>[<a href="#ActionReturning[E,Output]extendsQueryDsl.this.Action[E]" class="extmbr" name="model.persistence.PostgresAsyncCtx.ActionReturning">ActionReturning</a>[_, <span class="extype" name="io.getquill.context.Context.run.T">T</span>]]</span>)</span><span class="result">: <a href="#Result[T]=scala.concurrent.Future[T]" class="extmbr" name="model.persistence.PostgresAsyncCtx.Result">Result</a>[<a href="#RunActionReturningResult[T]=T" class="extmbr" name="model.persistence.PostgresAsyncCtx.RunActionReturningResult">RunActionReturningResult</a>[<span class="extype" name="io.getquill.context.Context.run.T">T</span>]]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.PostgresAsyncCtx@run[T](quoted:Context.this.Quoted[Context.this.ActionReturning[_,T]]):Context.this.RunActionReturningResult[T]" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.PostgresAsyncCtx@run[T](quoted:Context.this.Quoted[Context.this.ActionReturning[_,T]]):Context.this.Result[Context.this.RunActionReturningResult[T]]" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Context</dd></dl></div>
     </li><li name="io.getquill.context.Context#run" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="run(quoted:Context.this.Quoted[Context.this.Action[_]]):Context.this.RunActionResult"></a>
-      <a id="run(Quoted[Action[_]]):RunActionResult"></a>
+      <a id="run(quoted:Context.this.Quoted[Context.this.Action[_]]):Context.this.Result[Context.this.RunActionResult]"></a>
+      <a id="run(Quoted[Action[_]]):Result[RunActionResult]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">macro </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">run</span><span class="params">(<span name="quoted">quoted: <a href="#Quoted[+T]extendsAnyRef" class="extmbr" name="model.persistence.PostgresAsyncCtx.Quoted">Quoted</a>[<a href="#Action[E]extendsAnyRef" class="extmbr" name="model.persistence.PostgresAsyncCtx.Action">Action</a>[_]]</span>)</span><span class="result">: <a href="#RunActionResult=scala.concurrent.Future[Long]" class="extmbr" name="model.persistence.PostgresAsyncCtx.RunActionResult">RunActionResult</a></span>
+        <span class="name">run</span><span class="params">(<span name="quoted">quoted: <a href="#Quoted[+T]extendsAnyRef" class="extmbr" name="model.persistence.PostgresAsyncCtx.Quoted">Quoted</a>[<a href="#Action[E]extendsAnyRef" class="extmbr" name="model.persistence.PostgresAsyncCtx.Action">Action</a>[_]]</span>)</span><span class="result">: <a href="#Result[T]=scala.concurrent.Future[T]" class="extmbr" name="model.persistence.PostgresAsyncCtx.Result">Result</a>[<a href="#RunActionResult=Long" class="extmbr" name="model.persistence.PostgresAsyncCtx.RunActionResult">RunActionResult</a>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.PostgresAsyncCtx@run(quoted:Context.this.Quoted[Context.this.Action[_]]):Context.this.RunActionResult" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.PostgresAsyncCtx@run(quoted:Context.this.Quoted[Context.this.Action[_]]):Context.this.Result[Context.this.RunActionResult]" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Context</dd></dl></div>
     </li><li name="io.getquill.context.Context#run" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="run[T](quoted:Context.this.Quoted[Context.this.Query[T]]):Context.this.RunQueryResult[T]"></a>
-      <a id="run[T](Quoted[Query[T]]):RunQueryResult[T]"></a>
+      <a id="run[T](quoted:Context.this.Quoted[Context.this.Query[T]]):Context.this.Result[Context.this.RunQueryResult[T]]"></a>
+      <a id="run[T](Quoted[Query[T]]):Result[RunQueryResult[T]]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">macro </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">run</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="quoted">quoted: <a href="#Quoted[+T]extendsAnyRef" class="extmbr" name="model.persistence.PostgresAsyncCtx.Quoted">Quoted</a>[<a href="#Query[+T]extendsAnyRef" class="extmbr" name="model.persistence.PostgresAsyncCtx.Query">Query</a>[<span class="extype" name="io.getquill.context.Context.run.T">T</span>]]</span>)</span><span class="result">: <a href="#RunQueryResult[T]=scala.concurrent.Future[List[T]]" class="extmbr" name="model.persistence.PostgresAsyncCtx.RunQueryResult">RunQueryResult</a>[<span class="extype" name="io.getquill.context.Context.run.T">T</span>]</span>
+        <span class="name">run</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="quoted">quoted: <a href="#Quoted[+T]extendsAnyRef" class="extmbr" name="model.persistence.PostgresAsyncCtx.Quoted">Quoted</a>[<a href="#Query[+T]extendsAnyRef" class="extmbr" name="model.persistence.PostgresAsyncCtx.Query">Query</a>[<span class="extype" name="io.getquill.context.Context.run.T">T</span>]]</span>)</span><span class="result">: <a href="#Result[T]=scala.concurrent.Future[T]" class="extmbr" name="model.persistence.PostgresAsyncCtx.Result">Result</a>[<a href="#RunQueryResult[T]=List[T]" class="extmbr" name="model.persistence.PostgresAsyncCtx.RunQueryResult">RunQueryResult</a>[<span class="extype" name="io.getquill.context.Context.run.T">T</span>]]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.PostgresAsyncCtx@run[T](quoted:Context.this.Quoted[Context.this.Query[T]]):Context.this.RunQueryResult[T]" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.PostgresAsyncCtx@run[T](quoted:Context.this.Quoted[Context.this.Query[T]]):Context.this.Result[Context.this.RunQueryResult[T]]" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Context</dd></dl></div>
     </li><li name="io.getquill.context.Context#run" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="run[T](quoted:Context.this.Quoted[T]):Context.this.RunQuerySingleResult[T]"></a>
-      <a id="run[T](Quoted[T]):RunQuerySingleResult[T]"></a>
+      <a id="run[T](quoted:Context.this.Quoted[T]):Context.this.Result[Context.this.RunQuerySingleResult[T]]"></a>
+      <a id="run[T](Quoted[T]):Result[RunQuerySingleResult[T]]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">macro </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">run</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="quoted">quoted: <a href="#Quoted[+T]extendsAnyRef" class="extmbr" name="model.persistence.PostgresAsyncCtx.Quoted">Quoted</a>[<span class="extype" name="io.getquill.context.Context.run.T">T</span>]</span>)</span><span class="result">: <a href="#RunQuerySingleResult[T]=scala.concurrent.Future[T]" class="extmbr" name="model.persistence.PostgresAsyncCtx.RunQuerySingleResult">RunQuerySingleResult</a>[<span class="extype" name="io.getquill.context.Context.run.T">T</span>]</span>
+        <span class="name">run</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="quoted">quoted: <a href="#Quoted[+T]extendsAnyRef" class="extmbr" name="model.persistence.PostgresAsyncCtx.Quoted">Quoted</a>[<span class="extype" name="io.getquill.context.Context.run.T">T</span>]</span>)</span><span class="result">: <a href="#Result[T]=scala.concurrent.Future[T]" class="extmbr" name="model.persistence.PostgresAsyncCtx.Result">Result</a>[<a href="#RunQuerySingleResult[T]=T" class="extmbr" name="model.persistence.PostgresAsyncCtx.RunQuerySingleResult">RunQuerySingleResult</a>[<span class="extype" name="io.getquill.context.Context.run.T">T</span>]]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.PostgresAsyncCtx@run[T](quoted:Context.this.Quoted[T]):Context.this.RunQuerySingleResult[T]" title="Permalink" target="_top">
+      <a href="../../index.html#model.persistence.PostgresAsyncCtx@run[T](quoted:Context.this.Quoted[T]):Context.this.Result[Context.this.RunQuerySingleResult[T]]" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Context</dd></dl></div>
+    </li><li name="io.getquill.monad.IOMonad#runIO" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="runIO[T](quoted:IOMonad.this.Quoted[IOMonad.this.BatchAction[IOMonad.this.ActionReturning[_,T]]]):IOMonad.this.IO[IOMonad.this.RunBatchActionReturningResult[T],IOMonad.this.Effect.Write]"></a>
+      <a id="runIO[T](Quoted[BatchAction[ActionReturning[_,T]]]):IO[RunBatchActionReturningResult[T],Write]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">runIO</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="quoted">quoted: <a href="#Quoted[+T]extendsAnyRef" class="extmbr" name="model.persistence.PostgresAsyncCtx.Quoted">Quoted</a>[<a href="#BatchAction[+A&lt;:QueryDsl.this.Action[_]]extendsAnyRef" class="extmbr" name="model.persistence.PostgresAsyncCtx.BatchAction">BatchAction</a>[<a href="#ActionReturning[E,Output]extendsQueryDsl.this.Action[E]" class="extmbr" name="model.persistence.PostgresAsyncCtx.ActionReturning">ActionReturning</a>[_, <span class="extype" name="io.getquill.monad.IOMonad.runIO.T">T</span>]]]</span>)</span><span class="result">: <a href="#IO[+T,-E&lt;:IOMonad.this.Effect]extendsAnyRef" class="extmbr" name="model.persistence.PostgresAsyncCtx.IO">IO</a>[<a href="#RunBatchActionReturningResult[T]=List[T]" class="extmbr" name="model.persistence.PostgresAsyncCtx.RunBatchActionReturningResult">RunBatchActionReturningResult</a>[<span class="extype" name="io.getquill.monad.IOMonad.runIO.T">T</span>], <span class="extype" name="io.getquill.monad.Effect.Write">Write</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.PostgresAsyncCtx@runIO[T](quoted:IOMonad.this.Quoted[IOMonad.this.BatchAction[IOMonad.this.ActionReturning[_,T]]]):IOMonad.this.IO[IOMonad.this.RunBatchActionReturningResult[T],IOMonad.this.Effect.Write]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>IOMonad</dd></dl></div>
+    </li><li name="io.getquill.monad.IOMonad#runIO" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="runIO(quoted:IOMonad.this.Quoted[IOMonad.this.BatchAction[IOMonad.this.Action[_]]]):IOMonad.this.IO[IOMonad.this.RunBatchActionResult,IOMonad.this.Effect.Write]"></a>
+      <a id="runIO(Quoted[BatchAction[Action[_]]]):IO[RunBatchActionResult,Write]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">runIO</span><span class="params">(<span name="quoted">quoted: <a href="#Quoted[+T]extendsAnyRef" class="extmbr" name="model.persistence.PostgresAsyncCtx.Quoted">Quoted</a>[<a href="#BatchAction[+A&lt;:QueryDsl.this.Action[_]]extendsAnyRef" class="extmbr" name="model.persistence.PostgresAsyncCtx.BatchAction">BatchAction</a>[<a href="#Action[E]extendsAnyRef" class="extmbr" name="model.persistence.PostgresAsyncCtx.Action">Action</a>[_]]]</span>)</span><span class="result">: <a href="#IO[+T,-E&lt;:IOMonad.this.Effect]extendsAnyRef" class="extmbr" name="model.persistence.PostgresAsyncCtx.IO">IO</a>[<a href="#RunBatchActionResult=List[Long]" class="extmbr" name="model.persistence.PostgresAsyncCtx.RunBatchActionResult">RunBatchActionResult</a>, <span class="extype" name="io.getquill.monad.Effect.Write">Write</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.PostgresAsyncCtx@runIO(quoted:IOMonad.this.Quoted[IOMonad.this.BatchAction[IOMonad.this.Action[_]]]):IOMonad.this.IO[IOMonad.this.RunBatchActionResult,IOMonad.this.Effect.Write]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>IOMonad</dd></dl></div>
+    </li><li name="io.getquill.monad.IOMonad#runIO" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="runIO[T](quoted:IOMonad.this.Quoted[IOMonad.this.ActionReturning[_,T]]):IOMonad.this.IO[IOMonad.this.RunActionReturningResult[T],IOMonad.this.Effect.Write]"></a>
+      <a id="runIO[T](Quoted[ActionReturning[_,T]]):IO[RunActionReturningResult[T],Write]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">runIO</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="quoted">quoted: <a href="#Quoted[+T]extendsAnyRef" class="extmbr" name="model.persistence.PostgresAsyncCtx.Quoted">Quoted</a>[<a href="#ActionReturning[E,Output]extendsQueryDsl.this.Action[E]" class="extmbr" name="model.persistence.PostgresAsyncCtx.ActionReturning">ActionReturning</a>[_, <span class="extype" name="io.getquill.monad.IOMonad.runIO.T">T</span>]]</span>)</span><span class="result">: <a href="#IO[+T,-E&lt;:IOMonad.this.Effect]extendsAnyRef" class="extmbr" name="model.persistence.PostgresAsyncCtx.IO">IO</a>[<a href="#RunActionReturningResult[T]=T" class="extmbr" name="model.persistence.PostgresAsyncCtx.RunActionReturningResult">RunActionReturningResult</a>[<span class="extype" name="io.getquill.monad.IOMonad.runIO.T">T</span>], <span class="extype" name="io.getquill.monad.Effect.Write">Write</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.PostgresAsyncCtx@runIO[T](quoted:IOMonad.this.Quoted[IOMonad.this.ActionReturning[_,T]]):IOMonad.this.IO[IOMonad.this.RunActionReturningResult[T],IOMonad.this.Effect.Write]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>IOMonad</dd></dl></div>
+    </li><li name="io.getquill.monad.IOMonad#runIO" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="runIO(quoted:IOMonad.this.Quoted[IOMonad.this.Action[_]]):IOMonad.this.IO[IOMonad.this.RunActionResult,IOMonad.this.Effect.Write]"></a>
+      <a id="runIO(Quoted[Action[_]]):IO[RunActionResult,Write]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">runIO</span><span class="params">(<span name="quoted">quoted: <a href="#Quoted[+T]extendsAnyRef" class="extmbr" name="model.persistence.PostgresAsyncCtx.Quoted">Quoted</a>[<a href="#Action[E]extendsAnyRef" class="extmbr" name="model.persistence.PostgresAsyncCtx.Action">Action</a>[_]]</span>)</span><span class="result">: <a href="#IO[+T,-E&lt;:IOMonad.this.Effect]extendsAnyRef" class="extmbr" name="model.persistence.PostgresAsyncCtx.IO">IO</a>[<a href="#RunActionResult=Long" class="extmbr" name="model.persistence.PostgresAsyncCtx.RunActionResult">RunActionResult</a>, <span class="extype" name="io.getquill.monad.Effect.Write">Write</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.PostgresAsyncCtx@runIO(quoted:IOMonad.this.Quoted[IOMonad.this.Action[_]]):IOMonad.this.IO[IOMonad.this.RunActionResult,IOMonad.this.Effect.Write]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>IOMonad</dd></dl></div>
+    </li><li name="io.getquill.monad.IOMonad#runIO" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="runIO[T](quoted:IOMonad.this.Quoted[IOMonad.this.Query[T]]):IOMonad.this.IO[IOMonad.this.RunQueryResult[T],IOMonad.this.Effect.Read]"></a>
+      <a id="runIO[T](Quoted[Query[T]]):IO[RunQueryResult[T],Read]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">runIO</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="quoted">quoted: <a href="#Quoted[+T]extendsAnyRef" class="extmbr" name="model.persistence.PostgresAsyncCtx.Quoted">Quoted</a>[<a href="#Query[+T]extendsAnyRef" class="extmbr" name="model.persistence.PostgresAsyncCtx.Query">Query</a>[<span class="extype" name="io.getquill.monad.IOMonad.runIO.T">T</span>]]</span>)</span><span class="result">: <a href="#IO[+T,-E&lt;:IOMonad.this.Effect]extendsAnyRef" class="extmbr" name="model.persistence.PostgresAsyncCtx.IO">IO</a>[<a href="#RunQueryResult[T]=List[T]" class="extmbr" name="model.persistence.PostgresAsyncCtx.RunQueryResult">RunQueryResult</a>[<span class="extype" name="io.getquill.monad.IOMonad.runIO.T">T</span>], <span class="extype" name="io.getquill.monad.Effect.Read">Read</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.PostgresAsyncCtx@runIO[T](quoted:IOMonad.this.Quoted[IOMonad.this.Query[T]]):IOMonad.this.IO[IOMonad.this.RunQueryResult[T],IOMonad.this.Effect.Read]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>IOMonad</dd></dl></div>
+    </li><li name="io.getquill.monad.IOMonad#runIO" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="runIO[T](quoted:IOMonad.this.Quoted[T]):IOMonad.this.IO[IOMonad.this.RunQuerySingleResult[T],IOMonad.this.Effect.Read]"></a>
+      <a id="runIO[T](Quoted[T]):IO[RunQuerySingleResult[T],Read]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">runIO</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="quoted">quoted: <a href="#Quoted[+T]extendsAnyRef" class="extmbr" name="model.persistence.PostgresAsyncCtx.Quoted">Quoted</a>[<span class="extype" name="io.getquill.monad.IOMonad.runIO.T">T</span>]</span>)</span><span class="result">: <a href="#IO[+T,-E&lt;:IOMonad.this.Effect]extendsAnyRef" class="extmbr" name="model.persistence.PostgresAsyncCtx.IO">IO</a>[<a href="#RunQuerySingleResult[T]=T" class="extmbr" name="model.persistence.PostgresAsyncCtx.RunQuerySingleResult">RunQuerySingleResult</a>[<span class="extype" name="io.getquill.monad.IOMonad.runIO.T">T</span>], <span class="extype" name="io.getquill.monad.Effect.Read">Read</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#model.persistence.PostgresAsyncCtx@runIO[T](quoted:IOMonad.this.Quoted[T]):IOMonad.this.IO[IOMonad.this.RunQuerySingleResult[T],IOMonad.this.Effect.Read]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>IOMonad</dd></dl></div>
     </li><li name="io.getquill.dsl.MetaDsl#schemaMeta" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="schemaMeta[T](entity:String,columns:T=&gt;(Any,String)*):MetaDsl.this.SchemaMeta[T]"></a>
       <a id="schemaMeta[T](String,(T)⇒(Any,String)*):SchemaMeta[T]"></a>
@@ -3524,42 +3941,12 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
 
         
 
-        <div id="values" class="values members">
-              <h3>Deprecated Value Members</h3>
-              <ol><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="finalize():Unit"></a>
-      <a id="finalize():Unit"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version ) see corresponding Javadoc for more information.">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#model.persistence.PostgresAsyncCtx@finalize():Unit" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@Deprecated</span>
-              
-                <span class="name">@deprecated</span>
-              
-                <span class="name">@throws</span><span class="args">(<span>
-      
-      <span class="symbol">classOf[java.lang.Throwable]</span>
-    </span>)</span>
-              
-        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version )</i> see corresponding Javadoc for more information.</p></dd></dl></div>
-    </li></ol>
-            </div>
+        
         </div>
 
         <div id="inheritedMembers">
         <div class="parent" name="io.getquill.PostgresAsyncContext">
-              <h3>Inherited from <span class="extype" name="io.getquill.PostgresAsyncContext">PostgresAsyncContext</span>[<a href="TableNameSnakeCase.html" class="extype" name="model.persistence.TableNameSnakeCase">TableNameSnakeCase</a>]</h3>
+              <h3>Inherited from <span class="extype" name="io.getquill.PostgresAsyncContext">PostgresAsyncContext</span>[<a href="TableNameSnakeCase$.html" class="extype" name="model.persistence.TableNameSnakeCase">TableNameSnakeCase</a>.type]</h3>
             </div><div class="parent" name="io.getquill.context.async.UUIDObjectEncoding">
               <h3>Inherited from <span class="extype" name="io.getquill.context.async.UUIDObjectEncoding">UUIDObjectEncoding</span></h3>
             </div><div class="parent" name="io.getquill.context.async.ArrayDecoders">
@@ -3569,17 +3956,21 @@ To use, simply import the context, like this:</p><pre><span class="kw">class</sp
             </div><div class="parent" name="io.getquill.context.sql.encoding.ArrayEncoding">
               <h3>Inherited from <span class="extype" name="io.getquill.context.sql.encoding.ArrayEncoding">ArrayEncoding</span></h3>
             </div><div class="parent" name="io.getquill.context.async.AsyncContext">
-              <h3>Inherited from <span class="extype" name="io.getquill.context.async.AsyncContext">AsyncContext</span>[<span class="extype" name="io.getquill.PostgresDialect">PostgresDialect</span>, <a href="TableNameSnakeCase.html" class="extype" name="model.persistence.TableNameSnakeCase">TableNameSnakeCase</a>, <span class="extype" name="com.github.mauricio.async.db.postgresql.PostgreSQLConnection">PostgreSQLConnection</span>]</h3>
+              <h3>Inherited from <span class="extype" name="io.getquill.context.async.AsyncContext">AsyncContext</span>[<span class="extype" name="io.getquill.PostgresDialect">PostgresDialect</span>.type, <a href="TableNameSnakeCase$.html" class="extype" name="model.persistence.TableNameSnakeCase">TableNameSnakeCase</a>.type, <span class="extype" name="com.github.mauricio.async.db.postgresql.PostgreSQLConnection">PostgreSQLConnection</span>]</h3>
+            </div><div class="parent" name="io.getquill.monad.ScalaFutureIOMonad">
+              <h3>Inherited from <span class="extype" name="io.getquill.monad.ScalaFutureIOMonad">ScalaFutureIOMonad</span></h3>
+            </div><div class="parent" name="io.getquill.monad.IOMonad">
+              <h3>Inherited from <span class="extype" name="io.getquill.monad.IOMonad">IOMonad</span></h3>
             </div><div class="parent" name="io.getquill.context.async.Encoders">
               <h3>Inherited from <span class="extype" name="io.getquill.context.async.Encoders">Encoders</span></h3>
             </div><div class="parent" name="io.getquill.context.async.Decoders">
               <h3>Inherited from <span class="extype" name="io.getquill.context.async.Decoders">Decoders</span></h3>
             </div><div class="parent" name="io.getquill.context.sql.SqlContext">
-              <h3>Inherited from <span class="extype" name="io.getquill.context.sql.SqlContext">SqlContext</span>[<span class="extype" name="io.getquill.PostgresDialect">PostgresDialect</span>, <a href="TableNameSnakeCase.html" class="extype" name="model.persistence.TableNameSnakeCase">TableNameSnakeCase</a>]</h3>
+              <h3>Inherited from <span class="extype" name="io.getquill.context.sql.SqlContext">SqlContext</span>[<span class="extype" name="io.getquill.PostgresDialect">PostgresDialect</span>.type, <a href="TableNameSnakeCase$.html" class="extype" name="model.persistence.TableNameSnakeCase">TableNameSnakeCase</a>.type]</h3>
             </div><div class="parent" name="io.getquill.context.sql.dsl.SqlDsl">
               <h3>Inherited from <span class="extype" name="io.getquill.context.sql.dsl.SqlDsl">SqlDsl</span></h3>
             </div><div class="parent" name="io.getquill.context.Context">
-              <h3>Inherited from <span class="extype" name="io.getquill.context.Context">Context</span>[<span class="extype" name="io.getquill.PostgresDialect">PostgresDialect</span>, <a href="TableNameSnakeCase.html" class="extype" name="model.persistence.TableNameSnakeCase">TableNameSnakeCase</a>]</h3>
+              <h3>Inherited from <span class="extype" name="io.getquill.context.Context">Context</span>[<span class="extype" name="io.getquill.PostgresDialect">PostgresDialect</span>.type, <a href="TableNameSnakeCase$.html" class="extype" name="model.persistence.TableNameSnakeCase">TableNameSnakeCase</a>.type]</h3>
             </div><div class="parent" name="io.getquill.dsl.CoreDsl">
               <h3>Inherited from <span class="extype" name="io.getquill.dsl.CoreDsl">CoreDsl</span></h3>
             </div><div class="parent" name="io.getquill.dsl.MetaDsl">
