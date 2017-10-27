@@ -6,7 +6,7 @@ val useQuillSnapshot = false
 
 organization := "com.micronautics"
 name := "quill-cache"
-version := "3.4.0"
+version := "3.5.0"
 licenses +=  ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0.html"))
 scalaVersion := "2.11.11"
 crossScalaVersions := Seq("2.11.11", "2.12.4")
@@ -66,8 +66,8 @@ resolvers ++= Seq(
 
 val quillVer: String = if (useQuillSnapshot) {
   resolvers += Resolver.sonatypeRepo("snapshots")
-  "2.0.1-SNAPSHOT"
-} else "2.0.0"
+  "2.2.0-SNAPSHOT"
+} else "2.1.0"
 
 libraryDependencies ++= Seq(
   "com.github.nscala-time" %% "nscala-time"          % "2.16.0"   withSources(),
