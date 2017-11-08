@@ -39,7 +39,7 @@ scalacOptions ++=
 scalacOptions in (Compile, doc) ++= baseDirectory.map {
   (bd: File) => Seq[String](
      "-sourcepath", bd.getAbsolutePath,
-     "-doc-source-url", "https://github.com/mslinn/quill-cache/tree/master€{FILE_PATH}.scala"
+     "-doc-source-url", s"https://github.com/mslinn/${ name.value }/tree/master€{FILE_PATH}.scala"
   )
 }.value
 
