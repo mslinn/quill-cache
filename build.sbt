@@ -6,7 +6,7 @@ val useQuillSnapshot = false
 
 organization := "com.micronautics"
 name := "quill-cache"
-version := "3.5.0"
+version := "3.5.1"
 licenses +=  ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0.html"))
 scalaVersion := "2.11.11"
 crossScalaVersions := Seq("2.11.11", "2.12.4")
@@ -70,8 +70,8 @@ val quillVer: String = if (useQuillSnapshot) {
 } else "2.1.0"
 
 libraryDependencies ++= Seq(
-  "com.github.nscala-time" %% "nscala-time"          % "2.16.0"   withSources(),
-  "com.google.guava"       %  "guava"                % "23.1-jre" withSources(),
+  "com.github.nscala-time" %% "nscala-time"          % "2.18.0"   withSources(),
+  "com.google.guava"       %  "guava"                % "23.5-jre" withSources(),
   "com.micronautics"       %% "has-id"               % "1.2.8"    withSources(),
   "io.getquill"            %% "quill-async-mysql"    % quillVer   withSources(),
   "io.getquill"            %% "quill-async-postgres" % quillVer   withSources(),
