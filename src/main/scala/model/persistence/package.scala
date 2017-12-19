@@ -1,7 +1,5 @@
 package model
 
-import org.slf4j.Logger
-
 /** <img src='https://raw.githubusercontent.com/mslinn/quill-cache/media/quill-cache.jpg' align='right' width='33%'>
   * <h2>Features and Benefits</h2>
   *   - Dramatically reduces time to fetch results from read-mostly database tables
