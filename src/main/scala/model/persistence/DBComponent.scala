@@ -19,7 +19,7 @@ object DBComponent {
   import scala.concurrent.duration._
   import scala.language.postfixOps
 
-  val Logger: Logger = org.slf4j.LoggerFactory.getLogger("persistence")
+  val logger: Logger = org.slf4j.LoggerFactory.getLogger("persistence")
   val dbDuration: FiniteDuration = 1 minute
 }
 

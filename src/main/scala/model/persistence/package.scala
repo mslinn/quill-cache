@@ -314,8 +314,6 @@ import org.slf4j.Logger
   * }}}
   * See the unit tests for examples of how to use this library. */
 package object persistence {
-  val logger: Logger = org.slf4j.LoggerFactory.getLogger("persistence")
-
   implicit class RichThrowable(throwable: Throwable) {
     def format(asHtml: Boolean=false, showStackTrace: Boolean = false): String =
       new Throwables{}.format(throwable, asHtml, showStackTrace)

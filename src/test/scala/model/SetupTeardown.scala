@@ -4,6 +4,7 @@ import H2ServerStatus._
 import com.typesafe.config.Config
 import model.dao.Ctx
 import persistence._
+import DBComponent.logger
 import org.h2.tools.Server
 import org.scalatest.{BeforeAndAfterAll, Matchers, WordSpec}
 

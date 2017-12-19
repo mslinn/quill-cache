@@ -1,6 +1,7 @@
 package model.persistence
 
 import scala.concurrent.ExecutionContext
+import DBComponent.logger
 
 trait CacheExecutionContext extends ExecutionContext
 

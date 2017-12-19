@@ -6,6 +6,7 @@ import scala.concurrent.ExecutionContext
 import scala.concurrent.ExecutionContext.{Implicits => EC}
 import scala.io.Codec
 import scala.io.Source.fromInputStream
+import DBComponent.logger
 
 object ProcessEvolution {
   def ups(sourceFileName: String, allSql: List[String]): String = {
