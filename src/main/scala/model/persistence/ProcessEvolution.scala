@@ -15,8 +15,8 @@ object ProcessEvolution {
       .drop(1)
       .filter(_.trim.nonEmpty)
       .takeWhile(!contains(_, "# --- !Downs".toLowerCase))
-    val ups = upsLines.mkString("\n", "\n", "")
-    logger.warn(s"Got ${ upsLines.length } up lines from $sourceFileName:$ups")
+    val ups = upsLines.mkString(":\n", "\n", "")
+    logger.warn(s"Got ${ upsLines.length } up lines from $sourceFileName$ups")
     ups
   }
 
@@ -25,8 +25,8 @@ object ProcessEvolution {
       .dropWhile(!contains(_, "# --- !Downs".toLowerCase))
       .drop(1)
       .filter(_.trim.nonEmpty)
-    val downs = downsLines.mkString("\n", "\n", "")
-    logger.warn(s"Got ${ downsLines.length } down lines from $sourceFileName:$downs")
+    val downs = downsLines.mkString(":\n", "\n", "")
+    logger.warn(s"Got ${ downsLines.length } down lines from $sourceFileName$downs")
     downs
   }
 
