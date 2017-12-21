@@ -14,8 +14,8 @@ object ProcessEvolution {
       .dropWhile(!contains(_, "# --- !Ups".toLowerCase))
       .drop(1)
       .takeWhile(!contains(_, "# --- !Downs".toLowerCase))
-    val ups = upsLines.mkString("\n")
-    logger.warn(s"Got ${ upsLines.length } up lines from $sourceFileName:]\n$ups")
+    val ups = upsLines.mkString("\n", "\n", "")
+    logger.warn(s"Got ${ upsLines.length } up lines from $sourceFileName:$ups")
     ups
   }
 
@@ -23,8 +23,8 @@ object ProcessEvolution {
     val downsLines: Seq[String] = allSql
       .dropWhile(!contains(_, "# --- !Downs".toLowerCase))
       .drop(1)
-    val downs = downsLines.mkString("\n")
-    logger.warn(s"Got ${ downsLines.length } down lines from $sourceFileName:]\n$downs")
+    val downs = downsLines.mkString("\n", "\n", "")
+    logger.warn(s"Got ${ downsLines.length } down lines from $sourceFileName:$downs")
     downs
   }
 
