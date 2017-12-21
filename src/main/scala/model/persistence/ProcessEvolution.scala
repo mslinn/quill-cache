@@ -17,7 +17,7 @@ object ProcessEvolution {
       .takeWhile(!contains(_, "# --- !Downs".toLowerCase))
     val ups = upsLines.mkString(":\n", "\n", "")
     logger.warn(s"Got ${ upsLines.length } up lines from $sourceFileName$ups")
-    ups
+    upsLines.mkString("\n")
   }
 
   def downs(sourceFileName: String, allSql: List[String]): String = {
@@ -27,7 +27,7 @@ object ProcessEvolution {
       .filter(_.trim.nonEmpty)
     val downs = downsLines.mkString(":\n", "\n", "")
     logger.warn(s"Got ${ downsLines.length } down lines from $sourceFileName$downs")
-    downs
+    downsLines.mkString("\n")
   }
 
   /** @param target must be lower case */
