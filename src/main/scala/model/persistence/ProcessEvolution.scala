@@ -78,6 +78,12 @@ class ProcessEvolution(resourcePath: String, fallbackPath: String) {
     ()
   }
 
+  /** SQL to execute for ups */
+  def upsLines(ctx: JdbcContext[_, _]): Seq[String] = {
+    val (source, allSql) = fromResource(resourcePath, fallbackPath)
+    ProcessEvolution.upsLines(source, allSql)
+  }
+
   /** Works with synchronous Quill contexts */
   def downs(ctx: JdbcContext[_, _]): Unit = {
     ctx.executeAction(downs(resourcePath, fallbackPath))
@@ -86,17 +92,23 @@ class ProcessEvolution(resourcePath: String, fallbackPath: String) {
 
   /** Works with asynchronous Quill contexts.
     * Looks for an implicit [[concurrent.ExecutionContext]], uses [[concurrent.ExecutionContext.Implicits.global]] if none found. */
-  def ups(ctx: AsyncContext[_, _, _])
-         (implicit ec: ExecutionContext = EC.global): Unit = {
-      ctx.executeAction(ups(resourcePath, fallbackPath))
+  def downs(ctx: AsyncContext[_, _, _])
+           (implicit ec: ExecutionContext = EC.global): Unit = {
+      ctx.executeAction(downs(resourcePath, fallbackPath))
     ()
+  }
+
+  /** SQL to execute for downs */
+  def downsLines(ctx: JdbcContext[_, _]): Seq[String] = {
+    val (source, allSql) = fromResource(resourcePath, fallbackPath)
+    ProcessEvolution.downsLines(source, allSql)
   }
 
   /** Works with asynchronous Quill contexts.
     * Looks for an implicit [[concurrent.ExecutionContext]], uses [[concurrent.ExecutionContext.Implicits.global]] if none found. */
-  def downs(ctx: AsyncContext[_, _, _])
-           (implicit ec: ExecutionContext = EC.global): Unit = {
-      ctx.executeAction(downs(resourcePath, fallbackPath))
+  def ups(ctx: AsyncContext[_, _, _])
+         (implicit ec: ExecutionContext = EC.global): Unit = {
+      ctx.executeAction(ups(resourcePath, fallbackPath))
     ()
   }
 }
