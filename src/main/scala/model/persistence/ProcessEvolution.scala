@@ -9,25 +9,29 @@ import scala.io.Source.fromInputStream
 import DBComponent.logger
 
 object ProcessEvolution {
+  def upsLines(sourceFileName: String, allSql: List[String]): Seq[String] = allSql
+    .dropWhile(!contains(_, "# --- !Ups".toLowerCase))
+    .drop(1)
+    .filter(_.trim.nonEmpty)
+    .takeWhile(!contains(_, "# --- !Downs".toLowerCase))
+
   def ups(sourceFileName: String, allSql: List[String]): String = {
-    val upsLines: Seq[String] = allSql
-      .dropWhile(!contains(_, "# --- !Ups".toLowerCase))
-      .drop(1)
-      .filter(_.trim.nonEmpty)
-      .takeWhile(!contains(_, "# --- !Downs".toLowerCase))
-    val ups = upsLines.mkString(":\n", "\n", "")
-    logger.warn(s"Got ${ upsLines.length } up lines from $sourceFileName$ups")
-    upsLines.mkString("\n")
+    val lines = upsLines(sourceFileName, allSql)
+    val upsChunk = lines.mkString(":\n", "\n", "")
+    logger.warn(s"Got ${ lines.length } up lines from $sourceFileName$upsChunk")
+    lines.mkString("\n")
   }
 
+  def downsLines(sourceFileName: String, allSql: List[String]): Seq[String] = allSql
+    .dropWhile(!contains(_, "# --- !Downs".toLowerCase))
+    .drop(1)
+    .filter(_.trim.nonEmpty)
+
   def downs(sourceFileName: String, allSql: List[String]): String = {
-    val downsLines: Seq[String] = allSql
-      .dropWhile(!contains(_, "# --- !Downs".toLowerCase))
-      .drop(1)
-      .filter(_.trim.nonEmpty)
-    val downs = downsLines.mkString(":\n", "\n", "")
-    logger.warn(s"Got ${ downsLines.length } down lines from $sourceFileName$downs")
-    downsLines.mkString("\n")
+    val lines = downsLines(sourceFileName, allSql)
+    val downsChunk = lines.mkString(":\n", "\n", "")
+    logger.warn(s"Got ${ lines.length } down lines from $sourceFileName$downsChunk")
+    lines.mkString("\n")
   }
 
   /** @param target must be lower case */
