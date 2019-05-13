@@ -3,8 +3,6 @@ resolvers += Resolver.url("bintray-sbt-plugin-releases", url("http://dl.bintray.
 resolvers += Resolver.jcenterRepo
 addSbtPlugin("org.foundweekends" % "sbt-bintray" % "0.5.4")
 
-//addSbtPlugin("com.github.mpeltonen" % "sbt-idea" % "1.6.0")
-
 addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "5.2.4")
 
 // See https://github.com/jrudolph/sbt-dependency-graph
