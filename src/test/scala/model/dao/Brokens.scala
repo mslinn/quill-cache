@@ -1,25 +1,25 @@
 package model.dao
 
 import model.Token
-import model.persistence._
 import model.persistence.Types.IdOptionLong
+import model.persistence._
 
 object Brokens extends UnCachedPersistence[Long, Option[Long], Token] {
-  import Ctx._
+  import model.dao.Ctx._
 
   @inline def _findAll: List[Token] = run { quote { query[Token] } }
 
-  val queryById: (IdOptionLong) => Ctx.Quoted[Ctx.EntityQuery[Token]] =
+  val queryById: IdOptionLong => Ctx.Quoted[Ctx.EntityQuery[Token]] =
     (id: IdOptionLong) =>
       quote { query[Token].filter(_.id == lift(id)) }
 
-  val _deleteById: (IdOptionLong) => Unit =
+  val _deleteById: IdOptionLong => Unit =
     (id: IdOptionLong) => {
       run { quote { queryById(id).delete } }
       ()
     }
 
-  val _findById: (Id[Option[Long]]) => Option[Token] =
+  val _findById: Id[Option[Long]] => Option[Token] =
     (id: Id[Option[Long]]) =>
       run { quote { queryById(id) } }.headOption
 

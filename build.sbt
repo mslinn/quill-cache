@@ -2,10 +2,7 @@ import sbt.Keys._
 
 // Maintainers: Use sbt publishM2 to publish to ~/.m2/local; sbt publish-local cannot publish maven style
 
-val quillVer: String = if (useQuillSnapshot) {
-  resolvers += Resolver.sonatypeRepo("snapshots")
-  "2.3.2-SNAPSHOT"
-} else "2.3.1"
+val quillVer = "3.1.0"
 
 val useQuillSnapshot = false
 
@@ -42,20 +39,20 @@ javacOptions ++=
   )
 
 libraryDependencies ++= Seq(
-  "com.github.nscala-time" %% "nscala-time"          % "2.18.0"   withSources(),
-  "com.google.guava"       %  "guava"                % "23.5-jre" withSources(),
+  "com.github.nscala-time" %% "nscala-time"          % "2.22.0"   withSources(),
+  "com.google.guava"       %  "guava"                % "27.1-jre" withSources(),
   "com.micronautics"       %% "has-id"               % "1.2.8"    withSources(),
   "io.getquill"            %% "quill-async-mysql"    % quillVer   withSources(),
   "io.getquill"            %% "quill-async-postgres" % quillVer   withSources(),
   "io.getquill"            %% "quill-jdbc"           % quillVer   withSources(),
-  "net.codingwell"         %% "scala-guice"          % "4.1.0"    withSources(),
+  "net.codingwell"         %% "scala-guice"          % "4.2.3"    withSources(),
   "ch.qos.logback"         %  "logback-classic"      % "1.2.3",
   //
-  "com.h2database"         %  "h2"                   % "1.4.196"  % Test withSources(),
+  "com.h2database"         %  "h2"                   % "1.4.199"  % Test withSources(),
   "junit"                  %  "junit"                % "4.12"     % Test,
-  "org.postgresql"         %  "postgresql"           % "42.1.4"   % Test,
-  "org.xerial"             %  "sqlite-jdbc"          % "3.20.1"   % Test withSources(),
-  "org.scalatest"          %% "scalatest"            % "3.0.4"    % Test withSources()
+  "org.postgresql"         %  "postgresql"           % "42.2.5"   % Test,
+  "org.xerial"             %  "sqlite-jdbc"          % "3.27.2.1" % Test withSources(),
+  "org.scalatest"          %% "scalatest"            % "3.0.7"    % Test withSources()
 )
 
 resolvers ++= Seq(
@@ -88,7 +85,7 @@ scalacOptions ++=
   )
 
 scalacOptions in (Compile, doc) ++= baseDirectory.map {
-  (bd: File) => Seq[String](
+  bd: File => Seq[String](
      "-sourcepath", bd.getAbsolutePath,
      "-doc-source-url", "https://github.com/mslinn/quill-cache/tree/master€{FILE_PATH}.scala"
   )

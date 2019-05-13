@@ -10,7 +10,7 @@ class DefaultExecutionContextProvider extends Provider[ExecutionContext] {
 }
 
 class DBModule extends AbstractModule with ScalaModule {
-  def configure(): Unit = {
+  override def configure(): Unit = {
     bind[ExecutionContext].toProvider[DefaultExecutionContextProvider].asEagerSingleton
   }
 }

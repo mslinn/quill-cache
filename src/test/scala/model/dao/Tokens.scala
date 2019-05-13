@@ -9,17 +9,17 @@ object Tokens extends UnCachedPersistence[Long, Option[Long], Token] {
 
   @inline def _findAll: List[Token] = run { quote { query[Token] } }
 
-  val queryById: (IdOptionLong) => Ctx.Quoted[Ctx.EntityQuery[Token]] =
+  val queryById: IdOptionLong => Ctx.Quoted[Ctx.EntityQuery[Token]] =
     (id: IdOptionLong) =>
       quote { query[Token].filter(_.id == lift(id)) }
 
-  val _deleteById: (IdOptionLong) => Unit =
+  val _deleteById: IdOptionLong => Unit =
     (id: IdOptionLong) => {
       run { quote { queryById(id).delete } }
       ()
     }
 
-  val _findById: (Id[Option[Long]]) => Option[Token] =
+  val _findById: Id[Option[Long]] => Option[Token] =
     (id: Id[Option[Long]]) =>
       run { quote { queryById(id) } }.headOption
 

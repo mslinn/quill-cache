@@ -15,7 +15,7 @@ import io.getquill.util.LoadConfig
   * }
   * }}}
   * The [[H2Configuration]] object mixes in this trait and provides an alternative mechanism. */
-abstract class H2Ctx(val dataSource: DataSource with Closeable)
+abstract class H2Ctx(override val dataSource: DataSource with Closeable)
   extends H2JdbcContext(TableNameSnakeCase, dataSource) {
 
   def this(config: JdbcContextConfig) = this(config.dataSource)
@@ -32,7 +32,7 @@ abstract class H2Ctx(val dataSource: DataSource with Closeable)
   * }
   * }}}
   * The [[MysqlConfiguration]] object mixes in this trait and provides an alternative mechanism. */
-abstract class MySqlCtx(val dataSource: DataSource with Closeable)
+abstract class MySqlCtx(override val dataSource: DataSource with Closeable)
   extends MysqlJdbcContext(TableNameSnakeCase, ConfigParse.configPrefix("mysql")) {
 
   def this(config: JdbcContextConfig) = this(config.dataSource)
@@ -66,7 +66,7 @@ abstract class MysqlAsyncCtx(val dataSource: DataSource with Closeable)
   * }
   * }}}
   * The [[PostgresConfiguration]] object mixes in this trait and provides an alternative mechanism. */
-abstract class PostgresCtx(val dataSource: DataSource with Closeable)
+abstract class PostgresCtx(override val dataSource: DataSource with Closeable)
   extends PostgresJdbcContext(TableNameSnakeCase, ConfigParse.configPrefix("postgres")) {
 
   def this(config: JdbcContextConfig) = this(config.dataSource)
@@ -98,7 +98,7 @@ abstract class PostgresAsyncCtx(val dataSource: DataSource with Closeable)
   * }
   * }}}
   * The [[SqliteConfiguration]] object mixes in this trait and provides an alternative mechanism. */
-abstract class SqliteCtx(val dataSource: DataSource with Closeable)
+abstract class SqliteCtx(override val dataSource: DataSource with Closeable)
   extends SqliteJdbcContext(TableNameSnakeCase, ConfigParse.configPrefix("sqlite")) {
 
   def this(config: JdbcContextConfig) = this(config.dataSource)
