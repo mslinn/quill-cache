@@ -39,7 +39,6 @@ javacOptions ++=
   )
 
 libraryDependencies ++= Seq(
-  "com.github.nscala-time" %% "nscala-time"          % "2.22.0"   withSources(),
   "com.google.guava"       %  "guava"                % "27.1-jre" withSources(),
   "com.micronautics"       %% "has-id"               % "1.2.8"    withSources(),
   "io.getquill"            %% "quill-async-mysql"    % quillVer   withSources(),
