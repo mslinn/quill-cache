@@ -10,8 +10,8 @@ name := "quill-cache"
 licenses +=  ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0.html"))
 organization := "com.micronautics"
 version := "3.5.10"
-scalaVersion := "2.11.11"
-crossScalaVersions := Seq("2.11.11", "2.12.8")
+scalaVersion := "2.13.0"
+crossScalaVersions := Seq("2.11.12", "2.12.8", "2.13.0")
 
 developers := List(
   Developer("mslinn",
@@ -73,13 +73,6 @@ scalacOptions ++=
     "-encoding", "UTF-8",
     "-feature",
     "-unchecked",
-//    "-Xlog-implicits",     // verbose but useful when quill mappings are at issue
-//    "-Xlog-implicit-conversions",
-    "-Ywarn-adapted-args",
-    "-Ywarn-dead-code",
-    "-Ywarn-numeric-widen",
-    "-Ywarn-value-discard",
-    "-Xfuture",
     "-Xlint"
   )
 
