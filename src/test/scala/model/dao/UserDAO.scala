@@ -4,11 +4,13 @@ import model.User
 import model.persistence._
 import model.persistence.Types.IdOptionLong
 
-object Users extends CachedPersistence[Long, Option[Long], User]
+object UserDAO extends CachedPersistence[Long, Option[Long], User]
     with StrongCacheLike[Long, Option[Long], User] {
   import Ctx._
 
   @inline def _findAll: List[User] = run { quote { query[User] } }
+
+  @inline def deleteAll(): Unit = _findAll.foreach(user => deleteById(user.id))
 
   val queryById: IdOptionLong => Quoted[EntityQuery[User]] =
     (id: IdOptionLong) =>
@@ -27,7 +29,7 @@ object Users extends CachedPersistence[Long, Option[Long], User]
   val _insert: User => User =
     (user: User) => {
       val id: Id[Option[Long]] = try {
-        run { quote { query[User].insert(lift(user)) }.returning(_.id) }
+        run { quote { query[User].insert(lift(user)) }.returningGenerated(_.id) }
       } catch {
         case e: Throwable =>
           logger.error(e.getMessage)

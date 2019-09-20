@@ -1,8 +1,8 @@
-import model.{ContextTest, FindAllTest, ImportTest, QuillConfigTest}
 import model.dao.PersistenceTest
-import org.scalatest.Suites
+import model.{ContextTest, FindAllTest, ImportTest, QuillConfigTest}
+import org.scalatest.Sequential
 
-class AllTest extends Suites(
+class AllTest extends Sequential(
   new QuillConfigTest,
   new ContextTest,
   new FindAllTest,

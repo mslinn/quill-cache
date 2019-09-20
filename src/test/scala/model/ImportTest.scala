@@ -1,7 +1,5 @@
 package model
 
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
 import org.scalatest.{Matchers, WordSpec}
 
 class Klass {
@@ -22,7 +20,6 @@ case object CaseObject {
 
 case object ContainerSingleton extends Container(new Klass)
 
-@RunWith(classOf[JUnitRunner])
 class ImportTest extends WordSpec with Matchers {
   "Scala imports" should {
     "be provided by a class" in {
@@ -33,7 +30,7 @@ class ImportTest extends WordSpec with Matchers {
     }
 
     "be provided by a class object" in {
-      import CaseObject._
+      import model.CaseObject._
       implicitly[Int] shouldBe CaseObject.int
       implicitly[Double] shouldBe CaseObject.double
     }
@@ -45,7 +42,7 @@ class ImportTest extends WordSpec with Matchers {
     }
 
     "be available inside a singleton" in {
-      import ContainerSingleton.klass._
+      import model.ContainerSingleton.klass._
       implicitly[Int] shouldBe ContainerSingleton.gimmeInt
     }
   }

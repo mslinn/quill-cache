@@ -1,10 +1,10 @@
 package model
 
-import H2ServerStatus._
 import com.typesafe.config.Config
+import model.H2ServerStatus._
 import model.dao.Ctx
-import persistence._
-import DBComponent.logger
+import model.persistence.DBComponent.logger
+import model.persistence._
 import org.h2.tools.Server
 import org.scalatest.{BeforeAndAfterAll, Matchers, WordSpec}
 

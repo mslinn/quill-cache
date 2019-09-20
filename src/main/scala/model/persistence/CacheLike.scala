@@ -1,7 +1,9 @@
 package model.persistence
 
+import java.util
 import scala.concurrent.ExecutionContext
 import DBComponent.logger
+import com.google.common.cache.Cache
 
 trait CacheExecutionContext extends ExecutionContext
 
@@ -73,8 +75,13 @@ trait StrongCacheLike[Key <: Any, _IdType <: Option[Key], CaseClass <: HasId[Cas
   implicit val cacheExecutionContext: CacheExecutionContext = implicitly[CacheExecutionContext]
   protected val theCache: StrongCache[Key, CaseClass] = StrongCache[Key, CaseClass]()
 
-  @inline override def findAll: List[CaseClass] =
-    theCache.underlying.asMap.values.toArray.toList.asInstanceOf[List[CaseClass]]
+  @inline override def findAll: List[CaseClass] = {
+    val cache: Cache[Object, Object] = theCache.underlying
+    val values: util.Collection[Object] = cache.asMap.values
+    val list: List[AnyRef] = values.toArray.toList
+    val result: List[CaseClass] = list.asInstanceOf[List[CaseClass]]
+    result
+  }
 
-//  @inline def findAllFromDB: List[CaseClass] = cp._findAll
+  //  @inline def findAllFromDB: List[CaseClass] = cp._findAll
 }

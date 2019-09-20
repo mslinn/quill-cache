@@ -9,9 +9,9 @@ val useQuillSnapshot = false
 name := "quill-cache"
 licenses +=  ("Apache-2.0", url("https://www.apache.org/licenses/LICENSE-2.0.html"))
 organization := "com.micronautics"
-version := "3.5.10"
+version := "3.5.11"
 scalaVersion := "2.12.10"
-crossScalaVersions := Seq("2.11.12", "2.12.10", "2.13.1")
+crossScalaVersions := Seq("2.11.12", "2.12.10") //, "2.13.1")
 
 developers := List(
   Developer("mslinn",
@@ -39,19 +39,19 @@ javacOptions ++=
   )
 
 libraryDependencies ++= Seq(
-  "com.google.guava"       %  "guava"                % "27.1-jre" withSources(),
+  "com.google.guava"       %  "guava"                % "28.1-jre" withSources(),
   "com.micronautics"       %% "has-id"               % "1.2.8"    withSources(),
   "io.getquill"            %% "quill-async-mysql"    % quillVer   withSources(),
   "io.getquill"            %% "quill-async-postgres" % quillVer   withSources(),
   "io.getquill"            %% "quill-jdbc"           % quillVer   withSources(),
-  "net.codingwell"         %% "scala-guice"          % "4.2.3"    withSources(),
+  "net.codingwell"         %% "scala-guice"          % "4.2.6"    withSources(),
   "ch.qos.logback"         %  "logback-classic"      % "1.2.3",
   //
   "com.h2database"         %  "h2"                   % "1.4.199"  % Test withSources(),
   "junit"                  %  "junit"                % "4.12"     % Test,
   "org.postgresql"         %  "postgresql"           % "42.2.5"   % Test,
   "org.xerial"             %  "sqlite-jdbc"          % "3.27.2.1" % Test withSources(),
-  "org.scalatest"          %% "scalatest"            % "3.0.7"    % Test withSources()
+  "org.scalatest"          %% "scalatest"            % "3.0.8"    % Test withSources()
 )
 
 resolvers ++= Seq(
@@ -118,3 +118,8 @@ initialCommands in Test in console := commonInitialCommands +
     |""".stripMargin
 
 cancelable := true
+
+Test / classLoaderLayeringStrategy := ClassLoaderLayeringStrategy.Flat
+logBuffered in Test := false
+parallelExecution in Test := false
+//fork in Test := true

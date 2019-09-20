@@ -4,17 +4,14 @@ import java.util.Properties
 import com.typesafe.config.{Config, ConfigFactory}
 import com.zaxxer.hikari.HikariDataSource
 import io.getquill.JdbcContextConfig
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
 
-@RunWith(classOf[JUnitRunner])
 class QuillConfigTest extends TestSpec {
   "ClassName" should {
     "correct" in {
       import model.dao._
-      Users.className   shouldBe "User"
-      Brokens.className shouldBe "Token"
-      Tokens.className  shouldBe "Token"
+      UserDAO.className   shouldBe "User"
+      BrokenDAO.className shouldBe "Token"
+      TokenDAO.className  shouldBe "Token"
     }
   }
 

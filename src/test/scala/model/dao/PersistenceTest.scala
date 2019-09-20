@@ -2,29 +2,28 @@ package model.dao
 
 import java.net.URL
 import model._
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
-import persistence._
+import model.persistence._
 
 case class CrashTestDummy(a: String, id: Int)
 
-@RunWith(classOf[JUnitRunner])
 class PersistenceTest extends TestSpec {
+  val MAX_INSTANCES = 299L
+
   "Copier" should {
     "work" in {
-        val x = CrashTestDummy("hi", 123)
-        val result = Copier(x, ("id", 456))
-        result shouldBe CrashTestDummy("hi", 456)
+        val crashTestDummy = CrashTestDummy("hi", 123)
+        val actual = Copier(crashTestDummy, ("id", 456))
+        actual shouldBe CrashTestDummy("hi", 456)
     }
   }
 
   "Cached instances" should  {
     "pass autoinc" in {
-      Users.setAutoInc(Ctx)
+      UserDAO.setAutoInc(Ctx)
     }
 
     "create via upsert" in {
-      val user: User = Users.upsert(User(
+      val user: User = UserDAO.upsert(User(
         userId = s"user0",
         email = s"user0@gmail.com",
         firstName = s"Joe0",
@@ -37,20 +36,20 @@ class PersistenceTest extends TestSpec {
     }
 
     "be found by id" in {
-      Users.findById(Id(Option(1L))).size shouldBe 1
+      UserDAO.findById(Id(Option(1L))).size shouldBe 1
     }
 
     "be found by userId" in {
-      Users.findByUserId("user0").size shouldBe 1
+      UserDAO.findByUserId("user0").size shouldBe 1
     }
 
     "delete by id" in {
-      Users.deleteById(Id(Option(1L)))
-      Users.findAll.size shouldBe 0
+      UserDAO.deleteById(Id(Option(1L)))
+      UserDAO.findAll.size shouldBe 0
     }
 
     "create via insert" in {
-      val user0: User = Users.insert(User(
+      val user0: User = UserDAO.insert(User(
         userId = "user0",
         email = "user0@gmail.com",
         firstName = s"Joe0",
@@ -59,28 +58,28 @@ class PersistenceTest extends TestSpec {
         paymentMechanism = PaymentMechanism.NONE,
         paymentMechanisms = List(PaymentMechanism.PAYPAL_REST, PaymentMechanism.SQUARE, PaymentMechanism.STRIPE)
       ))
-      Users._findAll.size shouldBe 1
-      Users.findAllFromDB.size shouldBe 1
-      Users.findAll.size shouldBe 1
+      UserDAO._findAll.size shouldBe 1
+      UserDAO.findAllFromDB.size shouldBe 1
+      UserDAO.findAll.size shouldBe 1
       user0.id.value shouldBe Some(2L)
     }
 
     "updated via upsert" in {
-      val user = Users.findAll.head
+      val user = UserDAO.findAll.head
       val modified = user.copy(userId = "xxx")
       modified.id.value shouldBe user.id.value
       modified.userId shouldBe "xxx"
 
-      val upserted: User = Users.upsert(modified)
-      Users._findAll.size shouldBe 1
-      Users.findAllFromDB.size shouldBe 1
-      Users.findAll.size shouldBe 1
+      val upserted: User = UserDAO.upsert(modified)
+      UserDAO._findAll.size shouldBe 1
+      UserDAO.findAllFromDB.size shouldBe 1
+      UserDAO.findAll.size shouldBe 1
       upserted.id.value shouldBe user.id.value
       upserted.userId shouldBe "xxx"
     }
 
     "inserted via upsert" in {
-      val newUser: User = Users.upsert(User(
+      val newUser: User = UserDAO.upsert(User(
         userId = "user",
         email = "user@gmail.com",
         firstName = s"Mary",
@@ -89,41 +88,41 @@ class PersistenceTest extends TestSpec {
         paymentMechanism = PaymentMechanism.NONE,
         paymentMechanisms = Nil
       ))
-      Users._findAll.size shouldBe 2
-      Users.findAllFromDB.size shouldBe 2
-      Users.findAll.size shouldBe 2
+      UserDAO._findAll.size shouldBe 2
+      UserDAO.findAllFromDB.size shouldBe 2
+      UserDAO.findAll.size shouldBe 2
       newUser.userId shouldBe "user"
     }
   }
 
   "Uncached instances" should  {
     "pass autoinc" in {
-      Tokens.setAutoInc(Ctx)
+      TokenDAO.setAutoInc(Ctx)
     }
 
     "create via upsert" in {
-      val token: Token = Tokens.upsert(Token(
+      val token: Token = TokenDAO.upsert(Token(
         value = "asdf"
       ))
       token.id.value shouldBe Some(1L)
     }
 
     "be found by id" in {
-      Tokens.findById(Id(Option(1L))).size shouldBe 1
+      TokenDAO.findById(Id(Option(1L))).size shouldBe 1
     }
 
     "delete by id" in {
-      Tokens.deleteById(Id(Option(1L)))
-      Tokens.findAll.size shouldBe 0
+      TokenDAO.deleteById(Id(Option(1L)))
+      TokenDAO.findAll.size shouldBe 0
     }
 
     "create via insert" in {
-      val user: Token = Tokens.insert(Token(
+      val user: Token = TokenDAO.insert(Token(
         value = "value"
       ))
-      Tokens._findAll.size shouldBe 1
-      Tokens.findAllFromDB.size shouldBe 1
-      Tokens.findAll.size shouldBe 1
+      TokenDAO._findAll.size shouldBe 1
+      TokenDAO.findAllFromDB.size shouldBe 1
+      TokenDAO.findAll.size shouldBe 1
       user.id.value shouldBe Some(2L)
     }
   }
@@ -131,11 +130,11 @@ class PersistenceTest extends TestSpec {
   "List of Java Enums" should {
     "decode" in {
       val idOptionLong = Id(Option(1L))
-      val token: Token = Tokens.upsert(Token(
+      val token: Token = TokenDAO.upsert(Token(
         value = "asdf",
         prerequisiteIds = List(idOptionLong)
       ))
-      Tokens.findById(token.id) foreach { token =>
+      TokenDAO.findById(token.id) foreach { token =>
         token.prerequisiteIds should contain (idOptionLong)
       }
     }
@@ -145,12 +144,12 @@ class PersistenceTest extends TestSpec {
     "decode" in {
       val homePage = Some(new URL("https://www.mslinn.com"))
       val scalaCourses = new URL("https://www.scalacourses.com")
-      val token: Token = Tokens.upsert(Token(
+      val token: Token = TokenDAO.upsert(Token(
         value = "asdf",
         homePage = homePage,
         favoriteSites = List(scalaCourses)
       ))
-      Tokens.findById(token.id) foreach { token =>
+      TokenDAO.findById(token.id) foreach { token =>
         token.homePage shouldBe homePage
         token.favoriteSites should contain (scalaCourses)
       }
@@ -160,7 +159,7 @@ class PersistenceTest extends TestSpec {
   "Connection pool" should {
     "work" in {
       (1L to 299L).foreach { i =>
-        Users.upsert(User(
+        UserDAO.upsert(User(
           userId = s"user$i",
           email = s"user$i@gmail.com",
           firstName = s"Joe$i",
@@ -170,8 +169,9 @@ class PersistenceTest extends TestSpec {
           paymentMechanisms = List(PaymentMechanism.PAYPAL_REST, PaymentMechanism.SQUARE, PaymentMechanism.STRIPE)
         ))
       }
-      val users: Seq[User] = Users.findAll
-      users.size shouldBe 301
+      val users: Seq[User] = UserDAO.findAll
+      users.size shouldBe MAX_INSTANCES + 2
+      UserDAO.deleteAll()
     }
   }
 }

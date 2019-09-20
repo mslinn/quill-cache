@@ -4,7 +4,7 @@ import model.Token
 import model.persistence._
 import model.persistence.Types.IdOptionLong
 
-object Tokens extends UnCachedPersistence[Long, Option[Long], Token] {
+object TokenDAO extends UnCachedPersistence[Long, Option[Long], Token] {
   import Ctx._
 
   @inline def _findAll: List[Token] = run { quote { query[Token] } }
@@ -19,6 +19,8 @@ object Tokens extends UnCachedPersistence[Long, Option[Long], Token] {
       ()
     }
 
+  @inline def deleteAll(): Unit = _findAll.foreach(token => deleteById(token.id))
+
   val _findById: Id[Option[Long]] => Option[Token] =
     (id: Id[Option[Long]]) =>
       run { quote { queryById(id) } }.headOption
@@ -26,7 +28,7 @@ object Tokens extends UnCachedPersistence[Long, Option[Long], Token] {
   val _insert: Token => Token =
     (token: Token) => {
       val id: Id[Option[Long]] = try {
-        run { quote { query[Token].insert(lift(token)) }.returning(_.id) }
+        run { quote { query[Token].insert(lift(token)) }.returningGenerated(_.id) }
       } catch {
         case e: Throwable =>
           logger.error(e.getMessage)
