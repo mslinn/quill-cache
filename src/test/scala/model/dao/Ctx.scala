@@ -1,8 +1,7 @@
 package model.dao
 
 import model.PaymentMechanism
-import model.persistence.Types.{IdOptionLong, OptionLong}
-import model.persistence.{H2Ctx, Id, QuillCacheImplicits}
+import model.persistence.{H2Ctx, QuillCacheImplicits}
 
 /** Define `Ctx` for use with all DAOs; it could provide all implicit Decoder/Encoder/Mappers */
 case object Ctx extends H2Ctx with QuillCacheImplicits {

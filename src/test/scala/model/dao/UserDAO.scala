@@ -1,12 +1,12 @@
 package model.dao
 
 import model.User
-import model.persistence._
 import model.persistence.Types.IdOptionLong
+import model.persistence._
 
 object UserDAO extends CachedPersistence[Long, Option[Long], User]
     with StrongCacheLike[Long, Option[Long], User] {
-  import Ctx._
+  import model.dao.Ctx._
 
   @inline def _findAll: List[User] = run { quote { query[User] } }
 

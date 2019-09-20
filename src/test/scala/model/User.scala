@@ -1,7 +1,7 @@
 package model
 
-import model.persistence._
 import model.persistence.Types.IdOptionLong
+import model.persistence._
 
 case class User(
   userId: String,

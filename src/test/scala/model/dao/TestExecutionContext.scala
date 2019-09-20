@@ -1,7 +1,7 @@
 package model.dao
 
 import model.persistence.CacheExecutionContext
-import scala.concurrent.{ExecutionContext, ExecutionContextExecutor}
+import scala.concurrent.ExecutionContext
 
 /** Just delegates to standard Scala ExecutionContext, you can make this do whatever you want */
 object TestExecutionContext extends CacheExecutionContext {

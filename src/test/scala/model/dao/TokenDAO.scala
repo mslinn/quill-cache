@@ -1,11 +1,11 @@
 package model.dao
 
 import model.Token
-import model.persistence._
 import model.persistence.Types.IdOptionLong
+import model.persistence._
 
 object TokenDAO extends UnCachedPersistence[Long, Option[Long], Token] {
-  import Ctx._
+  import model.dao.Ctx._
 
   @inline def _findAll: List[Token] = run { quote { query[Token] } }
 
