@@ -2,15 +2,15 @@ import sbt.Keys._
 
 // Maintainers: Use sbt publishM2 to publish to ~/.m2/local; sbt publish-local cannot publish maven style
 
-val quillVer = "3.1.0"
+val quillVer = "3.4.8"
 
 val useQuillSnapshot = false
 
 name := "quill-cache"
-licenses +=  ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0.html"))
+licenses +=  ("Apache-2.0", url("https://www.apache.org/licenses/LICENSE-2.0.html"))
 organization := "com.micronautics"
 version := "3.5.10"
-scalaVersion := "2.13.1"
+scalaVersion := "2.12.10"
 crossScalaVersions := Seq("2.11.12", "2.12.10", "2.13.1")
 
 developers := List(
@@ -55,7 +55,7 @@ libraryDependencies ++= Seq(
 )
 
 resolvers ++= Seq(
-  "micronautics/scala on bintray" at "http://dl.bintray.com/micronautics/scala"
+  "micronautics/scala on bintray" at "https://dl.bintray.com/micronautics/scala"
 )
 
 scalacOptions ++=
