@@ -2,16 +2,16 @@ import sbt.Keys._
 
 // Maintainers: Use sbt publishM2 to publish to ~/.m2/local; sbt publish-local cannot publish maven style
 
-val quillVer = "3.4.8"
+val quillVer = "3.4.10"
 
 val useQuillSnapshot = false
 
 name := "quill-cache"
 licenses +=  ("Apache-2.0", url("https://www.apache.org/licenses/LICENSE-2.0.html"))
 organization := "com.micronautics"
-version := "3.5.11"
-scalaVersion := "2.12.10"
-crossScalaVersions := Seq("2.11.12", "2.12.10") //, "2.13.1")
+version := "3.5.12"
+scalaVersion := "2.13.1"
+crossScalaVersions := Seq("2.11.12", "2.12.10", "2.13.1")
 
 developers := List(
   Developer("mslinn",
@@ -40,7 +40,7 @@ javacOptions ++=
 
 libraryDependencies ++= Seq(
   "com.google.guava"       %  "guava"                % "28.1-jre" withSources(),
-  "com.micronautics"       %% "has-id"               % "1.2.8"    withSources(),
+  "com.micronautics"       %% "has-id"               % "1.3.0"    withSources(),
   "io.getquill"            %% "quill-async-mysql"    % quillVer   withSources(),
   "io.getquill"            %% "quill-async-postgres" % quillVer   withSources(),
   "io.getquill"            %% "quill-jdbc"           % quillVer   withSources(),
