@@ -6,10 +6,12 @@ import model.dao.Ctx
 import model.persistence.DBComponent.logger
 import model.persistence._
 import org.h2.tools.Server
-import org.scalatest.{BeforeAndAfterAll, Matchers, WordSpec}
+import org.scalatest.BeforeAndAfterAll
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
 
 abstract class TestSpec
-  extends WordSpec
+  extends AnyWordSpec
     with Matchers
     with LocalH2Server
     with SetupTeardown
@@ -56,7 +58,7 @@ trait LocalH2Server {
 }
 
 // Because BeforeAndAfterAll invokes super.run, mix this trait in last
-trait SetupTeardown extends BeforeAndAfterAll { this: WordSpec with LocalH2Server =>
+trait SetupTeardown extends BeforeAndAfterAll { this: AnyWordSpec with LocalH2Server =>
   val resourcePath = "evolutions/default/1.sql" // for accessing evolution file as a resource from a jar
   val fallbackPath = s"src/test/resources/$resourcePath" // for testing this project
   val processEvolution = new ProcessEvolution(resourcePath, fallbackPath)
