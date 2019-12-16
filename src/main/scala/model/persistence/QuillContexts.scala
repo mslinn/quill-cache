@@ -49,13 +49,13 @@ abstract class MySqlCtx(override val dataSource: DataSource with Closeable)
   * }
   * }}}
   * The [[MysqlAsyncConfiguration]] object mixes in this trait and provides an alternative mechanism. */
-abstract class MysqlAsyncCtx(val dataSource: DataSource with Closeable)
-  extends MysqlAsyncContext(TableNameSnakeCase, ConfigParse.configPrefix("mysql-async")) {
-
-  def this(config: JdbcContextConfig) = this(config.dataSource)
-  def this(config: Config) = this(JdbcContextConfig(config))
-  def this() = this(LoadConfig(ConfigParse.configPrefix("mysql-async")))
-}
+//abstract class MysqlAsyncCtx(val dataSource: DataSource with Closeable)
+//  extends MysqlAsyncContext(TableNameSnakeCase, ConfigParse.configPrefix("mysql-async")) {
+//
+//  def this(config: JdbcContextConfig) = this(config.dataSource)
+//  def this(config: Config) = this(JdbcContextConfig(config))
+//  def this() = this(LoadConfig(ConfigParse.configPrefix("mysql-async")))
+//}
 
 /** Mix this trait into any class that needs to access the Postgres synchronous configuration.
   * Exposes a property called `ctx`, which is the Quill context.
@@ -82,12 +82,13 @@ abstract class PostgresCtx(override val dataSource: DataSource with Closeable)
   * }
   * }}}
   * The [[PostgresAsyncConfiguration]] object mixes in this trait and provides an alternative mechanism. */
-abstract class PostgresAsyncCtx(val dataSource: DataSource with Closeable)
-  extends PostgresAsyncContext(TableNameSnakeCase, ConfigParse.configPrefix("postgres-async")) {
-
-  def this(config: JdbcContextConfig) = this(config.dataSource)
-  def this(config: Config) = this(JdbcContextConfig(config))
-  def this() = this(LoadConfig(ConfigParse.configPrefix("postgres-async")))}
+//abstract class PostgresAsyncCtx(val dataSource: DataSource with Closeable)
+//  extends PostgresAsyncContext(TableNameSnakeCase, ConfigParse.configPrefix("postgres-async")) {
+//
+//  def this(config: JdbcContextConfig) = this(config.dataSource)
+//  def this(config: Config) = this(JdbcContextConfig(config))
+//  def this() = this(LoadConfig(ConfigParse.configPrefix("postgres-async")))
+//}
 
 /** Mix this trait into any class that needs to access the Sqlite synchronous configuration.
   * Exposes a property called `ctx`, which is the Quill context.
@@ -122,7 +123,7 @@ object MysqlConfiguration extends MySqlCtx
   * Exposes a property called `ctx`, which is the Quill context.
   * To use, simply import the context, like this:
   * {{{import MysqlAsyncConfiguration.ctx._}}} */
-object MysqlAsyncConfiguration extends MysqlAsyncCtx
+//object MysqlAsyncConfiguration extends MysqlAsyncCtx
 
 /** Object for exposing the Postgres synchronous configuration.
   * Exposes a property called `ctx`, which is the Quill context.
@@ -134,7 +135,7 @@ object PostgresConfiguration extends PostgresCtx
   * Exposes a property called `ctx`, which is the Quill context.
   * To use, simply import the context, like this:
   * {{{import PostgresAsyncConfiguration.ctx._}}} */
-object PostgresAsyncConfiguration extends PostgresAsyncCtx
+//object PostgresAsyncConfiguration extends PostgresAsyncCtx
 
 /** Object for exposing the Sqlite synchronous configuration.
   * Exposes a property called `ctx`, which is the Quill context.

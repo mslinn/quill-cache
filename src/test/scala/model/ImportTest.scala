@@ -1,6 +1,7 @@
 package model
 
-import org.scalatest.{Matchers, WordSpec}
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
 
 class Klass {
   implicit val int: Int = 15
@@ -20,7 +21,7 @@ case object CaseObject {
 
 case object ContainerSingleton extends Container(new Klass)
 
-class ImportTest extends WordSpec with Matchers {
+class ImportTest extends AnyWordSpec with Matchers {
   "Scala imports" should {
     "be provided by a class" in {
       val klass = new Klass

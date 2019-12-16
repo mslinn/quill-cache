@@ -2,7 +2,7 @@ import sbt.Keys._
 
 // Maintainers: Use sbt publishM2 to publish to ~/.m2/local; sbt publish-local cannot publish maven style
 
-val quillVer = "3.4.10"
+val quillVer = "3.5.0"
 
 val useQuillSnapshot = false
 
@@ -41,8 +41,8 @@ javacOptions ++=
 libraryDependencies ++= Seq(
   "com.google.guava"       %  "guava"                % "28.1-jre" withSources(),
   "com.micronautics"       %% "has-id"               % "1.3.0"    withSources(),
-  "io.getquill"            %% "quill-async-mysql"    % quillVer   withSources(),
-  "io.getquill"            %% "quill-async-postgres" % quillVer   withSources(),
+ // "io.getquill"            %% "quill-async-mysql"    % quillVer   withSources(),
+ // "io.getquill"            %% "quill-async-postgres" % quillVer   withSources(),
   "io.getquill"            %% "quill-jdbc"           % quillVer   withSources(),
   "net.codingwell"         %% "scala-guice"          % "4.2.6"    withSources(),
   "ch.qos.logback"         %  "logback-classic"      % "1.2.3",
@@ -51,7 +51,7 @@ libraryDependencies ++= Seq(
   "junit"                  %  "junit"                % "4.12"     % Test,
   "org.postgresql"         %  "postgresql"           % "42.2.5"   % Test,
   "org.xerial"             %  "sqlite-jdbc"          % "3.27.2.1" % Test withSources(),
-  "org.scalatest"          %% "scalatest"            % "3.0.8"    % Test withSources()
+  "org.scalatest"          %% "scalatest"            % "3.1.0"    % Test withSources()
 )
 
 resolvers ++= Seq(

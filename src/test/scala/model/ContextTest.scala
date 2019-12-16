@@ -1,11 +1,11 @@
 package model
 
 import java.net.URL
+import java.time.LocalDateTime
 import java.util.UUID
 import model.dao._
 import model.persistence.Types._
 import model.persistence._
-import org.joda.time.DateTime
 
 /** Create a context based on the `dataSource` from another Context */
 case object Ctx2 extends H2Ctx(Ctx.dataSource) with QuillCacheImplicits
@@ -38,8 +38,8 @@ class ContextTest extends TestSpec {
         implicitly[Encoder[java.util.Date]]
       }
       {
-        implicitly[Decoder[DateTime]]
-        implicitly[Encoder[DateTime]]
+        implicitly[Decoder[LocalDateTime]]
+        implicitly[Encoder[LocalDateTime]]
       }
       {
         implicitly[Decoder[Map[IdOptionLong, List[Int]]]]

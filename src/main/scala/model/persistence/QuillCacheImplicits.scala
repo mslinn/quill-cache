@@ -1,11 +1,11 @@
 package model.persistence
 
 import java.net.URL
+import java.time.{Instant, LocalDateTime, ZoneId}
 import java.util.{Date, UUID}
 import io.getquill._
 import io.getquill.context.jdbc.JdbcContext
 import model.persistence.Types.{IdLong, IdOptionLong, OptionLong}
-import org.joda.time.DateTime
 import scala.language.implicitConversions
 
 trait QuillCacheImplicits extends IdImplicitLike { ctx: JdbcContext[_, _] =>
@@ -16,8 +16,14 @@ trait QuillCacheImplicits extends IdImplicitLike { ctx: JdbcContext[_, _] =>
   type OptionLongToListLong   = Map[OptionLong,   List[Long]]
   type IdOptionLongToListLong = Map[IdOptionLong, List[Long]]
 
-  implicit val encodeDate: MappedEncoding[Date, DateTime] = MappedEncoding[java.util.Date, DateTime](new DateTime(_))
-  implicit val decodeDate: MappedEncoding[DateTime, Date] = MappedEncoding[DateTime, java.util.Date](_.toDate)
+  implicit val encodeDate: MappedEncoding[Date, LocalDateTime] = MappedEncoding[java.util.Date, LocalDateTime] { x =>
+    Instant.ofEpochMilli(x.getTime)
+      .atZone(ZoneId.systemDefault)
+      .toLocalDateTime
+  }
+  implicit val decodeDate: MappedEncoding[LocalDateTime, Date] = MappedEncoding[LocalDateTime, java.util.Date] { x =>
+    Date.from(x.atZone(ZoneId.systemDefault).toInstant)
+  }
 
   implicit val idOptionLongEncoder: MappedEncoding[IdOptionLong, Long] =
     MappedEncoding[IdOptionLong, Long](_.value.getOrElse(Id.empty[Long].value))

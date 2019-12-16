@@ -1,6 +1,6 @@
 package model.persistence
 
-import io.getquill.context.async.AsyncContext
+//import io.getquill.context.async.AsyncContext
 import io.getquill.context.jdbc.JdbcContext
 import scala.concurrent.ExecutionContext
 import scala.concurrent.ExecutionContext.{Implicits => EC}
@@ -90,25 +90,25 @@ class ProcessEvolution(resourcePath: String, fallbackPath: String) {
     ()
   }
 
-  /** Works with asynchronous Quill contexts.
-    * Looks for an implicit [[concurrent.ExecutionContext]], uses [[concurrent.ExecutionContext.Implicits.global]] if none found. */
-  def downs(ctx: AsyncContext[_, _, _])
-           (implicit ec: ExecutionContext = EC.global): Unit = {
-      ctx.executeAction(downs(resourcePath, fallbackPath))
-    ()
-  }
-
-  /** SQL to execute for downs */
-  def downsLines(ctx: JdbcContext[_, _]): Seq[String] = {
-    val (source, allSql) = fromResource(resourcePath, fallbackPath)
-    ProcessEvolution.downsLines(source, allSql)
-  }
-
-  /** Works with asynchronous Quill contexts.
-    * Looks for an implicit [[concurrent.ExecutionContext]], uses [[concurrent.ExecutionContext.Implicits.global]] if none found. */
-  def ups(ctx: AsyncContext[_, _, _])
-         (implicit ec: ExecutionContext = EC.global): Unit = {
-      ctx.executeAction(ups(resourcePath, fallbackPath))
-    ()
-  }
+//  /** Works with asynchronous Quill contexts.
+//    * Looks for an implicit [[concurrent.ExecutionContext]], uses [[concurrent.ExecutionContext.Implicits.global]] if none found. */
+//  def downs(ctx: AsyncContext[_, _, _])
+//           (implicit ec: ExecutionContext = EC.global): Unit = {
+//      ctx.executeAction(downs(resourcePath, fallbackPath))
+//    ()
+//  }
+//
+//  /** SQL to execute for downs */
+//  def downsLines(ctx: JdbcContext[_, _]): Seq[String] = {
+//    val (source, allSql) = fromResource(resourcePath, fallbackPath)
+//    ProcessEvolution.downsLines(source, allSql)
+//  }
+//
+//  /** Works with asynchronous Quill contexts.
+//    * Looks for an implicit [[concurrent.ExecutionContext]], uses [[concurrent.ExecutionContext.Implicits.global]] if none found. */
+//  def ups(ctx: AsyncContext[_, _, _])
+//         (implicit ec: ExecutionContext = EC.global): Unit = {
+//      ctx.executeAction(ups(resourcePath, fallbackPath))
+//    ()
+//  }
 }
