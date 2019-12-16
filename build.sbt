@@ -40,7 +40,7 @@ javacOptions ++=
 
 libraryDependencies ++= Seq(
   "com.google.guava"       %  "guava"                % "28.1-jre" withSources(),
-  "com.micronautics"       %% "has-id"               % "1.2.8"    withSources(),
+  "com.micronautics"       %% "has-id"               % "1.3.0"    withSources(),
   "io.getquill"            %% "quill-async-mysql"    % quillVer   withSources(),
   "io.getquill"            %% "quill-async-postgres" % quillVer   withSources(),
   "io.getquill"            %% "quill-jdbc"           % quillVer   withSources(),
