@@ -49,7 +49,7 @@ libraryDependencies ++= Seq(
   //
   "com.h2database"         %  "h2"                   % "1.4.199"  % Test withSources(),
   "junit"                  %  "junit"                % "4.12"     % Test,
-  "org.postgresql"         %  "postgresql"           % "42.2.5"   % Test,
+  "org.postgresql"         %  "postgresql"           % "42.2.9"   % Test,
   "org.xerial"             %  "sqlite-jdbc"          % "3.27.2.1" % Test withSources(),
   "org.scalatest"          %% "scalatest"            % "3.0.8"    % Test withSources()
 )
