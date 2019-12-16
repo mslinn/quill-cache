@@ -2,7 +2,7 @@ import sbt.Keys._
 
 // Maintainers: Use sbt publishM2 to publish to ~/.m2/local; sbt publish-local cannot publish maven style
 
-val quillVer = "3.4.8"
+val quillVer = "3.4.10"
 
 val useQuillSnapshot = false
 
