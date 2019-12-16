@@ -47,7 +47,7 @@ libraryDependencies ++= Seq(
   "net.codingwell"         %% "scala-guice"          % "4.2.6"    withSources(),
   "ch.qos.logback"         %  "logback-classic"      % "1.2.3",
   //
-  "com.h2database"         %  "h2"                   % "1.4.199"  % Test withSources(),
+  "com.h2database"         %  "h2"                   % "1.4.200"  % Test withSources(),
   "junit"                  %  "junit"                % "4.12"     % Test,
   "org.postgresql"         %  "postgresql"           % "42.2.9"   % Test,
   "org.scalatest"          %% "scalatest"            % "3.1.0"    % Test withSources(),
