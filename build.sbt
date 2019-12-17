@@ -6,11 +6,10 @@ val quillVer = "3.5.0"
 
 val useQuillSnapshot = false
 
-name := "quill-cache"
-licenses +=  ("Apache-2.0", url("https://www.apache.org/licenses/LICENSE-2.0.html"))
-organization := "com.micronautics"
-version := "3.5.12"
-scalaVersion := "2.13.1"
+cancelable := true
+
+Test / classLoaderLayeringStrategy := ClassLoaderLayeringStrategy.Flat
+
 crossScalaVersions := Seq("2.11.12", "2.12.10", "2.13.1")
 
 developers := List(
@@ -20,6 +19,25 @@ developers := List(
             url("https://github.com/mslinn")
   )
 )
+
+//fork in Test := true
+
+lazy val commonInitialCommands =
+  """import java.net.URL
+    |import java.util.UUID
+    |import io.getquill._
+    |import io.getquill.context.jdbc.JdbcContext
+    |import scala.reflect.ClassTag
+    |import model._
+    |""".stripMargin
+
+// define the statements initially evaluated when entering 'console', 'console-quick', but not 'console-project'
+initialCommands in console := commonInitialCommands
+
+// define the statements initially evaluated when entering 'test:console', 'test:console-quick', but not 'test:console-project'
+initialCommands in Test in console := commonInitialCommands +
+  """import model.dao.Ctx.{run => qRun, _}
+    |""".stripMargin
 
 javacOptions ++=
   scalaVersion {
@@ -41,6 +59,7 @@ javacOptions ++=
 libraryDependencies ++= Seq(
   "com.google.guava"       %  "guava"                % "28.1-jre" withSources(),
   "com.micronautics"       %% "has-id"               % "1.3.0"    withSources(),
+  "com.micronautics"       %% "scalacourses-utils"   % "0.3.5"    withSources(),
  // "io.getquill"            %% "quill-async-mysql"    % quillVer   withSources(),
  // "io.getquill"            %% "quill-async-postgres" % quillVer   withSources(),
   "io.getquill"            %% "quill-jdbc"           % quillVer   withSources(),
@@ -53,6 +72,25 @@ libraryDependencies ++= Seq(
   "org.xerial"             %  "sqlite-jdbc"          % "3.27.2.1" % Test withSources(),
   "org.scalatest"          %% "scalatest"            % "3.1.0"    % Test withSources()
 )
+
+licenses +=  ("Apache-2.0", url("https://www.apache.org/licenses/LICENSE-2.0.html"))
+
+logBuffered in Test := false
+
+logLevel := Level.Warn
+
+// Only show warnings and errors on the screen for compilations.
+// This applies to both test:compile and compile and is Info by default
+logLevel in compile := Level.Warn
+
+// Level.INFO is needed to see detailed output when running tests
+logLevel in test := Level.Debug
+
+name := "quill-cache"
+
+organization := "com.micronautics"
+
+parallelExecution in Test := false
 
 resolvers ++= Seq(
   "micronautics/scala on bintray" at "https://dl.bintray.com/micronautics/scala"
@@ -83,6 +121,8 @@ scalacOptions in (Compile, doc) ++= baseDirectory.map {
   )
 }.value
 
+scalaVersion := "2.13.1"
+
 scmInfo := Some(
   ScmInfo(
     url("https://github.com/mslinn/quill-cache"),
@@ -90,36 +130,4 @@ scmInfo := Some(
   )
 )
 
-logLevel := Level.Warn
-
-// Only show warnings and errors on the screen for compilations.
-// This applies to both test:compile and compile and is Info by default
-logLevel in compile := Level.Warn
-
-// Level.INFO is needed to see detailed output when running tests
-logLevel in test := Level.Debug
-
-val commonInitialCommands =
-  """import java.net.URL
-    |import java.util.UUID
-    |import com.github.nscala_time.time.Imports._
-    |import io.getquill._
-    |import io.getquill.context.jdbc.JdbcContext
-    |import scala.reflect.ClassTag
-    |import model._
-    |""".stripMargin
-
-// define the statements initially evaluated when entering 'console', 'console-quick', but not 'console-project'
-initialCommands in console := commonInitialCommands
-
-// define the statements initially evaluated when entering 'test:console', 'test:console-quick', but not 'test:console-project'
-initialCommands in Test in console := commonInitialCommands +
-  """import model.dao.Ctx.{run => qRun, _}
-    |""".stripMargin
-
-cancelable := true
-
-Test / classLoaderLayeringStrategy := ClassLoaderLayeringStrategy.Flat
-logBuffered in Test := false
-parallelExecution in Test := false
-//fork in Test := true
+version := "3.5.12"
