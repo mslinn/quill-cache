@@ -4,8 +4,8 @@
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![GitHub version](https://badge.fury.io/gh/mslinn%2Fquill-cache.svg)](https://badge.fury.io/gh/mslinn%2Fquill-cache)
 
-Psst: This prerelease dropped async support for MySQL and Postgres.
-Maybe that will be published again somehow, dunno.
+Psst: This release dropped async support for MySQL and Postgres.
+Maybe that functionality will be published again in a separate library, no promises.
 
 ## Features and Benefits
   * Dramatically reduces time to fetch results from read-mostly database tables

@@ -2,8 +2,8 @@ package model.persistence
 
 //import io.getquill.context.async.AsyncContext
 import io.getquill.context.jdbc.JdbcContext
-import scala.concurrent.ExecutionContext
-import scala.concurrent.ExecutionContext.{Implicits => EC}
+//import scala.concurrent.ExecutionContext
+//import scala.concurrent.ExecutionContext.{Implicits => EC}
 import scala.io.Codec
 import scala.io.Source.fromInputStream
 import DBComponent.logger
@@ -59,7 +59,7 @@ class ProcessEvolution(resourcePath: String, fallbackPath: String) {
                             (implicit codec: Codec): (String, List[String]) = {
     getLines(getClass.getClassLoader, resourcePath)
       .orElse(getLines(Thread.currentThread.getContextClassLoader, resourcePath))
-      .getOrElse(fallbackPath -> scala.io.Source.fromFile(fallbackPath).getLines.toList)
+      .getOrElse(fallbackPath -> com.micronautics.utils.readLines(fallbackPath))
   }
 
   protected def downs(resourcePath: String, fallbackPath: String): String = {
