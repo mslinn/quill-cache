@@ -61,7 +61,7 @@ trait LocalH2Server {
 trait SetupTeardown extends BeforeAndAfterAll { this: AnyWordSpec with LocalH2Server =>
   val resourcePath = "evolutions/default/1.sql" // for accessing evolution file as a resource from a jar
   val fallbackPath = s"src/test/resources/$resourcePath" // for testing this project
-  val processEvolution = new ProcessEvolution(resourcePath, fallbackPath)
+  val processEvolution: ProcessEvolution = new ProcessEvolution(resourcePath, fallbackPath)
 
   override def beforeAll(): Unit = {
     assert (H2Server.state == CREATED || H2Server.state == RUNNING)
