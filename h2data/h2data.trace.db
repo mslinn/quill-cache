@@ -1,0 +1,34 @@
+2019-09-20 12:47:51 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalAccessError: tried to access class org.h2.mvstore.MVStore$3 from class org.h2.mvstore.MVStore" [50000-199]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convert(DbException.java:343)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:90)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:2787)
+	at org.h2.mvstore.MVStore.writeInBackground(MVStore.java:2780)
+	at org.h2.mvstore.MVStore$BackgroundWriterThread.run(MVStore.java:3123)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: General error: "java.lang.IllegalAccessError: tried to access class org.h2.mvstore.MVStore$3 from class org.h2.mvstore.MVStore" [50000-199]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:502)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:427)
+	... 6 more
+Caused by: java.lang.IllegalAccessError: tried to access class org.h2.mvstore.MVStore$3 from class org.h2.mvstore.MVStore
+	at org.h2.mvstore.MVStore.findOldChunks(MVStore.java:2115)
+	at org.h2.mvstore.MVStore.compact(MVStore.java:2037)
+	at org.h2.mvstore.MVStore.writeInBackground(MVStore.java:2776)
+	... 1 more
+2019-12-17 12:01:24 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalAccessError: failed to access class org.h2.mvstore.MVStore$3 from class org.h2.mvstore.MVStore (org.h2.mvstore.MVStore$3 is in unnamed module of loader sbt.internal.ManagedClassLoader$ZombieClassLoader @7fcc2d8c; org.h2.mvstore.MVStore is in unnamed module of loader sbt.internal.FlatLoader @12778a6e)" [50000-199]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convert(DbException.java:343)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:90)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:2787)
+	at org.h2.mvstore.MVStore.writeInBackground(MVStore.java:2780)
+	at org.h2.mvstore.MVStore$BackgroundWriterThread.run(MVStore.java:3123)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: General error: "java.lang.IllegalAccessError: failed to access class org.h2.mvstore.MVStore$3 from class org.h2.mvstore.MVStore (org.h2.mvstore.MVStore$3 is in unnamed module of loader sbt.internal.ManagedClassLoader$ZombieClassLoader @7fcc2d8c; org.h2.mvstore.MVStore is in unnamed module of loader sbt.internal.FlatLoader @12778a6e)" [50000-199]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:502)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:427)
+	... 6 more
+Caused by: java.lang.IllegalAccessError: failed to access class org.h2.mvstore.MVStore$3 from class org.h2.mvstore.MVStore (org.h2.mvstore.MVStore$3 is in unnamed module of loader sbt.internal.ManagedClassLoader$ZombieClassLoader @7fcc2d8c; org.h2.mvstore.MVStore is in unnamed module of loader sbt.internal.FlatLoader @12778a6e)
+	at org.h2.mvstore.MVStore.findOldChunks(MVStore.java:2115)
+	at org.h2.mvstore.MVStore.compact(MVStore.java:2037)
+	at org.h2.mvstore.MVStore.writeInBackground(MVStore.java:2776)
+	... 1 more
